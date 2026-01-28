@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 50">
+  <text x="10" y="40" font-family="sans-serif" font-weight="900" font-size="40" fill="currentColor">x</text>
+  <g transform="translate(68, 40) scale(-1, 1)">
+    <text x="0" y="0" text-anchor="middle" font-family="sans-serif" font-weight="900" font-size="40" fill="currentColor">R</text>
+  </g>
+  <text x="75" y="40" font-family="sans-serif" font-weight="900" font-size="40" fill="currentColor">tm</text>
+</svg>

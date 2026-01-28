@@ -1,0 +1,200 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --ifm-font-family-base: 'Inter', system-ui, -apple-system, sans-serif;
+    --ifm-font-family-monospace: 'JetBrains Mono', 'Fira Code', monospace;
+    --ifm-navbar-background-color: transparent !important;
+    --ifm-navbar-shadow: none !important;
+    --ifm-footer-background-color: transparent !important;
+    --ifm-background-color: transparent !important;
+  }
+
+  html {
+    height: 100%;
+  }
+
+  body {
+    min-height: 100vh;
+    background-attachment: fixed;
+    /* Apple Light Gray */
+    background-color: #f5f5f7;
+    background-image:
+      radial-gradient(circle at 50% 0%, #ffffff 0%, transparent 60%),
+      /* The technical grid texture (very subtle) */
+      linear-gradient(to right, rgba(0, 0, 0, 0.02) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(0, 0, 0, 0.02) 1px, transparent 1px);
+    background-size: 100% 100%, 40px 40px, 40px 40px;
+  }
+
+  [data-theme='dark'] body {
+    /* Pure Black with Apple Glows */
+    background-color: #000000;
+    background-image:
+      radial-gradient(circle at 50% 0%, #1a1a1a 0%, transparent 70%),
+      radial-gradient(circle at 80% 10%, #1e293b 0%, transparent 50%),
+      /* The technical grid texture (dark mode) */
+      linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+    background-size: 100% 100%, 100% 100%, 40px 40px, 40px 40px;
+  }
+
+  /* Force transparency on all main containers */
+  #__docusaurus,
+  nav,
+  footer,
+  main,
+  .main-wrapper {
+    background-color: transparent !important;
+  }
+}
+
+@layer components {
+  .navbar {
+    background-color: rgba(255, 255, 255, 0) !important;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-bottom: none !important;
+    padding: 1.5rem 2rem;
+  }
+
+  .navbar__title {
+    display: none;
+  }
+
+  /* Custom Admonitions */
+  .alert--info,
+  .alert--tip {
+    --ifm-alert-background-color: #f4f4f5;
+    /* Zinc-100 */
+    --ifm-alert-border-color: #52525b;
+    /* Zinc-600 */
+    --ifm-alert-color: #3f3f46;
+    /* Zinc-700 */
+    border-left-width: 4px;
+    border-left-style: solid;
+    border-radius: 4px;
+    border-top: none;
+    border-right: none;
+    border-bottom: none;
+  }
+
+  [data-theme='dark'] .alert--info,
+  [data-theme='dark'] .alert--tip {
+    --ifm-alert-background-color: #18181b;
+    /* Zinc-900 */
+    --ifm-alert-border-color: #71717a;
+    /* Zinc-500 */
+    --ifm-alert-color: #d4d4d8;
+    /* Zinc-300 */
+  }
+
+  .alert--danger {
+    --ifm-alert-background-color: #fef2f2;
+    /* Red-50 */
+    --ifm-alert-border-color: #ef4444;
+    /* Red-500 */
+    --ifm-alert-color: #991b1b;
+    /* Red-800 */
+    border-left-width: 4px;
+    border-left-style: solid;
+    border-radius: 4px;
+    border-top: none;
+    border-right: none;
+    border-bottom: none;
+  }
+
+  [data-theme='dark'] .alert--danger {
+    --ifm-alert-background-color: #450a0a;
+    /* Red-950 */
+    --ifm-alert-border-color: #f87171;
+    /* Red-400 */
+    --ifm-alert-color: #fca5a5;
+    /* Red-200 */
+  }
+
+  .footer__copyright {
+    @apply text-zinc-500 font-medium pt-8 pb-8 border-t border-black/5 dark:border-white/10;
+    font-size: 0.8rem;
+    opacity: 0.6;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  /* Glitch-Flip Animation for Brand R */
+  #brand-r {
+    transform-origin: center center;
+    animation: glitch-flip 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  }
+
+  #brand-r:hover {
+    animation: glitch-flip 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  }
+
+  @keyframes glitch-flip {
+    0% {
+      transform: scaleX(1);
+    }
+
+    20% {
+      transform: scaleX(-1);
+    }
+
+    40% {
+      transform: scaleX(1);
+    }
+
+    60% {
+      transform: scaleX(-1);
+    }
+
+    70% {
+      transform: scaleX(-1) skewX(20deg);
+    }
+
+    100% {
+      transform: scaleX(-1);
+    }
+  }
+
+  .brand-watermark {
+    animation: watermark-glitch 2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  }
+
+  @keyframes watermark-glitch {
+    0% {
+      opacity: 0;
+      transform: scaleX(1);
+    }
+
+    30% {
+      opacity: 0.03;
+      transform: scaleX(1);
+    }
+
+    50% {
+      opacity: 0.05;
+      transform: scaleX(-1);
+    }
+
+    70% {
+      opacity: 0.03;
+      transform: scaleX(-1) skewX(5deg);
+    }
+
+    100% {
+      opacity: 0.03;
+      transform: scaleX(1);
+    }
+  }
+
+  .footer {
+    @apply px-0 py-0;
+  }
+
+  .footer__links {
+    display: none;
+  }
+}

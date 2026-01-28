@@ -1,0 +1,15 @@
+{
+    "name": "xrtm.org Website",
+    "image": "mcr.microsoft.com/devcontainers/typescript-node:20",
+    "workspaceMount": "source=${localWorkspaceFolder}/..,target=/workspace,type=bind",
+    "workspaceFolder": "/workspace/xrtm.org",
+    "features": {
+        "ghcr.io/devcontainers/features/git:1": {},
+        "ghcr.io/devcontainers/features/github-cli:1": {},
+        "ghcr.io/devcontainers/features/common-utils:2": {
+            "installZsh": true,
+            "configureZshAsDefaultShell": true
+        }
+    },
+    "postCreateCommand": "npm install"
+}
