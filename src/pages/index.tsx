@@ -76,7 +76,7 @@ function Hero() {
                     x<span className="reflected-r">R</span>tm
                 </h1>
                 <p className="text-xl md:text-2xl text-slate-600 dark:text-slate-400 font-light max-w-2xl mx-auto">
-                    The open standard for probabilistic AI.
+                    True intelligence is not recall. It is prediction.
                 </p>
             </motion.div>
         </div>

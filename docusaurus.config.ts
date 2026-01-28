@@ -6,7 +6,7 @@ import type * as Preset from '@docusaurus/preset-classic';
 
 const config: Config = {
   title: 'xrtm',
-  tagline: 'To understand reality is to predict its future.',
+  tagline: 'True intelligence is not recall. It is prediction.',
   favicon: 'img/favicon.ico',
 
   url: 'https://xrtm.org',
