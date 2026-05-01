@@ -7,7 +7,7 @@
     "start": "docusaurus start --host 0.0.0.0",
     "build": "docusaurus build",
     "swizzle": "docusaurus swizzle",
-    "deploy": "docusaurus deploy",
+    "deploy": "echo 'Production deploys run from GitHub Actions. Validate with npm run build and push to main instead.' >&2 && exit 1",
     "clear": "docusaurus clear",
     "serve": "docusaurus serve",
     "write-translations": "docusaurus write-translations",

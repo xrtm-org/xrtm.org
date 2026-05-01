@@ -4,21 +4,24 @@ on:
   push:
     branches:
       - main
-    # Review gh-pages-clean-up.yml if you need to clean up older deployments
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: github-pages
+  cancel-in-progress: true
 
 jobs:
-  deploy:
-    name: Deploy to GitHub Pages
+  build:
+    name: Build Pages artifact
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
 
       - name: Setup Node
         uses: actions/setup-node@v4
@@ -26,16 +29,36 @@ jobs:
           node-version: 20
           cache: npm
 
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+        with:
+          static_site_generator: docusaurus
+
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
       - name: Build website
         run: npm run build
 
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v4
+      - name: Verify Pages artifact
+        run: |
+          test -f build/index.html
+          test -f build/.nojekyll
+          grep -qx 'xrtm.org' build/CNAME
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v4
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./build
-          user_name: 'github-actions[bot]'
-          user_email: 'github-actions[bot]@users.noreply.github.com'
+          path: ./build
+
+  deploy:
+    name: Deploy to GitHub Pages
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

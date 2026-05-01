@@ -1,5 +1,7 @@
 # The xrtm Manifesto
 
+> If you are new here, prove the product path first in [Getting started](../getting-started). This page explains the philosophy behind that workflow.
+
 > "To understand reality is to predict its future."
 
 ## The Core Issue

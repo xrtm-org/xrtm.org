@@ -1,32 +1,50 @@
 import type { SidebarsConfig } from '@docusaurus/plugin-content-docs';
 
 const sidebars: SidebarsConfig = {
-  // Sidebar 1: Philosophy (scoped)
-  philosophySidebar: [
-    'philosophy/manifesto',
-  ],
-
-  // Sidebar 2: The Standard (scoped)
-  standardSidebar: [
-    'standard/intro',
-    'standard/forecast-object',
-  ],
-
-  // Sidebar 3: Framework (scoped)
-  frameworkSidebar: [
-    'framework/intro',
+  docsSidebar: [
+    'getting-started',
     {
       type: 'category',
-      label: 'Core Components',
+      label: 'Workflows',
       collapsed: false,
       items: [
-        'framework/data',
-        'framework/eval',
+        'workflows/researcher-model-eval',
+        'workflows/operator-runbook',
+        'workflows/team-workflows',
+        'workflows/developer-integrator',
+      ],
+    },
+    'examples',
+    {
+      type: 'category',
+      label: 'Packages & architecture',
+      collapsed: false,
+      items: [
+        'framework/intro',
         'framework/forecast',
+        'framework/eval',
+        'framework/data',
         'framework/train',
       ],
     },
-    'framework/roadmap',
+    {
+      type: 'category',
+      label: 'Standard',
+      collapsed: true,
+      items: [
+        'standard/intro',
+        'standard/forecast-object',
+        'standard/governance',
+      ],
+    },
+    {
+      type: 'category',
+      label: 'Philosophy',
+      collapsed: true,
+      items: ['philosophy/manifesto'],
+    },
+    'roadmap',
+    'contributing',
   ],
 };
 

@@ -1,5 +1,7 @@
 # The Power of Standards
 
+> If you are new to XRTM, start with [Getting started](../getting-started) first. Come here once you are exporting forecasts, integrating tools, or comparing systems.
+
 Standards are the bedrock of interoperability. In the fragmented world of AI systems, **xrtm** establishes a strict contract for how intelligence is shared, evaluated, and improved.
 
 ## Why We Need a Standard

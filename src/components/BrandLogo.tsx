@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function BrandLogo(): JSX.Element {
+export default function BrandLogo(): React.JSX.Element {
     return (
         <svg
             viewBox="0 0 100 40"
@@ -8,11 +8,9 @@ export default function BrandLogo(): JSX.Element {
             fill="currentColor"
             aria-label="xRtm Logo"
         >
-            {/* x */}
             <text x="0" y="30" fontFamily="Inter, sans-serif" fontWeight="900" fontSize="28">
                 x
             </text>
-            {/* R (animated glitch) */}
             <text
                 id="brand-r"
                 x="38"
@@ -24,7 +22,6 @@ export default function BrandLogo(): JSX.Element {
             >
                 R
             </text>
-            {/* tm */}
             <text x="55" y="30" fontFamily="Inter, sans-serif" fontWeight="900" fontSize="28">
                 tm
             </text>

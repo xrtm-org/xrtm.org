@@ -5,13 +5,13 @@ This website is built using [Docusaurus](https://docusaurus.io/), a modern stati
 ## Installation
 
 ```bash
-yarn
+npm install
 ```
 
 ## Local Development
 
 ```bash
-yarn start
+npm start
 ```
 
 This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
@@ -19,7 +19,7 @@ This command starts a local development server and opens up a browser window. Mo
 ## Build
 
 ```bash
-yarn build
+npm run build
 ```
 
 This command generates static content into the `build` directory and can be served using any static contents hosting service.
@@ -38,16 +38,21 @@ We track those moderate findings instead of force-fixing because this site ships
 
 ## Deployment
 
-Using SSH:
+Production deploys are handled by GitHub Actions via `.github/workflows/deploy.yml`, not by pushing a `gh-pages` branch from a developer machine. Every push to `main` (or a manual workflow dispatch) now:
 
 ```bash
-USE_SSH=true yarn deploy
+npm ci
+npm run build
 ```
 
-Not using SSH:
+and then publishes the `build/` directory with the official GitHub Pages artifact/deploy actions. The custom domain is kept in-repo through `static/CNAME`, so Pages deployments keep `xrtm.org` attached to the site. `npm run deploy` is intentionally disabled to avoid accidentally reviving the older branch-push flow.
 
-```bash
-GIT_USER=<Your GitHub username> yarn deploy
-```
+### Recovery checklist
 
-If you are using GitHub pages for hosting, this command is a convenient way to build the website and push to the `gh-pages` branch.
+If `https://xrtm.org` starts returning a 404 again, check these in order:
+
+1. Latest **Deploy to GitHub Pages** workflow run completed successfully.
+2. Repository **Settings → Pages** uses **GitHub Actions** as the source.
+3. The Pages custom domain is still set to `xrtm.org`, and HTTPS is enabled after validation.
+4. DNS for `xrtm.org` still points at GitHub Pages; repo changes cannot repair broken DNS.
+5. The uploaded Pages artifact contains `index.html`, `.nojekyll`, and `CNAME` at the site root.

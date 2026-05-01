@@ -1,60 +1,49 @@
-# xrtm-forecast Roadmap
+# Roadmap
 
-**Philosophy**: We build the engine, not the car.
-**Goal**: To be the definitive "Institutional Grade" framework for generative forecasting.
+> This page is for **future, planned, or experimental** work. If you want the shipped path today, start with [Getting started](./getting-started) and [Examples and proof](./examples).
+
+**Goal**: Make XRTM the standard local workbench for forecasting and model evaluation with scientific rigor.
 
 ---
 
-## I. The Strategic Pillars
+## Strategic pillars
 
-We organize our roadmap into three distinct layers of maturity.
-
-| Pillar | Focus | Target Audience | Key Metaphor |
+| Pillar | Focus | Audience | Status lens |
 | :--- | :--- | :--- | :--- |
-| **I. Core "Physics"** | Validity, Math, Time | Quants, Engineers | The Gravity |
-| **II. Research Grade** | SOTA Architectures | Academic Researchers | The Lab |
-| **III. Experimental** | Niche & Future | Traders, Hobbyists | The Frontier |
+| **Core physics** | Validity, math, time | Researchers, model-eval teams | Shipped foundation first |
+| **Research grade** | Auditability, advanced workflows | Operators, labs, teams | Mixed shipped + in progress |
+| **Experimental** | Frontier capabilities | Exploratory users | Not a homepage claim |
 
 ---
 
-## II. Release Plan
-
-### v0.3.0: The Core Physics (Released)
-*Focus: Establishing the fundamental scientific validity of the engine.*
+## Released and shipping now
 
 | Feature | Description | Status |
 | :--- | :--- | :--- |
-| **Chronos Protocol** | **Zero-Leakage Time Travel.** Enforced `before_date` cutoffs to prevent look-head bias during backtests. | **DONE** |
-| **Calibration Engine** | **Probabilistic Rigor.** Platt Scaling and Brier Scores. | **DONE** |
-| **Sentinel Protocol** | **Dynamic Trajectories.** Forecast Trajectories mapping confidence over time. | **DONE** |
-| **Recursive Consensus** | **Disagreement Resolution.** supervisor-led refinement loops. | **DONE** |
+| **Chronos Protocol** | Enforced time cutoffs to prevent look-ahead bias during backtests. | **DONE** |
+| **Calibration Engine** | Platt scaling and Brier-score-oriented evaluation. | **DONE** |
+| **Sentinel Protocol** | Forecast trajectory tracking over time. | **DONE** |
+| **Recursive Consensus** | Supervisor-led disagreement refinement loops. | **DONE** |
+| **Truth Protocol** | Tamper-evident reasoning traces and audit packaging. | **DONE** |
+| **Dossier Generator** | Audit-ready research reporting outputs. | **DONE** |
 
-### v0.4.0: The "Sovereign" Layer (Institutional Grade)
-*Focus: Trust, Auditability, and Anti-Manipulation.*
-
-| Feature | Description | Status |
-| :--- | :--- | :--- |
-| **Truth Protocol** | **Cryptographic Audit.** Merkle-ized reasoning chains for tamper-evident traces. | **DONE** |
-| **Epistemic Security** | **Anti-Manipulation.** source verification and cross-referencing to block "News Injection" attacks. | In Progress |
-| **Dossier Generator** | **Institutional Reporting.** Auto-generating audit-ready research proofs via `.xrtm`. | **DONE** |
-
-### v0.5.3: The "Intelligence" Layer (Frontier)
-*Focus: Causal inference and automated optimization.*
+## In progress
 
 | Feature | Description | Status |
 | :--- | :--- | :--- |
-| **Causal Reasoning** | **DAG Generation.** Moving from text lists to formal Directed Acyclic Graphs (SCMs). | Experimental |
-| **Prompt Compiler** | **DSPy Integration.** Automated Brier-Score-driven optimization of system instructions. | Experimental |
-| **Centaur Workbench** | **Human-Loop.** Optimized UX for human-AI collaboration. | Concept |
-| **ABM Simulation** | **Market Dynamics.** Agent-based modeling for liquidity and impact analysis. | Experimental |
+| **Epistemic Security** | Source verification and anti-manipulation work. | In Progress |
 
----
+## Experimental or future
 
-## III. How to Contribute
+| Feature | Description | Status |
+| :--- | :--- | :--- |
+| **Causal Reasoning** | Formal DAG generation beyond current text-first reasoning traces. | Experimental |
+| **Prompt Compiler** | Automated Brier-driven prompt optimization. | Experimental |
+| **Centaur Workbench** | Human-in-the-loop collaboration layer. | Concept |
+| **ABM Simulation** | Agent-based market dynamics and liquidity analysis. | Experimental |
 
-We prioritize features in **Pillar I** above all else. If you are looking to contribute:
-1.  **High Impact**: Help us write adapters for the **Chronos Protocol** (e.g., adding `before_date` support to new search providers).
-2.  **Medium Impact**: Add new "Topologies" to the **Consensus Engine**.
-3.  **Low Impact**: Experimental features (unless you are willing to maintain them).
+## Contribution guidance
 
-> **Note**: This roadmap is a living document. We prioritize scientific rigor over feature bloat.
+1. **Highest impact**: harden time-safe evaluation and adapter coverage
+2. **Next**: improve shipped researcher and operator workflows
+3. **Later**: experimental work only if you are prepared to maintain it
