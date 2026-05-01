@@ -2,10 +2,25 @@
 
 This website is built using [Docusaurus](https://docusaurus.io/), a modern static website generator.
 
+## Toolchain
+
+The supported local toolchain is:
+
+- **Node:** `20.19.0` (see `.nvmrc` / `.node-version`)
+- **npm:** `10.x` (bundled with the supported Node release)
+
+This repo is **local-tooling first**. Devcontainers remain supported for contributors who prefer them, but Docker/devcontainers are not the primary workflow.
+
+If you use `nvm`:
+
+```bash
+nvm use
+```
+
 ## Installation
 
 ```bash
-npm install
+npm ci
 ```
 
 ## Local Development
@@ -34,7 +49,11 @@ npm run audit:policy
 
 The policy fails on `high` or `critical` npm audit findings and allows the current known moderate Docusaurus development-server chain to remain tracked. After the hardening pass, `npm audit` reports 19 moderate, 0 high, and 0 critical findings. The remaining findings flow through `@docusaurus/core -> webpack-dev-server -> sockjs -> uuid <14`; npm reports no direct fix without moving outside the supported upstream Docusaurus dependency chain.
 
-We track those moderate findings instead of force-fixing because this site ships static build output, while the affected chain is used by local Docusaurus development tooling. Forced major upgrades or overrides are allowed only when a high/critical finding appears, a moderate finding is shown to affect hosted production output or shared CI/runtime exposure, or upstream Docusaurus does not provide a timely supported fix. Any forced upgrade must include a documented rationale plus passing `npm install`, `npm run build`, and `npm run audit:policy`.
+We track those moderate findings instead of force-fixing because this site ships static build output, while the affected chain is used by local Docusaurus development tooling. Forced major upgrades or overrides are allowed only when a high/critical finding appears, a moderate finding is shown to affect hosted production output or shared CI/runtime exposure, or upstream Docusaurus does not provide a timely supported fix. Any forced upgrade must include a documented rationale plus passing `npm ci`, `npm run build`, and `npm run audit:policy`.
+
+## Optional devcontainer support
+
+This repo also ships `.devcontainer/devcontainer.json` for contributors who want an isolated editor environment, but that path is optional support rather than the main development story.
 
 ## Deployment
 
