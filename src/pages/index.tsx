@@ -10,7 +10,7 @@ const pillClass =
   'rounded-full border border-blue-500/20 bg-blue-500/10 px-4 py-2 text-sm font-medium text-slate-700 dark:border-blue-400/20 dark:bg-blue-400/10 dark:text-slate-200';
 
 const proofPills = [
-  'Provider-free local demo',
+  'Guided first run',
   'Artifact-backed runs',
   'HTML report',
   'WebUI + TUI',
@@ -27,7 +27,7 @@ const reasons = [
   {
     title: 'Start local by default',
     description:
-      'The default first run uses the built-in mock provider. You can prove the workflow end to end without API keys, model downloads, or a hosted control plane.',
+      'The guided first run uses the built-in mock provider. You can prove the workflow end to end without API keys, model downloads, or a hosted control plane.',
   },
   {
     title: 'Evaluate forecasting systems, not chat demos',
@@ -38,20 +38,20 @@ const reasons = [
 
 const defaultStory = [
   {
-    title: 'Run the local demo',
+    title: 'Run the guided first command',
     description:
-      'Generate deterministic forecasts and evaluation output entirely on your machine with the mock provider.',
-    command: 'xrtm demo --provider mock --limit 2',
-    href: '/docs/getting-started#3-run-your-first-local-demo',
+      'Use xrtm start to check readiness, run the deterministic mock-provider flow, and print the exact next commands.',
+    command: 'xrtm start',
+    href: '/docs/getting-started#2-run-the-guided-first-command',
   },
   {
-    title: 'Inspect the run artifacts',
+    title: 'Inspect the newest run',
     description:
-      'List runs, inspect the canonical run directory, and generate the HTML report from the same saved evidence.',
-    command: `xrtm runs list
-xrtm artifacts inspect runs/<run-id>
-xrtm report html runs/<run-id>`,
-    href: '/docs/getting-started#4-inspect-the-run-artifacts',
+      'Use the latest shortcuts to inspect the canonical run directory and regenerate the HTML report from the same saved evidence.',
+    command: `xrtm runs show latest --runs-dir runs
+xrtm artifacts inspect --latest --runs-dir runs
+xrtm report html --latest --runs-dir runs`,
+    href: '/docs/getting-started#3-inspect-the-run-artifacts',
   },
   {
     title: 'Browse the same run in WebUI or TUI',
@@ -59,7 +59,7 @@ xrtm report html runs/<run-id>`,
       'Open the run in the local browser view or terminal cockpit without changing the underlying artifact format.',
     command: `xrtm web --runs-dir runs
 xrtm tui --runs-dir runs`,
-    href: '/docs/getting-started#5-browse-the-results',
+    href: '/docs/getting-started#4-browse-the-results',
   },
   {
     title: 'Choose your next path',
@@ -103,7 +103,7 @@ const packageRows = [
     name: 'xrtm',
     role: 'Product shell',
     description:
-      'CLI demo path, canonical artifacts, HTML reports, WebUI, TUI, profiles, compare/export, and local monitoring.',
+      'Guided first-run path, canonical artifacts, HTML reports, WebUI, TUI, profiles, compare/export, and local monitoring.',
   },
   {
     name: 'xrtm-forecast',
@@ -133,9 +133,10 @@ const quickstart = [
   'python3.11 -m venv .venv',
   '. .venv/bin/activate',
   'pip install xrtm==0.3.0',
-  'xrtm demo --provider mock --limit 2',
-  'xrtm runs list',
-  'xrtm artifacts inspect runs/<run-id>',
+  'xrtm start',
+  'xrtm runs show latest --runs-dir runs',
+  'xrtm artifacts inspect --latest --runs-dir runs',
+  'xrtm report html --latest --runs-dir runs',
   'xrtm web --runs-dir runs',
 ].join('\n');
 
@@ -156,13 +157,14 @@ export default function Home(): React.JSX.Element {
                 Forecast locally. Score rigorously. Inspect everything.
               </h1>
               <p className="max-w-3xl text-lg leading-8 text-slate-700 dark:text-slate-300 md:text-xl">
-                XRTM gives newcomers a clear product path: run a local demo, inspect the run artifacts,
-                browse the same run in the WebUI or TUI, then choose the audience workflow that fits next.
+                XRTM gives newcomers a clear product path: run the guided first command, inspect the
+                run artifacts, browse the same run in the WebUI or TUI, then choose the audience
+                workflow that fits next.
               </p>
             </div>
             <div className="flex flex-col gap-3 sm:flex-row">
               <Link className="button button--primary button--lg" to="/docs/getting-started">
-                Start with the local demo
+                Start with xrtm start
               </Link>
               <Link
                 className="button button--secondary button--lg"
@@ -173,22 +175,23 @@ export default function Home(): React.JSX.Element {
             </div>
             <p className="max-w-3xl text-sm leading-7 text-slate-600 dark:text-slate-400">
               Local-LLM mode is supported, but it is intentionally optional and secondary. The default
-              first run is provider-free so you can prove the workflow before adding model-serving
-              complexity.
+              first run is the provider-free guided path so you can prove the workflow before adding
+              model-serving complexity.
             </p>
           </div>
 
           <div className={shellCard}>
             <div className="mb-4 flex items-center justify-between text-sm font-medium text-slate-500 dark:text-slate-400">
               <span>Default first run</span>
-              <span className="font-mono">local demo → artifacts → Web/TUI</span>
+              <span className="font-mono">guided start → latest inspect → Web/TUI</span>
             </div>
             <pre className="overflow-x-auto rounded-2xl bg-slate-950 p-5 text-sm leading-7 text-slate-100 shadow-inner shadow-black/20">
               <code>{quickstart}</code>
             </pre>
             <p className="mt-4 text-sm leading-7 text-slate-600 dark:text-slate-400">
-              This path proves the product with shipped features only: deterministic local execution,
-              scored run artifacts, and a browser or terminal view over the same saved run directory.
+              This path proves the product with shipped features only: readiness checks, deterministic
+              local execution, scored run artifacts, and a browser or terminal view over the same saved
+              run directory.
             </p>
           </div>
         </section>
@@ -329,8 +332,8 @@ export default function Home(): React.JSX.Element {
             </h3>
             <p className="mt-3 max-w-3xl text-sm leading-7 text-slate-700 dark:text-slate-300">
               The philosophy, standard, and roadmap still matter, but they now live behind the product
-              path instead of replacing it. Start with the demo and docs overview, then go deeper once
-              you understand the shipped workflow.
+              path instead of replacing it. Start with `xrtm start` and docs overview, then go deeper
+              once you understand the shipped workflow.
             </p>
             <div className="mt-5 flex flex-wrap gap-3">
               <Link className="button button--secondary button--sm" to="/docs">

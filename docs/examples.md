@@ -12,10 +12,10 @@ This page is intentionally product-and-proof-first. Everything below is either a
 If you only do one thing, do this first:
 
 ```bash
-xrtm demo --provider mock --limit 2
-xrtm runs list
-xrtm artifacts inspect runs/<run-id>
-xrtm report html runs/<run-id>
+xrtm start
+xrtm runs show latest --runs-dir runs
+xrtm artifacts inspect --latest --runs-dir runs
+xrtm report html --latest --runs-dir runs
 xrtm web --runs-dir runs
 ```
 
@@ -23,7 +23,7 @@ That flow is the core proof that XRTM works as a local-first forecasting and mod
 
 ## What the product ships today
 
-- provider-free local demo mode
+- provider-free guided start mode
 - canonical run artifacts under `runs/<run-id>/`
 - scored outputs including `eval.json`, `run_summary.json`, and `report.html`
 - local WebUI and TUI backed by the same run artifacts

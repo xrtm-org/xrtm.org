@@ -1,13 +1,13 @@
 ---
 title: Getting started
-description: Run the provider-free demo, inspect artifacts, and open the WebUI or TUI.
+description: Run the guided first command, inspect artifacts, and open the WebUI or TUI.
 ---
 
 # Getting Started with XRTM
 
 This is the shortest honest path to first success with XRTM.
 
-You will run a complete local demo, inspect the generated artifacts, and browse the results. The default path uses the built-in mock provider, so you do **not** need API keys or a local model server.
+You will run the guided first command, inspect the generated artifacts, and browse the results. The default path uses the built-in mock provider, so you do **not** need API keys or a local model server.
 
 ## 1. Install
 
@@ -19,44 +19,40 @@ pip install xrtm==0.3.0
 
 **Supported Python versions:** `>=3.11,<3.13`
 
-## 2. Verify the installation
+## 2. Run the guided first command
 
 ```bash
-xrtm doctor
+xrtm start
 ```
 
-You should see the core stack available and ready.
+`xrtm start` verifies readiness, runs the deterministic mock-provider demo, confirms the key artifacts, and prints exact next commands.
 
-## 3. Run your first local demo
+On success, the final quickstart output explicitly shows:
 
-```bash
-xrtm demo --provider mock --limit 2
-```
+- what just succeeded
+- the run id
+- the artifact location
+- the report location
+- exact latest-run follow-up commands
 
-This provider-free demo:
+Treat that final panel as proof that XRTM completed a full local run and wrote the canonical evidence to disk.
+
+This provider-free first run:
 
 - loads bundled questions locally
 - generates deterministic forecasts without API calls
 - evaluates the run with built-in scoring
 - writes a complete run directory under `runs/`
 
-## 4. Inspect the run artifacts
-
-First, list the runs that exist locally:
+## 3. Inspect the run artifacts
 
 ```bash
-xrtm runs list
+xrtm runs show latest --runs-dir runs
+xrtm artifacts inspect --latest --runs-dir runs
+xrtm report html --latest --runs-dir runs
 ```
 
-Then inspect the run you just created:
-
-```bash
-xrtm runs show <run-id>
-xrtm artifacts inspect runs/<run-id>
-xrtm report html runs/<run-id>
-```
-
-Replace `<run-id>` with the ID shown by `xrtm runs list`.
+`xrtm artifacts inspect` prints the canonical artifact inventory with on-disk locations, so you can verify exactly what the first run wrote.
 
 The run directory contains the same evidence used by higher-level views:
 
@@ -75,7 +71,7 @@ runs/<run-id>/
   logs/
 ```
 
-## 5. Browse the results
+## 4. Browse the results
 
 Launch the local WebUI:
 
@@ -91,7 +87,7 @@ If you prefer the terminal, launch the TUI instead:
 xrtm tui --runs-dir runs
 ```
 
-## What you just proved
+## 5. What you just proved
 
 You completed the default XRTM story:
 
@@ -109,12 +105,14 @@ That is the core product path for newcomers.
 xrtm demo --provider mock --limit 10
 ```
 
-### Save a reusable profile
+### Scaffold a reusable local profile
 
 ```bash
-xrtm profile create my-local --provider mock --limit 5
+xrtm profile starter my-local --runs-dir runs
 xrtm run profile my-local
 ```
+
+This starter scaffold creates `.xrtm/profiles/my-local.json`, ensures the local `runs/` workspace exists, and keeps the workflow on the same mock-provider path you just proved with `xrtm start`.
 
 ### Pick the guide that matches your role
 
@@ -162,7 +160,7 @@ This is expected. XRTM currently supports Python `>=3.11,<3.13`.
 
 ### `xrtm doctor` shows warnings
 
-Check the warning text first. Optional components may be missing even when the default local demo path is fine.
+Check the warning text first. Optional components may be missing even when the default provider-free first-run path is fine.
 
 ### Local-LLM health check fails
 

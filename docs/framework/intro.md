@@ -11,7 +11,7 @@ The easiest way to understand XRTM is to separate the **product shell** from the
 
 For most newcomers, the right first step is the top-level `xrtm` product experience:
 
-- run a local demo
+- run `xrtm start`
 - inspect the canonical run artifacts
 - open the same run in the WebUI or TUI
 - move into repeatable workflows with profiles, compare, export, and monitor commands
@@ -22,7 +22,7 @@ See [Getting started](../getting-started) for that path.
 
 | Layer | Package | What it gives you today |
 | :--- | :--- | :--- |
-| Product shell | **`xrtm`** | CLI demo path, reports, canonical artifacts, WebUI, TUI, profiles, compare/export, and local monitoring |
+| Product shell | **`xrtm`** | Guided first-run path, reports, canonical artifacts, WebUI, TUI, profiles, compare/export, and local monitoring |
 | Runtime | **`xrtm-forecast`** | Forecasting agents, orchestration, provider integrations, and source examples |
 | Evaluation | **`xrtm-eval`** | Brier scoring, calibration-focused evaluation, and verification utilities |
 | Data | **`xrtm-data`** | Schemas and temporal snapshot foundations for zero-leakage evaluation |

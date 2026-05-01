@@ -13,7 +13,16 @@ If you have not already done so, complete [Getting started](../getting-started) 
 
 ## Core operator loop
 
-### Create repeatable profiles
+### Scaffold the lightest repeatable profile
+
+```bash
+xrtm profile starter my-local --runs-dir runs
+xrtm run profile my-local
+```
+
+Use `profile starter` right after `xrtm start` when you want the lightest reusable local scaffold. It creates `.xrtm/profiles/<name>.json`, keeps the workflow on the same mock-provider path, and ensures the target runs directory exists.
+
+### Create fully custom profiles when needed
 
 ```bash
 xrtm profile create local-mock --provider mock --limit 2 --runs-dir runs
@@ -25,8 +34,9 @@ xrtm run profile local-mock
 ### Inspect artifacts and reports
 
 ```bash
-xrtm artifacts inspect runs/<run-id>
-xrtm report html runs/<run-id>
+xrtm runs show latest --runs-dir runs
+xrtm artifacts inspect --latest --runs-dir runs
+xrtm report html --latest --runs-dir runs
 xrtm runs compare <run-id-a> <run-id-b> --runs-dir runs
 ```
 
