@@ -38,21 +38,25 @@ We track those moderate findings instead of force-fixing because this site ships
 
 ## Deployment
 
-Production deploys are handled by GitHub Actions via `.github/workflows/deploy.yml`, not by pushing a `gh-pages` branch from a developer machine. Every push to `main` (or a manual workflow dispatch) now:
+Production deploys are handled by GitHub Actions via `.github/workflows/deploy.yml`. In the current repo settings, GitHub Pages still serves the legacy `gh-pages` branch, so the workflow builds the site and publishes the generated `build/` output to `gh-pages` for you. Every push to `main` (or a manual workflow dispatch) now:
 
 ```bash
 npm ci
 npm run build
 ```
 
-and then publishes the `build/` directory with the official GitHub Pages artifact/deploy actions. The custom domain is kept in-repo through `static/CNAME`, so Pages deployments keep `xrtm.org` attached to the site. `npm run deploy` is intentionally disabled to avoid accidentally reviving the older branch-push flow.
+and then publishes the `build/` directory to `gh-pages`. The custom domain is kept in-repo through `static/CNAME`, so Pages deployments keep `xrtm.org` attached to the site. `npm run deploy` is intentionally disabled to avoid accidental local publishing.
 
 ### Recovery checklist
 
 If `https://xrtm.org` starts returning a 404 again, check these in order:
 
 1. Latest **Deploy to GitHub Pages** workflow run completed successfully.
-2. Repository **Settings → Pages** uses **GitHub Actions** as the source.
+2. Repository **Settings → Pages** still points to the `gh-pages` branch while the repo remains on the legacy Pages model.
 3. The Pages custom domain is still set to `xrtm.org`, and HTTPS is enabled after validation.
 4. DNS for `xrtm.org` still points at GitHub Pages; repo changes cannot repair broken DNS.
-5. The uploaded Pages artifact contains `index.html`, `.nojekyll`, and `CNAME` at the site root.
+5. The published `gh-pages` content contains `index.html`, `.nojekyll`, and `CNAME` at the site root.
+
+### Future migration note
+
+The repo is now ready to move to the modern GitHub Pages **workflow** source as well, but that switch requires repository admin access to change the Pages publishing source. Until that happens, the branch-publish workflow above is the correct deploy path.
