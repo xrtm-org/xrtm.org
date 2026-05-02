@@ -122,6 +122,12 @@ xrtm web --runs-dir runs
 xrtm perf run --scenario provider-free-smoke --iterations 3 --limit 1 --runs-dir runs-perf --output performance.json
 ```
 
+Treat this as the released quality baseline:
+
+- `performance.json` records reproducible runtime evidence
+- the paired `runs-perf/<run-id>/run_summary.json` contains Brier and ECE from the same scored surface as normal runs
+- provider-free repeats should stay stable; later provider/model changes should earn any score or latency movement they introduce
+
 ### 3. Monitoring, history, and report workflow
 
 ```bash
@@ -131,6 +137,13 @@ xrtm monitor start --provider mock --limit 2 --runs-dir runs
 xrtm runs compare <run-id-a> <run-id-b> --runs-dir runs
 xrtm runs export <run-id> --runs-dir runs --output export.json
 ```
+
+Use `xrtm runs compare` as your released compare gate:
+
+- **Brier / ECE:** lower is better
+- **warnings / errors:** operational regressions
+- **duration / tokens:** efficiency cost of a change
+- compare is most believable when the runs answer the same question set
 
 ### 4. Local-LLM advanced workflow
 
@@ -161,7 +174,7 @@ This creates `.xrtm/profiles/my-local.json`, ensures the local `runs/` workspace
 
 ### Pick the guide that matches your role
 
-- **Researcher / model-eval**: use the [researcher workflow](./workflows/researcher-model-eval) for released benchmark smoke, comparisons, metrics, and exports.
+- **Researcher / model-eval**: use the [researcher workflow](./workflows/researcher-model-eval) for released benchmark smoke, score interpretation, compare/export review, and the concrete compare → learn loop.
 - **Operator**: continue with the [operator runbook](./workflows/operator-runbook) for the monitoring/history/report workflow, profiles, performance checks, and troubleshooting.
 - **Team**: read [team workflows](./workflows/team-workflows) for realistic multi-user patterns and current limitations.
 - **Developer / integrator**: use the [developer workflow](./workflows/developer-integrator) and the [packages overview](./framework/intro) to move from product usage into APIs and examples.
