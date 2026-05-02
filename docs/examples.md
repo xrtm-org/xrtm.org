@@ -11,7 +11,16 @@ This page is intentionally product-and-proof-first. Everything below is either a
 This page helps you find verifiable examples without making `xrtm.org` the owner of them. The newcomer CLI flow ships from [`xrtm-org/xrtm`](https://github.com/xrtm-org/xrtm), package example code ships from the repo that contains it, and schema or policy changes that affect those examples start in [`xrtm-org/governance`](https://github.com/xrtm-org/governance).
 :::
 
-## The shipped newcomer workflow
+## Official proof-point workflows
+
+The official XRTM story is intentionally small:
+
+1. **Provider-free first success**
+2. **Benchmark and validation workflow**
+3. **Monitoring, history, and report workflow**
+4. **Local-LLM advanced workflow**
+
+### 1. Provider-free first success
 
 If you only do one thing, do this first:
 
@@ -25,15 +34,42 @@ xrtm web --runs-dir runs
 
 That flow is the core proof that XRTM works as a local-first forecasting and model-eval workbench today. The commands are surfaced here for newcomers, but the behavior, flags, and artifact contracts are owned by [`xrtm-org/xrtm`](https://github.com/xrtm-org/xrtm).
 
+### 2. Benchmark and validation workflow
+
+```bash
+xrtm perf run --scenario provider-free-smoke --iterations 3 --limit 1 --runs-dir runs-perf --output performance.json
+xrtm validate run --provider mock --limit 10 --iterations 2 --runs-dir runs-validation
+```
+
+### 3. Monitoring, history, and report workflow
+
+```bash
+xrtm profile starter my-local --runs-dir runs
+xrtm run profile my-local
+xrtm monitor start --provider mock --limit 2 --runs-dir runs
+xrtm runs compare <run-id-a> <run-id-b> --runs-dir runs
+xrtm runs export latest --runs-dir runs --output latest-run.json
+```
+
+### 4. Local-LLM advanced workflow
+
+```bash
+export XRTM_LOCAL_LLM_BASE_URL=http://localhost:8080/v1
+xrtm local-llm status
+xrtm demo --provider local-llm --limit 1 --max-tokens 768 --runs-dir runs-local
+```
+
 ## What the product ships today
 
 - provider-free guided start mode
+- provider-free benchmark and validation commands
 - canonical run artifacts under `runs/<run-id>/`
 - scored outputs including `eval.json`, `run_summary.json`, and `report.html`
 - local WebUI and TUI backed by the same run artifacts
 - run history, compare, search, and export commands
 - profile-based repeatable workflows
 - local monitoring lifecycle commands
+- optional local-LLM health and demo commands
 
 ## Examples by owning repo
 
@@ -73,5 +109,6 @@ Useful example entry points live in the external [`xrtm-org/train`](https://gith
 
 - [Getting started](./getting-started)
 - [Researcher / model-eval workflow](./workflows/researcher-model-eval)
+- [Operator runbook](./workflows/operator-runbook)
 - [Packages and architecture](./framework/intro)
 - [Roadmap](./roadmap)

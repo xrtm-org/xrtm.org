@@ -5,7 +5,7 @@ description: The primary XRTM path for repeatable local evaluation and forecast 
 
 # Researcher / model-eval workflow
 
-This is the **primary XRTM audience path**.
+This is the **primary XRTM audience path** and the clearest home for the official **benchmark and validation workflow**.
 
 Use it when you want to run repeatable local forecasting passes, inspect the exact artifacts produced by a run, compare outcomes, and keep the evaluation evidence on disk.
 
@@ -24,13 +24,14 @@ XRTM is most useful when you care about:
 
 Complete [Getting started](../getting-started) so you have at least one run directory from `xrtm start` to inspect.
 
-### 2. Run a larger provider-free pass
+### 2. Generate benchmark and validation evidence
 
 ```bash
-xrtm demo --provider mock --limit 10
+xrtm perf run --scenario provider-free-smoke --iterations 3 --limit 1 --runs-dir runs-perf --output performance.json
+xrtm validate run --provider mock --limit 10 --iterations 2 --runs-dir runs-validation
 ```
 
-Provider-free mode is still the right starting point for research and model-eval because it removes provider noise while you learn the artifact model.
+Provider-free mode is still the right starting point for research and model-eval because it removes provider noise while you learn the artifact model and gather reproducible evidence.
 
 ### 3. Inspect, compare, and export
 

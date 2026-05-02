@@ -97,6 +97,47 @@ You completed the default XRTM story:
 
 That is the core product path for newcomers.
 
+## Official proof-point workflows
+
+The official XRTM proof surface is intentionally small. After the first run, keep returning to these four workflows:
+
+### 1. Provider-free first success
+
+```bash
+xrtm start
+xrtm runs show latest --runs-dir runs
+xrtm artifacts inspect --latest --runs-dir runs
+xrtm report html --latest --runs-dir runs
+xrtm web --runs-dir runs
+```
+
+### 2. Benchmark and validation workflow
+
+```bash
+xrtm perf run --scenario provider-free-smoke --iterations 3 --limit 1 --runs-dir runs-perf --output performance.json
+xrtm validate run --provider mock --limit 10 --iterations 2 --runs-dir runs-validation
+```
+
+### 3. Monitoring, history, and report workflow
+
+```bash
+xrtm profile starter my-local --runs-dir runs
+xrtm run profile my-local
+xrtm monitor start --provider mock --limit 2 --runs-dir runs
+xrtm runs compare <run-id-a> <run-id-b> --runs-dir runs
+xrtm runs export latest --runs-dir runs --output latest-run.json
+```
+
+### 4. Local-LLM advanced workflow
+
+```bash
+export XRTM_LOCAL_LLM_BASE_URL=http://localhost:8080/v1
+xrtm local-llm status
+xrtm demo --provider local-llm --limit 1 --max-tokens 768 --runs-dir runs-local
+```
+
+Only switch to local-LLM mode after the provider-free path above is working.
+
 ## Good next steps
 
 ### Run a slightly larger local pass
@@ -116,8 +157,8 @@ This starter scaffold creates `.xrtm/profiles/my-local.json`, ensures the local 
 
 ### Pick the guide that matches your role
 
-- **Researcher / model-eval**: use the [researcher workflow](./workflows/researcher-model-eval) for repeatable comparisons, metrics, and exports.
-- **Operator**: continue with the [operator runbook](./workflows/operator-runbook) for profiles, monitoring, performance checks, and troubleshooting.
+- **Researcher / model-eval**: use the [researcher workflow](./workflows/researcher-model-eval) for the benchmark/validation workflow, comparisons, metrics, and exports.
+- **Operator**: continue with the [operator runbook](./workflows/operator-runbook) for the monitoring/history/report workflow, profiles, performance checks, and troubleshooting.
 - **Team**: read [team workflows](./workflows/team-workflows) for realistic multi-user patterns and current limitations.
 - **Developer / integrator**: use the [developer workflow](./workflows/developer-integrator) and the [packages overview](./framework/intro) to move from product usage into APIs and examples.
 

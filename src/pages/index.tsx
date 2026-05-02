@@ -10,12 +10,10 @@ const pillClass =
   'rounded-full border border-blue-500/20 bg-blue-500/10 px-4 py-2 text-sm font-medium text-slate-700 dark:border-blue-400/20 dark:bg-blue-400/10 dark:text-slate-200';
 
 const proofPills = [
-  'Guided first run',
-  'Artifact-backed runs',
-  'HTML report',
-  'WebUI + TUI',
-  'Brier + calibration metrics',
-  'Profiles, compare, export',
+  'Provider-free first success',
+  'Benchmark + validation workflow',
+  'Monitoring/history/report workflow',
+  'Local-LLM advanced workflow',
 ];
 
 const reasons = [
@@ -38,36 +36,42 @@ const reasons = [
 
 const defaultStory = [
   {
-    title: 'Run the guided first command',
+    title: 'Provider-free first success',
     description:
-      'Use xrtm start to check readiness, run the deterministic mock-provider flow, and print the exact next commands.',
-    command: 'xrtm start',
-    href: '/docs/getting-started#2-run-the-guided-first-command',
-  },
-  {
-    title: 'Inspect the newest run',
-    description:
-      'Use the latest shortcuts to inspect the canonical run directory and regenerate the HTML report from the same saved evidence.',
-    command: `xrtm runs show latest --runs-dir runs
+      'Use xrtm start to check readiness, run the deterministic mock-provider flow, inspect artifacts, and open the same run in WebUI or TUI.',
+    command: `xrtm start
+xrtm runs show latest --runs-dir runs
 xrtm artifacts inspect --latest --runs-dir runs
-xrtm report html --latest --runs-dir runs`,
-    href: '/docs/getting-started#3-inspect-the-run-artifacts',
+xrtm report html --latest --runs-dir runs
+xrtm web --runs-dir runs`,
+    href: '/docs/getting-started#official-proof-point-workflows',
   },
   {
-    title: 'Browse the same run in WebUI or TUI',
+    title: 'Benchmark and validation workflow',
     description:
-      'Open the run in the local browser view or terminal cockpit without changing the underlying artifact format.',
-    command: `xrtm web --runs-dir runs
-xrtm tui --runs-dir runs`,
-    href: '/docs/getting-started#4-browse-the-results',
-  },
-  {
-    title: 'Choose your next path',
-    description:
-      'Move from the default proof-of-workflow into researcher, operator, team, or developer docs depending on what you need next.',
-    command: `Researcher / model-eval first
-then operator, team, developer`,
+      'Generate deterministic benchmark evidence first, then use the validation surface for a larger provider-free sweep.',
+    command: `xrtm perf run --scenario provider-free-smoke --iterations 3 --limit 1 --runs-dir runs-perf --output performance.json
+xrtm validate run --provider mock --limit 10 --iterations 2 --runs-dir runs-validation`,
     href: '/docs/workflows/researcher-model-eval',
+  },
+  {
+    title: 'Monitoring, history, and report workflow',
+    description:
+      'Move from one-off runs into repeatable profiles, local monitoring, compare/export review, and report regeneration.',
+    command: `xrtm profile starter my-local --runs-dir runs
+xrtm run profile my-local
+xrtm monitor start --provider mock --limit 2 --runs-dir runs
+xrtm runs export latest --runs-dir runs --output latest-run.json`,
+    href: '/docs/workflows/operator-runbook',
+  },
+  {
+    title: 'Local-LLM advanced workflow',
+    description:
+      'Only after the provider-free workflows are healthy, verify your local endpoint and run the bounded local-LLM demo.',
+    command: `export XRTM_LOCAL_LLM_BASE_URL=http://localhost:8080/v1
+xrtm local-llm status
+xrtm demo --provider local-llm --limit 1 --max-tokens 768 --runs-dir runs-local`,
+    href: '/docs/workflows/operator-runbook#optional-later-local-llm-mode',
   },
 ];
 
@@ -157,9 +161,9 @@ export default function Home(): React.JSX.Element {
                 Forecast locally. Score rigorously. Inspect everything.
               </h1>
               <p className="max-w-3xl text-lg leading-8 text-slate-700 dark:text-slate-300 md:text-xl">
-                XRTM gives newcomers a clear product path: run the guided first command, inspect the
-                run artifacts, browse the same run in the WebUI or TUI, then choose the audience
-                workflow that fits next.
+                XRTM gives newcomers a clear product path: prove provider-free first success, gather
+                benchmark and validation evidence, move into the monitoring/history/report loop, and
+                only then opt into the advanced local-LLM path.
               </p>
             </div>
             <div className="flex flex-col gap-3 sm:flex-row">
@@ -168,9 +172,9 @@ export default function Home(): React.JSX.Element {
               </Link>
               <Link
                 className="button button--secondary button--lg"
-                to="/docs/workflows/researcher-model-eval"
+                to="/docs/examples"
               >
-                Browse researcher workflow
+                See official proof points
               </Link>
             </div>
             <p className="max-w-3xl text-sm leading-7 text-slate-600 dark:text-slate-400">
@@ -183,7 +187,7 @@ export default function Home(): React.JSX.Element {
           <div className={shellCard}>
             <div className="mb-4 flex items-center justify-between text-sm font-medium text-slate-500 dark:text-slate-400">
               <span>Default first run</span>
-              <span className="font-mono">guided start → latest inspect → Web/TUI</span>
+              <span className="font-mono">provider-free → benchmark → monitor/history → local-llm</span>
             </div>
             <pre className="overflow-x-auto rounded-2xl bg-slate-950 p-5 text-sm leading-7 text-slate-100 shadow-inner shadow-black/20">
               <code>{quickstart}</code>
@@ -191,7 +195,7 @@ export default function Home(): React.JSX.Element {
             <p className="mt-4 text-sm leading-7 text-slate-600 dark:text-slate-400">
               This path proves the product with shipped features only: readiness checks, deterministic
               local execution, scored run artifacts, and a browser or terminal view over the same saved
-              run directory.
+              run directory before you advance to the other proof-point workflows.
             </p>
           </div>
         </section>
@@ -238,7 +242,7 @@ export default function Home(): React.JSX.Element {
               What you can do today
             </p>
             <h2 className="text-3xl font-bold tracking-tight text-slate-950 dark:text-white md:text-4xl">
-              Follow the shipped newcomer path end to end.
+              Follow the official proof-point workflows end to end.
             </h2>
           </div>
           <div className="grid gap-6 lg:grid-cols-2">

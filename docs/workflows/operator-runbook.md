@@ -7,9 +7,18 @@ description: Local operations, profiles, artifacts, monitoring, performance smok
 
 This path covers the supported local-first operating workflow for the top-level XRTM product shell.
 
+It sharpens the official **monitoring, history, and report workflow**, while also covering the benchmark/validation commands that should precede local-LLM use.
+
 ## Start from the default path
 
 If you have not already done so, complete [Getting started](../getting-started) first. Operators should start with the same provider-free proof path as everyone else.
+
+## Official proof-point coverage
+
+1. **Provider-free first success** starts in [Getting started](../getting-started).
+2. **Benchmark and validation workflow** appears below through `xrtm perf run` and `xrtm validate run`.
+3. **Monitoring, history, and report workflow** is the main operator loop on this page.
+4. **Local-LLM advanced workflow** stays optional and comes last.
 
 ## Core operator loop
 
@@ -56,7 +65,15 @@ xrtm monitor list --runs-dir runs
 xrtm artifacts cleanup --runs-dir runs --keep 50
 ```
 
-## Run deterministic performance smoke
+History and report review stay on the same proof-point path:
+
+```bash
+xrtm runs compare <run-id-a> <run-id-b> --runs-dir runs
+xrtm runs export latest --runs-dir runs --output latest-run.json
+xrtm report html --latest --runs-dir runs
+```
+
+## Benchmark and validation workflow
 
 Use the built-in provider-free performance harness when you want a quick local regression signal without introducing provider noise:
 
@@ -73,7 +90,7 @@ When you need more than a quick smoke test, move into the validation surface:
 
 ```bash
 xrtm validate list-corpora
-xrtm validate run --provider mock --limit 10 --iterations 2
+xrtm validate run --provider mock --limit 10 --iterations 2 --runs-dir runs-validation
 ```
 
 The default validation path stays on the safe provider-free route and uses the bundled Tier 1 corpus. Switch to local-LLM validation only after `xrtm local-llm status` is healthy.
