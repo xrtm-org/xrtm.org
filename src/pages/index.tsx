@@ -11,7 +11,7 @@ const pillClass =
 
 const proofPills = [
   'Provider-free first success',
-  'Benchmark + validation workflow',
+  'Benchmark and performance workflow',
   'Monitoring/history/report workflow',
   'Local-LLM advanced workflow',
 ];
@@ -38,30 +38,31 @@ const defaultStory = [
   {
     title: 'Provider-free first success',
     description:
-      'Use xrtm start to prove the first event-forecasting loop, inspect artifacts, and open the same run in WebUI or TUI.',
-    command: `xrtm start
-xrtm runs show latest --runs-dir runs
-xrtm artifacts inspect --latest --runs-dir runs
-xrtm report html --latest --runs-dir runs
+      'Use the release-gated provider-free demo to prove the first event-forecasting loop, inspect explicit run artifacts, and open the same run in WebUI or TUI.',
+    command: `xrtm demo --provider mock --limit 1 --runs-dir runs
+xrtm runs list --runs-dir runs
+xrtm runs show <run-id> --runs-dir runs
+xrtm artifacts inspect runs/<run-id>
+xrtm report html runs/<run-id>
 xrtm web --runs-dir runs`,
     href: '/docs/getting-started#official-proof-point-workflows',
   },
   {
-    title: 'Benchmark and validation workflow',
+    title: 'Benchmark and performance workflow',
     description:
-      'Generate benchmark evidence first, then use the validation surface for a larger provider-free sweep and measurable quality checks.',
+      'Generate deterministic benchmark evidence first, then use the released compare/export surface for repeatable review without leaving the published package path.',
     command: `xrtm perf run --scenario provider-free-smoke --iterations 3 --limit 1 --runs-dir runs-perf --output performance.json
-xrtm validate run --provider mock --limit 10 --iterations 2 --runs-dir runs-validation`,
+xrtm web --runs-dir runs --smoke`,
     href: '/docs/workflows/researcher-model-eval',
   },
   {
     title: 'Monitoring, history, and report workflow',
     description:
-      'Move from one-off runs into repeatable profiles, monitoring, compare/export review, and report regeneration.',
-    command: `xrtm profile starter my-local --runs-dir runs
+      'Move from one-off runs into repeatable profiles, monitoring, compare/export review, and explicit report regeneration.',
+    command: `xrtm profile create my-local --provider mock --limit 2 --runs-dir runs
 xrtm run profile my-local
 xrtm monitor start --provider mock --limit 2 --runs-dir runs
-xrtm runs export latest --runs-dir runs --output latest-run.json`,
+xrtm runs export <run-id> --runs-dir runs --output export.json`,
     href: '/docs/workflows/operator-runbook',
   },
   {
@@ -107,7 +108,7 @@ const packageRows = [
     name: 'xrtm',
     role: 'Product shell',
     description:
-      'Guided first-run path, canonical artifacts, HTML reports, WebUI, TUI, profiles, compare/export, and monitoring for the first event-forecasting loop.',
+      'Provider-free demo path, canonical artifacts, HTML reports, WebUI, TUI, profiles, compare/export, and monitoring for the first event-forecasting loop.',
   },
   {
     name: 'xrtm-forecast',
@@ -137,10 +138,12 @@ const quickstart = [
   'python3.11 -m venv .venv',
   '. .venv/bin/activate',
   'pip install xrtm==0.3.0',
-  'xrtm start',
-  'xrtm runs show latest --runs-dir runs',
-  'xrtm artifacts inspect --latest --runs-dir runs',
-  'xrtm report html --latest --runs-dir runs',
+  'xrtm doctor',
+  'xrtm demo --provider mock --limit 1 --runs-dir runs',
+  'xrtm runs list --runs-dir runs',
+  'xrtm runs show <run-id> --runs-dir runs',
+  'xrtm artifacts inspect runs/<run-id>',
+  'xrtm report html runs/<run-id>',
   'xrtm web --runs-dir runs',
 ].join('\n');
 
@@ -163,7 +166,7 @@ export default function Home(): React.JSX.Element {
               <p className="max-w-3xl text-lg leading-8 text-slate-700 dark:text-slate-300 md:text-xl">
                 AI can already generate plausible answers. XRTM is built for the harder
                 job: forecasting real-world events, keeping score, and improving the
-                system over time. Start with one guided run, then expand into benchmarking,
+                system over time. Start with one provider-free demo, then expand into benchmarking,
                 monitoring, history, and advanced local-model paths.
               </p>
             </div>
@@ -194,7 +197,7 @@ export default function Home(): React.JSX.Element {
               <code>{quickstart}</code>
             </pre>
             <p className="mt-4 text-sm leading-7 text-slate-600 dark:text-slate-400">
-              This path proves the core product with shipped features only: one guided run,
+              This path proves the core product with released features only: one provider-free demo,
               scored artifacts, and a browser or terminal view over the same saved evidence
               before you move into benchmarking, monitoring, and advanced local-model paths.
             </p>
@@ -337,7 +340,7 @@ export default function Home(): React.JSX.Element {
             </h3>
             <p className="mt-3 max-w-3xl text-sm leading-7 text-slate-700 dark:text-slate-300">
               The philosophy, standard, and roadmap still matter, but they now live behind the product
-              path instead of replacing it. Start with `xrtm start` and docs overview, then go deeper
+              path instead of replacing it. Start with `xrtm demo --provider mock --limit 1 --runs-dir runs` and docs overview, then go deeper
               once you understand the shipped workflow.
             </p>
             <div className="mt-5 flex flex-wrap gap-3">

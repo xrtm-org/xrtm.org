@@ -18,6 +18,12 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Checkout xrtm release contract
+        uses: actions/checkout@v4
+        with:
+          repository: xrtm-org/xrtm
+          path: release-contract
+
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
@@ -26,6 +32,12 @@ jobs:
 
       - name: Install dependencies
         run: npm ci
+
+      - name: Release command claims
+        env:
+          XRTM_RELEASE_CHECKER: ./release-contract/scripts/check_release_claims.py
+          XRTM_RELEASE_CONTRACT: ./release-contract/docs/release-command-contract.json
+        run: npm run release:check
 
       - name: Typecheck
         run: npm run typecheck

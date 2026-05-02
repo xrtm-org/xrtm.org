@@ -14,10 +14,10 @@ This page helps you find verifiable examples without making `xrtm.org` the owner
 ## Official proof-point workflows
 
 The story is simple: XRTM is AI for event forecasting. These workflows and
-examples are the shipped proof behind that claim:
+examples are the shipped proof behind that claim on the released `0.3.0` surface:
 
 1. **Provider-free first success**
-2. **Benchmark and validation workflow**
+2. **Benchmark smoke workflow**
 3. **Monitoring, history, and report workflow**
 4. **Local-LLM advanced workflow**
 
@@ -26,10 +26,11 @@ examples are the shipped proof behind that claim:
 If you only do one thing, do this first:
 
 ```bash
-xrtm start
-xrtm runs show latest --runs-dir runs
-xrtm artifacts inspect --latest --runs-dir runs
-xrtm report html --latest --runs-dir runs
+xrtm demo --provider mock --limit 1 --runs-dir runs
+xrtm runs list --runs-dir runs
+xrtm runs show <run-id> --runs-dir runs
+xrtm artifacts inspect runs/<run-id>
+xrtm report html runs/<run-id>
 xrtm web --runs-dir runs
 ```
 
@@ -38,21 +39,20 @@ event-forecasting system. The commands are surfaced here for newcomers, but the
 behavior, flags, and artifact contracts are owned by
 [`xrtm-org/xrtm`](https://github.com/xrtm-org/xrtm).
 
-### 2. Benchmark and validation workflow
+### 2. Benchmark smoke workflow
 
 ```bash
 xrtm perf run --scenario provider-free-smoke --iterations 3 --limit 1 --runs-dir runs-perf --output performance.json
-xrtm validate run --provider mock --limit 10 --iterations 2 --runs-dir runs-validation
 ```
 
 ### 3. Monitoring, history, and report workflow
 
 ```bash
-xrtm profile starter my-local --runs-dir runs
+xrtm profile create my-local --provider mock --limit 2 --runs-dir runs
 xrtm run profile my-local
 xrtm monitor start --provider mock --limit 2 --runs-dir runs
 xrtm runs compare <run-id-a> <run-id-b> --runs-dir runs
-xrtm runs export latest --runs-dir runs --output latest-run.json
+xrtm runs export <run-id> --runs-dir runs --output run.json
 ```
 
 ### 4. Local-LLM advanced workflow
@@ -65,13 +65,13 @@ xrtm demo --provider local-llm --limit 1 --max-tokens 768 --runs-dir runs-local
 
 ## What the product ships today
 
-- provider-free guided start mode
-- provider-free benchmark and validation commands
+- provider-free demo mode via `xrtm demo --provider mock --limit 1 --runs-dir runs`
+- provider-free benchmark smoke via `xrtm perf run`
 - canonical run artifacts under `runs/<run-id>/`
 - scored outputs including `eval.json`, `run_summary.json`, and `report.html`
 - local WebUI and TUI backed by the same run artifacts
-- run history, compare, search, and export commands
-- profile-based repeatable workflows
+- run history, compare, search, and JSON export commands
+- profile-based repeatable workflows via `xrtm profile create`
 - local monitoring lifecycle commands
 - optional local-LLM health and demo commands
 

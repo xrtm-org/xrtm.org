@@ -41,6 +41,19 @@ npm run build
 
 This command generates static content into the `build` directory and can be served using any static contents hosting service.
 
+## Release-gated command claims
+
+The newcomer/operator command blocks on `xrtm.org` are validated against
+`xrtm/docs/release-command-contract.json` so the site cannot drift ahead of the
+published package surface. In the standard XRTM workspace layout, run:
+
+```bash
+npm run release:check
+```
+
+If your local checkout does not have a sibling `../xrtm` repo, set
+`XRTM_RELEASE_CHECKER` and `XRTM_RELEASE_CONTRACT` before running the command.
+
 ## Vulnerability audit policy
 
 Run the website audit gate after installing dependencies:

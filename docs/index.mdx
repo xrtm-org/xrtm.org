@@ -8,11 +8,11 @@ displayed_sidebar: docsSidebar
 # Start with the event-forecasting loop
 
 XRTM is **AI for event forecasting**. If you are new here, the shortest honest
-path is:
+path on the released `xrtm==0.3.0` surface is:
 
-1. run your first forecast
-2. inspect the evidence on disk
-3. measure quality with benchmark and validation
+1. run your first forecast with `xrtm demo --provider mock --limit 1 --runs-dir runs`
+2. inspect the evidence on disk with explicit run ids and run directories
+3. measure quality with benchmark smoke plus compare/export review
 4. expand into monitoring, history, and optional local-LLM workflows
 
 > `xrtm.org` is the presentation layer for the ecosystem. Product behavior and run-artifact contracts live in [`xrtm-org/xrtm`](https://github.com/xrtm-org/xrtm), package APIs and source examples live in their owning repos, and schema/policy truth lives in [`xrtm-org/governance`](https://github.com/xrtm-org/governance).
@@ -21,17 +21,17 @@ path is:
 
 - [Run the guided first command](/docs/getting-started#2-run-the-guided-first-command)
 - [Provider-free first success](/docs/getting-started#official-proof-point-workflows)
-- [Benchmark and validation workflow](/docs/workflows/researcher-model-eval)
+- [Benchmark smoke workflow](/docs/workflows/researcher-model-eval)
 - [Monitoring, history, and report workflow](/docs/workflows/operator-runbook)
 - [Local-LLM advanced workflow](/docs/workflows/operator-runbook#optional-later-local-llm-mode)
 
 ## Start here
 
-- [Getting started](/docs/getting-started): the shipped first-run path with provider-free guided execution
+- [Getting started](/docs/getting-started): the shipped first-run path with the released provider-free demo
 
 ## Workflows
 
-- [Researcher / model-eval](/docs/workflows/researcher-model-eval): the benchmark and validation proof-point path
+- [Researcher / model-eval](/docs/workflows/researcher-model-eval): the released benchmark smoke plus compare/export review path
 - [Operator runbook](/docs/workflows/operator-runbook): the monitoring/history/report path plus local-LLM operations
 - [Team workflows](/docs/workflows/team-workflows): honest team patterns using current features and conventions
 - [Developer / integrator](/docs/workflows/developer-integrator): package APIs and example-driven extension paths

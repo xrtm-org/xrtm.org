@@ -5,12 +5,9 @@ description: Repeatable evaluation path for serious event-forecasting work.
 
 # Researcher / model-eval workflow
 
-This workflow is the clearest home for the official **benchmark and validation
-workflow**.
+This workflow is the clearest home for the released **benchmark smoke plus compare/export review** path.
 
-Use it when you want to run repeatable event-forecasting passes, inspect the
-exact artifacts produced by a run, compare outcomes, and keep the evaluation
-evidence on disk.
+Use it when you want to run repeatable event-forecasting passes, inspect the exact artifacts produced by a run, compare outcomes, and keep the evaluation evidence on disk.
 
 ## Why this path exists
 
@@ -19,19 +16,18 @@ XRTM becomes especially useful when you care about:
 - local, inspectable forecasting workflows
 - probabilistic scoring and calibration signals
 - historical replay and backtest-oriented evaluation
-- exports you can analyze in notebooks, spreadsheets, or custom pipelines
+- exports you can analyze in notebooks or custom pipelines
 
 ## Recommended flow
 
 ### 1. Prove the product path first
 
-Complete [Getting started](../getting-started) so you have at least one run directory from `xrtm start` to inspect.
+Complete [Getting started](../getting-started) so you have at least one run directory from the released provider-free demo to inspect.
 
-### 2. Generate benchmark and validation evidence
+### 2. Generate deterministic benchmark evidence
 
 ```bash
 xrtm perf run --scenario provider-free-smoke --iterations 3 --limit 1 --runs-dir runs-perf --output performance.json
-xrtm validate run --provider mock --limit 10 --iterations 2 --runs-dir runs-validation
 ```
 
 Provider-free mode is still the right starting point for research and model-eval because it removes provider noise while you learn the artifact model and gather reproducible evidence.
@@ -40,29 +36,33 @@ Provider-free mode is still the right starting point for research and model-eval
 
 ```bash
 xrtm runs list --runs-dir runs
-xrtm runs show latest --runs-dir runs
-xrtm artifacts inspect --latest --runs-dir runs
-xrtm report html --latest --runs-dir runs
+xrtm runs show <run-id> --runs-dir runs
+xrtm artifacts inspect runs/<run-id>
+xrtm report html runs/<run-id>
 xrtm runs compare <run-id-a> <run-id-b> --runs-dir runs
 xrtm runs export <run-id> --runs-dir runs --output export.json
 ```
 
 Use this stage to review forecast counts, scores, warnings, durations, and the underlying JSON artifacts.
 
-### 4. Move into calibration and replay work
+### 4. Validation status on the released surface
+
+The newer `xrtm validate ...` workflow visible in current source work is not part of the published `xrtm==0.3.0` release. Until a coordinated release ships it with compatible upstream packages, keep release-pinned research docs on `xrtm perf`, explicit run inspection, comparison, and JSON export.
+
+### 5. Move into calibration and replay work
 
 XRTM's package stack includes shipped examples for deeper evaluation work such as calibration demos, trace replay, and evaluation harnesses. See [Examples and proof](../examples) and [Packages and architecture](../framework/intro).
 
 ## Shipped surfaces this workflow uses
 
-- `xrtm start`
 - `xrtm demo`
+- `xrtm perf run`
 - `xrtm runs list`
-- `xrtm runs show latest`
+- `xrtm runs show`
 - `xrtm runs compare`
 - `xrtm runs export`
 - `xrtm artifacts inspect`
-- `xrtm profile starter`
+- `xrtm profile create`
 - `xrtm report html`
 - WebUI and TUI over local run artifacts
 

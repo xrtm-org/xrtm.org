@@ -5,10 +5,11 @@ description: Local operations, profiles, artifacts, monitoring, performance smok
 
 # XRTM Operator Runbook
 
-This path covers the supported operating workflow for the top-level XRTM
-product shell once the first event-forecasting loop is already working.
+This path covers the supported operating workflow for the top-level XRTM product shell once the released first event-forecasting loop is already working.
 
-It sharpens the official **monitoring, history, and report workflow**, while also covering the benchmark/validation commands that should precede local-LLM use.
+It sharpens the official **monitoring, history, and report workflow**, while also covering the released benchmark smoke command that should precede local-LLM use.
+
+> Released `xrtm==0.3.0` does not yet ship `xrtm start`, `profile starter`, or `validate`. This page stays on the commands that actually ship today.
 
 ## Start from the default path
 
@@ -17,38 +18,28 @@ If you have not already done so, complete [Getting started](../getting-started) 
 ## Official proof-point coverage
 
 1. **Provider-free first success** starts in [Getting started](../getting-started).
-2. **Benchmark and validation workflow** appears below through `xrtm perf run` and `xrtm validate run`.
+2. **Benchmark smoke workflow** appears below through `xrtm perf run`.
 3. **Monitoring, history, and report workflow** is the main operator loop on this page.
 4. **Local-LLM advanced workflow** stays optional and comes last.
 
 ## Core operator loop
 
-### Scaffold the lightest repeatable profile
+### Create a repeatable profile
 
 ```bash
-xrtm profile starter my-local --runs-dir runs
+xrtm profile create my-local --provider mock --limit 2 --runs-dir runs
 xrtm run profile my-local
-```
-
-Use `profile starter` right after `xrtm start` when you want the lightest reusable local scaffold. It creates `.xrtm/profiles/<name>.json`, keeps the workflow on the same mock-provider path, and ensures the target runs directory exists.
-
-### Create fully custom profiles when needed
-
-```bash
-xrtm profile create local-mock --provider mock --limit 2 --runs-dir runs
-xrtm profile list
-xrtm profile show local-mock
-xrtm run profile local-mock
 ```
 
 ### Inspect artifacts and reports
 
 ```bash
-xrtm runs show latest --runs-dir runs
-xrtm artifacts inspect --latest --runs-dir runs
-xrtm report html --latest --runs-dir runs
+xrtm runs list --runs-dir runs
+xrtm runs show <run-id> --runs-dir runs
+xrtm artifacts inspect runs/<run-id>
+xrtm report html runs/<run-id>
 xrtm runs compare <run-id-a> <run-id-b> --runs-dir runs
-xrtm runs export latest --runs-dir runs --output latest-run.json
+xrtm runs export <run-id> --runs-dir runs --output run.json
 ```
 
 ### Browse the same runs in browser or terminal
@@ -70,11 +61,11 @@ History and report review stay on the same proof-point path:
 
 ```bash
 xrtm runs compare <run-id-a> <run-id-b> --runs-dir runs
-xrtm runs export latest --runs-dir runs --output latest-run.json
-xrtm report html --latest --runs-dir runs
+xrtm runs export <run-id> --runs-dir runs --output run.json
+xrtm report html runs/<run-id>
 ```
 
-## Benchmark and validation workflow
+## Benchmark smoke workflow
 
 Use the built-in provider-free performance harness when you want a quick local regression signal without introducing provider noise:
 
@@ -85,16 +76,9 @@ xrtm web --runs-dir runs --smoke
 
 `xrtm perf run` writes a structured performance report, while `xrtm web --smoke` verifies the WebUI routes without starting a long-lived server.
 
-## Use validation for larger corpus sweeps
+## Validation status
 
-When you need more than a quick smoke test, move into the validation surface:
-
-```bash
-xrtm validate list-corpora
-xrtm validate run --provider mock --limit 10 --iterations 2 --runs-dir runs-validation
-```
-
-The default validation path stays on the safe provider-free route and uses the bundled Tier 1 corpus. Switch to local-LLM validation only after `xrtm local-llm status` is healthy.
+The newer `xrtm validate ...` commands are not part of the published `xrtm==0.3.0` release. Until a coordinated release ships them with compatible upstream packages, keep released operator workflows on `xrtm perf`, explicit run inspection, compare, JSON export, and monitor commands.
 
 ## Optional later: local-LLM mode
 
@@ -112,16 +96,17 @@ This is the right place to validate a real local model, but it is intentionally 
 
 - `xrtm` install fails on Python 3.13: use Python 3.11 or 3.12.
 - `xrtm local-llm status` fails: treat it as a local endpoint/server issue first, then retry the local-LLM flow.
+- Need a run id: use `xrtm runs list --runs-dir runs`.
 - `xrtm artifacts inspect` fails on a directory: confirm it is a canonical XRTM run with `run.json` present.
 
 ## What this runbook assumes today
 
 - local artifact-backed runs
-- profile-based repeatability
+- profile-based repeatability via `xrtm profile create`
 - WebUI and TUI over the same run directories
 - compare, export, and inspect commands
 - monitor lifecycle commands
-- performance smoke and validation commands
+- performance smoke checks
 
 ## Good next links
 

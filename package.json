@@ -13,7 +13,8 @@
     "write-translations": "docusaurus write-translations",
     "write-heading-ids": "docusaurus write-heading-ids",
     "typecheck": "tsc",
-    "audit:policy": "npm audit --audit-level=high && node -e \"console.log('Audit policy passed: no high or critical vulnerabilities found. Tracked moderate Docusaurus dev-server findings are documented in README.md.')\""
+    "audit:policy": "npm audit --audit-level=high && node -e \"console.log('Audit policy passed: no high or critical vulnerabilities found. Tracked moderate Docusaurus dev-server findings are documented in README.md.')\"",
+    "release:check": "python3 ${XRTM_RELEASE_CHECKER:-../xrtm/scripts/check_release_claims.py} --repo-root . --scope xrtm.org --contract ${XRTM_RELEASE_CONTRACT:-../xrtm/docs/release-command-contract.json}"
   },
   "dependencies": {
     "@docusaurus/core": "3.10.0",
