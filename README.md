@@ -2,7 +2,7 @@
 
 This website is built using [Docusaurus](https://docusaurus.io/), a modern static website generator.
 
-`xrtm.org` is the presentation layer for the XRTM ecosystem. Canonical cross-repo compatibility and coordination rules live in the governance repo's [Cross-Repository Compatibility and Coordination Policy](https://github.com/xrtm-org/governance/blob/main/policies/cross-repo-compatibility-policy.md); site content should mirror governance and product truth rather than define it.
+`xrtm.org` is the presentation layer for the XRTM ecosystem. Canonical cross-repo schemas, compatibility rules, and contributor policies live in [`xrtm-org/governance`](https://github.com/xrtm-org/governance); shipped product behavior and package-specific truth live in the owning repositories. Site content should mirror governance and product truth rather than define it.
 
 ## Toolchain
 

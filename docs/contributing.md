@@ -39,6 +39,15 @@ npm run typecheck
 npm run audit:policy
 ```
 
+## Where changes belong
+
+- **`xrtm.org`**: newcomer-facing docs, navigation, repo maps, and cross-repo pointers
+- **[`xrtm-org/xrtm`](https://github.com/xrtm-org/xrtm)**: shipped CLI flows, run-artifact behavior, WebUI/TUI, and product docs
+- **[`xrtm-org/forecast`](https://github.com/xrtm-org/forecast), [`xrtm-org/eval`](https://github.com/xrtm-org/eval), [`xrtm-org/data`](https://github.com/xrtm-org/data), [`xrtm-org/train`](https://github.com/xrtm-org/train)**: package APIs, example code, and implementation truth
+- **[`xrtm-org/governance`](https://github.com/xrtm-org/governance)**: Forecast Object schemas, compatibility rules, and contributor/review policy
+
+If a change starts in a source-of-truth repo, land or coordinate it there first. Update `xrtm.org` afterward when the presentation layer needs to reflect the accepted result.
+
 ## What to validate before opening a PR
 
 At minimum:
@@ -64,5 +73,6 @@ That path is optional support only; the canonical contributor path is still the 
 
 1. Branch from `main`
 2. Keep documentation and navigation changes tightly scoped
-3. Update links/examples when page behavior changes
-4. Include the commands you ran in the PR description
+3. Mirror accepted product/governance changes here instead of redefining them here
+4. Update links/examples when page behavior changes
+5. Include the commands you ran in the PR description

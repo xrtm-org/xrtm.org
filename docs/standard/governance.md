@@ -1,22 +1,32 @@
-# Governance
+# Governance overview
 
-To ensure the stability of the ecosystem, **xrtm** follows a strict governance model regarding our core standards.
-
-## The Immutable Core
-
-**xrtm-data** and the **Forecast Object Schema** are considered the "Immutable Core" of the project.
-
-:::danger Immutable
-Changes to the Core schemas are **Breaking Changes** for the entire ecosystem. They are not taken lightly.
+:::note Authoritative governance repo
+`xrtm.org` summarizes governance for contributors and newcomers. The binding schemas, compatibility rules, and review policies live in [`xrtm-org/governance`](https://github.com/xrtm-org/governance).
 :::
 
-## The RFC Process
+The governance repo is where XRTM keeps cross-repo rules stable while implementation repos evolve.
 
-Any proposed change to a standard must go through a **Request for Comments (RFC)** process.
+## What is authoritative there
 
-1.  **Draft:** Create a detailed proposal explaining the need for the change and its impact on existing tools.
-2.  **Review:** The core contributors and the community review the proposal for backwards compatibility and strategic alignment.
-3.  **Consensus:** A change is only merged after achieving broad consensus.
-4.  **Implementation:** Once approved, the change is versioned and thoroughly tested across all dependent repositories.
+- **Forecast Object schemas:** [`schemas/forecast_object_v1.1.json`](https://github.com/xrtm-org/governance/blob/main/schemas/forecast_object_v1.1.json) and [`schemas/forecast_object_v1.json`](https://github.com/xrtm-org/governance/blob/main/schemas/forecast_object_v1.json)
+- **Compatibility rules:** [`schemas/compatibility-policy.md`](https://github.com/xrtm-org/governance/blob/main/schemas/compatibility-policy.md)
+- **Review and acceptance policy:** [`policies/pr-acceptance-policy.md`](https://github.com/xrtm-org/governance/blob/main/policies/pr-acceptance-policy.md)
+- **Triage and release policy:** [`policies/triage-matrix.md`](https://github.com/xrtm-org/governance/blob/main/policies/triage-matrix.md) and [`policies/release-readiness-policy.md`](https://github.com/xrtm-org/governance/blob/main/policies/release-readiness-policy.md)
 
-This rigorous process signals to our contributors and enterprise partners that xrtm is a mature, stable platform they can build upon.
+## Practical change flow
+
+1. If you want to change a schema or cross-repo compatibility rule, open it in **governance first**.
+2. Once governance accepts the change, update the affected implementation repos such as [`xrtm`](https://github.com/xrtm-org/xrtm), [`forecast`](https://github.com/xrtm-org/forecast), [`eval`](https://github.com/xrtm-org/eval), [`data`](https://github.com/xrtm-org/data), or [`train`](https://github.com/xrtm-org/train).
+3. Update `xrtm.org` last so the newcomer-facing explanation mirrors the accepted source of truth.
+
+## What this site should do
+
+- explain why the standards exist
+- point contributors at the right owning repo
+- summarize accepted governance decisions without becoming the only copy
+
+## What this site should not do
+
+- introduce new schema requirements here first
+- act as the only location for contributor policy
+- imply that package behavior can be changed from this repo alone

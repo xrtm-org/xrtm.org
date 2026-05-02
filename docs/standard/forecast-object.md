@@ -1,95 +1,49 @@
-# The Forecast Object Standard (v1)
+# Forecast Object standard overview
 
-The Forecast Object is the universal data contract for probabilistic predictions in the xrtm ecosystem. Every prediction—whether from an LLM agent, a statistical model, or a human expert—must conform to this schema to ensure interoperability, auditability, and temporal integrity.
+:::note Authoritative files
+This page is a reader-friendly summary. The normative contract lives in [`forecast_object_v1.1.json`](https://github.com/xrtm-org/governance/blob/main/schemas/forecast_object_v1.1.json), [`forecast_object_v1.json`](https://github.com/xrtm-org/governance/blob/main/schemas/forecast_object_v1.json), and [`compatibility-policy.md`](https://github.com/xrtm-org/governance/blob/main/schemas/compatibility-policy.md). Use those files for validators, compatibility reviews, and cross-repo changes.
+:::
 
-## Schema Overview
+The Forecast Object is the cross-repo contract for exchanging forecasts in XRTM. `xrtm.org` explains the shape in plain language; [`xrtm-org/governance`](https://github.com/xrtm-org/governance) defines the exact field names, versions, and migration rules.
 
-The Forecast Object consists of three required sections: **Metadata**, **Question**, and **Prediction**.
+## Current canonical version
 
-```json
-{
-  "metadata": { ... },
-  "question": { ... },
-  "prediction": { ... }
-}
-```
+- **Current schema:** [`v1.1`](https://github.com/xrtm-org/governance/blob/main/schemas/forecast_object_v1.1.json)
+- **Previous schema:** [`v1`](https://github.com/xrtm-org/governance/blob/main/schemas/forecast_object_v1.json)
+- **Compatibility policy:** [`schemas/compatibility-policy.md`](https://github.com/xrtm-org/governance/blob/main/schemas/compatibility-policy.md)
+- **Implementation notes:** [`xrtm-org/data` concept doc](https://github.com/xrtm-org/data/blob/main/docs/concepts/forecast_object.md)
 
----
-
-## Metadata
-
-Operational and contextual information for the forecast record.
-
-| Field | Type | Required | Description |
-| :--- | :--- | :---: | :--- |
-| `id` | `string` | ✓ | Unique identifier for this specific forecast instance. |
-| `created_at` | `datetime` | ✓ | ISO 8601 timestamp when the forecast was generated. |
-| `snapshot_time` | `datetime` | ✓ | **Zero Leakage:** The specific "Time T" at which the world state was frozen. No data after this timestamp should have been available to the model. |
-| `source_version` | `string` | | Version of the inference engine or model used. |
-| `tags` | `string[]` | | Logical tags for categorization (e.g., "macro-economics", "geopolitical"). |
-
----
-
-## Question
-
-The subject of the forecast.
-
-| Field | Type | Required | Description |
-| :--- | :--- | :---: | :--- |
-| `id` | `string` | ✓ | Unique identifier for the underlying question. |
-| `title` | `string` | ✓ | The core question or statement being forecasted. |
-| `description` | `string` | | Detailed context, background, and specific definitions. |
-| `resolution_criteria` | `string` | | Explicit, non-ambiguous rules for how ground truth will be determined. |
-
----
-
-## Prediction
-
-The probabilistic output and justification.
-
-| Field | Type | Required | Description |
-| :--- | :--- | :---: | :--- |
-| `probability` | `number` | ✓ | Assigned probability of the primary outcome (0.0 to 1.0). |
-| `confidence_interval` | `object` | | Range at a specified confidence level (e.g., 5th/95th percentiles). Contains `low`, `high`, and `level` (default 0.9). |
-| `reasoning_trace` | `object` | ✓ | Bayesian-style sequence of assumptions and causal logic. |
-
-### Reasoning Trace
-
-| Field | Type | Required | Description |
-| :--- | :--- | :---: | :--- |
-| `narrative` | `string` | ✓ | Comprehensive argument supporting the forecast. |
-| `causal_graph` | `object` | | Structured Mental Model with `nodes` and `edges` representing causal logic. |
-
-### Calibration Metrics
-
-| Field | Type | Description |
-| :--- | :--- | :--- |
-| `expected_brier_score` | `number` | Expected Brier score for this prediction. |
-| `self_calibration_score` | `number` | Model's own estimate of calibration on this domain. |
-
----
-
-## Example
+## Stable shape to keep in mind
 
 ```json
 {
-  "metadata": {
-    "id": "fc_001",
-    "created_at": "2026-01-15T10:30:00Z",
-    "snapshot_time": "2026-01-15T00:00:00Z",
-    "source_version": "xrtm-forecast@0.6.0"
-  },
-  "question": {
-    "id": "q_fed_rate",
-    "title": "Will the Fed cut rates in Q1 2026?",
-    "resolution_criteria": "Resolved YES if the FOMC announces a rate cut before April 1, 2026."
-  },
-  "prediction": {
-    "probability": 0.65,
-    "confidence_interval": { "low": 0.55, "high": 0.75, "level": 0.9 },
-    "reasoning_trace": {
-      "narrative": "Based on inflation trends and labor market data..."
-    }
-  }
+  "metadata": { "...": "..." },
+  "question": { "...": "..." },
+  "prediction": { "...": "..." }
 }
 ```
+
+- **`metadata`** carries forecast identity plus `created_at` and `snapshot_time`.
+- **`question`** carries the forecast target and optional `resolution_criteria`.
+- **`prediction`** carries the canonical probability, reasoning trace, and optional uncertainty or calibration payloads.
+
+## Important v1.1 expectations
+
+- `prediction.probability` is the canonical probability field.
+- `prediction.reasoning_trace` is the canonical standards-facing trace shape.
+- `prediction.distribution` is the preferred uncertainty surface when a parametric distribution is available.
+- `prediction.confidence_interval` remains a deprecated compatibility field during the v1.x window.
+- Ground-truth outcomes stay out of the Forecast Object and belong to evaluation-owned data.
+
+## How changes should flow
+
+1. Propose or update the schema in [`xrtm-org/governance`](https://github.com/xrtm-org/governance).
+2. Check the [`compatibility policy`](https://github.com/xrtm-org/governance/blob/main/schemas/compatibility-policy.md) before renaming or removing fields.
+3. Update package implementations and examples in the owning repos.
+4. Refresh this site only after the authoritative change is accepted.
+
+## Good next links
+
+- [Why the standard exists](./intro)
+- [Governance overview](./governance)
+- [Packages and architecture](../framework/intro)

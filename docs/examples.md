@@ -7,6 +7,10 @@ description: Shipped workflows and source examples you can verify today.
 
 This page is intentionally product-and-proof-first. Everything below is either a shipped CLI workflow or a source example that exists today. Future work belongs on the [roadmap](./roadmap).
 
+:::note Ownership and proof
+This page helps you find verifiable examples without making `xrtm.org` the owner of them. The newcomer CLI flow ships from [`xrtm-org/xrtm`](https://github.com/xrtm-org/xrtm), package example code ships from the repo that contains it, and schema or policy changes that affect those examples start in [`xrtm-org/governance`](https://github.com/xrtm-org/governance).
+:::
+
 ## The shipped newcomer workflow
 
 If you only do one thing, do this first:
@@ -19,7 +23,7 @@ xrtm report html --latest --runs-dir runs
 xrtm web --runs-dir runs
 ```
 
-That flow is the core proof that XRTM works as a local-first forecasting and model-eval workbench today.
+That flow is the core proof that XRTM works as a local-first forecasting and model-eval workbench today. The commands are surfaced here for newcomers, but the behavior, flags, and artifact contracts are owned by [`xrtm-org/xrtm`](https://github.com/xrtm-org/xrtm).
 
 ## What the product ships today
 
@@ -31,11 +35,11 @@ That flow is the core proof that XRTM works as a local-first forecasting and mod
 - profile-based repeatable workflows
 - local monitoring lifecycle commands
 
-## Package example directories
+## Examples by owning repo
 
-These examples are real shipped source assets, but they are **examples**, not the default first-run product path.
+These examples are real shipped source assets, but they are **examples**, not the default first-run product path. When example code changes, update the repo that owns the file and refresh this page only when the navigation or framing should change.
 
-### `xrtm-forecast`
+### `xrtm-forecast` (`xrtm-org/forecast`)
 
 Useful example entry points include:
 
@@ -48,9 +52,11 @@ Useful example entry points include:
 - `examples/kit/features/streaming_demo/run_streaming_demo.py`
 - `examples/kit/topologies/consensus_demo/run_consensus_demo.py`
 
-### `xrtm-train`
+See the repo: [`xrtm-org/forecast`](https://github.com/xrtm-org/forecast).
 
-Useful example entry points live in the external [`xrtm-train`](https://github.com/xrtm-org/train) repo:
+### `xrtm-train` (`xrtm-org/train`)
+
+Useful example entry points live in the external [`xrtm-org/train`](https://github.com/xrtm-org/train) repo:
 
 - [Calibration demo](https://github.com/xrtm-org/train/blob/main/examples/kit/run_calibration_demo.py)
 - [Trace replay](https://github.com/xrtm-org/train/blob/main/examples/kit/run_trace_replay.py)
