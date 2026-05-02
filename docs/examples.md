@@ -40,20 +40,21 @@ These examples are real shipped source assets, but they are **examples**, not th
 Useful example entry points include:
 
 - `examples/kit/minimal_agent/run_minimal_agent.py`
+- `examples/providers/provider_free_analyst/run_provider_free_analyst.py` *(deterministic no-key path via the top-level `xrtm` package)*
 - `examples/kit/local_analyst/run_local_analyst.py` *(optional local-LLM path)*
 - `examples/kit/pipelines/forecasting_analyst/run_forecasting_analyst.py`
 - `examples/kit/topologies/debate_demo/run_debate_demo.py`
 - `examples/kit/features/discovery/run_discovery.py`
 - `examples/kit/features/streaming_demo/run_streaming_demo.py`
-- `examples/kit/features/trace_replay/run_trace_replay.py`
+- `examples/kit/topologies/consensus_demo/run_consensus_demo.py`
 
 ### `xrtm-train`
 
-Useful example entry points include:
+Useful example entry points live in the external [`xrtm-train`](https://github.com/xrtm-org/train) repo:
 
-- `examples/kit/run_calibration_demo.py`
-- `examples/kit/run_trace_replay.py`
-- `examples/kit/run_evaluation_harness.py`
+- [Calibration demo](https://github.com/xrtm-org/train/blob/main/examples/kit/run_calibration_demo.py)
+- [Trace replay](https://github.com/xrtm-org/train/blob/main/examples/kit/run_trace_replay.py)
+- [Evaluation harness](https://github.com/xrtm-org/train/blob/main/examples/kit/run_evaluation_harness.py)
 
 ## How to read examples honestly
 
