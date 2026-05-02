@@ -7,6 +7,11 @@ description: Start from the shipped CLI path, then move into package APIs and so
 
 If you are building on XRTM, start by understanding the shipped product path first. The canonical run artifacts, report outputs, and local surfaces are the contracts your integrations should respect.
 
+## Quick chooser
+
+- Start with **`xrtm`** for the released, provider-free, product-first workflow.
+- Start with **`xrtm-forecast`** when you are embedding forecasting directly in code or building a custom service around the runtime.
+
 ## Recommended order
 
 1. Complete [Getting started](../getting-started)

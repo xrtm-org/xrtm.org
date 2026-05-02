@@ -39,6 +39,11 @@ See [Getting started](../getting-started) for that path.
 - `xrtm-eval` and `xrtm-data` provide the scoring and snapshot foundations.
 - `xrtm-train` closes the loop for replay, calibration, and evaluation harnesses.
 
+## Fast entry-point rule
+
+- Choose **`xrtm`** when you want the honest released workflow and provider-free first success.
+- Choose **`xrtm-forecast`** when you want to call forecasting APIs directly from your own code.
+
 ## When to update this site vs a sibling repo
 
 - Update **`xrtm.org`** for newcomer framing, navigation, and cross-repo pointers.
