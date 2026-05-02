@@ -5,7 +5,9 @@ description: Honest team usage patterns built on current XRTM features and conve
 
 # XRTM Team Workflows
 
-Teams can use XRTM productively today, but they do it through **local-first artifacts, profiles, exports, and conventions** rather than a built-in shared control plane.
+Teams can use XRTM productively today, but they do it through **shared
+artifacts, profiles, exports, and conventions** rather than a built-in shared
+control plane.
 
 ## What teams can do today
 

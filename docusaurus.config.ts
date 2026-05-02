@@ -4,7 +4,7 @@ import type * as Preset from '@docusaurus/preset-classic';
 
 const config: Config = {
   title: 'xrtm',
-  tagline: 'Local-first forecasting and model-eval workbench',
+  tagline: 'AI for event forecasting',
   favicon: 'img/favicon.ico',
 
   url: 'https://xrtm.org',
@@ -121,7 +121,7 @@ const config: Config = {
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} xrtm-org. Local-first forecasting and model evaluation.`,
+      copyright: `Copyright © ${new Date().getFullYear()} xrtm-org. AI for event forecasting.`,
     },
     prism: {
       theme: prismThemes.github,

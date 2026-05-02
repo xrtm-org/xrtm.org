@@ -1,17 +1,20 @@
 ---
 title: Researcher / model-eval workflow
-description: The primary XRTM path for repeatable local evaluation and forecast review.
+description: Repeatable evaluation path for serious event-forecasting work.
 ---
 
 # Researcher / model-eval workflow
 
-This is the **primary XRTM audience path** and the clearest home for the official **benchmark and validation workflow**.
+This workflow is the clearest home for the official **benchmark and validation
+workflow**.
 
-Use it when you want to run repeatable local forecasting passes, inspect the exact artifacts produced by a run, compare outcomes, and keep the evaluation evidence on disk.
+Use it when you want to run repeatable event-forecasting passes, inspect the
+exact artifacts produced by a run, compare outcomes, and keep the evaluation
+evidence on disk.
 
 ## Why this path exists
 
-XRTM is most useful when you care about:
+XRTM becomes especially useful when you care about:
 
 - local, inspectable forecasting workflows
 - probabilistic scoring and calibration signals

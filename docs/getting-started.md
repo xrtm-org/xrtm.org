@@ -1,13 +1,16 @@
 ---
 title: Getting started
-description: Run the guided first command, inspect artifacts, and open the WebUI or TUI.
+description: Make your first forecast run, inspect the evidence, and open the WebUI or TUI.
 ---
 
 # Getting Started with XRTM
 
-This is the shortest honest path to first success with XRTM.
+XRTM is AI for event forecasting. This is the shortest honest path to first
+success.
 
-You will run the guided first command, inspect the generated artifacts, and browse the results. The default path uses the built-in mock provider, so you do **not** need API keys or a local model server.
+You will run the guided first command, inspect the generated artifacts, and
+browse the results. The default path uses the built-in mock provider, so you do
+**not** need API keys or a local model server.
 
 ## 1. Install
 
@@ -89,17 +92,18 @@ xrtm tui --runs-dir runs
 
 ## 5. What you just proved
 
-You completed the default XRTM story:
+You completed the first XRTM event-forecasting loop:
 
-1. **Local demo**: ran a forecasting workflow without external providers
-2. **Artifact inspection**: verified the run and its scored outputs on disk
-3. **Browser or terminal view**: opened the same run through WebUI or TUI
+1. **Forecast run**: ran a forecasting workflow without external providers
+2. **Scored evidence**: verified the run and its outputs on disk
+3. **Review surface**: opened the same run through WebUI or TUI
 
 That is the core product path for newcomers.
 
 ## Official proof-point workflows
 
-The official XRTM proof surface is intentionally small. After the first run, keep returning to these four workflows:
+After the first run, these four workflows expand the same event-forecasting
+loop:
 
 ### 1. Provider-free first success
 

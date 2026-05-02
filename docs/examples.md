@@ -13,7 +13,8 @@ This page helps you find verifiable examples without making `xrtm.org` the owner
 
 ## Official proof-point workflows
 
-The official XRTM story is intentionally small:
+The story is simple: XRTM is AI for event forecasting. These workflows and
+examples are the shipped proof behind that claim:
 
 1. **Provider-free first success**
 2. **Benchmark and validation workflow**
@@ -32,7 +33,10 @@ xrtm report html --latest --runs-dir runs
 xrtm web --runs-dir runs
 ```
 
-That flow is the core proof that XRTM works as a local-first forecasting and model-eval workbench today. The commands are surfaced here for newcomers, but the behavior, flags, and artifact contracts are owned by [`xrtm-org/xrtm`](https://github.com/xrtm-org/xrtm).
+That flow is the core proof that XRTM works today as a repeatable
+event-forecasting system. The commands are surfaced here for newcomers, but the
+behavior, flags, and artifact contracts are owned by
+[`xrtm-org/xrtm`](https://github.com/xrtm-org/xrtm).
 
 ### 2. Benchmark and validation workflow
 

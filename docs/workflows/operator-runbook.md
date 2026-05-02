@@ -5,7 +5,8 @@ description: Local operations, profiles, artifacts, monitoring, performance smok
 
 # XRTM Operator Runbook
 
-This path covers the supported local-first operating workflow for the top-level XRTM product shell.
+This path covers the supported operating workflow for the top-level XRTM
+product shell once the first event-forecasting loop is already working.
 
 It sharpens the official **monitoring, history, and report workflow**, while also covering the benchmark/validation commands that should precede local-LLM use.
 
