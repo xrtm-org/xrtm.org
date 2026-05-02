@@ -52,7 +52,7 @@ xrtm profile create my-local --provider mock --limit 2 --runs-dir runs
 xrtm run profile my-local
 xrtm monitor start --provider mock --limit 2 --runs-dir runs
 xrtm runs compare <run-id-a> <run-id-b> --runs-dir runs
-xrtm runs export <run-id> --runs-dir runs --output run.json
+xrtm runs export <run-id> --runs-dir runs --output export.json
 ```
 
 ### 4. Local-LLM advanced workflow

@@ -47,7 +47,7 @@ Use this stage to review forecast counts, scores, warnings, durations, and the u
 
 ### 4. Validation status on the released surface
 
-The newer `xrtm validate ...` workflow visible in current source work is not part of the published `xrtm==0.3.0` release. Until a coordinated release ships it with compatible upstream packages, keep release-pinned research docs on `xrtm perf`, explicit run inspection, comparison, and JSON export.
+The newer corpus-validation workflow visible in current source work is not part of the published `xrtm==0.3.0` release. Until a coordinated release ships it with compatible upstream packages, keep release-pinned research docs on `xrtm perf run`, explicit run inspection, comparison, and JSON export.
 
 ### 5. Move into calibration and replay work
 
@@ -55,15 +55,15 @@ XRTM's package stack includes shipped examples for deeper evaluation work such a
 
 ## Shipped surfaces this workflow uses
 
-- `xrtm demo`
-- `xrtm perf run`
+- `xrtm demo --provider mock --limit 1 --runs-dir runs`
+- `xrtm perf run --scenario provider-free-smoke --iterations 3 --limit 1 --runs-dir runs-perf --output performance.json`
 - `xrtm runs list`
-- `xrtm runs show`
-- `xrtm runs compare`
-- `xrtm runs export`
-- `xrtm artifacts inspect`
-- `xrtm profile create`
-- `xrtm report html`
+- `xrtm runs show <run-id> --runs-dir runs`
+- `xrtm runs compare <run-id-a> <run-id-b> --runs-dir runs`
+- `xrtm runs export <run-id> --runs-dir runs --output export.json`
+- `xrtm artifacts inspect runs/<run-id>`
+- `xrtm profile create my-local --provider mock --limit 2 --runs-dir runs`
+- `xrtm report html runs/<run-id>`
 - WebUI and TUI over local run artifacts
 
 ## Optional later: local-LLM evaluation

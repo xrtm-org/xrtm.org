@@ -9,7 +9,7 @@ This path covers the supported operating workflow for the top-level XRTM product
 
 It sharpens the official **monitoring, history, and report workflow**, while also covering the released benchmark smoke command that should precede local-LLM use.
 
-> Released `xrtm==0.3.0` does not yet ship `xrtm start`, `profile starter`, or `validate`. This page stays on the commands that actually ship today.
+> Released `xrtm==0.3.0` intentionally keeps this page on the commands that actually ship today. New guided-start and validation flows stay on the next coordinated release track.
 
 ## Start from the default path
 
@@ -39,7 +39,7 @@ xrtm runs show <run-id> --runs-dir runs
 xrtm artifacts inspect runs/<run-id>
 xrtm report html runs/<run-id>
 xrtm runs compare <run-id-a> <run-id-b> --runs-dir runs
-xrtm runs export <run-id> --runs-dir runs --output run.json
+xrtm runs export <run-id> --runs-dir runs --output export.json
 ```
 
 ### Browse the same runs in browser or terminal
@@ -61,7 +61,7 @@ History and report review stay on the same proof-point path:
 
 ```bash
 xrtm runs compare <run-id-a> <run-id-b> --runs-dir runs
-xrtm runs export <run-id> --runs-dir runs --output run.json
+xrtm runs export <run-id> --runs-dir runs --output export.json
 xrtm report html runs/<run-id>
 ```
 
@@ -74,11 +74,11 @@ xrtm perf run --scenario provider-free-smoke --iterations 3 --limit 1 --runs-dir
 xrtm web --runs-dir runs --smoke
 ```
 
-`xrtm perf run` writes a structured performance report, while `xrtm web --smoke` verifies the WebUI routes without starting a long-lived server.
+`xrtm perf run` writes a structured performance report, while `xrtm web --runs-dir runs --smoke` verifies the WebUI routes without starting a long-lived server.
 
 ## Validation status
 
-The newer `xrtm validate ...` commands are not part of the published `xrtm==0.3.0` release. Until a coordinated release ships them with compatible upstream packages, keep released operator workflows on `xrtm perf`, explicit run inspection, compare, JSON export, and monitor commands.
+The newer corpus-validation commands are not part of the published `xrtm==0.3.0` release. Until a coordinated release ships them with compatible upstream packages, keep released operator workflows on `xrtm perf run`, explicit run inspection, compare, JSON export, and monitor commands.
 
 ## Optional later: local-LLM mode
 
