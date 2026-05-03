@@ -1,100 +1,112 @@
-# Contributing to xrtm-forecast
+# Contributing to xrtm.org
 
-Reference implementation for the XRTM reasoning engine. We welcome contributions!
+This repository contains the public XRTM site built with Docusaurus.
 
-## Architecture Overview
+## Development model
 
-`xrtm-forecast` follows a strict three-layer architecture:
+This repo is **local-tooling first**:
 
-| Layer | Location | Responsibility | Key Constraint |
-| :--- | :--- | :--- | :--- |
-| **CORE** | `src/forecast/core/` | The "Physics" Engine — Orchestrator, State, Time, Calibration, Telemetry | **Zero Agent Logic.** Pure Python/Math. No prompts. |
-| **KIT** | `src/forecast/kit/` | The "Applied" Layer — Agents, Skills, Topologies, Evaluators | **Composable.** Can import `core`, but `core` NEVER imports `kit`. |
-| **PROVIDERS** | `src/forecast/providers/` | The "Hardware" — Inference (OpenAI/vLLM), Tools (Serp/Exa) | **Interchangeable.** Swappable backends. |
+- use the pinned Node toolchain from `.nvmrc` / `.node-version`
+- install dependencies with `npm ci`
+- validate with the standard npm scripts
 
-### The Golden Rule
-> **`core` MUST NOT import from `kit` or `providers`.**
+Devcontainers remain supported for contributors who want them, but Docker/devcontainers are **not** the primary workflow.
 
-This ensures the Core remains domain-agnostic and testable without LLM dependencies.
+## Supported toolchain
 
----
+- **Node:** `20.19.0`
+- **npm:** `10.x`
 
-## Development Environment
+If you use `nvm`:
 
-We provide a fully isolated development environment using **Docker** and **uv**.
-
-### 1. Using Docker (Recommended)
 ```bash
-# Build and start services (forecast + redis)
-docker compose -f .devcontainer/docker-compose.yml up -d --build
-
-# Enter the reasoning engine container
-docker compose -f .devcontainer/docker-compose.yml exec forecast bash
+nvm use
 ```
 
-### 2. Manual Setup (uv)
+## Local setup
+
 ```bash
-# Install uv (https://github.com/astral-sh/uv)
-# Sync dependencies
-uv sync --all-extras
-
-# Run tests
-uv run pytest
+npm ci
+npm run build
 ```
 
-### 3. Verification Commands
+## Main commands
+
 ```bash
-uv run ruff check .      # Linting
-uv run mypy .            # Type checking (strict)
-uv run pytest tests/unit # Unit tests
+npm start
+npm run start:lan
+npm run build
+npm run typecheck
+npm run audit:policy
 ```
 
----
+`npm start` is localhost-only by default. Use `npm run start:lan` only when you
+explicitly need to expose the dev server to a container, VM, or LAN peer.
 
-## Key Coding Standards
+## Where changes belong
 
-### 1. Type Safety (Strict Mypy)
-All code must be fully type-hinted and pass `mypy .` at project root.
+- **`xrtm.org`**: newcomer-facing docs, navigation, repo maps, and cross-repo pointers
+- **[`xrtm-org/xrtm`](https://github.com/xrtm-org/xrtm)**: shipped CLI flows, run-artifact behavior, WebUI/TUI, and product docs
+- **[`xrtm-org/forecast`](https://github.com/xrtm-org/forecast), [`xrtm-org/eval`](https://github.com/xrtm-org/eval), [`xrtm-org/data`](https://github.com/xrtm-org/data), [`xrtm-org/train`](https://github.com/xrtm-org/train)**: package APIs, example code, and implementation truth
+- **[`xrtm-org/governance`](https://github.com/xrtm-org/governance)**: Forecast Object schemas, compatibility rules, and contributor/review policy
 
-### 2. License Headers
-Every `.py` file must start with the Apache 2.0 license header:
-```python
-# coding=utf-8
-# Copyright 2026 XRTM Team. All rights reserved.
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# ...
+If a change starts in a source-of-truth repo, land or coordinate it there first. Update `xrtm.org` afterward when the presentation layer needs to reflect the accepted result.
+
+## Released vs next-release docs
+
+Keep the public docs surfaces distinct:
+
+- **Released path**: `getting-started`, `examples`, and the release-pinned workflow pages stay on the currently published package surface.
+- **Next-release path**: branch-only conveniences with clear short-term value belong on [Next release track](./next-release) and in the owning repo's next-release document.
+- **Roadmap path**: longer-horizon or genuinely experimental work belongs on [Roadmap](./roadmap).
+
+Do not move current-source conveniences into release-pinned pages until the owning repo updates the published package, release contract, and validation evidence together.
+
+Use this quick classification when editing pages:
+
+| Page class | What may appear there | Minimum validation |
+| --- | --- | --- |
+| Release-pinned | Only published commands, versions, and behavior already validated against the current release contract | `npm run release:check`, `npm run typecheck`, `npm run audit:policy`, `npm run build` |
+| Next-release | Explicitly labeled branch-only work that already has an owning-repo feature record | `npm run typecheck`, `npm run build` |
+| Roadmap / repo map | Future or conceptual material with no claim that it ships today | `npm run build` |
+
+If a doc change affects the public product story, note the owning repo and accepted source-of-truth change in the PR. `xrtm.org` mirrors accepted behavior; it does not invent release promises.
+
+## Documentation IA rule of thumb
+
+| If you are changing... | Update first | Why |
+| --- | --- | --- |
+| newcomer navigation, repo map, or cross-links | `xrtm.org` | this repo owns the presentation layer |
+| shipped CLI/product behavior or package APIs | owning implementation repo | behavior and examples belong with the code |
+| unreleased-but-real next-release status | owning repo + [Next release track](./next-release) | keep feature status explicit without polluting released docs |
+| schema, compatibility, or graduation policy | `governance` | policy and standards must stay authoritative there |
+
+## What to validate before opening a PR
+
+At minimum:
+
+```bash
+npm run build
 ```
 
-### 3. Public API (`__all__`)
-Every module must define `__all__` to control the public namespace.
+Use these when relevant:
 
-### 4. Docstrings (Hugging Face Style)
-Use `r""" """` raw docstrings with `Args`, `Returns`, `Example` sections.
+```bash
+npm run typecheck
+npm run audit:policy
+```
 
-### 5. Terminology
-Use the correct vocabulary hierarchy:
-- **Stage** → **Agent** → **Skill** → **Tool**
-- Use "Subject" not "Market", "Value" not "Price" in core modules
+## Optional devcontainer support
 
-### 6. Naming Conventions
-- **Modules**: `snake_case` (e.g., `calibration.py`)
-- **Classes**: `PascalCase` (e.g., `BetaScaler`)
-- **Examples**: Must start with `run_` (e.g., `run_causal_demo.py`)
+If you prefer an isolated editor environment, this repo also ships `.devcontainer/devcontainer.json`.
 
----
+That path is optional support only; the canonical contributor path is still the local Node toolchain above.
 
-## Pull Request Process
+## PR guidance
 
-1. Fork the repo and create your branch from `main`.
-2. If you've added code, add tests in the appropriate location:
-   - `tests/unit/` for unit tests
-   - `tests/integration/` for integration tests
-   - `tests/verification/` for cross-cutting compliance tests
-3. Ensure all checks pass:
-   ```bash
-   uv run ruff check .
-   uv run mypy .
-   uv run pytest tests/unit
-   ```
-4. Update documentation if you've added new public APIs.
+1. Branch from `main`
+2. Keep documentation and navigation changes tightly scoped
+3. Mirror accepted product/governance changes here instead of redefining them here
+4. Update links/examples when page behavior changes
+5. If a page is release-pinned, include the owning package version or contract it mirrors
+6. Include the commands you ran in the PR description

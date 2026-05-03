@@ -1,17 +1,46 @@
-# xrtm-forecast: The Engine
+---
+title: xrtm-forecast
+description: Runtime package overview with links to the owning repo and docs.
+---
 
-`xrtm-forecast` is the primary runtime for probabilistic reasoning and agentic workflows. It is the bridge between raw data and actionable predictions.
+# xrtm-forecast
 
-## Generative Forecasting
+`xrtm-forecast` is the runtime package for probabilistic reasoning and agentic
+forecast workflows.
 
-The engine is designed for research-grade transparency and rigor:
+:::note Page role
+This page is a package-map summary. Runtime APIs, provider integrations, and
+source examples are owned by [`xrtm-org/forecast`](https://github.com/xrtm-org/forecast).
+:::
 
-- **Reasoning Graphs:** Instead of black-box outputs, `xrtm-forecast` generates structured reasoning traces and causal graphs.
-- **Agentic Topologies:** Supports complex multi-agent patterns including **Orchestration**, **Debate**, and **Consensus**.
-- **Institutional Protocols:**
-    - **Chronos:** Time-travel safe backtesting.
-    - **Sentinel:** Continuous monitoring of forecast trajectories over time.
+## Use this package when
 
-## The Pivotal Layer
+- you are embedding forecasting directly in Python code or a service
+- you need runtime/provider abstractions instead of the released top-level CLI path
+- you want package-owned examples for agents, topologies, and runtime features
 
-Acting as Layer 3, `xrtm-forecast` orchestrates the flow from inputs to structured Forecast Objects. It plugs into any supported provider (OpenAI, Anthropic, Gemini, or local models via vLLM) without requiring changes to the underlying reasoning logic.
+If you still need the honest released newcomer workflow first, start with
+[Getting started](../getting-started) and the top-level
+[`xrtm`](https://github.com/xrtm-org/xrtm) package.
+
+## Canonical references
+
+- [Repository README](https://github.com/xrtm-org/forecast/blob/main/README.md)
+- [Docs index](https://github.com/xrtm-org/forecast/blob/main/docs/index.md)
+- [Architecture overview](https://github.com/xrtm-org/forecast/blob/main/docs/architecture.md)
+- [Provider-free testing guide](https://github.com/xrtm-org/forecast/blob/main/docs/provider-free-testing.md)
+
+## Relationship to the released user path
+
+`xrtm-forecast` supplies the runtime underneath the released `xrtm` product
+shell. That means:
+
+- released newcomer/docs claims should still start from `xrtm`
+- code-first runtime work can go deeper here
+- stronger improvement claims usually come from real runtime or model changes here,
+  then get compared back through the released product artifact surface
+
+## Ownership boundary
+
+- Change runtime APIs, provider behavior, and example code in `forecast`.
+- Update `xrtm.org` only when the repo map, navigation, or newcomer framing should change.

@@ -1,0 +1,44 @@
+name: CI
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+jobs:
+  build:
+    name: Site build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Release command claims
+        run: |
+          python3 scripts/check_release_claims.py \
+            --repo-root . \
+            --scope xrtm.org \
+            --contract scripts/release-command-contract.json
+
+      - name: Typecheck
+        run: npm run typecheck
+
+      - name: Audit policy
+        run: npm run audit:policy
+
+      - name: Build website
+        run: npm run build

@@ -1,15 +1,36 @@
-# xrtm-data: The Time Machine
+---
+title: xrtm-data
+description: Data-layer summary with clear standards and ownership boundaries.
+---
 
-The `xrtm-data` repository provides the foundational infrastructure for temporal integrity within the xrtm ecosystem. It is responsible for freeze-framing the world state at specific points in time.
+# xrtm-data
 
-## The Snapshot Protocol
+`xrtm-data` provides the temporal and schema foundations for the ecosystem.
 
-To prevent "future leakage," where a model inadvertently learns from data that shouldn't have been available at the moment of prediction, `xrtm-data` implements strict snapshotting.
+:::note Page role
+This page is a package-map summary. Data-layer implementation details live in
+[`xrtm-org/data`](https://github.com/xrtm-org/data), while normative schema and
+compatibility policy live in [`xrtm-org/governance`](https://github.com/xrtm-org/governance).
+:::
 
-- **Vaulting:** Frozen world states are stored with cryptographic hashes to ensure they haven't been modified.
-- **Historical Replay:** Enables the system to re-run history as if it were happening "now," providing a safe environment for backtesting and evaluation.
-- **Zero Leakage Enforcement:** Provides the `snapshot_time` used by the entire ecosystem to filter search results and memory retrieval.
+## Use this package when
 
-## Role in the Ecosystem
+- you need snapshot-aware data access or replay foundations
+- you care about temporal integrity and zero-leakage evaluation
+- you are building lower-level data flows beneath the forecasting/runtime layers
 
-`xrtm-data` is the base layer (Layer 1) of the dependency hierarchy. It defines the schemas and data loaders used by all other components. It has **zero** dependencies on other xrtm modules, ensuring a clean and unidirectional flow of information.
+## What it gives you
+
+- **Vaulting:** frozen world states with integrity checks
+- **Historical replay:** time-safe access to past context
+- **Zero leakage enforcement:** shared `snapshot_time` foundations used across the stack
+
+## Canonical references
+
+- [xrtm-org/data](https://github.com/xrtm-org/data)
+- [Governance schemas](https://github.com/xrtm-org/governance/tree/main/schemas)
+
+## Ownership boundary
+
+Change data-layer code in `data`. Change normative cross-repo schema or
+compatibility rules in `governance` first.

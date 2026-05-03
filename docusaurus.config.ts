@@ -4,7 +4,7 @@ import type * as Preset from '@docusaurus/preset-classic';
 
 const config: Config = {
   title: 'xrtm',
-  tagline: 'Local-first forecasting and model-eval workbench',
+  tagline: 'AI for event forecasting',
   favicon: 'img/favicon.ico',
 
   url: 'https://xrtm.org',
@@ -57,33 +57,33 @@ const config: Config = {
       items: [
         {
           type: 'doc',
+          docId: 'index',
+          position: 'left',
+          label: 'Docs',
+        },
+        {
+          type: 'doc',
           docId: 'getting-started',
           position: 'left',
-          label: 'Start Here',
+          label: 'Released path',
         },
         {
           type: 'doc',
-          docId: 'workflows/researcher-model-eval',
+          docId: 'next-release',
           position: 'left',
-          label: 'Workflows',
+          label: 'Next release',
         },
         {
           type: 'doc',
-          docId: 'examples',
+          docId: 'workflows/developer-integrator',
           position: 'left',
-          label: 'Examples',
+          label: 'Developer reference',
         },
         {
           type: 'doc',
-          docId: 'framework/intro',
+          docId: 'standard/governance',
           position: 'left',
-          label: 'Packages',
-        },
-        {
-          type: 'doc',
-          docId: 'philosophy/manifesto',
-          position: 'left',
-          label: 'Philosophy',
+          label: 'Governance',
         },
         {
           href: 'https://github.com/xrtm-org',
@@ -96,8 +96,9 @@ const config: Config = {
       style: 'dark',
       links: [
         {
-          title: 'Product',
+          title: 'Released docs',
           items: [
+            { label: 'Docs overview', to: '/docs' },
             { label: 'Start Here', to: '/docs/getting-started' },
             { label: 'Workflows', to: '/docs/workflows/researcher-model-eval' },
             { label: 'Examples', to: '/docs/examples' },
@@ -106,22 +107,24 @@ const config: Config = {
         {
           title: 'Reference',
           items: [
+            { label: 'Developer reference', to: '/docs/workflows/developer-integrator' },
             { label: 'Packages', to: '/docs/framework/intro' },
             { label: 'Standard', to: '/docs/standard/intro' },
-            { label: 'Roadmap', to: '/docs/roadmap' },
-            { label: 'Contributing', to: '/docs/contributing' },
+            { label: 'Governance', to: '/docs/standard/governance' },
           ],
         },
         {
           title: 'Project',
           items: [
-            { label: 'Docs overview', to: '/docs' },
+            { label: 'Next release', to: '/docs/next-release' },
+            { label: 'Roadmap', to: '/docs/roadmap' },
+            { label: 'Contributing', to: '/docs/contributing' },
             { label: 'Philosophy', to: '/docs/philosophy/manifesto' },
             { label: 'GitHub org', href: 'https://github.com/xrtm-org' },
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} xrtm-org. Local-first forecasting and model evaluation.`,
+      copyright: `Copyright © ${new Date().getFullYear()} xrtm-org. AI for event forecasting.`,
     },
     prism: {
       theme: prismThemes.github,

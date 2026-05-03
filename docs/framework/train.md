@@ -1,15 +1,34 @@
-# xrtm-train: The Lab
+---
+title: xrtm-train
+description: Training-layer summary with clear role and ownership boundaries.
+---
 
-`xrtm-train` is the orchestration and optimization layer of the xrtm ecosystem. It closes the loop by using the feedback from evaluations to improve model performance over time.
+# xrtm-train
 
-## The Simulation Loop
+`xrtm-train` is the optimization and replay layer of the XRTM ecosystem.
 
-`xrtm-train` is the only layer permitted to run iterative simulation loops:
+:::note Page role
+This page is a package-map summary. Training workflows, replay harnesses, and
+optimization code live in [`xrtm-org/train`](https://github.com/xrtm-org/train).
+:::
 
-- **Backtesting:** Stress-testing strategies against historical snapshots.
-- **Optimization:** Training models to internalize causal chains and improve their Bayesian logic.
-- **Simulation:** Running large-scale simulations to explore possible future trajectories and their probabilistic outcomes.
+## Use this package when
 
-## Hierarchical Command
+- you are doing replay, calibration, or backtesting work beyond the default product shell
+- you want to test candidate changes against historical or controlled evaluation loops
+- you need the deeper improvement path after learning the released compare/export surface
 
-As the top layer (Layer 4), `xrtm-train` can import from all other libraries (`data`, `eval`, `forecast`) to coordinate complex training and evaluation pipelines. It ensures that the entire ecosystem evolves based on the rigorous standards of forecasting intelligence.
+## What it gives you
+
+- **Backtesting:** stress-test strategies against historical snapshots
+- **Optimization:** training/calibration loops that can actually change system behavior
+- **Simulation:** large-scale experiment workflows above the lower package layers
+
+## Canonical reference
+
+- [xrtm-org/train](https://github.com/xrtm-org/train)
+
+## Ownership boundary
+
+Package-level optimization and replay guidance belongs in `train`. Use
+`xrtm.org` to explain where that work sits relative to the released product path.
