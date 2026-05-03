@@ -34,10 +34,11 @@ jobs:
         run: npm ci
 
       - name: Release command claims
-        env:
-          XRTM_RELEASE_CHECKER: ./release-contract/scripts/check_release_claims.py
-          XRTM_RELEASE_CONTRACT: ./release-contract/docs/release-command-contract.json
-        run: npm run release:check
+        run: |
+          python3 release-contract/scripts/check_release_claims.py \
+            --repo-root . \
+            --scope xrtm.org \
+            --contract release-contract/docs/release-command-contract.json
 
       - name: Typecheck
         run: npm run typecheck
