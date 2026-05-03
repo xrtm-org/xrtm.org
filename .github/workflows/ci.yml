@@ -35,10 +35,10 @@ jobs:
 
       - name: Release command claims
         run: |
-          python3 release-contract/scripts/check_release_claims.py \
+          python3 release-contract/xrtm/scripts/check_release_claims.py \
             --repo-root . \
             --scope xrtm.org \
-            --contract release-contract/docs/release-command-contract.json
+            --contract release-contract/xrtm/docs/release-command-contract.json
 
       - name: Typecheck
         run: npm run typecheck
