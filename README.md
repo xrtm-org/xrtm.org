@@ -4,6 +4,10 @@ This website is built using [Docusaurus](https://docusaurus.io/), a modern stati
 
 `xrtm.org` is the presentation layer for the XRTM ecosystem. Canonical cross-repo schemas, compatibility rules, and contributor policies live in [`xrtm-org/governance`](https://github.com/xrtm-org/governance); shipped product behavior and package-specific truth live in the owning repositories. Site content should mirror governance and product truth rather than define it.
 
+## Contributor guide
+
+Start with [CONTRIBUTING.md](CONTRIBUTING.md) for the GitHub-first contributor flow, or [`docs/contributing.md`](docs/contributing.md) for the rendered site copy. Both point to the same role split: `xrtm.org` owns presentation and navigation, while product/package truth stays in `xrtm`, the package repos, and `governance`.
+
 ## Toolchain
 
 The supported local toolchain is:
