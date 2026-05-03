@@ -62,6 +62,16 @@ Keep the public docs surfaces distinct:
 
 Do not move current-source conveniences into release-pinned pages until the owning repo updates the published package, release contract, and validation evidence together.
 
+Use this quick classification when editing pages:
+
+| Page class | What may appear there | Minimum validation |
+| --- | --- | --- |
+| Release-pinned | Only published commands, versions, and behavior already validated against the current release contract | `npm run release:check`, `npm run typecheck`, `npm run audit:policy`, `npm run build` |
+| Next-release | Explicitly labeled branch-only work that already has an owning-repo feature record | `npm run typecheck`, `npm run build` |
+| Roadmap / repo map | Future or conceptual material with no claim that it ships today | `npm run build` |
+
+If a doc change affects the public product story, note the owning repo and accepted source-of-truth change in the PR. `xrtm.org` mirrors accepted behavior; it does not invent release promises.
+
 ## Documentation IA rule of thumb
 
 | If you are changing... | Update first | Why |
@@ -98,4 +108,5 @@ That path is optional support only; the canonical contributor path is still the 
 2. Keep documentation and navigation changes tightly scoped
 3. Mirror accepted product/governance changes here instead of redefining them here
 4. Update links/examples when page behavior changes
-5. Include the commands you ran in the PR description
+5. If a page is release-pinned, include the owning package version or contract it mirrors
+6. Include the commands you ran in the PR description

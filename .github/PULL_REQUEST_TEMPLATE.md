@@ -12,11 +12,21 @@ Fixes # (issue)
 ## How Has This Been Tested?
 Please describe validation performed:
 
+- [ ] `npm run release:check` - release-pinned command claims still match the published contract
+- [ ] `npm run typecheck` - TypeScript checks pass
+- [ ] `npm run audit:policy` - no new high/critical audit issues
 - [ ] `npm run build` - Site builds without errors
-- [ ] `npm run lint` - No linting errors
-- [ ] Tested locally with `npm start` - Site renders correctly
-- [ ] Links verified - All internal/external links work
-- [ ] Accessibility checked - No major a11y regressions
+
+## Page classification
+
+- [ ] Release-pinned page (published behavior only)
+- [ ] Next-release page (explicitly labeled unreleased work)
+- [ ] Roadmap / repo-map / conceptual page
+
+## Source of truth
+
+- Owning repo or policy: <!-- xrtm / governance / forecast / other -->
+- Accepted upstream change or coordination record: <!-- PR / issue / release note / N/A -->
 
 ## Checklist:
 - [ ] My changes follow the documentation style guidelines
@@ -25,6 +35,7 @@ Please describe validation performed:
 - [ ] I have checked spelling and grammar
 - [ ] Code examples are accurate and tested
 - [ ] Breaking changes (URL changes, removed pages) include redirects
+- [ ] Release-pinned pages mention only published behavior, or unreleased behavior is clearly moved to next-release / roadmap surfaces
 
 ---
 
