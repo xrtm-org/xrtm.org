@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "docusaurus": "docusaurus",
-    "start": "docusaurus start --host 0.0.0.0",
+    "start": "docusaurus start --host 127.0.0.1",
+    "start:lan": "docusaurus start --host 0.0.0.0",
     "build": "docusaurus build",
     "swizzle": "docusaurus swizzle",
     "deploy": "echo 'Production deploys run from GitHub Actions. Validate with npm run build and push to main instead.' >&2 && exit 1",
@@ -13,13 +14,13 @@
     "write-translations": "docusaurus write-translations",
     "write-heading-ids": "docusaurus write-heading-ids",
     "typecheck": "tsc",
-    "audit:policy": "npm audit --audit-level=high && node -e \"console.log('Audit policy passed: no high or critical vulnerabilities found. Tracked moderate Docusaurus dev-server findings are documented in README.md.')\"",
+    "audit:policy": "npm audit --audit-level=high && node -e \"console.log('Audit policy passed: no high or critical vulnerabilities found. Remaining Docusaurus dev-server findings stay tracked in README.md with owner and review triggers.')\"",
     "release:check": "python3 ${XRTM_RELEASE_CHECKER:-../xrtm/scripts/check_release_claims.py} --repo-root . --scope xrtm.org --contract ${XRTM_RELEASE_CONTRACT:-../xrtm/docs/release-command-contract.json}"
   },
   "dependencies": {
-    "@docusaurus/core": "3.10.0",
-    "@docusaurus/preset-classic": "3.10.0",
-    "@docusaurus/theme-mermaid": "3.10.0",
+    "@docusaurus/core": "3.10.1",
+    "@docusaurus/preset-classic": "3.10.1",
+    "@docusaurus/theme-mermaid": "3.10.1",
     "@mdx-js/react": "^3.0.0",
     "clsx": "^2.0.0",
     "framer-motion": "^12.29.0",
@@ -30,9 +31,9 @@
     "tailwind-merge": "^3.4.0"
   },
   "devDependencies": {
-    "@docusaurus/module-type-aliases": "3.10.0",
-    "@docusaurus/tsconfig": "3.10.0",
-    "@docusaurus/types": "3.10.0",
+    "@docusaurus/module-type-aliases": "3.10.1",
+    "@docusaurus/tsconfig": "3.10.1",
+    "@docusaurus/types": "3.10.1",
     "autoprefixer": "^10.4.23",
     "postcss": "^8.5.6",
     "tailwindcss": "^3.4.17",

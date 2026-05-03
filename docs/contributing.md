@@ -34,10 +34,14 @@ npm run build
 
 ```bash
 npm start
+npm run start:lan
 npm run build
 npm run typecheck
 npm run audit:policy
 ```
+
+`npm start` is localhost-only by default. Use `npm run start:lan` only when you
+explicitly need to expose the dev server to a container, VM, or LAN peer.
 
 ## Where changes belong
 
