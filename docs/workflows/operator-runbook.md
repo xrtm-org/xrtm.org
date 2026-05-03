@@ -57,6 +57,10 @@ xrtm monitor list --runs-dir runs
 xrtm artifacts cleanup --runs-dir runs --keep 50
 ```
 
+Monitor-only views read real monitor runs. Ordinary forecast runs stay in
+`xrtm runs list`, the WebUI runs table, and the TUI runs panel unless they were
+created with `xrtm monitor start`.
+
 History and report review stay on the same proof-point path:
 
 ```bash
