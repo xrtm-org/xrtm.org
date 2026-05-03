@@ -6,6 +6,15 @@
 
 The governance repo is where XRTM keeps cross-repo rules stable while implementation repos evolve.
 
+## Quick ownership map
+
+| Topic | Authoritative home | Public summary on this site |
+| --- | --- | --- |
+| Forecast Object schemas and compatibility | `governance/schemas/` | [Forecast Object standard](./forecast-object) |
+| Release labeling and feature graduation | `governance/policies/feature-status-and-graduation-policy.md` | [Next release track](../next-release) |
+| Release gates and acceptance policy | `governance/policies/` | this page plus [Contributing](../contributing) |
+| Shipped CLI/product behavior | `xrtm` repo | released workflow pages |
+
 ## What is authoritative there
 
 - **Forecast Object schemas:** [`schemas/forecast_object_v1.1.json`](https://github.com/xrtm-org/governance/blob/main/schemas/forecast_object_v1.1.json) and [`schemas/forecast_object_v1.json`](https://github.com/xrtm-org/governance/blob/main/schemas/forecast_object_v1.json)

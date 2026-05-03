@@ -2,24 +2,25 @@ import type { SidebarsConfig } from '@docusaurus/plugin-content-docs';
 
 const sidebars: SidebarsConfig = {
   docsSidebar: [
-    'getting-started',
+    'index',
     {
       type: 'category',
-      label: 'Workflows',
+      label: 'Released user path',
       collapsed: false,
       items: [
+        'getting-started',
         'workflows/researcher-model-eval',
         'workflows/operator-runbook',
         'workflows/team-workflows',
-        'workflows/developer-integrator',
+        'examples',
       ],
     },
-    'examples',
     {
       type: 'category',
-      label: 'Packages & architecture',
+      label: 'Developer & package reference',
       collapsed: false,
       items: [
+        'workflows/developer-integrator',
         'framework/intro',
         'framework/forecast',
         'framework/eval',
@@ -29,23 +30,27 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: 'category',
-      label: 'Standard',
+      label: 'Governance & project policy',
       collapsed: true,
       items: [
         'standard/intro',
         'standard/forecast-object',
         'standard/governance',
+        'contributing',
       ],
     },
     {
       type: 'category',
-      label: 'Philosophy',
+      label: 'Next release & roadmap',
+      collapsed: true,
+      items: ['next-release', 'roadmap'],
+    },
+    {
+      type: 'category',
+      label: 'Project context',
       collapsed: true,
       items: ['philosophy/manifesto'],
     },
-    'next-release',
-    'roadmap',
-    'contributing',
   ],
 };
 

@@ -7,6 +7,13 @@ description: Shipped workflows and source examples you can verify today.
 
 This page is intentionally product-and-proof-first. Everything below is either a shipped CLI workflow or a source example that exists today. Future work belongs on the [roadmap](./roadmap).
 
+:::info Page role
+**Released proof plus source examples.** Use this page to find verifiable
+examples that exist today. For package/API ownership, continue to
+[Developer / integrator workflow](./workflows/developer-integrator). For
+unreleased-but-real features, use [Next release track](./next-release).
+:::
+
 :::note Ownership and proof
 This page helps you find verifiable examples without making `xrtm.org` the owner of them. The newcomer CLI flow ships from [`xrtm-org/xrtm`](https://github.com/xrtm-org/xrtm), package example code ships from the repo that contains it, and schema or policy changes that affect those examples start in [`xrtm-org/governance`](https://github.com/xrtm-org/governance).
 :::

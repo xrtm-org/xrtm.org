@@ -62,6 +62,15 @@ Keep the public docs surfaces distinct:
 
 Do not move current-source conveniences into release-pinned pages until the owning repo updates the published package, release contract, and validation evidence together.
 
+## Documentation IA rule of thumb
+
+| If you are changing... | Update first | Why |
+| --- | --- | --- |
+| newcomer navigation, repo map, or cross-links | `xrtm.org` | this repo owns the presentation layer |
+| shipped CLI/product behavior or package APIs | owning implementation repo | behavior and examples belong with the code |
+| unreleased-but-real next-release status | owning repo + [Next release track](./next-release) | keep feature status explicit without polluting released docs |
+| schema, compatibility, or graduation policy | `governance` | policy and standards must stay authoritative there |
+
 ## What to validate before opening a PR
 
 At minimum:

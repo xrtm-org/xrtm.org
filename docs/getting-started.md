@@ -8,6 +8,13 @@ description: Make your first forecast run, inspect the evidence, and open the We
 XRTM is AI for event forecasting. This is the shortest honest path to first
 success on the released `xrtm==0.3.0` surface.
 
+:::info Page role
+**Released user path.** This page stays pinned to the published package surface.
+For branch-only conveniences, use [Next release track](./next-release). For
+package APIs and code-first entry points, use
+[Developer / integrator workflow](./workflows/developer-integrator).
+:::
+
 You will run the released provider-free demo, inspect the generated artifacts, and
 browse the results. The default path uses the built-in mock provider, so you do
 **not** need API keys or a local model server.

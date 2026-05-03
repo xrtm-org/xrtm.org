@@ -7,6 +7,13 @@ description: Repeatable evaluation path for serious event-forecasting work.
 
 This workflow is the clearest home for the released **benchmark, compare, export, and learn** path.
 
+:::info Page role
+**Released user workflow.** Keep this page on commands that ship today. For
+current-source conveniences that are not released yet, use
+[Next release track](../next-release). For deeper package-level research APIs,
+use [Developer / integrator workflow](./developer-integrator).
+:::
+
 Use it when you want to run repeatable event-forecasting passes, inspect the exact artifacts produced by a run, compare outcomes, interpret the metrics honestly, and keep the evaluation evidence on disk.
 
 ## Why this path exists

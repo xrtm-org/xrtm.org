@@ -7,6 +7,14 @@ description: Near-term conveniences that exist in source or planning, but are in
 
 This page exists so useful branch-only work does not sit in limbo.
 
+:::info Page role
+**Next-release lane.** This page is for real source work that is intentionally
+unreleased. The command-level source of truth lives in
+[`xrtm/docs/next-release-feature-track.md`](https://github.com/xrtm-org/xrtm/blob/main/docs/next-release-feature-track.md),
+and the labeling/graduation rules live in the governance repo's
+[Feature Status and Graduation Policy](https://github.com/xrtm-org/governance/blob/main/policies/feature-status-and-graduation-policy.md).
+:::
+
 - **Released docs** stay pinned to what ships in `xrtm==0.3.0`.
 - **This page** tracks near-term conveniences that are real and valuable, but not yet promoted into the public released path.
 - **The roadmap** remains for longer-horizon, future, or experimental work.
@@ -33,6 +41,9 @@ For command-level details, see [`xrtm/docs/next-release-feature-track.md`](https
 ## Governance rule
 
 Unreleased-but-desired features should always have an explicit status. They should not live only in tests, draft docs, or branch folklore.
+
+Promotion decisions here should mirror the governance policy and the owning repo's
+release evidence, not bypass them.
 
 See also:
 

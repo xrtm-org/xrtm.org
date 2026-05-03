@@ -7,6 +7,13 @@ description: Local operations, profiles, artifacts, monitoring, performance smok
 
 This path covers the supported operating workflow for the top-level XRTM product shell once the released first event-forecasting loop is already working.
 
+:::info Page role
+**Released user workflow.** This page stays on the published operator surface.
+For upcoming shortcuts or validation commands that are intentionally unreleased,
+use [Next release track](../next-release). For package-level runtime work, use
+[Developer / integrator workflow](./developer-integrator).
+:::
+
 It sharpens the official **monitoring, history, and report workflow**, while also covering the released benchmark smoke command that should precede local-LLM use.
 
 > Released `xrtm==0.3.0` intentionally keeps this page on the commands that actually ship today. New guided-start and validation flows stay on the next coordinated release track.

@@ -1,6 +1,6 @@
 ---
 title: Packages and architecture
-description: The XRTM product shell plus the package stack underneath it.
+description: Repo map for the product shell, package stack, and the owning references behind them.
 ---
 
 # Packages and architecture
@@ -24,13 +24,13 @@ See [Getting started](../getting-started) for that path.
 
 ## The package map
 
-| Layer | Package | What it gives you today |
-| :--- | :--- | :--- |
-| Product shell | **[`xrtm`](https://github.com/xrtm-org/xrtm)** | Provider-free demo path, reports, canonical artifacts, WebUI, TUI, profiles, compare/export, and local monitoring |
-| Runtime | **[`xrtm-forecast`](https://github.com/xrtm-org/forecast)** | Forecasting agents, orchestration, provider integrations, and source examples |
-| Evaluation | **[`xrtm-eval`](https://github.com/xrtm-org/eval)** | Brier scoring, calibration-focused evaluation, and verification utilities |
-| Data | **[`xrtm-data`](https://github.com/xrtm-org/data)** | Schemas and temporal snapshot foundations for zero-leakage evaluation |
-| Training | **[`xrtm-train`](https://github.com/xrtm-org/train)** | Backtesting, replay, calibration demos, and optimization loops |
+| Layer | Package | What it gives you today | Canonical reference |
+| :--- | :--- | :--- | :--- |
+| Product shell | **[`xrtm`](https://github.com/xrtm-org/xrtm)** | Provider-free demo path, reports, canonical artifacts, WebUI, TUI, profiles, compare/export, and local monitoring | [`README.md`](https://github.com/xrtm-org/xrtm/blob/main/README.md), [`docs/python-api-reference.md`](https://github.com/xrtm-org/xrtm/blob/main/docs/python-api-reference.md) |
+| Runtime | **[`xrtm-forecast`](https://github.com/xrtm-org/forecast)** | Forecasting agents, orchestration, provider integrations, and source examples | [`README.md`](https://github.com/xrtm-org/forecast/blob/main/README.md), [`docs/index.md`](https://github.com/xrtm-org/forecast/blob/main/docs/index.md) |
+| Evaluation | **[`xrtm-eval`](https://github.com/xrtm-org/eval)** | Brier scoring, calibration-focused evaluation, and verification utilities | [`xrtm-org/eval`](https://github.com/xrtm-org/eval) |
+| Data | **[`xrtm-data`](https://github.com/xrtm-org/data)** | Schemas and temporal snapshot foundations for zero-leakage evaluation | [`xrtm-org/data`](https://github.com/xrtm-org/data) |
+| Training | **[`xrtm-train`](https://github.com/xrtm-org/train)** | Backtesting, replay, calibration demos, and optimization loops | [`xrtm-org/train`](https://github.com/xrtm-org/train) |
 
 ## How the pieces fit
 
@@ -43,6 +43,14 @@ See [Getting started](../getting-started) for that path.
 
 - Choose **`xrtm`** when you want the honest released workflow and provider-free first success.
 - Choose **`xrtm-forecast`** when you want to call forecasting APIs directly from your own code.
+
+## What `xrtm.org` does here
+
+- explain the package boundaries in one place
+- send you to the right owning repo quickly
+- keep released docs, next-release summaries, and governance policy clearly separated
+
+It does **not** replace the owning repo's README, API docs, examples, or policy files.
 
 ## When to update this site vs a sibling repo
 

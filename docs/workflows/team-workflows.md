@@ -7,6 +7,13 @@ description: Honest team usage patterns built on current XRTM features and conve
 
 Teams can use XRTM productively today, but they do it through **shared artifacts, profiles, JSON exports, and conventions** rather than a built-in shared control plane.
 
+:::info Page role
+**Released user workflow.** This page documents what teams can do on the current
+released surface without implying unreleased identity, CSV, or control-plane
+features. For possible future team features, use
+[Next release track](../next-release).
+:::
+
 ## What teams can do today
 
 - standardize local workflows with named profiles
