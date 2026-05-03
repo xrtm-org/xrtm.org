@@ -52,6 +52,16 @@ explicitly need to expose the dev server to a container, VM, or LAN peer.
 
 If a change starts in a source-of-truth repo, land or coordinate it there first. Update `xrtm.org` afterward when the presentation layer needs to reflect the accepted result.
 
+## Released vs next-release docs
+
+Keep the public docs surfaces distinct:
+
+- **Released path**: `getting-started`, `examples`, and the release-pinned workflow pages stay on the currently published package surface.
+- **Next-release path**: branch-only conveniences with clear short-term value belong on [Next release track](./next-release) and in the owning repo's next-release document.
+- **Roadmap path**: longer-horizon or genuinely experimental work belongs on [Roadmap](./roadmap).
+
+Do not move current-source conveniences into release-pinned pages until the owning repo updates the published package, release contract, and validation evidence together.
+
 ## What to validate before opening a PR
 
 At minimum:

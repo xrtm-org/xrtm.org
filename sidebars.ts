@@ -43,6 +43,7 @@ const sidebars: SidebarsConfig = {
       collapsed: true,
       items: ['philosophy/manifesto'],
     },
+    'next-release',
     'roadmap',
     'contributing',
   ],

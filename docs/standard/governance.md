@@ -12,12 +12,14 @@ The governance repo is where XRTM keeps cross-repo rules stable while implementa
 - **Compatibility rules:** [`schemas/compatibility-policy.md`](https://github.com/xrtm-org/governance/blob/main/schemas/compatibility-policy.md)
 - **Review and acceptance policy:** [`policies/pr-acceptance-policy.md`](https://github.com/xrtm-org/governance/blob/main/policies/pr-acceptance-policy.md)
 - **Triage and release policy:** [`policies/triage-matrix.md`](https://github.com/xrtm-org/governance/blob/main/policies/triage-matrix.md) and [`policies/release-readiness-policy.md`](https://github.com/xrtm-org/governance/blob/main/policies/release-readiness-policy.md)
+- **Feature status and graduation policy:** [`policies/feature-status-and-graduation-policy.md`](https://github.com/xrtm-org/governance/blob/main/policies/feature-status-and-graduation-policy.md)
 
 ## Practical change flow
 
 1. If you want to change a schema or cross-repo compatibility rule, open it in **governance first**.
 2. Once governance accepts the change, update the affected implementation repos such as [`xrtm`](https://github.com/xrtm-org/xrtm), [`forecast`](https://github.com/xrtm-org/forecast), [`eval`](https://github.com/xrtm-org/eval), [`data`](https://github.com/xrtm-org/data), or [`train`](https://github.com/xrtm-org/train).
 3. Update `xrtm.org` last so the newcomer-facing explanation mirrors the accepted source of truth.
+4. When a feature exists in source but is intentionally unreleased, summarize it on the site's [Next release track](../next-release) instead of slipping it into release-pinned docs.
 
 ## What this site should do
 

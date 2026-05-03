@@ -1,6 +1,6 @@
 # Roadmap
 
-> This page is for **future, planned, or experimental** work. If you want the shipped path today, start with [Getting started](./getting-started) and [Examples and proof](./examples).
+> This page is for **future, planned, or experimental** work. If you want the shipped path today, start with [Getting started](./getting-started) and [Examples and proof](./examples). If you want near-term branch work that is intentionally **not released yet**, use [Next release track](./next-release).
 
 **Goal**: Make XRTM the standard local workbench for forecasting and model evaluation with scientific rigor.
 
