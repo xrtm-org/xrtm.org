@@ -61,24 +61,39 @@ Use this stage to review forecast counts, scores, warnings, durations, and the u
 | **Duration / tokens** | `run_summary.json`, compare output | The cost side of a quality change. Improvements that double runtime should earn that cost. |
 | **Exported forecast rows** | `export.json` and downstream analysis | Use exports for notebook/spreadsheet review after compare identifies the run worth keeping. |
 
-### 5. The released compare → learn loop
+### 5. One honest improvement workflow
 
-The honest released loop today is:
+Use this control → candidate → compare loop:
 
-1. Run a provider-free benchmark or demo pass to establish a baseline.
-2. Change one thing that could matter: provider, local model, or prompt/configuration in your workflow.
-3. Re-run and use `xrtm runs compare` to check whether Brier/ECE improved without introducing warnings, errors, or unacceptable runtime/tokens.
-4. Export the winning run for deeper analyst review.
+1. **Control:** run the released provider-free path first and, if needed, repeat it on the same question set. Repeated mock runs should stay effectively unchanged.
+2. **Learn the gate:** use compare output to learn which metrics matter before you make any stronger claim.
+3. **Introduce one meaningful change:** move to an advanced path such as a real local model, a runtime-level prompt/configuration change, or calibration/replay work from the package layer.
+4. **Compare on the same question set:** only compare runs that are answering the same questions.
+5. **Decide and export:** keep the candidate only if quality improved enough to justify its runtime/tokens cost, then export it for deeper review.
 
-That is a real measurement loop even though the default provider-free path is intentionally deterministic. The deterministic baseline exists to make later changes legible.
+This is honest precisely because the default provider-free path is deterministic.
+The repeated mock run is your control, not your improvement proof.
 
-### 6. Validation status on the released surface
+### 6. How to turn compare output into an action
+
+| Compare result | What it means | What to do next |
+| :--- | :--- | :--- |
+| Mock vs mock is unchanged | Your control is stable, which is what you want from the released default path. | Keep the baseline and try one meaningful change before claiming improvement. |
+| Brier/ECE improve and warnings/errors stay clean | The candidate may be genuinely better. | Export the run, review question-level differences, and consider promoting it. |
+| Scores improve but runtime/tokens jump sharply | Quality improved, but the cost may not be worth it. | Keep it as an experiment until the cost is acceptable. |
+| Scores regress or warnings/errors appear | The change hurt quality or robustness. | Revert, retune, or inspect the per-question deltas before trying again. |
+
+### 7. Validation status on the released surface
 
 The newer corpus-validation workflow visible in current source work is not part of the published `xrtm==0.3.0` release. Until a coordinated release ships it with compatible upstream packages, keep release-pinned research docs on `xrtm perf run`, explicit run inspection, comparison, and JSON export.
 
-### 7. Move into calibration and replay work
+### 8. Move into calibration and replay work
 
 XRTM's package stack includes shipped examples for deeper evaluation work such as calibration demos, trace replay, and evaluation harnesses. See [Examples and proof](../examples) and [Packages and architecture](../framework/intro).
+
+Those deeper paths are where stronger "improved over time" proofs should live.
+They involve a real system change rather than repeated runs of the deterministic
+default baseline.
 
 ## Shipped surfaces this workflow uses
 

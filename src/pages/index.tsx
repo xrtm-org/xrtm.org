@@ -30,7 +30,7 @@ const reasons = [
   {
     title: 'Improve forecasting systems, not chat demos',
     description:
-      'XRTM focuses on probabilistic workflows: scored runs, calibration-aware evaluation, historical replay, and repeatable operator paths that help you improve over time.',
+      'XRTM focuses on probabilistic workflows: scored runs, calibration-aware evaluation, historical replay, and repeatable operator paths that help you learn which changes genuinely improve the system.',
   },
 ];
 
@@ -50,7 +50,7 @@ xrtm web --runs-dir runs`,
   {
     title: 'Benchmark and performance workflow',
     description:
-      'Generate deterministic benchmark evidence first, then use the released compare/export surface for repeatable review without leaving the published package path.',
+      'Generate deterministic benchmark evidence first, treat it as the stable control, then use the released compare/export surface to judge later changes honestly.',
     command: `xrtm perf run --scenario provider-free-smoke --iterations 3 --limit 1 --runs-dir runs-perf --output performance.json
 xrtm web --runs-dir runs --smoke`,
     href: '/docs/workflows/researcher-model-eval',
@@ -58,7 +58,7 @@ xrtm web --runs-dir runs --smoke`,
   {
     title: 'Monitoring, history, and report workflow',
     description:
-      'Move from one-off runs into repeatable profiles, monitoring, compare/export review, and explicit report regeneration.',
+      'Move from one-off runs into repeatable profiles, monitoring, compare/export review, and explicit keep-or-revert decisions.',
     command: `xrtm profile create my-local --provider mock --limit 2 --runs-dir runs
 xrtm run profile my-local
 xrtm monitor start --provider mock --limit 2 --runs-dir runs
@@ -165,9 +165,10 @@ export default function Home(): React.JSX.Element {
               </h1>
               <p className="max-w-3xl text-lg leading-8 text-slate-700 dark:text-slate-300 md:text-xl">
                 AI can already generate plausible answers. XRTM is built for the harder
-                job: forecasting real-world events, keeping score, and improving the
-                system over time. Start with one provider-free demo, then expand into benchmarking,
-                monitoring, history, and advanced local-model paths.
+                job: forecasting real-world events, keeping score, and learning
+                whether later changes actually help. Start with one provider-free
+                demo, then expand into benchmarking, monitoring, history, and
+                advanced local-model paths when you want a real candidate change.
               </p>
             </div>
             <div className="flex flex-col gap-3 sm:flex-row">
@@ -198,8 +199,9 @@ export default function Home(): React.JSX.Element {
             </pre>
             <p className="mt-4 text-sm leading-7 text-slate-600 dark:text-slate-400">
               This path proves the core product with released features only: one provider-free demo,
-              scored artifacts, and a browser or terminal view over the same saved evidence
-              before you move into benchmarking, monitoring, and advanced local-model paths.
+              scored artifacts, and a browser or terminal view over the same saved evidence.
+              It establishes the honest baseline before you move into benchmarking,
+              monitoring, and advanced local-model paths.
             </p>
           </div>
         </section>

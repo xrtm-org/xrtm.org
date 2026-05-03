@@ -45,6 +45,9 @@ behavior, flags, and artifact contracts are owned by
 xrtm perf run --scenario provider-free-smoke --iterations 3 --limit 1 --runs-dir runs-perf --output performance.json
 ```
 
+This is the honest default baseline. Repeated mock-provider runs should stay
+stable, which makes later changes legible.
+
 ### 3. Monitoring, history, and report workflow
 
 ```bash
@@ -54,6 +57,12 @@ xrtm monitor start --provider mock --limit 2 --runs-dir runs
 xrtm runs compare <run-id-a> <run-id-b> --runs-dir runs
 xrtm runs export <run-id> --runs-dir runs --output export.json
 ```
+
+Use this as the released compare gate:
+
+- unchanged mock-provider comparisons mean you still have the control run
+- lower Brier/ECE with similar warnings/errors and acceptable runtime is the real improvement signal
+- export is the follow-up step after compare, not the proof by itself
 
 ### 4. Local-LLM advanced workflow
 
@@ -105,7 +114,7 @@ Useful example entry points live in the external [`xrtm-org/train`](https://gith
 ## How to read examples honestly
 
 - **Product workflow first**: start with [Getting started](./getting-started).
-- **Workflow docs second**: use the [researcher](./workflows/researcher-model-eval) and [operator](./workflows/operator-runbook) paths for supported journeys.
+- **Workflow docs second**: use the [researcher](./workflows/researcher-model-eval) and [operator](./workflows/operator-runbook) paths for the supported control → candidate → compare journeys.
 - **Examples third**: reach for package scripts when you want to learn internals, extend the system, or study a narrower capability.
 - **Roadmap separate**: if something is only planned or experimental, it should not be treated as a hero claim.
 

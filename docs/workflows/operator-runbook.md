@@ -69,6 +69,13 @@ xrtm runs export <run-id> --runs-dir runs --output export.json
 xrtm report html runs/<run-id>
 ```
 
+Treat that compare/export surface as an operator decision loop:
+
+- repeated mock runs are the stable default control
+- unchanged compare output means your baseline is behaving as expected
+- only claim improvement after a meaningful provider/model/runtime change lowers Brier/ECE without adding warnings/errors or unacceptable runtime/tokens cost
+- export the winning run when you want deeper analyst review
+
 ## Benchmark smoke workflow
 
 Use the built-in provider-free performance harness when you want a quick local regression signal without introducing provider noise:
@@ -79,6 +86,10 @@ xrtm web --runs-dir runs --smoke
 ```
 
 `xrtm perf run` writes a structured performance report, while `xrtm web --runs-dir runs --smoke` verifies the WebUI routes without starting a long-lived server.
+
+That benchmark is the honest released default baseline. Stronger visible
+improvement proof belongs to the advanced paths where you intentionally change
+model or runtime behavior.
 
 ## Validation status
 

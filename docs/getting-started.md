@@ -102,6 +102,12 @@ You completed the first XRTM event-forecasting loop:
 
 That is the core product path for newcomers.
 
+It is intentionally an honest baseline, not an oversold improvement demo. The
+released mock provider proves that XRTM can produce scored, inspectable
+artifacts and teach you how to review them. It does **not** by itself prove
+visible forecast-quality gains over repeated runs, because the default path is
+deterministic on purpose.
+
 ## Official proof-point workflows
 
 After the first run, these four released workflows expand the same event-forecasting
@@ -129,6 +135,7 @@ Treat this as the released quality baseline:
 - `performance.json` records reproducible runtime evidence
 - the paired `runs-perf/<run-id>/run_summary.json` contains Brier and ECE from the same scored surface as normal runs
 - provider-free repeats should stay stable; later provider/model changes should earn any score or latency movement they introduce
+- unchanged mock-vs-mock compare output is the expected control signal
 
 ### 3. Monitoring, history, and report workflow
 
@@ -146,6 +153,8 @@ Use `xrtm runs compare` as your released compare gate:
 - **warnings / errors:** operational regressions
 - **duration / tokens:** efficiency cost of a change
 - compare is most believable when the runs answer the same question set
+- unchanged provider-free comparisons mean the control is stable; do not market that as visible improvement yet
+- improved scores with similar operational health are the runs worth exporting and keeping
 
 ### 4. Local-LLM advanced workflow
 
@@ -176,7 +185,7 @@ This creates `.xrtm/profiles/my-local.json`, ensures the local `runs/` workspace
 
 ### Pick the guide that matches your role
 
-- **Researcher / model-eval**: use the [researcher workflow](./workflows/researcher-model-eval) for released benchmark smoke, score interpretation, compare/export review, and the concrete compare → learn loop.
+- **Researcher / model-eval**: use the [researcher workflow](./workflows/researcher-model-eval) for the honest control → candidate → compare decision loop and the clearly labeled advanced proof paths.
 - **Operator**: continue with the [operator runbook](./workflows/operator-runbook) for the monitoring/history/report workflow, profiles, performance checks, and troubleshooting.
 - **Team**: read [team workflows](./workflows/team-workflows) for realistic multi-user patterns and current limitations.
 - **Developer / integrator**: use the [developer workflow](./workflows/developer-integrator) and the [packages overview](./framework/intro) to move from product usage into APIs and examples.
