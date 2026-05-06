@@ -15,7 +15,7 @@
     "write-heading-ids": "docusaurus write-heading-ids",
     "typecheck": "tsc",
     "audit:policy": "npm audit --audit-level=high && node -e \"console.log('Audit policy passed: no high or critical vulnerabilities found. Remaining Docusaurus dev-server findings stay tracked in README.md with owner and review triggers.')\"",
-    "release:check": "python3 ${XRTM_RELEASE_CHECKER:-../xrtm/scripts/check_release_claims.py} --repo-root . --scope xrtm.org --contract ${XRTM_RELEASE_CONTRACT:-../xrtm/docs/release-command-contract.json}"
+    "release:check": "python3 ${XRTM_RELEASE_CHECKER:-scripts/check_release_claims.py} --repo-root . --scope xrtm.org --contract ${XRTM_RELEASE_CONTRACT:-scripts/release-command-contract.json}"
   },
   "dependencies": {
     "@docusaurus/core": "3.10.1",

@@ -92,7 +92,7 @@ The repeated mock run is your control, not your improvement proof.
 
 ### 7. Validation status on the released surface
 
-The newer corpus-validation workflow visible in current source work is not part of the published `xrtm==0.3.0` release. Until a coordinated release ships it with compatible upstream packages, keep release-pinned research docs on `xrtm perf run`, explicit run inspection, comparison, and JSON export.
+The newer corpus-validation workflow visible in current source work is not part of the published `xrtm==0.3.1` release. Until a later coordinated release ships it with compatible upstream packages, keep release-pinned research docs on `xrtm perf run`, explicit run inspection, comparison, and JSON/CSV export.
 
 ### 8. Move into calibration and replay work
 

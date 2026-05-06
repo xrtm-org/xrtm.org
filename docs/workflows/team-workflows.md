@@ -5,12 +5,11 @@ description: Honest team usage patterns built on current XRTM features and conve
 
 # XRTM Team Workflows
 
-Teams can use XRTM productively today, but they do it through **shared artifacts, profiles, JSON exports, and conventions** rather than a built-in shared control plane.
+Teams can use XRTM productively today, but they do it through **shared artifacts, profiles, JSON/CSV exports, and conventions** rather than a built-in shared control plane.
 
 :::info Page role
 **Released user workflow.** This page documents what teams can do on the current
-released surface without implying unreleased identity, CSV, or control-plane
-features. For possible future team features, use
+released surface without implying unreleased identity or control-plane features. For possible future team features, use
 [Next release track](../next-release).
 :::
 
@@ -19,7 +18,7 @@ features. For possible future team features, use
 - standardize local workflows with named profiles
 - write runs into shared directories
 - attribute runs through profile names and directory conventions
-- compare runs and export JSON for downstream analysis
+- compare runs and export JSON or CSV for downstream analysis
 - review HTML reports, WebUI views, and TUI views over the same artifacts
 
 ## What XRTM does not claim to ship here
@@ -27,7 +26,7 @@ features. For possible future team features, use
 - built-in user management or role-based access control
 - a shared database or team dashboard
 - centralized permissions, quotas, or multi-user coordination features
-- built-in CSV export or CLI `--user` attribution on the released `0.3.0` surface
+- CLI `--user` attribution on the released `0.3.1` surface
 
 ## Practical team pattern
 
@@ -36,7 +35,7 @@ features. For possible future team features, use
 ```bash
 python3.11 -m venv .venv
 . .venv/bin/activate
-pip install xrtm==0.3.0
+pip install xrtm==0.3.1
 xrtm doctor
 ```
 
@@ -47,14 +46,13 @@ xrtm profile create analyst-jane --provider mock --limit 10 --runs-dir runs
 xrtm profile create analyst-bob --provider mock --limit 10 --runs-dir runs
 ```
 
-### 3. Use shared run storage and JSON exports
+### 3. Use shared run storage and exports
 
 ```bash
 xrtm run profile analyst-jane
 xrtm runs export <run-id> --runs-dir runs --output exports/jane.json
+xrtm runs export <run-id> --runs-dir runs --output exports/jane.csv --format csv
 ```
-
-If spreadsheet rows are required, treat them as a custom integration layer built on top of the released JSON export.
 
 ## Where this path fits
 

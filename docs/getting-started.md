@@ -6,7 +6,7 @@ description: Make your first forecast run, inspect the evidence, and open the We
 # Getting Started with XRTM
 
 XRTM is AI for event forecasting. This is the shortest honest path to first
-success on the released `xrtm==0.3.0` surface.
+success on the released `xrtm==0.3.1` surface.
 
 :::info Page role
 **Released user path.** This page stays pinned to the published package surface.
@@ -15,20 +15,18 @@ package APIs and code-first entry points, use
 [Developer / integrator workflow](./workflows/developer-integrator).
 :::
 
-You will run the released provider-free demo, inspect the generated artifacts, and
+You will run the released guided first command, inspect the generated artifacts, and
 browse the results. The default path uses the built-in mock provider, so you do
 **not** need API keys or a local model server.
 
-> This page is intentionally pinned to the commands that ship in `xrtm==0.3.0`.
-> Newer guided-start and validation commands in current source work are not part
-> of the released onboarding path yet.
+> This page is intentionally pinned to the commands that ship in `xrtm==0.3.1`.
 
 ## 1. Install
 
 ```bash
 python3.11 -m venv .venv
 . .venv/bin/activate
-pip install xrtm==0.3.0
+pip install xrtm==0.3.1
 ```
 
 **Supported Python versions:** `>=3.11,<3.13`
@@ -36,13 +34,12 @@ pip install xrtm==0.3.0
 ## 2. Run the guided first command
 
 ```bash
-xrtm demo --provider mock --limit 1 --runs-dir runs
+xrtm start
 ```
 
 This released first-success path stays provider-free: no API keys, no hosted service, and no local model server required.
 
-On success, `xrtm demo` prints the run directory it created under `runs/<run-id>/`.
-Treat that output as proof that XRTM completed a full local run and wrote the canonical evidence to disk.
+On success, `xrtm start` verifies readiness, runs the deterministic mock-provider workflow, confirms the key artifacts, and prints exact next commands with the run id and report path.
 
 This provider-free first run:
 
@@ -54,13 +51,10 @@ This provider-free first run:
 ## 3. Inspect the run artifacts
 
 ```bash
-xrtm runs list --runs-dir runs
-xrtm runs show <run-id> --runs-dir runs
-xrtm artifacts inspect runs/<run-id>
-xrtm report html runs/<run-id>
+xrtm runs show latest --runs-dir runs
+xrtm artifacts inspect --latest --runs-dir runs
+xrtm report html --latest --runs-dir runs
 ```
-
-Replace `<run-id>` with the id printed by `xrtm demo` or the one shown by `xrtm runs list`.
 
 `xrtm artifacts inspect` prints the canonical artifact inventory with on-disk locations, so you can verify exactly what the first run wrote.
 
@@ -242,7 +236,7 @@ xrtm runs list --runs-dir runs
 
 ### `xrtm doctor` shows package information only
 
-That is expected in the released `0.3.0` CLI. Use it to verify package versions and imports, then run the provider-free demo path above.
+That is expected in the released `0.3.1` CLI. Use it to verify package versions and imports, then run the provider-free first-success path above.
 
 ### Local-LLM health check fails
 

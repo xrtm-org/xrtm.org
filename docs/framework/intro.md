@@ -13,10 +13,10 @@ This section is a repo map, not the canonical package manual. Change shipped CLI
 
 ## Start with the product shell
 
-For most newcomers, the right first step is the top-level `xrtm` product experience on the released `0.3.0` surface:
+For most newcomers, the right first step is the top-level `xrtm` product experience on the released `0.3.1` surface:
 
-- run `xrtm demo --provider mock --limit 1 --runs-dir runs`
-- inspect the created run with `xrtm runs list`, `xrtm runs show <run-id> --runs-dir runs`, `xrtm artifacts inspect runs/<run-id>`, and `xrtm report html runs/<run-id>`
+- run `xrtm start`
+- inspect the created run with `xrtm runs show latest --runs-dir runs`, `xrtm artifacts inspect --latest --runs-dir runs`, and `xrtm report html --latest --runs-dir runs`
 - open the same run in the WebUI or TUI
 - move into repeatable workflows with profiles, compare/export, and monitor commands
 
