@@ -21,7 +21,7 @@ This page helps you find verifiable examples without making `xrtm.org` the owner
 ## Official proof-point workflows
 
 The story is simple: XRTM is AI for event forecasting. These workflows and
-examples are the shipped proof behind that claim on the released `0.3.0` surface:
+examples are the shipped proof behind that claim on the released `0.3.1` surface:
 
 1. **Provider-free first success**
 2. **Benchmark smoke workflow**

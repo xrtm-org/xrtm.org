@@ -1,6 +1,6 @@
 ---
 title: Next release track
-description: Near-term conveniences that exist in source or planning, but are intentionally kept off the released 0.3.0 surface.
+description: Near-term conveniences that exist in source or planning, but are intentionally kept off the released 0.3.1 surface.
 ---
 
 # Next release track
@@ -15,7 +15,7 @@ and the labeling/graduation rules live in the governance repo's
 [Feature Status and Graduation Policy](https://github.com/xrtm-org/governance/blob/main/policies/feature-status-and-graduation-policy.md).
 :::
 
-- **Released docs** stay pinned to what ships in `xrtm==0.3.0`.
+- **Released docs** stay pinned to what ships in `xrtm==0.3.1`.
 - **This page** tracks near-term conveniences that are real and valuable, but not yet promoted into the public released path.
 - **The roadmap** remains for longer-horizon, future, or experimental work.
 
@@ -25,9 +25,9 @@ For command-level details, see [`xrtm/docs/next-release-feature-track.md`](https
 
 | Feature family | Canonical status | Target train | Why it is not on the released surface yet | What happens next |
 | --- | --- | --- | --- | --- |
-| Guided onboarding helpers (`xrtm start`, starter profile scaffolding) | **`next-release`** | Next coordinated `xrtm` release after `0.3.0` | They are current-source wrappers over the honest provider-free path, but they should graduate only with a coordinated package/docs release. | Ship with clean-install proof and the matching onboarding docs update. |
-| Latest-run shortcuts (`latest`, `--latest`) | **`next-release`** | Next coordinated `xrtm` release after `0.3.0` | Valuable operator ergonomics, but not part of the published `0.3.0` command contract yet. | Add released-artifact smoke and then promote together with docs and contract updates. |
-| CSV export on the top-level product surface | **`next-release`** | Next coordinated `xrtm` release after `0.3.0` | Useful and already implemented, but the released docs still promise JSON as the safe export contract today. | Keep JSON as the full-fidelity story; promote CSV once release packaging and docs move together. |
+| Guided onboarding helpers (`xrtm start`, starter profile scaffolding) | **`shipped`** | `0.3.1` | They are now part of the released guided first-success path. | Keep clean-install proof and the matching onboarding docs update in lockstep. |
+| Latest-run shortcuts (`latest`, `--latest`) | **`shipped`** | `0.3.1` | They are now part of the published operator ergonomics surface. | Keep released-artifact smoke covering the shortcuts. |
+| CSV export on the top-level product surface | **`shipped`** | `0.3.1` | It is now part of the released export surface, with JSON still documented as the full-fidelity bundle. | Keep JSON/CSV documentation aligned with release packaging. |
 | Corpus validation workflows (`validate run`, `list-corpora`) | **`advanced/experimental`** | After corpus policy and released-stack validation mature further | These flows are real, but they depend on corpus tiers, release-gate policies, and more operator/research context than the default shipped path. | Keep them in advanced or release-engineering guidance until the corpus and compatibility story is steadier. |
 | Corpus preparation UX (`validate prepare-corpus`) | **`redesign-required`** | Not on the current release train | The current command mixes cache setup, corpus policy, and preview semantics in a way that is still too internal. | Redesign the user-facing workflow before treating it as a public release promise. |
 | User attribution flags (`--user`) | **`redesign-required`** | Not on the current release train | The implementation exists, but the public product still honestly describes team use as convention-based rather than built-in identity or multi-user workflow management. | Clarify semantics, storage, and privacy expectations first; then decide whether to release it as metadata, workflow labeling, or something else. |

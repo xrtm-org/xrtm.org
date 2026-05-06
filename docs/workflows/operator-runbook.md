@@ -16,7 +16,7 @@ use [Next release track](../next-release). For package-level runtime work, use
 
 It sharpens the official **monitoring, history, and report workflow**, while also covering the released benchmark smoke command that should precede local-LLM use.
 
-> Released `xrtm==0.3.0` intentionally keeps this page on the commands that actually ship today. New guided-start and validation flows stay on the next coordinated release track.
+> Released `xrtm==0.3.1` keeps this page on the commands that actually ship today. Corpus-validation flows remain on the next-release track.
 
 ## Start from the default path
 
@@ -34,7 +34,7 @@ If you have not already done so, complete [Getting started](../getting-started) 
 ### Create a repeatable profile
 
 ```bash
-xrtm profile create my-local --provider mock --limit 2 --runs-dir runs
+xrtm profile starter my-local --runs-dir runs
 xrtm run profile my-local
 ```
 
@@ -42,11 +42,12 @@ xrtm run profile my-local
 
 ```bash
 xrtm runs list --runs-dir runs
-xrtm runs show <run-id> --runs-dir runs
-xrtm artifacts inspect runs/<run-id>
-xrtm report html runs/<run-id>
+xrtm runs show latest --runs-dir runs
+xrtm artifacts inspect --latest --runs-dir runs
+xrtm report html --latest --runs-dir runs
 xrtm runs compare <run-id-a> <run-id-b> --runs-dir runs
-xrtm runs export <run-id> --runs-dir runs --output export.json
+xrtm runs export latest --runs-dir runs --output export.json
+xrtm runs export latest --runs-dir runs --output export.csv --format csv
 ```
 
 ### Browse the same runs in browser or terminal
@@ -72,8 +73,9 @@ History and report review stay on the same proof-point path:
 
 ```bash
 xrtm runs compare <run-id-a> <run-id-b> --runs-dir runs
-xrtm runs export <run-id> --runs-dir runs --output export.json
-xrtm report html runs/<run-id>
+xrtm runs export latest --runs-dir runs --output export.json
+xrtm runs export latest --runs-dir runs --output export.csv --format csv
+xrtm report html --latest --runs-dir runs
 ```
 
 Treat that compare/export surface as an operator decision loop:
@@ -100,7 +102,7 @@ model or runtime behavior.
 
 ## Validation status
 
-The newer corpus-validation commands are not part of the published `xrtm==0.3.0` release. Until a coordinated release ships them with compatible upstream packages, keep released operator workflows on `xrtm perf run`, explicit run inspection, compare, JSON export, and monitor commands.
+The newer corpus-validation commands are not part of the published `xrtm==0.3.1` release. Until a later coordinated release ships them with compatible upstream packages, keep released operator workflows on `xrtm perf run`, explicit run inspection, compare, JSON/CSV export, and monitor commands.
 
 ## Optional later: local-LLM mode
 
