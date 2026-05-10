@@ -1,45 +1,44 @@
 ---
 title: Getting started
-description: Make your first forecast run, inspect the evidence, and open the WebUI or TUI.
+description: Install the released package, run the provider-free demo, inspect artifacts, and open the WebUI or TUI.
 ---
 
 # Getting Started with XRTM
 
-XRTM is AI for event forecasting. This is the shortest honest path to first
-success on the released `xrtm==0.3.1` surface.
+This is the shortest honest path to first success with XRTM.
 
-:::info Page role
-**Released user path.** This page stays pinned to the published package surface.
-For branch-only conveniences, use [Next release track](./next-release). For
-package APIs and code-first entry points, use
-[Developer / integrator workflow](./workflows/developer-integrator).
-:::
+You will verify package health, run a complete local demo, inspect the
+generated artifacts, and browse the results. The default path uses the built-in
+mock provider, so you do **not** need API keys or a local model server.
 
-You will run the released guided first command, inspect the generated artifacts, and
-browse the results. The default path uses the built-in mock provider, so you do
-**not** need API keys or a local model server.
-
-> This page is intentionally pinned to the commands that ship in `xrtm==0.3.1`.
+> Release-gated command note: the command blocks in this guide are validated
+> against `xrtm/docs/release-command-contract.json` so the public site cannot
+> drift ahead of the latest published `xrtm` package surface.
 
 ## 1. Install
 
 ```bash
 python3.11 -m venv .venv
 . .venv/bin/activate
-pip install xrtm==0.3.1
+pip install xrtm==0.3.0
 ```
 
 **Supported Python versions:** `>=3.11,<3.13`
 
-## 2. Run the guided first command
+## 2. Verify package health
 
 ```bash
-xrtm start
+xrtm doctor
 ```
 
-This released first-success path stays provider-free: no API keys, no hosted service, and no local model server required.
+`xrtm doctor` is the released health check. Use it to confirm imports and the
+installed package versions before you run a workflow.
 
-On success, `xrtm start` verifies readiness, runs the deterministic mock-provider workflow, confirms the key artifacts, and prints exact next commands with the run id and report path.
+## 3. Run the published provider-free demo
+
+```bash
+xrtm demo --provider mock --limit 1 --runs-dir runs
+```
 
 This provider-free first run:
 
@@ -48,15 +47,19 @@ This provider-free first run:
 - evaluates the run with built-in scoring
 - writes a complete run directory under `runs/`
 
-## 3. Inspect the run artifacts
+## 4. Inspect the run artifacts
 
 ```bash
-xrtm runs show latest --runs-dir runs
-xrtm artifacts inspect --latest --runs-dir runs
-xrtm report html --latest --runs-dir runs
+xrtm runs list --runs-dir runs
+xrtm runs show <run-id> --runs-dir runs
+xrtm artifacts inspect runs/<run-id>
+xrtm report html runs/<run-id>
 ```
 
-`xrtm artifacts inspect` prints the canonical artifact inventory with on-disk locations, so you can verify exactly what the first run wrote.
+Replace `<run-id>` with the id from `xrtm runs list --runs-dir runs`.
+`xrtm artifacts inspect` prints the canonical artifact inventory with on-disk
+locations, and `xrtm report html runs/<run-id>` regenerates
+`runs/<run-id>/report.html`.
 
 The run directory contains the same evidence used by higher-level views:
 
@@ -74,10 +77,12 @@ runs/<run-id>/
   logs/
 ```
 
-`monitor.json` is only written for monitor runs created with `xrtm monitor start`;
-ordinary forecast runs stay in run views instead of monitor views.
+`monitor.json` is optional monitor state. Real monitor runs populate it with
+watches and thresholds, while some profile-driven runs may carry an idle
+placeholder. Use `xrtm monitor list` status and watch counts to distinguish
+active monitors from ordinary runs.
 
-## 4. Browse the results
+## 5. Browse the results
 
 Launch the local WebUI:
 
@@ -93,30 +98,31 @@ If you prefer the terminal, launch the TUI instead:
 xrtm tui --runs-dir runs
 ```
 
-## 5. What you just proved
+## 6. What you just proved
 
-You completed the first XRTM event-forecasting loop:
+You completed the first published XRTM event-forecasting loop:
 
-1. **Forecast run**: ran a forecasting workflow without external providers
-2. **Scored evidence**: verified the run and its outputs on disk
-3. **Review surface**: opened the same run through WebUI or TUI
+1. **Health check**: verified the installed stack with `xrtm doctor`
+2. **Forecast run**: ran a provider-free forecasting workflow without external providers
+3. **Scored evidence**: verified the run and its outputs on disk
+4. **Review surface**: opened the same run through WebUI or TUI
 
-That is the core product path for newcomers.
+That is the core product path for newcomers today.
 
-It is intentionally an honest baseline, not an oversold improvement demo. The
-released mock provider proves that XRTM can produce scored, inspectable
-artifacts and teach you how to review them. It does **not** by itself prove
-visible forecast-quality gains over repeated runs, because the default path is
-deterministic on purpose.
+It is also intentionally modest: the default mock-provider run proves that
+XRTM can create scored, inspectable evidence and teach you how to review it.
+It does **not** by itself prove visible forecast-quality improvement over time,
+because the released mock provider is deterministic and should remain stable.
 
 ## Official proof-point workflows
 
-After the first run, these four released workflows expand the same event-forecasting
-loop:
+After the first run, these release-gated workflows expand the same
+event-forecasting loop:
 
 ### 1. Provider-free first success
 
 ```bash
+xrtm doctor
 xrtm demo --provider mock --limit 1 --runs-dir runs
 xrtm runs list --runs-dir runs
 xrtm runs show <run-id> --runs-dir runs
@@ -125,20 +131,24 @@ xrtm report html runs/<run-id>
 xrtm web --runs-dir runs
 ```
 
-### 2. Benchmark smoke workflow
+### 2. Benchmark and performance workflow
 
 ```bash
 xrtm perf run --scenario provider-free-smoke --iterations 3 --limit 1 --runs-dir runs-perf --output performance.json
+xrtm web --runs-dir runs --smoke
 ```
 
-Treat this as the released quality baseline:
+Use this workflow when you want deterministic benchmark evidence and a quick
+WebUI route smoke without introducing provider noise.
 
-- `performance.json` records reproducible runtime evidence
-- the paired `runs-perf/<run-id>/run_summary.json` contains Brier and ECE from the same scored surface as normal runs
-- provider-free repeats should stay stable; later provider/model changes should earn any score or latency movement they introduce
-- unchanged mock-vs-mock compare output is the expected control signal
+Treat it as the released evaluation baseline:
 
-### 3. Monitoring, history, and report workflow
+- `performance.json` captures repeatable runtime evidence
+- the paired `runs-perf/<run-id>/run_summary.json` carries scored run metrics such as Brier and ECE
+- on the provider-free path, repeated runs should stay stable enough to act as a control before you change provider/model settings
+- if the compare output is effectively unchanged across repeated mock runs, that is the expected control behavior
+
+### 3. Monitoring, history, and export workflow
 
 ```bash
 xrtm profile create my-local --provider mock --limit 2 --runs-dir runs
@@ -148,14 +158,14 @@ xrtm runs compare <run-id-a> <run-id-b> --runs-dir runs
 xrtm runs export <run-id> --runs-dir runs --output export.json
 ```
 
-Use `xrtm runs compare` as your released compare gate:
+When you compare two runs, read the output like an evaluation gate:
 
 - **Brier / ECE:** lower is better
-- **warnings / errors:** operational regressions
+- **warnings / errors:** should stay at zero
 - **duration / tokens:** efficiency cost of a change
-- compare is most believable when the runs answer the same question set
-- unchanged provider-free comparisons mean the control is stable; do not market that as visible improvement yet
-- improved scores with similar operational health are the runs worth exporting and keeping
+- use compare only after the two runs are meant to answer the same question set
+- unchanged mock-vs-mock compares mean the baseline is stable; introduce a real provider/model/runtime change before claiming improvement
+- improved scores with similar operational health are promotion candidates; regressions or large runtime jumps should be investigated or rejected
 
 ### 4. Local-LLM advanced workflow
 
@@ -167,6 +177,11 @@ xrtm demo --provider local-llm --limit 1 --max-tokens 768 --runs-dir runs-local
 
 Only switch to local-LLM mode after the provider-free path above is working.
 
+Commands that are still on the next coordinated release train—new guided-start
+shortcuts, corpus-validation flows, latest-run aliases, CSV export, and
+user-attribution flags—stay off this guide until the release contract moves
+forward.
+
 ## Good next steps
 
 ### Run a slightly larger local pass
@@ -175,34 +190,37 @@ Only switch to local-LLM mode after the provider-free path above is working.
 xrtm demo --provider mock --limit 10 --runs-dir runs
 ```
 
-### Scaffold a reusable local profile
+### Create a reusable local profile
 
 ```bash
 xrtm profile create my-local --provider mock --limit 2 --runs-dir runs
+xrtm profile show my-local
 xrtm run profile my-local
 ```
 
-This creates `.xrtm/profiles/my-local.json`, ensures the local `runs/` workspace exists, and keeps the workflow on the same mock-provider path you just proved.
+This writes `.xrtm/profiles/my-local.json` and keeps the workflow on the same
+mock-provider path you just proved.
 
 ### Pick the guide that matches your role
 
-- **Researcher / model-eval**: use the [researcher workflow](./workflows/researcher-model-eval) for the honest control → candidate → compare decision loop and the clearly labeled advanced proof paths.
-- **Operator**: continue with the [operator runbook](./workflows/operator-runbook) for the monitoring/history/report workflow, profiles, performance checks, and troubleshooting.
+- **Researcher / model-eval**: stay on the provider-free path, then use the [researcher workflow](./workflows/researcher-model-eval) for the honest control → candidate → compare decision loop and the clearly labeled advanced paths.
+- **Operator**: continue with the [operator runbook](./workflows/operator-runbook) for monitoring, profiles, performance checks, exports, and troubleshooting.
 - **Team**: read [team workflows](./workflows/team-workflows) for realistic multi-user patterns and current limitations.
 - **Developer / integrator**: use the [developer workflow](./workflows/developer-integrator) and the [packages overview](./framework/intro) to move from product usage into APIs and examples.
 
 ## Advanced and optional: local LLM mode
 
-Only switch to `--provider local-llm` after the provider-free path above is working.
+Only switch to `--provider local-llm` after the provider-free path above is
+working.
 
-Use local-LLM mode when you specifically need to evaluate a real local model and you already have a local OpenAI-compatible endpoint available.
+Use local-LLM mode when you specifically need to evaluate a real local model
+and you already have a local OpenAI-compatible endpoint available.
 
 Typical prerequisites:
-
 - a running local inference server such as llama.cpp, Ollama, or LocalAI
 - downloaded model weights
 - enough CPU/GPU resources for the model you chose
-- willingness to trade the 5-minute quick start for a slower, more complex setup
+- willingness to trade the quick start for a slower, more complex setup
 
 Minimal verification flow:
 
@@ -228,16 +246,12 @@ Activate the virtual environment first:
 
 This is expected. XRTM currently supports Python `>=3.11,<3.13`.
 
-### Need the run id again?
+### `xrtm doctor` shows warnings
 
-```bash
-xrtm runs list --runs-dir runs
-```
-
-### `xrtm doctor` shows package information only
-
-That is expected in the released `0.3.1` CLI. Use it to verify package versions and imports, then run the provider-free first-success path above.
+Check the warning text first. Optional components may be missing even when the
+default provider-free demo path is fine.
 
 ### Local-LLM health check fails
 
-Go back to the provider-free path, confirm the main install works, then use the [operator runbook](./workflows/operator-runbook) to debug your local endpoint.
+Go back to the provider-free path, confirm the main install works, then use the
+[operator runbook](./workflows/operator-runbook) to debug your local endpoint.

@@ -11,9 +11,11 @@ const pillClass =
 
 const proofPills = [
   'Provider-free first success',
-  'Benchmark and performance workflow',
-  'Monitoring/history/report workflow',
-  'Local-LLM advanced workflow',
+  'Artifact-backed runs',
+  'HTML report',
+  'WebUI + TUI',
+  'Brier + calibration metrics',
+  'Profiles, compare, export',
 ];
 
 const reasons = [
@@ -23,56 +25,51 @@ const reasons = [
       'Every run writes canonical artifacts to disk so you can inspect the forecast payloads, scores, events, reports, and logs after the model finishes.',
   },
   {
-    title: 'Start with proof, not setup',
+    title: 'Start local by default',
     description:
-      'The guided first run uses the built-in mock provider so you can prove the forecasting loop end to end before adding API keys, model downloads, or a hosted control plane.',
+      'The first released proof uses the built-in mock provider. You can prove the workflow end to end without API keys, model downloads, or a hosted control plane.',
   },
   {
-    title: 'Improve forecasting systems, not chat demos',
+    title: 'Evaluate forecasting systems, not chat demos',
     description:
-      'XRTM focuses on probabilistic workflows: scored runs, calibration-aware evaluation, historical replay, and repeatable operator paths that help you learn which changes genuinely improve the system.',
+      'XRTM focuses on probabilistic workflows: scored runs, calibration-aware evaluation, historical replay, and repeatable local operator paths.',
   },
 ];
 
 const defaultStory = [
   {
-    title: 'Provider-free first success',
+    title: 'Verify package health and run the first demo',
     description:
-      'Use the release-gated provider-free demo to prove the first event-forecasting loop, inspect explicit run artifacts, and open the same run in WebUI or TUI.',
-    command: `xrtm demo --provider mock --limit 1 --runs-dir runs
-xrtm runs list --runs-dir runs
+      'Use xrtm doctor first, then run the published deterministic mock-provider demo to create the initial scored run directory.',
+    command: `xrtm doctor
+xrtm demo --provider mock --limit 1 --runs-dir runs`,
+    href: '/docs/getting-started#2-verify-package-health',
+  },
+  {
+    title: 'Inspect the run explicitly',
+    description:
+      'List runs, pick the run id you just created, inspect the canonical artifact directory, and regenerate the HTML report from the same saved evidence.',
+    command: `xrtm runs list --runs-dir runs
 xrtm runs show <run-id> --runs-dir runs
 xrtm artifacts inspect runs/<run-id>
-xrtm report html runs/<run-id>
-xrtm web --runs-dir runs`,
-    href: '/docs/getting-started#official-proof-point-workflows',
+xrtm report html runs/<run-id>`,
+    href: '/docs/getting-started#4-inspect-the-run-artifacts',
   },
   {
-    title: 'Benchmark and performance workflow',
+    title: 'Browse the same run in WebUI or TUI',
     description:
-      'Generate deterministic benchmark evidence first, treat it as the stable control, then use the released compare/export surface to judge later changes honestly.',
-    command: `xrtm perf run --scenario provider-free-smoke --iterations 3 --limit 1 --runs-dir runs-perf --output performance.json
-xrtm web --runs-dir runs --smoke`,
+      'Open the run in the local browser view or terminal cockpit without changing the underlying artifact format.',
+    command: `xrtm web --runs-dir runs
+xrtm tui --runs-dir runs`,
+    href: '/docs/getting-started#5-browse-the-results',
+  },
+  {
+    title: 'Choose your next path',
+    description:
+      'Move from the default proof-of-workflow into researcher, operator, team, or developer docs depending on what you need next.',
+    command: `Researcher / model-eval first
+then operator, team, developer`,
     href: '/docs/workflows/researcher-model-eval',
-  },
-  {
-    title: 'Monitoring, history, and report workflow',
-    description:
-      'Move from one-off runs into repeatable profiles, monitoring, compare/export review, and explicit keep-or-revert decisions.',
-    command: `xrtm profile create my-local --provider mock --limit 2 --runs-dir runs
-xrtm run profile my-local
-xrtm monitor start --provider mock --limit 2 --runs-dir runs
-xrtm runs export <run-id> --runs-dir runs --output export.json`,
-    href: '/docs/workflows/operator-runbook',
-  },
-  {
-    title: 'Local-LLM advanced workflow',
-    description:
-      'Only after the provider-free workflows are healthy, verify your local endpoint and run the bounded local-LLM demo.',
-    command: `export XRTM_LOCAL_LLM_BASE_URL=http://localhost:8080/v1
-xrtm local-llm status
-xrtm demo --provider local-llm --limit 1 --max-tokens 768 --runs-dir runs-local`,
-    href: '/docs/workflows/operator-runbook#optional-later-local-llm-mode',
   },
 ];
 
@@ -80,7 +77,7 @@ const audiences = [
   {
     title: 'Researcher / model-eval',
     description:
-      'Run repeatable passes, compare outputs, review Brier and calibration signals, and keep the evidence on disk.',
+      'Run repeatable local passes, compare outputs, review Brier and calibration signals, and keep the evidence on disk.',
     href: '/docs/workflows/researcher-model-eval',
   },
   {
@@ -108,13 +105,13 @@ const packageRows = [
     name: 'xrtm',
     role: 'Product shell',
     description:
-      'Provider-free demo path, canonical artifacts, HTML reports, WebUI, TUI, profiles, compare/export, and monitoring for the first event-forecasting loop.',
+      'Provider-free first success, canonical artifacts, HTML reports, WebUI, TUI, profiles, compare/export, and local monitoring.',
   },
   {
     name: 'xrtm-forecast',
     role: 'Runtime package',
     description:
-      'Forecast runtime, orchestration, inference providers, and reasoning workflows for event-forecasting systems.',
+      'Forecasting agents, orchestration, inference providers, and example reasoning workflows.',
   },
   {
     name: 'xrtm-eval',
@@ -137,69 +134,68 @@ const packageRows = [
 const quickstart = [
   'python3.11 -m venv .venv',
   '. .venv/bin/activate',
-  'pip install xrtm==0.3.1',
-  'xrtm start',
-  'xrtm runs show latest --runs-dir runs',
-  'xrtm artifacts inspect --latest --runs-dir runs',
-  'xrtm report html --latest --runs-dir runs',
+  'pip install xrtm==0.3.0',
+  'xrtm doctor',
+  'xrtm demo --provider mock --limit 1 --runs-dir runs',
+  'xrtm runs list --runs-dir runs',
+  'xrtm runs show <run-id> --runs-dir runs',
+  'xrtm artifacts inspect runs/<run-id>',
+  'xrtm report html runs/<run-id>',
   'xrtm web --runs-dir runs',
 ].join('\n');
 
 export default function Home(): React.JSX.Element {
   return (
     <Layout
-      title="AI for event forecasting"
-      description="Forecast real-world events, track predictions, measure accuracy, and improve over time."
+      title="Local-first forecasting and model-eval workbench"
+      description="Run forecasting workflows locally, inspect every artifact, and review results in the browser or terminal."
     >
       <main className="flex flex-col gap-20 px-6 pb-24 pt-10 selection:bg-blue-500/20 md:px-8">
         <section className="mx-auto grid w-full max-w-6xl gap-8 lg:grid-cols-2 lg:items-center">
           <div className="space-y-6">
             <p className="text-sm font-semibold uppercase tracking-[0.24em] text-blue-600 dark:text-blue-300">
-              AI for event forecasting
+              Local-first forecasting and model-eval workbench
             </p>
             <div className="space-y-4">
               <h1 className="max-w-4xl text-5xl font-black tracking-tight text-slate-950 dark:text-white md:text-7xl">
-                Forecast real-world events and get better over time.
+                Forecast locally. Score rigorously. Inspect everything.
               </h1>
               <p className="max-w-3xl text-lg leading-8 text-slate-700 dark:text-slate-300 md:text-xl">
-                AI can already generate plausible answers. XRTM is built for the harder
-                job: forecasting real-world events, keeping score, and learning
-                whether later changes actually help. Start with one provider-free
-                demo, then expand into benchmarking, monitoring, history, and
-                advanced local-model paths when you want a real candidate change.
+                XRTM gives newcomers a clear product path: verify the released package,
+                run the provider-free demo, inspect the run artifacts, browse the same run
+                in the WebUI or TUI, then choose the audience workflow that fits next.
               </p>
             </div>
             <div className="flex flex-col gap-3 sm:flex-row">
               <Link className="button button--primary button--lg" to="/docs/getting-started">
-                Start your first forecast
+                Start with getting started
               </Link>
               <Link
                 className="button button--secondary button--lg"
-                to="/docs/examples"
+                to="/docs/workflows/researcher-model-eval"
               >
-                See proof workflows
+                Browse researcher workflow
               </Link>
             </div>
             <p className="max-w-3xl text-sm leading-7 text-slate-600 dark:text-slate-400">
-              Local-LLM mode is supported, but it is intentionally optional and secondary.
-              The default first run stays provider-free so you can prove the event-forecasting
-              loop before adding model-serving complexity.
+              Local-LLM mode is supported, but it is intentionally optional and secondary. The default
+              first run is the released provider-free path so you can prove the workflow before adding
+              model-serving complexity.
             </p>
           </div>
 
           <div className={shellCard}>
             <div className="mb-4 flex items-center justify-between text-sm font-medium text-slate-500 dark:text-slate-400">
-              <span>First forecasting loop</span>
-              <span className="font-mono">forecast → score → inspect → improve</span>
+              <span>Default first run</span>
+              <span className="font-mono">doctor → demo → inspect → Web/TUI</span>
             </div>
             <pre className="overflow-x-auto rounded-2xl bg-slate-950 p-5 text-sm leading-7 text-slate-100 shadow-inner shadow-black/20">
               <code>{quickstart}</code>
             </pre>
             <p className="mt-4 text-sm leading-7 text-slate-600 dark:text-slate-400">
-              This path proves the core product with released features only: one provider-free demo,
-              scored artifacts, and a browser or terminal view over the same saved evidence.
-              It establishes the honest baseline before you move into benchmarking,
-              monitoring, and advanced local-model paths.
+              This path proves the product with shipped features only: package health checks,
+              deterministic local execution, scored run artifacts, and a browser or terminal view over
+              the same saved run directory.
             </p>
           </div>
         </section>
@@ -218,12 +214,12 @@ export default function Home(): React.JSX.Element {
               Why XRTM
             </p>
             <h2 className="text-3xl font-bold tracking-tight text-slate-950 dark:text-white md:text-4xl">
-              A forecasting system, not just a prompt.
+              A forecasting workbench, not a philosophy puzzle.
             </h2>
             <p className="text-base leading-8 text-slate-700 dark:text-slate-300 md:text-lg">
-              The point is not to admire one answer. The point is to run forecasts, keep
-              the evidence, measure the result, and learn from it. Philosophy and package
-              internals remain available, but they no longer replace the product story.
+              The homepage leads with what XRTM is, why someone would use it, and what they can
+              prove today. Philosophy and package internals remain available, but they no longer block
+              the first-run story.
             </p>
           </div>
           <div className="grid gap-6 md:grid-cols-3">
@@ -246,7 +242,7 @@ export default function Home(): React.JSX.Element {
               What you can do today
             </p>
             <h2 className="text-3xl font-bold tracking-tight text-slate-950 dark:text-white md:text-4xl">
-              Prove the event-forecasting loop with shipped workflows.
+              Follow the shipped newcomer path end to end.
             </h2>
           </div>
           <div className="grid gap-6 lg:grid-cols-2">
@@ -279,7 +275,7 @@ export default function Home(): React.JSX.Element {
               Audience paths
             </p>
             <h2 className="text-3xl font-bold tracking-tight text-slate-950 dark:text-white md:text-4xl">
-              Choose the path that matches your job.
+              Researcher / model-eval first, then operator, team, and developer.
             </h2>
           </div>
           <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
@@ -307,7 +303,7 @@ export default function Home(): React.JSX.Element {
               Packages and architecture
             </p>
             <h2 className="text-3xl font-bold tracking-tight text-slate-950 dark:text-white md:text-4xl">
-              Use the product shell first; learn the package stack when you need depth.
+              The product shell is first-run; the package stack sits underneath it.
             </h2>
             <p className="text-base leading-8 text-slate-700 dark:text-slate-300 md:text-lg">
               Newcomers should not need package taxonomy to reach first success, but the package
@@ -336,12 +332,12 @@ export default function Home(): React.JSX.Element {
           </div>
           <div className={subtleCard}>
             <h3 className="text-xl font-semibold text-slate-950 dark:text-white">
-              Keep philosophy and roadmap in context
+              Keep philosophy and roadmap secondary
             </h3>
             <p className="mt-3 max-w-3xl text-sm leading-7 text-slate-700 dark:text-slate-300">
               The philosophy, standard, and roadmap still matter, but they now live behind the product
-              path instead of replacing it. Start with `xrtm demo --provider mock --limit 1 --runs-dir runs` and docs overview, then go deeper
-              once you understand the shipped workflow.
+              path instead of replacing it. Start with getting started and the docs overview, then go
+              deeper once you understand the shipped workflow.
             </p>
             <div className="mt-5 flex flex-wrap gap-3">
               <Link className="button button--secondary button--sm" to="/docs">
