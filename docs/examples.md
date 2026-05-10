@@ -14,17 +14,15 @@ on the [roadmap](./roadmap).
 If you only do one thing, do this first:
 
 ```bash
-xrtm doctor
-xrtm demo --provider mock --limit 1 --runs-dir runs
-xrtm runs list --runs-dir runs
-xrtm runs show <run-id> --runs-dir runs
-xrtm artifacts inspect runs/<run-id>
-xrtm report html runs/<run-id>
+xrtm start
+xrtm runs show latest --runs-dir runs
+xrtm artifacts inspect --latest --runs-dir runs
+xrtm report html --latest --runs-dir runs
 xrtm web --runs-dir runs
 ```
 
-That flow is the core proof that XRTM works as a local-first forecasting and
-model-eval workbench today.
+That flow is the released guided first-success proof that XRTM works as a
+local-first forecasting and model-eval workbench today.
 
 ## What the product ships today
 

@@ -38,22 +38,20 @@ const reasons = [
 
 const defaultStory = [
   {
-    title: 'Verify package health and run the first demo',
+    title: 'Run the guided first command',
     description:
-      'Use xrtm doctor first, then run the published deterministic mock-provider demo to create the initial scored run directory.',
-    command: `xrtm doctor
-xrtm demo --provider mock --limit 1 --runs-dir runs`,
-    href: '/docs/getting-started#2-verify-package-health',
+      'Use xrtm start to run the released health check, create the initial scored run directory, and print the exact next commands.',
+    command: `xrtm start`,
+    href: '/docs/getting-started#2-run-the-guided-first-command',
   },
   {
-    title: 'Inspect the run explicitly',
+    title: 'Inspect the newest run',
     description:
-      'List runs, pick the run id you just created, inspect the canonical artifact directory, and regenerate the HTML report from the same saved evidence.',
-    command: `xrtm runs list --runs-dir runs
-xrtm runs show <run-id> --runs-dir runs
-xrtm artifacts inspect runs/<run-id>
-xrtm report html runs/<run-id>`,
-    href: '/docs/getting-started#4-inspect-the-run-artifacts',
+      'Use the released latest-run helpers to inspect the canonical artifact directory and regenerate the HTML report from the same saved evidence.',
+    command: `xrtm runs show latest --runs-dir runs
+xrtm artifacts inspect --latest --runs-dir runs
+xrtm report html --latest --runs-dir runs`,
+    href: '/docs/getting-started#3-inspect-the-run-artifacts',
   },
   {
     title: 'Browse the same run in WebUI or TUI',
@@ -61,7 +59,7 @@ xrtm report html runs/<run-id>`,
       'Open the run in the local browser view or terminal cockpit without changing the underlying artifact format.',
     command: `xrtm web --runs-dir runs
 xrtm tui --runs-dir runs`,
-    href: '/docs/getting-started#5-browse-the-results',
+    href: '/docs/getting-started#4-browse-the-results',
   },
   {
     title: 'Choose your next path',
@@ -135,12 +133,10 @@ const quickstart = [
   'python3.11 -m venv .venv',
   '. .venv/bin/activate',
   'pip install xrtm==0.3.1',
-  'xrtm doctor',
-  'xrtm demo --provider mock --limit 1 --runs-dir runs',
-  'xrtm runs list --runs-dir runs',
-  'xrtm runs show <run-id> --runs-dir runs',
-  'xrtm artifacts inspect runs/<run-id>',
-  'xrtm report html runs/<run-id>',
+  'xrtm start',
+  'xrtm runs show latest --runs-dir runs',
+  'xrtm artifacts inspect --latest --runs-dir runs',
+  'xrtm report html --latest --runs-dir runs',
   'xrtm web --runs-dir runs',
 ].join('\n');
 
@@ -161,9 +157,9 @@ export default function Home(): React.JSX.Element {
                 Forecast locally. Score rigorously. Inspect everything.
               </h1>
               <p className="max-w-3xl text-lg leading-8 text-slate-700 dark:text-slate-300 md:text-xl">
-                XRTM gives newcomers a clear product path: verify the released package,
-                run the provider-free demo, inspect the run artifacts, browse the same run
-                in the WebUI or TUI, then choose the audience workflow that fits next.
+                XRTM gives newcomers a clear product path: run the released guided first
+                command, inspect the newest run artifacts, browse the same run in the WebUI
+                or TUI, then choose the audience workflow that fits next.
               </p>
             </div>
             <div className="flex flex-col gap-3 sm:flex-row">
@@ -187,15 +183,15 @@ export default function Home(): React.JSX.Element {
           <div className={shellCard}>
             <div className="mb-4 flex items-center justify-between text-sm font-medium text-slate-500 dark:text-slate-400">
               <span>Default first run</span>
-              <span className="font-mono">doctor → demo → inspect → Web/TUI</span>
+              <span className="font-mono">start → inspect → Web/TUI</span>
             </div>
             <pre className="overflow-x-auto rounded-2xl bg-slate-950 p-5 text-sm leading-7 text-slate-100 shadow-inner shadow-black/20">
               <code>{quickstart}</code>
             </pre>
             <p className="mt-4 text-sm leading-7 text-slate-600 dark:text-slate-400">
-              This path proves the product with shipped features only: package health checks,
-              deterministic local execution, scored run artifacts, and a browser or terminal view over
-              the same saved run directory.
+              This path proves the product with shipped features only: the guided first-run
+              flow, deterministic local execution, scored run artifacts, and a browser or
+              terminal view over the same saved run directory.
             </p>
           </div>
         </section>

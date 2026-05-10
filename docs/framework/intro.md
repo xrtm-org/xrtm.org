@@ -13,11 +13,10 @@ the **package stack** underneath it.
 For most newcomers, the right first step is the top-level `xrtm` product
 experience:
 
-- run `xrtm doctor`
-- run `xrtm demo --provider mock --limit 1 --runs-dir runs`
-- inspect the canonical run artifacts with an explicit run id
+- run `xrtm start`
+- inspect the newest canonical run artifacts with the released `latest` helpers
 - open the same run in the WebUI or TUI
-- move into repeatable workflows with profiles, compare, export, and monitor commands
+- move into repeatable workflows with starter profiles, compare, export, and monitor commands
 
 See [Getting started](../getting-started) for that path.
 

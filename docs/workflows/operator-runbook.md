@@ -19,13 +19,13 @@ everyone else.
 ### Create the lightest repeatable profile
 
 ```bash
-xrtm profile create my-local --provider mock --limit 2 --runs-dir runs
+xrtm profile starter my-local --runs-dir runs
 xrtm profile show my-local
 xrtm run profile my-local
 ```
 
-This keeps the workflow on the same released mock-provider path while creating
-a reusable local profile under `.xrtm/profiles/`.
+This keeps the workflow on the same released guided-start path while creating a
+reusable local profile under `.xrtm/profiles/`.
 
 ### Create fully custom profiles when needed
 
@@ -40,11 +40,12 @@ xrtm run profile local-mock
 
 ```bash
 xrtm runs list --runs-dir runs
-xrtm runs show <run-id> --runs-dir runs
-xrtm artifacts inspect runs/<run-id>
-xrtm report html runs/<run-id>
+xrtm runs show latest --runs-dir runs
+xrtm artifacts inspect --latest --runs-dir runs
+xrtm report html --latest --runs-dir runs
 xrtm runs compare <run-id-a> <run-id-b> --runs-dir runs
-xrtm runs export <run-id> --runs-dir runs --output export.json
+xrtm runs export latest --runs-dir runs --output export.json
+xrtm runs export latest --runs-dir runs --output export.csv --format csv
 ```
 
 ### Browse the same runs in browser or terminal

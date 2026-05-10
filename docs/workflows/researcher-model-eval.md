@@ -25,7 +25,8 @@ XRTM is most useful when you care about:
 ### 1. Prove the product path first
 
 Complete [Getting started](../getting-started) so you already have at least one
-released provider-free run from `xrtm demo --provider mock --limit 1 --runs-dir runs` to inspect.
+released provider-free run from `xrtm start` to inspect with the published
+latest-run helpers.
 
 ### 2. Run a larger provider-free pass
 
@@ -41,11 +42,11 @@ model.
 
 ```bash
 xrtm runs list --runs-dir runs
-xrtm runs show <run-id> --runs-dir runs
-xrtm artifacts inspect runs/<run-id>
-xrtm report html runs/<run-id>
+xrtm runs show latest --runs-dir runs
+xrtm artifacts inspect --latest --runs-dir runs
+xrtm report html --latest --runs-dir runs
 xrtm runs compare <run-id-a> <run-id-b> --runs-dir runs
-xrtm runs export <run-id> --runs-dir runs --output export.json
+xrtm runs export latest --runs-dir runs --output export.json
 ```
 
 Use this stage to review forecast counts, scores, warnings, durations, and the
@@ -71,7 +72,7 @@ proof](../examples) and [Packages and architecture](../framework/intro).
 
 ## Shipped surfaces this workflow uses
 
-- `xrtm doctor`
+- `xrtm start`
 - `xrtm demo`
 - `xrtm runs list`
 - `xrtm runs show`
