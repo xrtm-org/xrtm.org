@@ -1,6 +1,6 @@
 ---
 title: Next release track
-description: Near-term conveniences that exist in source or planning, but are intentionally kept off the released 0.3.1 surface.
+description: Near-term conveniences that exist in source or planning, but are intentionally kept off the released 0.3.2 surface.
 ---
 
 # Next release track
@@ -15,7 +15,7 @@ and the labeling/graduation rules live in the governance repo's
 [Feature Status and Graduation Policy](https://github.com/xrtm-org/governance/blob/main/policies/feature-status-and-graduation-policy.md).
 :::
 
-- **Released docs** stay pinned to what ships in `xrtm==0.3.1`.
+- **Released docs** stay pinned to what ships in `xrtm==0.3.2`.
 - **This page** tracks near-term conveniences that are real and valuable, but not yet promoted into the public released path.
 - **The roadmap** remains for longer-horizon, future, or experimental work.
 

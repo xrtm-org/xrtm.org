@@ -132,7 +132,7 @@ const packageRows = [
 const quickstart = [
   'python3.11 -m venv .venv',
   '. .venv/bin/activate',
-  'pip install xrtm==0.3.1',
+  'pip install xrtm==0.3.2',
   'xrtm start',
   'xrtm runs show latest --runs-dir runs',
   'xrtm artifacts inspect --latest --runs-dir runs',
