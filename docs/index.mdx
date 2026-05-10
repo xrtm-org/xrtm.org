@@ -1,78 +1,58 @@
 ---
 slug: /
-title: Docs overview
-description: Choose the right XRTM docs lane without mixing released, next-release, developer, and governance paths.
+title: Docs
+description: Start with the shipped XRTM product path.
 displayed_sidebar: docsSidebar
 ---
 
-# Choose the right XRTM docs lane
+# Start with the shipped product path
 
-XRTM is **AI for event forecasting**. The docs are organized into explicit lanes
-so released workflows, near-term unreleased work, package references, and
-governance do not blur together.
+XRTM is a **local-first forecasting and model-eval workbench**. If you are new here, the shortest honest path is:
 
-> `xrtm.org` is the presentation layer for the ecosystem. Product behavior and
-> released run-artifact contracts live in
-> [`xrtm-org/xrtm`](https://github.com/xrtm-org/xrtm), package APIs and source
-> examples live in their owning repos, and schema/policy truth lives in
-> [`xrtm-org/governance`](https://github.com/xrtm-org/governance).
+1. run the released guided first-success command
+2. inspect the newest run artifacts with the published latest-run helpers
+3. browse the same run in the WebUI or TUI
+4. choose the workflow that matches your role
 
-## Quick chooser
+## Default newcomer path
 
-| If you need... | Start here | Status | Canonical owner |
-| --- | --- | --- | --- |
-| the shortest honest first success | [Getting started](/docs/getting-started) | Released | `xrtm` repo + published `xrtm==0.3.1` package |
-| released compare/export/monitor workflows | [Released user path](#released-user-path) | Released | `xrtm` repo |
-| branch-only conveniences that are real but unreleased | [Next release track](/docs/next-release) | Explicitly unreleased | `xrtm/docs/next-release-feature-track.md` + governance policy |
-| package boundaries, APIs, and source examples | [Developer & package reference](#developer--package-reference) | Repo-map summary | owning package repo |
-| binding schemas, feature labeling rules, or release policy | [Governance & standard](#governance--standard) | Authoritative | `governance` repo |
-| longer-horizon or experimental ideas | [Roadmap](/docs/roadmap) | Future-facing | roadmap + owning repos |
+- [Run the guided first command](/docs/getting-started#2-run-the-guided-first-command)
+- [Inspect the newest run artifacts](/docs/getting-started#3-inspect-the-run-artifacts)
+- [Browse the results in WebUI or TUI](/docs/getting-started#4-browse-the-results)
+- [Continue with the researcher / model-eval path](/docs/workflows/researcher-model-eval)
 
-## Released user path
+## Start here
 
-Use these pages when you want the public `xrtm==0.3.1` surface today:
+- [Getting started](/docs/getting-started): the shipped first-run path via `xrtm start`
 
-- [Getting started](/docs/getting-started): provider-free first success on the released package
-- [Researcher / model-eval workflow](/docs/workflows/researcher-model-eval): released benchmark, compare, and export loop
-- [Operator runbook](/docs/workflows/operator-runbook): released monitoring, history, report, and smoke checks
-- [Team workflows](/docs/workflows/team-workflows): honest current-team usage without overselling built-in multi-user features
-- [Examples and proof](/docs/examples): released proof flows plus shipped source examples
+## Workflows
 
-## Next release lane
+- [Researcher / model-eval](/docs/workflows/researcher-model-eval): the primary audience path
+- [Operator runbook](/docs/workflows/operator-runbook): profiles, artifacts, monitoring, WebUI, and TUI
+- [Team workflows](/docs/workflows/team-workflows): honest team patterns using current features and conventions
+- [Developer / integrator](/docs/workflows/developer-integrator): package APIs and example-driven extension paths
 
-Use this when useful source work exists, but it is intentionally **not** part of
-the released newcomer path yet:
+## Examples and proof
 
-- [Next release track](/docs/next-release): public summary of near-term unreleased features and their graduation status
-- [Roadmap](/docs/roadmap): future, planned, or experimental work that is not on the next coordinated release train
+- [Examples and proof](/docs/examples): shipped product flows, package examples, and how to read them honestly
 
-## Developer & package reference
+## Packages and architecture
 
-Use this lane after the released product path is clear and you need the right
-package boundary:
+- [Packages and architecture](/docs/framework/intro): the product shell plus the package stack underneath it
+- [xrtm-forecast](/docs/framework/forecast)
+- [xrtm-eval](/docs/framework/eval)
+- [xrtm-data](/docs/framework/data)
+- [xrtm-train](/docs/framework/train)
 
-- [Developer / integrator workflow](/docs/workflows/developer-integrator): quick chooser for product shell vs package APIs
-- [Packages and architecture](/docs/framework/intro): repo map and package ownership boundaries
-- Package summaries:
-  - [xrtm-forecast](/docs/framework/forecast)
-  - [xrtm-eval](/docs/framework/eval)
-  - [xrtm-data](/docs/framework/data)
-  - [xrtm-train](/docs/framework/train)
-
-## Governance & standard
-
-These pages summarize the binding rules without trying to replace the owning
-repo:
+## Standard
 
 - [Why the standard exists](/docs/standard/intro)
 - [Forecast Object schema](/docs/standard/forecast-object)
-- [Governance overview](/docs/standard/governance)
-- [Contributing](/docs/contributing): contributor-facing repo map and doc-placement rules
+- [Standard governance](/docs/standard/governance)
 
-## Project context
+## Philosophy and roadmap
 
 - [Philosophy](/docs/philosophy/manifesto): why XRTM cares about forecasting and zero leakage
+- [Roadmap](/docs/roadmap): future and experimental work, clearly separated from shipped features
 
-> If you are new here, start with
-> [`xrtm demo --provider mock --limit 1 --runs-dir runs`](/docs/getting-started#2-run-the-guided-first-command)
-> on the released path first.
+> Philosophy stays available, but the docs intentionally lead with product workflows and proof.

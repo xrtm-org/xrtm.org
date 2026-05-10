@@ -1,36 +1,34 @@
 ---
 title: Packages and architecture
-description: Repo map for the product shell, package stack, and the owning references behind them.
+description: The XRTM product shell plus the package stack underneath it.
 ---
 
 # Packages and architecture
 
-The easiest way to understand XRTM is to separate the **product shell** from the **package stack** underneath it.
-
-:::note Source of truth boundaries
-This section is a repo map, not the canonical package manual. Change shipped CLI behavior in [`xrtm-org/xrtm`](https://github.com/xrtm-org/xrtm), change package APIs or examples in the owning package repo, and change schemas or compatibility rules in [`xrtm-org/governance`](https://github.com/xrtm-org/governance).
-:::
+The easiest way to understand XRTM is to separate the **product shell** from
+the **package stack** underneath it.
 
 ## Start with the product shell
 
-For most newcomers, the right first step is the top-level `xrtm` product experience on the released `0.3.1` surface:
+For most newcomers, the right first step is the top-level `xrtm` product
+experience:
 
 - run `xrtm start`
-- inspect the created run with `xrtm runs show latest --runs-dir runs`, `xrtm artifacts inspect --latest --runs-dir runs`, and `xrtm report html --latest --runs-dir runs`
+- inspect the newest canonical run artifacts with the released `latest` helpers
 - open the same run in the WebUI or TUI
-- move into repeatable workflows with profiles, compare/export, and monitor commands
+- move into repeatable workflows with starter profiles, compare, export, and monitor commands
 
 See [Getting started](../getting-started) for that path.
 
 ## The package map
 
-| Layer | Package | What it gives you today | Canonical reference |
-| :--- | :--- | :--- | :--- |
-| Product shell | **[`xrtm`](https://github.com/xrtm-org/xrtm)** | Provider-free demo path, reports, canonical artifacts, WebUI, TUI, profiles, compare/export, and local monitoring | [`README.md`](https://github.com/xrtm-org/xrtm/blob/main/README.md), [`docs/python-api-reference.md`](https://github.com/xrtm-org/xrtm/blob/main/docs/python-api-reference.md) |
-| Runtime | **[`xrtm-forecast`](https://github.com/xrtm-org/forecast)** | Forecasting agents, orchestration, provider integrations, and source examples | [`README.md`](https://github.com/xrtm-org/forecast/blob/main/README.md), [`docs/index.md`](https://github.com/xrtm-org/forecast/blob/main/docs/index.md) |
-| Evaluation | **[`xrtm-eval`](https://github.com/xrtm-org/eval)** | Brier scoring, calibration-focused evaluation, and verification utilities | [`xrtm-org/eval`](https://github.com/xrtm-org/eval) |
-| Data | **[`xrtm-data`](https://github.com/xrtm-org/data)** | Schemas and temporal snapshot foundations for zero-leakage evaluation | [`xrtm-org/data`](https://github.com/xrtm-org/data) |
-| Training | **[`xrtm-train`](https://github.com/xrtm-org/train)** | Backtesting, replay, calibration demos, and optimization loops | [`xrtm-org/train`](https://github.com/xrtm-org/train) |
+| Layer | Package | What it gives you today |
+| :--- | :--- | :--- |
+| Product shell | **`xrtm`** | Provider-free first success, canonical artifacts, HTML reports, WebUI, TUI, profiles, compare/export, and local monitoring |
+| Runtime | **`xrtm-forecast`** | Forecasting agents, orchestration, provider integrations, and source examples |
+| Evaluation | **`xrtm-eval`** | Brier scoring, calibration-focused evaluation, benchmark scorecards, and verification utilities |
+| Data | **`xrtm-data`** | Schemas, temporal snapshot foundations, and benchmark corpus registry/provenance |
+| Training | **`xrtm-train`** | Backtesting, replay, benchmark orchestration, and optimization loops |
 
 ## How the pieces fit
 
@@ -39,24 +37,22 @@ See [Getting started](../getting-started) for that path.
 - `xrtm-eval` and `xrtm-data` provide the scoring and snapshot foundations.
 - `xrtm-train` closes the loop for replay, calibration, and evaluation harnesses.
 
-## Fast entry-point rule
+## Benchmark architecture
 
-- Choose **`xrtm`** when you want the honest released workflow and provider-free first success.
-- Choose **`xrtm-forecast`** when you want to call forecasting APIs directly from your own code.
+Benchmarking is split across the same package stack:
 
-## What `xrtm.org` does here
+- `xrtm-data` owns corpus registry, provenance, licensing, and cache/import flows
+- `xrtm-eval` owns scoring, calibration, and benchmark comparison math
+- `xrtm-train` owns offline sweeps, replay loops, and live benchmark execution
+- `xrtm` and `xrtm.org` surface reports and score views without owning the engine
 
-- explain the package boundaries in one place
-- send you to the right owning repo quickly
-- keep released docs, next-release summaries, and governance policy clearly separated
+## Benchmark execution lanes
 
-It does **not** replace the owning repo's README, API docs, examples, or policy files.
+XRTM uses three benchmark lanes with different ownership and goals:
 
-## When to update this site vs a sibling repo
-
-- Update **`xrtm.org`** for newcomer framing, navigation, and cross-repo pointers.
-- Update the **owning repo** for shipped behavior, package APIs, example code, or release notes.
-- Update **governance first** for schema or compatibility policy changes, then mirror the accepted outcome here if newcomers need the summary.
+1. **Offline lane:** `xrtm-data` supplies versioned corpora, `xrtm-eval` scores them, and `xrtm-train` runs repeatable sweeps for internal development.
+2. **Live competition lane:** `xrtm-data` stores source contracts, `xrtm-train` handles submission/execution cadence, and `xrtm-eval` normalizes imported results.
+3. **Public scoreboard lane:** `xrtm-train` and `xrtm-eval` emit the source artifacts, while `xrtm` and `xrtm.org` present them to users.
 
 ## Where to go next
 

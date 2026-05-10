@@ -1,34 +1,29 @@
----
-title: xrtm-eval
-description: Evaluation-layer summary with clear ownership boundaries.
----
+# xrtm-eval: The Judge
 
-# xrtm-eval
+The `xrtm-eval` repository is the verification layer of the xrtm ecosystem. It serves as the impartial arbiter that determines the accuracy and reliability of probabilistic forecasts.
 
-`xrtm-eval` is the verification layer of the XRTM ecosystem.
+## The Scoring Engine
 
-:::note Page role
-This page is a package-map summary. Evaluation code and package-level truth live
-in [`xrtm-org/eval`](https://github.com/xrtm-org/eval).
-:::
+Unlike traditional metrics that look for semantic similarity, `xrtm-eval` focuses on mathematical rigor:
 
-## Use this package when
+- **Brier Scores:** Measuring the mean squared error of probabilistic predictions.
+- **Calibration Metrics:** Evaluating how well a model knows what it doesn't know. A well-calibrated model's predicted probabilities match the long-run actual frequencies.
+- **Resolution:** Handling the time delay between a forecast and the eventual ground truth resolution.
 
-- you need scoring or calibration utilities directly in code
-- you want the evaluation layer separated from runtime/inference concerns
-- you are interpreting Brier, ECE, and related forecast-quality signals
+## Pure Math Verification
 
-## What it gives you
+As Layer 2 in the architecture, `xrtm-eval` provides pure mathematical functions to grade the output of inference engines. It depends on `xrtm-data` for snapshot comparisons but remains decoupled from the inference logic itself to prevent circular evaluation bias.
 
-- **Brier scoring:** lower is better; `0.000` is perfect and about `0.250` is the balanced 50/50 binary baseline
-- **ECE / calibration:** lower is better; near `0` means stated confidence matches realized frequency more closely
-- **Resolution handling:** scoring logic that respects the gap between a forecast and its eventual outcome
+## Benchmark score ownership
 
-## Canonical reference
+In the benchmark stack, `xrtm-eval` owns the question **"how should this run be
+judged?"**
 
-- [xrtm-org/eval](https://github.com/xrtm-org/eval)
+That includes:
 
-## Ownership boundary
+- benchmark scorecards
+- calibration summaries
+- cohort comparisons
+- leaderboard-ready metric math
 
-Update evaluation logic and package docs in `eval`. Use `xrtm.org` only to keep
-the ecosystem map understandable for newcomers and integrators.
+It should not own corpus ingestion or replay orchestration.
