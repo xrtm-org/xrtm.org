@@ -26,7 +26,7 @@ released surface without implying unreleased identity or control-plane features.
 - built-in user management or role-based access control
 - a shared database or team dashboard
 - centralized permissions, quotas, or multi-user coordination features
-- CLI `--user` attribution on the released `0.3.1` surface
+- CLI `--user` attribution on the released `0.3.2` surface
 
 ## Practical team pattern
 
@@ -35,7 +35,7 @@ released surface without implying unreleased identity or control-plane features.
 ```bash
 python3.11 -m venv .venv
 . .venv/bin/activate
-pip install xrtm==0.3.1
+pip install xrtm==0.3.2
 xrtm doctor
 ```
 
