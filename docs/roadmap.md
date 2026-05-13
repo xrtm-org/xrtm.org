@@ -37,6 +37,7 @@ you want near-term unreleased work with explicit graduation status, use
 | Feature | Description | Status |
 | :--- | :--- | :--- |
 | **Epistemic Security** | Source verification and anti-manipulation work. | In Progress |
+| **Visual Workbench** | A clearer visual operating surface for runs, review, and workflow follow-through so users can understand XRTM from the product itself rather than only from command-first docs. This should grow from the real repo stack, not from mock marketing art. | Planned for 0.7 |
 
 ## Experimental or future
 
