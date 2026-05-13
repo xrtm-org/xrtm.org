@@ -1,62 +1,28 @@
 ---
 title: Team workflows
-description: Honest team usage patterns built on current XRTM features and conventions.
+description: Honest shared-usage patterns on the released XRTM surface.
 ---
 
 # XRTM Team Workflows
 
-Teams can use XRTM productively today, but they do it through **shared artifacts, profiles, JSON/CSV exports, and conventions** rather than a built-in shared control plane.
-
-:::info Page role
-**Released user workflow.** This page documents what teams can do on the current
-released surface without implying unreleased identity or control-plane features. For possible future team features, use
-[Next release track](../next-release).
-:::
+Teams can use XRTM today through **shared run directories, exports, reports, and conventions**.
 
 ## What teams can do today
 
-- standardize local workflows with named profiles
-- write runs into shared directories
-- attribute runs through profile names and directory conventions
-- compare runs and export JSON or CSV for downstream analysis
-- review HTML reports, WebUI views, and TUI views over the same artifacts
+- standardize on shared profile conventions from the [Operator runbook](./operator-runbook)
+- keep runs in agreed directories and review the same saved artifacts
+- export JSON or CSV for downstream analysis with `xrtm runs export latest --runs-dir runs --output export.json`
+- share HTML reports, WebUI views, and TUI views over the same run evidence
 
-## What XRTM does not claim to ship here
+## What this page does not claim
 
-- built-in user management or role-based access control
-- a shared database or team dashboard
-- centralized permissions, quotas, or multi-user coordination features
-- CLI `--user` attribution on the released `0.3.2` surface
+The released `xrtm 0.3.3` surface does **not** ship built-in user management, centralized permissions, or a multi-user control plane.
 
-## Practical team pattern
+## Suggested order
 
-### 1. Share installation and conventions
-
-```bash
-python3.11 -m venv .venv
-. .venv/bin/activate
-pip install xrtm==0.3.2
-xrtm doctor
-```
-
-### 2. Create repeatable analyst profiles
-
-```bash
-xrtm profile create analyst-jane --provider mock --limit 10 --runs-dir runs
-xrtm profile create analyst-bob --provider mock --limit 10 --runs-dir runs
-```
-
-### 3. Use shared run storage and exports
-
-```bash
-xrtm run profile analyst-jane
-xrtm runs export <run-id> --runs-dir runs --output exports/jane.json
-xrtm runs export <run-id> --runs-dir runs --output exports/jane.csv --format csv
-```
-
-## Where this path fits
-
-This page is for teams that want to operationalize what XRTM already ships without pretending the product has fully built-in multi-user infrastructure.
+1. Complete [Getting started](../getting-started).
+2. Use the [Researcher / model-eval workflow](./researcher-model-eval) or [Operator runbook](./operator-runbook) for the actual single-user command flow.
+3. Layer team conventions on top of those released artifact-backed workflows.
 
 ## Good next links
 
