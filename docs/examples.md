@@ -9,6 +9,11 @@ This page is intentionally product-and-proof-first. Everything below is either a
 shipped CLI workflow or a source example that exists today. Future work belongs
 on the [roadmap](./roadmap).
 
+When examples touch integrations, use the same taxonomy as the rest of XRTM:
+**OpenAI-compatible endpoints** and **coding-agent CLI contracts** are the two
+first-class categories. The built-in mock flow stays the deterministic
+provider-free smoke/baseline lane.
+
 ## The shipped newcomer workflow
 
 If you only do one thing, do this first:
@@ -22,11 +27,12 @@ xrtm web --runs-dir runs
 ```
 
 That flow is the released guided first-success proof that XRTM works as a
-local-first forecasting and model-eval workbench today.
+local-first forecasting and model-eval workbench today, using the provider-free
+smoke/baseline lane before any model-backed endpoint profile.
 
 ## What the product ships today
 
-- provider-free first success on the published package surface
+- provider-free smoke/baseline first success on the published package surface
 - canonical run artifacts under `runs/<run-id>/`
 - scored outputs including `eval.json`, `run_summary.json`, and `report.html`
 - local WebUI and TUI backed by the same run artifacts

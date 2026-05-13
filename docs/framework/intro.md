@@ -8,6 +8,19 @@ description: The XRTM product shell plus the package stack underneath it.
 The easiest way to understand XRTM is to separate the **product shell** from
 the **package stack** underneath it.
 
+## Integration taxonomy
+
+XRTM uses two first-class integration categories:
+
+| Category | What it means | How to read it today |
+| :--- | :--- | :--- |
+| **OpenAI-compatible endpoints** | Model-backed HTTP endpoints used by runtime workflows | The released advanced profile today is `--provider local-llm`; local and commercial deployments are profiles inside this same category. |
+| **Coding-agent CLI contracts** | CLI-backed coding agents integrated through an explicit command contract | This is the other first-class category in the standard, separate from HTTP endpoint wiring. |
+
+The built-in mock path is **not** a third runtime category. It is a
+provider-free smoke/baseline mode for proving installs, CI-safe validation, and
+stable compare controls.
+
 ## Start with the product shell
 
 For most newcomers, the right first step is the top-level `xrtm` product
@@ -24,8 +37,8 @@ See [Getting started](../getting-started) for that path.
 
 | Layer | Package | What it gives you today |
 | :--- | :--- | :--- |
-| Product shell | **`xrtm`** | Provider-free first success, canonical artifacts, HTML reports, WebUI, TUI, profiles, compare/export, and local monitoring |
-| Runtime | **`xrtm-forecast`** | Forecasting agents, orchestration, provider integrations, and source examples |
+| Product shell | **`xrtm`** | Provider-free smoke/baseline first success, canonical artifacts, HTML reports, WebUI, TUI, profiles, compare/export, and local monitoring |
+| Runtime | **`xrtm-forecast`** | Forecasting agents, orchestration, OpenAI-compatible endpoint integrations, and source examples |
 | Evaluation | **`xrtm-eval`** | Brier scoring, calibration-focused evaluation, benchmark scorecards, and verification utilities |
 | Data | **`xrtm-data`** | Schemas, temporal snapshot foundations, and benchmark corpus registry/provenance |
 | Training | **`xrtm-train`** | Backtesting, replay, benchmark orchestration, and optimization loops |

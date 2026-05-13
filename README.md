@@ -8,6 +8,17 @@ This website is built using [Docusaurus](https://docusaurus.io/), a modern stati
 
 Start with [CONTRIBUTING.md](CONTRIBUTING.md) for the GitHub-first contributor flow, or [`docs/contributing.md`](docs/contributing.md) for the rendered site copy. Both point to the same role split: `xrtm.org` owns presentation and navigation, while product/package truth stays in `xrtm`, the package repos, and `governance`.
 
+## Navigation after the runtime/release refresh
+
+- [`docs/index.mdx`](docs/index.mdx) is the public docs landing page for the
+  released newcomer route and workflow map
+- [`docs/standard/intro.md`](docs/standard/intro.md) is the public explanation
+  of the shared provider/runtime standard and where the category pages live
+- [`docs/next-release.md`](docs/next-release.md) is the branch-only lane for
+  unreleased conveniences that should stay out of release-pinned pages
+- `npm run release:check` is the repo guard that keeps these pages aligned with
+  `xrtm/docs/release-command-contract.json`
+
 ## Toolchain
 
 The supported local toolchain is:

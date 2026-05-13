@@ -62,6 +62,17 @@ Keep the public docs surfaces distinct:
 
 Do not move current-source conveniences into release-pinned pages until the owning repo updates the published package, release contract, and validation evidence together.
 
+## Canonical routing after the runtime/release refresh
+
+- [Docs home](./) for the public newcomer/workflow map
+- [Getting started](./getting-started) and the workflow pages for release-pinned
+  product behavior
+- [Why the standard exists](./standard/intro) when you need the shared
+  provider/runtime taxonomy and standards context
+- [Next release track](./next-release) for branch-only additions that are real
+  but not yet released
+- [Roadmap](./roadmap) for longer-horizon or exploratory material
+
 Use this quick classification when editing pages:
 
 | Page class | What may appear there | Minimum validation |

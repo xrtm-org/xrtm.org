@@ -57,33 +57,9 @@ const config: Config = {
       items: [
         {
           type: 'doc',
-          docId: 'index',
-          position: 'left',
-          label: 'Docs',
-        },
-        {
-          type: 'doc',
           docId: 'getting-started',
           position: 'left',
-          label: 'Released path',
-        },
-        {
-          type: 'doc',
-          docId: 'next-release',
-          position: 'left',
-          label: 'Next release',
-        },
-        {
-          type: 'doc',
-          docId: 'workflows/developer-integrator',
-          position: 'left',
-          label: 'Developer reference',
-        },
-        {
-          type: 'doc',
-          docId: 'standard/governance',
-          position: 'left',
-          label: 'Governance',
+          label: 'Start',
         },
         {
           href: 'https://github.com/xrtm-org',
@@ -96,31 +72,23 @@ const config: Config = {
       style: 'dark',
       links: [
         {
-          title: 'Released docs',
+          title: 'Start',
           items: [
-            { label: 'Docs overview', to: '/docs' },
-            { label: 'Start Here', to: '/docs/getting-started' },
-            { label: 'Workflows', to: '/docs/workflows/researcher-model-eval' },
-            { label: 'Examples', to: '/docs/examples' },
+            { label: 'Getting started', to: '/docs/getting-started' },
+            { label: 'Researcher / model-eval', to: '/docs/workflows/researcher-model-eval' },
           ],
         },
         {
-          title: 'Reference',
+          title: 'More',
           items: [
-            { label: 'Developer reference', to: '/docs/workflows/developer-integrator' },
-            { label: 'Packages', to: '/docs/framework/intro' },
-            { label: 'Standard', to: '/docs/standard/intro' },
-            { label: 'Governance', to: '/docs/standard/governance' },
+            { label: 'Operator runbook', to: '/docs/workflows/operator-runbook' },
+            { label: 'Developer / integrator', to: '/docs/workflows/developer-integrator' },
           ],
         },
         {
           title: 'Project',
           items: [
-            { label: 'Next release', to: '/docs/next-release' },
-            { label: 'Roadmap', to: '/docs/roadmap' },
-            { label: 'Contributing', to: '/docs/contributing' },
-            { label: 'Philosophy', to: '/docs/philosophy/manifesto' },
-            { label: 'GitHub org', href: 'https://github.com/xrtm-org' },
+            { label: 'GitHub', href: 'https://github.com/xrtm-org' },
           ],
         },
       ],
