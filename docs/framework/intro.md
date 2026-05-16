@@ -32,7 +32,7 @@ experience:
 
 - run `xrtm start`
 - inspect the newest canonical run artifacts with the released `latest` helpers
-- open the same run in the WebUI shell (Overview, Runs, run detail, compare, and `/workbench`) or TUI
+- open the same run in the WebUI shell (Overview, Start, Runs, Workflow detail, Operations, run detail, compare, `/workbench`, and Advanced visibility) or TUI
 - move into repeatable workflows with starter profiles, compare, export, and monitor commands
 
 See [Getting started](../getting-started) for that path.
@@ -41,7 +41,7 @@ See [Getting started](../getting-started) for that path.
 
 | Layer | Package | What it gives you today |
 | :--- | :--- | :--- |
-| Product shell | **`xrtm`** | Provider-free smoke/baseline first success, canonical artifacts, HTML reports, local-first WebUI shell (Overview, Runs, run detail, compare, and Workbench), SQLite-backed draft state, `/workbench` guided clone/safe-edit/validate/run/compare, TUI, profiles, compare/export, and local monitoring |
+| Product shell | **`xrtm`** | Provider-free smoke/baseline first success, canonical artifacts, HTML reports, local-first WebUI shell (Overview, Start, Runs, Workflow detail, Operations, run detail, compare, Workbench, and Advanced visibility), SQLite-backed draft state, `/workbench` guided clone/safe-edit/validate/run/compare, TUI, profiles, compare/export, and local monitoring |
 | Runtime | **`xrtm-forecast`** | Forecasting agents, orchestration, OpenAI-compatible endpoint integrations, and source examples |
 | Evaluation | **`xrtm-eval`** | Brier scoring, calibration-focused evaluation, benchmark scorecards, and verification utilities |
 | Data | **`xrtm-data`** | Schemas, temporal snapshot foundations, and benchmark corpus registry/provenance |

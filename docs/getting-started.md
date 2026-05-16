@@ -7,8 +7,8 @@ description: Install the released package, run the guided first command, inspect
 
 This is the shortest honest path to first success with XRTM.
 
-You will run the released health-check plus guided first command, inspect the
-generated artifacts, and browse the results in the WebUI shell or TUI. The
+You will run the released health-check plus guided first-success path, inspect
+the generated artifacts, and browse the results in the WebUI shell or TUI. The
 default path uses the built-in deterministic provider-free smoke/baseline mode,
 so you do **not** need API keys or a local model server.
 
@@ -30,7 +30,7 @@ provider-free smoke/baseline mode, not a third runtime family.
 ```bash
 python3.11 -m venv .venv
 . .venv/bin/activate
-pip install xrtm==0.7.1
+pip install xrtm==0.8.0
 ```
 
 This install brings in the full released forecasting stack, so the first
@@ -38,16 +38,28 @@ dependency download is heavier than a toy CLI quickstart.
 
 **Supported Python versions:** `>=3.11,<3.13`
 
-## 2. Run the guided first command
+## 2. Choose your first-success interface
 
 ```bash
 xrtm start
 ```
 
+**CLI-led first success**
+
 `xrtm start` is the released health check plus guided first run. It verifies
 imports, runs the deterministic provider-free smoke/baseline workflow, confirms
 the key artifacts, and prints exact next commands with the run id and report
 path.
+
+**WebUI-led first success**
+
+```bash
+xrtm web --runs-dir runs
+```
+
+Open `http://127.0.0.1:8765/start` and use **Run quickstart**. That Start page
+uses the same shared product launch service as `xrtm start`, plus the same
+doctor and provider-status data that the CLI surfaces.
 
 ## 3. Inspect the run artifacts
 
@@ -86,16 +98,20 @@ Launch the local WebUI:
 xrtm web --runs-dir runs
 ```
 
-Open `http://127.0.0.1:8765/` in your browser first. In `xrtm==0.7.1`, the
+Open `http://127.0.0.1:8765/` in your browser first. In `xrtm==0.8.0`, the
 released WebUI is a local React/TypeScript app shell backed by a Python JSON
-API and local SQLite app-state. It gives you Overview, Runs, run detail,
-compare, and the `/workbench` draft flow in one shell.
+API and local SQLite app-state. It gives you Overview, Start, Runs, Workflow
+detail, Operations, run detail, compare, Advanced visibility, and the
+`/workbench` draft flow in one shell.
 
 With the default local workspace layout, reusable workflows stay in
 `.xrtm/workflows` while draft values, validation snapshots, compare cache, and
 resume state stay in `.xrtm/webui/app-state.db`.
 
-Open `http://127.0.0.1:8765/workbench` when you want the released edit flow:
+Use `http://127.0.0.1:8765/start` for quickstart or named workflow runs,
+`http://127.0.0.1:8765/operations` for profiles, monitor lifecycle, artifact
+inventory, and cleanup preview/confirm, and
+`http://127.0.0.1:8765/workbench` when you want the released edit flow:
 
 1. cloning an existing workflow/run setup into an editable draft
 2. making constrained safe edits
@@ -107,8 +123,9 @@ Safe edit is intentionally narrow. It covers `questions.limit`, the report
 toggle, and supported aggregate-weight controls. It is **not** arbitrary graph,
 JSON, or code editing.
 
-Use Overview or Runs when you only need read-only review; switch to
-`/workbench` only when you want the guided draft flow.
+Use Overview, Start, Runs, or Operations when you need the released review and
+operator surfaces; switch to `/workbench` only when you want the guided draft
+flow.
 
 If you prefer the terminal, launch the TUI instead:
 
@@ -123,7 +140,7 @@ You completed the first published XRTM event-forecasting loop:
 1. **Health check**: verified the installed stack and local readiness
 2. **Forecast run**: ran a provider-free smoke/baseline workflow without external endpoints or CLI contracts
 3. **Scored evidence**: verified the newest run and its outputs on disk
-4. **Review surface**: opened the same local app shell through Overview, Runs, run detail, compare, the `/workbench` safe-edit path, or TUI
+4. **Review surface**: opened the same local app shell through Overview, Start, Runs, Workflow detail, Operations, run detail, compare, the `/workbench` safe-edit path, or TUI
 
 That is the core product path for newcomers today.
 
