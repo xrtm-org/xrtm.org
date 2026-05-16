@@ -1,6 +1,6 @@
 ---
 title: Getting started
-description: Install the released package, run the guided first command, inspect artifacts, and open the WebUI workbench or TUI.
+description: Install the released package, run the guided first command, inspect artifacts, and open the WebUI shell or TUI.
 ---
 
 # Getting Started with XRTM
@@ -8,13 +8,17 @@ description: Install the released package, run the guided first command, inspect
 This is the shortest honest path to first success with XRTM.
 
 You will run the released health-check plus guided first command, inspect the
-generated artifacts, and browse the results in the WebUI workbench or TUI. The
+generated artifacts, and browse the results in the WebUI shell or TUI. The
 default path uses the built-in deterministic provider-free smoke/baseline mode,
 so you do **not** need API keys or a local model server.
 
 > Release-gated command note: the command blocks in this guide are validated
 > against `xrtm/docs/release-command-contract.json` so the public site cannot
 > drift ahead of the latest published `xrtm` package surface.
+
+Version ownership for that released surface follows the
+[Stack Versioning Policy](https://github.com/xrtm-org/governance/blob/main/policies/stack-versioning-policy.md):
+`xrtm` is the product-anchor version for newcomer and WebUI claims.
 
 XRTM's first-class integration categories are **OpenAI-compatible endpoints**
 and **coding-agent CLI contracts**. Local and commercial deployments are
@@ -26,7 +30,7 @@ provider-free smoke/baseline mode, not a third runtime family.
 ```bash
 python3.11 -m venv .venv
 . .venv/bin/activate
-pip install xrtm==0.7.0
+pip install xrtm==0.7.1
 ```
 
 This install brings in the full released forecasting stack, so the first
@@ -74,7 +78,7 @@ watches and thresholds, while some profile-driven runs may carry an idle
 placeholder. Use `xrtm monitor list` status and watch counts to distinguish
 active monitors from ordinary runs.
 
-## 4. Browse and safely edit in the Workbench
+## 4. Browse the WebUI shell and safely edit in Workbench
 
 Launch the local WebUI:
 
@@ -82,8 +86,16 @@ Launch the local WebUI:
 xrtm web --runs-dir runs
 ```
 
-Open `http://127.0.0.1:8765/workbench` in your browser. In `xrtm==0.7.0`,
-the workbench is the released local WebUI path for:
+Open `http://127.0.0.1:8765/` in your browser first. In `xrtm==0.7.1`, the
+released WebUI is a local React/TypeScript app shell backed by a Python JSON
+API and local SQLite app-state. It gives you Overview, Runs, run detail,
+compare, and the `/workbench` draft flow in one shell.
+
+With the default local workspace layout, reusable workflows stay in
+`.xrtm/workflows` while draft values, validation snapshots, compare cache, and
+resume state stay in `.xrtm/webui/app-state.db`.
+
+Open `http://127.0.0.1:8765/workbench` when you want the released edit flow:
 
 1. cloning an existing workflow/run setup into an editable draft
 2. making constrained safe edits
@@ -95,7 +107,8 @@ Safe edit is intentionally narrow. It covers `questions.limit`, the report
 toggle, and supported aggregate-weight controls. It is **not** arbitrary graph,
 JSON, or code editing.
 
-Use `http://127.0.0.1:8765` when you only need the broader run-history WebUI.
+Use Overview or Runs when you only need read-only review; switch to
+`/workbench` only when you want the guided draft flow.
 
 If you prefer the terminal, launch the TUI instead:
 
@@ -110,7 +123,7 @@ You completed the first published XRTM event-forecasting loop:
 1. **Health check**: verified the installed stack and local readiness
 2. **Forecast run**: ran a provider-free smoke/baseline workflow without external endpoints or CLI contracts
 3. **Scored evidence**: verified the newest run and its outputs on disk
-4. **Review surface**: opened the same run through WebUI, the `/workbench` safe-edit path, or TUI
+4. **Review surface**: opened the same local app shell through Overview, Runs, run detail, compare, the `/workbench` safe-edit path, or TUI
 
 That is the core product path for newcomers today.
 

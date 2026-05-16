@@ -37,6 +37,14 @@ npm run build
 - **Next-release**: branch-only work with explicit labels and an owning-repo feature record.
 - **Roadmap / repo map**: future or conceptual material with no claim that it ships today.
 
+## Version ownership
+
+When a page says “current XRTM release,” anchor that claim to the published `xrtm`
+package version. Support-package versions may differ and release-train labels are
+coordination metadata, not forced shared version numbers. Use the governance
+[Stack Versioning Policy](https://github.com/xrtm-org/governance/blob/main/policies/stack-versioning-policy.md)
+for those decisions.
+
 ## PR expectations
 
 1. Keep navigation and content changes tightly scoped.

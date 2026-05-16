@@ -8,6 +8,10 @@ description: The XRTM product shell plus the package stack underneath it.
 The easiest way to understand XRTM is to separate the **product shell** from
 the **package stack** underneath it.
 
+Release-pinned docs and homepage claims follow the
+[Stack Versioning Policy](https://github.com/xrtm-org/governance/blob/main/policies/stack-versioning-policy.md):
+`xrtm` is the product-anchor version for newcomer and WebUI release language.
+
 ## Integration taxonomy
 
 XRTM uses two first-class integration categories:
@@ -28,7 +32,7 @@ experience:
 
 - run `xrtm start`
 - inspect the newest canonical run artifacts with the released `latest` helpers
-- open the same run in the WebUI, the `/workbench` safe-edit path, or TUI
+- open the same run in the WebUI shell (Overview, Runs, run detail, compare, and `/workbench`) or TUI
 - move into repeatable workflows with starter profiles, compare, export, and monitor commands
 
 See [Getting started](../getting-started) for that path.
@@ -37,7 +41,7 @@ See [Getting started](../getting-started) for that path.
 
 | Layer | Package | What it gives you today |
 | :--- | :--- | :--- |
-| Product shell | **`xrtm`** | Provider-free smoke/baseline first success, canonical artifacts, HTML reports, WebUI, `/workbench` clone/safe-edit/validate/run/compare, TUI, profiles, compare/export, and local monitoring |
+| Product shell | **`xrtm`** | Provider-free smoke/baseline first success, canonical artifacts, HTML reports, local-first WebUI shell (Overview, Runs, run detail, compare, and Workbench), SQLite-backed draft state, `/workbench` guided clone/safe-edit/validate/run/compare, TUI, profiles, compare/export, and local monitoring |
 | Runtime | **`xrtm-forecast`** | Forecasting agents, orchestration, OpenAI-compatible endpoint integrations, and source examples |
 | Evaluation | **`xrtm-eval`** | Brier scoring, calibration-focused evaluation, benchmark scorecards, and verification utilities |
 | Data | **`xrtm-data`** | Schemas, temporal snapshot foundations, and benchmark corpus registry/provenance |

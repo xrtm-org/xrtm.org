@@ -26,7 +26,7 @@ Please describe validation performed:
 ## Source of truth
 
 - Owning repo or policy: <!-- xrtm / governance / forecast / other -->
-- Accepted upstream change or coordination record: <!-- PR / issue / release note / N/A -->
+- Accepted upstream change or coordination record: <!-- PR / issue / release note / N/A; include anchor xrtm version or owning package ref when release-pinned claims move -->
 
 ## Checklist:
 - [ ] My changes follow the documentation style guidelines
@@ -36,6 +36,7 @@ Please describe validation performed:
 - [ ] Code examples are accurate and tested
 - [ ] Breaking changes (URL changes, removed pages) include redirects
 - [ ] Release-pinned pages mention only published behavior, or unreleased behavior is clearly moved to next-release / roadmap surfaces
+- [ ] Version and release-train claims cite explicit published package versions or refs per the stack versioning policy
 
 ---
 

@@ -5,10 +5,10 @@ import { motion } from 'framer-motion';
 import styles from './index.module.css';
 
 const canvasNodes = [
-  { label: 'Questions', detail: 'bounded limit', x: 8, y: 19 },
-  { label: 'Candidates', detail: 'parallel paths', x: 38, y: 10 },
-  { label: 'Aggregate', detail: 'weight sliders', x: 66, y: 25 },
-  { label: 'Report', detail: 'toggle output', x: 34, y: 51 },
+  { label: 'Overview', detail: 'resume next step', x: 8, y: 19 },
+  { label: 'Runs', detail: 'canonical history', x: 38, y: 10 },
+  { label: 'Draft', detail: 'SQLite app state', x: 66, y: 25 },
+  { label: 'Safe edit', detail: 'bounded fields', x: 34, y: 51 },
   { label: 'Compare', detail: 'baseline delta', x: 72, y: 60 },
 ];
 
@@ -34,7 +34,7 @@ export default function Home(): React.JSX.Element {
   return (
     <Layout
       title="AI for event forecasting"
-      description="A polished entry point to the released XRTM 0.7.0 guide and local workbench."
+      description="A polished entry point to the released XRTM 0.7.1 guide and local WebUI shell."
     >
       <main className={styles.page}>
         <div aria-hidden="true" className={styles.backdrop}>
@@ -59,7 +59,7 @@ export default function Home(): React.JSX.Element {
             initial={{ opacity: 0, y: 20 }}
             transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
           >
-            <p className={styles.eyebrow}>Published 0.7.0 path</p>
+            <p className={styles.eyebrow}>Published 0.7.1 path</p>
             <h1 className={styles.title}>
               Forecasting work, made inspectable.
             </h1>
@@ -69,10 +69,11 @@ export default function Home(): React.JSX.Element {
               migration.
             </p>
             <p className={styles.support}>
-              The published docs stay pinned to <strong>xrtm 0.7.0</strong>: start
-              with the guide, run <code>xrtm start</code>, inspect the saved run,
-              then open <code>/workbench</code> for released clone, safe edit,
-              validate, run, and compare flows.
+              The published docs stay pinned to <strong>xrtm 0.7.1</strong>:
+              start with the guide, run <code>xrtm start</code>, inspect the
+              saved run, then open the local WebUI shell (Overview, Runs,
+              Workbench) for the released guided draft flow and linked run-detail
+              or compare views.
             </p>
             <div className={styles.actions}>
               <Link className={`button button--primary button--lg ${styles.primaryButton}`} to="/docs/getting-started">
@@ -92,14 +93,14 @@ export default function Home(): React.JSX.Element {
 
           <motion.aside
             animate={{ opacity: 1, x: 0 }}
-            aria-label="XRTM 0.7.0 released workbench"
+            aria-label="XRTM 0.7.1 released WebUI shell"
             className={styles.workbenchCard}
             initial={{ opacity: 0, x: 24 }}
             transition={{ delay: 0.12, duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
           >
             <div className={styles.previewHeader}>
-              <p className={styles.storyEyebrow}>Published in 0.7.0</p>
-              <span className={styles.previewPill}>local /workbench</span>
+              <p className={styles.storyEyebrow}>Published in 0.7.1</p>
+              <span className={styles.previewPill}>local WebUI shell</span>
             </div>
             <div className={styles.canvasPreview}>
               <svg className={styles.canvasLines} viewBox="0 0 100 74" role="presentation">
@@ -131,9 +132,10 @@ export default function Home(): React.JSX.Element {
               </div>
             </div>
             <p className={styles.storyFootnote}>
-              The released workbench is a server-rendered canvas for clone,
-              constrained safe edits, validate, run, and compare — not an
-              arbitrary graph, JSON, or code editor.
+              The released WebUI is a React/TypeScript app shell backed by the
+              local Python API and SQLite app-state: guided clone, constrained
+              safe edits, validate, run, and compare — not an arbitrary graph,
+              JSON, or code editor.
             </p>
           </motion.aside>
         </section>
