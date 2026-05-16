@@ -30,7 +30,7 @@ provider-free smoke/baseline mode, not a third runtime family.
 ```bash
 python3.11 -m venv .venv
 . .venv/bin/activate
-pip install xrtm==0.7.0
+pip install xrtm==0.7.1
 ```
 
 This install brings in the full released forecasting stack, so the first
@@ -86,7 +86,7 @@ Launch the local WebUI:
 xrtm web --runs-dir runs
 ```
 
-Open `http://127.0.0.1:8765/` in your browser first. In `xrtm==0.7.0`, the
+Open `http://127.0.0.1:8765/` in your browser first. In `xrtm==0.7.1`, the
 released WebUI is a local React/TypeScript app shell backed by a Python JSON
 API and local SQLite app-state. It gives you Overview, Runs, run detail,
 compare, and the `/workbench` draft flow in one shell.
