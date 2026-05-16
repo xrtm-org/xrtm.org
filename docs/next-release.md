@@ -11,11 +11,13 @@ This page exists so useful branch-only work does not sit in limbo.
 **Next-release lane.** This page is for real source work that is intentionally
 unreleased. The command-level source of truth lives in
 [`xrtm/docs/next-release-feature-track.md`](https://github.com/xrtm-org/xrtm/blob/main/docs/next-release-feature-track.md),
-and the labeling/graduation rules live in the governance repo's
-[Feature Status and Graduation Policy](https://github.com/xrtm-org/governance/blob/main/policies/feature-status-and-graduation-policy.md).
+the labeling/graduation rules live in the governance repo's
+[Feature Status and Graduation Policy](https://github.com/xrtm-org/governance/blob/main/policies/feature-status-and-graduation-policy.md),
+and cross-repo version ownership lives in the
+[Stack Versioning Policy](https://github.com/xrtm-org/governance/blob/main/policies/stack-versioning-policy.md).
 :::
 
-- **Released docs** stay pinned to what ships in `xrtm==0.7.0`.
+- **Released docs** stay pinned to what ships in `xrtm==0.7.0`, because `xrtm` is the product-anchor version for top-level release claims.
 - **This page** tracks near-term conveniences that are real and valuable, but not yet promoted into the public released path.
 - **The roadmap** remains for longer-horizon, future, or experimental work.
 
@@ -38,6 +40,7 @@ For command-level details, see [`xrtm/docs/next-release-feature-track.md`](https
 - **`next-release`** does not mean “already released.” It means the feature is a good next-release candidate once validation and packaging gates pass.
 - **`advanced/experimental`** means useful work that should stay out of the default newcomer or released story for now.
 - **`redesign-required`** means the value is real, but the current implementation should not be treated as the final public contract.
+- Release-train labels coordinate packaging, docs, and validation moves; they do **not** mean every repository publishes the same version number.
 
 ## Governance rule
 

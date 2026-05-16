@@ -11,6 +11,7 @@ The governance repo is where XRTM keeps cross-repo rules stable while implementa
 | Topic | Authoritative home | Public summary on this site |
 | --- | --- | --- |
 | Forecast Object schemas and compatibility | `governance/schemas/` | [Forecast Object standard](./forecast-object) |
+| Stack version ownership and release-train labeling | `governance/policies/stack-versioning-policy.md` | [Contributing](../contributing) and release-pinned workflow pages |
 | Release labeling and feature graduation | `governance/policies/feature-status-and-graduation-policy.md` | [Next release track](../next-release) |
 | Release gates and acceptance policy | `governance/policies/` | this page plus [Contributing](../contributing) |
 | Shipped CLI/product behavior | `xrtm` repo | released workflow pages |
@@ -21,6 +22,7 @@ The governance repo is where XRTM keeps cross-repo rules stable while implementa
 - **Compatibility rules:** [`schemas/compatibility-policy.md`](https://github.com/xrtm-org/governance/blob/main/schemas/compatibility-policy.md)
 - **Review and acceptance policy:** [`policies/pr-acceptance-policy.md`](https://github.com/xrtm-org/governance/blob/main/policies/pr-acceptance-policy.md)
 - **Triage and release policy:** [`policies/triage-matrix.md`](https://github.com/xrtm-org/governance/blob/main/policies/triage-matrix.md) and [`policies/release-readiness-policy.md`](https://github.com/xrtm-org/governance/blob/main/policies/release-readiness-policy.md)
+- **Stack versioning policy:** [`policies/stack-versioning-policy.md`](https://github.com/xrtm-org/governance/blob/main/policies/stack-versioning-policy.md)
 - **Cross-repo compatibility policy:** [`policies/cross-repo-compatibility-policy.md`](https://github.com/xrtm-org/governance/blob/main/policies/cross-repo-compatibility-policy.md)
 - **Feature status and graduation policy:** [`policies/feature-status-and-graduation-policy.md`](https://github.com/xrtm-org/governance/blob/main/policies/feature-status-and-graduation-policy.md)
 
@@ -31,6 +33,7 @@ The governance repo is where XRTM keeps cross-repo rules stable while implementa
 3. Update `xrtm.org` last so the newcomer-facing explanation mirrors the accepted source of truth.
 4. When a feature exists in source but is intentionally unreleased, summarize it on the site's [Next release track](../next-release) instead of slipping it into release-pinned docs.
 5. Treat release-pinned docs as published-surface mirrors. If the owning repo has not published or accepted the change yet, this site should not present it as shipped behavior.
+6. For top-level “current XRTM release” claims, use the published `xrtm` package version as the anchor and cite support-package versions explicitly when they matter.
 
 ## What this site should do
 

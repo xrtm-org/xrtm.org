@@ -48,7 +48,7 @@ explicitly need to expose the dev server to a container, VM, or LAN peer.
 - **`xrtm.org`**: newcomer-facing docs, navigation, repo maps, and cross-repo pointers
 - **[`xrtm-org/xrtm`](https://github.com/xrtm-org/xrtm)**: shipped CLI flows, run-artifact behavior, WebUI/TUI, and product docs
 - **[`xrtm-org/forecast`](https://github.com/xrtm-org/forecast), [`xrtm-org/eval`](https://github.com/xrtm-org/eval), [`xrtm-org/data`](https://github.com/xrtm-org/data), [`xrtm-org/train`](https://github.com/xrtm-org/train)**: package APIs, example code, and implementation truth
-- **[`xrtm-org/governance`](https://github.com/xrtm-org/governance)**: Forecast Object schemas, compatibility rules, and contributor/review policy
+- **[`xrtm-org/governance`](https://github.com/xrtm-org/governance)**: Forecast Object schemas, compatibility rules, stack versioning, and contributor/review policy
 
 If a change starts in a source-of-truth repo, land or coordinate it there first. Update `xrtm.org` afterward when the presentation layer needs to reflect the accepted result.
 
@@ -61,6 +61,13 @@ Keep the public docs surfaces distinct:
 - **Roadmap path**: longer-horizon or genuinely experimental work belongs on [Roadmap](./roadmap).
 
 Do not move current-source conveniences into release-pinned pages until the owning repo updates the published package, release contract, and validation evidence together.
+
+When a release-pinned page says “current XRTM release,” anchor that claim to the
+published `xrtm` package version. Support-package versions may differ, and
+release-train labels are coordination metadata rather than forced shared version
+numbers. Use the governance
+[Stack Versioning Policy](https://github.com/xrtm-org/governance/blob/main/policies/stack-versioning-policy.md)
+when version ownership or train labeling is part of the change.
 
 ## Canonical routing after the runtime/release refresh
 
@@ -119,5 +126,5 @@ That path is optional support only; the canonical contributor path is still the 
 2. Keep documentation and navigation changes tightly scoped
 3. Mirror accepted product/governance changes here instead of redefining them here
 4. Update links/examples when page behavior changes
-5. If a page is release-pinned, include the owning package version or contract it mirrors
+5. If a page is release-pinned, include the owning package version or contract it mirrors; use the published `xrtm` version for top-level XRTM release claims
 6. Include the commands you ran in the PR description
