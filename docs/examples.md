@@ -36,6 +36,7 @@ smoke/baseline lane before any model-backed endpoint profile.
 - canonical run artifacts under `runs/<run-id>/`
 - scored outputs including `eval.json`, `run_summary.json`, and `report.html`
 - local WebUI and TUI backed by the same run artifacts
+- released `/workbench` flow for clone, constrained safe edit, validate, run, and compare
 - run history, compare, and JSON export commands
 - profile-based repeatable workflows
 - local monitoring lifecycle commands
@@ -68,7 +69,7 @@ Useful example entry points include:
 ## How to read examples honestly
 
 - **Product workflow first**: start with [Getting started](./getting-started).
-- **Workflow docs second**: use the [researcher](./workflows/researcher-model-eval) and [operator](./workflows/operator-runbook) paths for supported journeys.
+- **Workflow docs second**: use the [researcher](./workflows/researcher-model-eval) and [operator](./workflows/operator-runbook) paths for supported journeys, including the `/workbench` safe-edit path when you need clone/validate/run/compare.
 - **Examples third**: reach for package scripts when you want to learn internals, extend the system, or study a narrower capability.
 - **Roadmap separate**: if something is only planned or experimental, it should not be treated as a hero claim.
 

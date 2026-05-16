@@ -14,13 +14,19 @@ Use it when you want repeatable local runs, clear scoring evidence, and simple c
 - you can run provider-free passes repeatedly
 - you can inspect the saved artifacts and generated report
 - you can compare or export runs without leaving the local artifact model
+- you can use `/workbench` to clone a baseline, make constrained safe edits, validate, run, and compare
 
 ## Recommended order
 
 1. Finish [Getting started](../getting-started).
 2. Run a slightly larger released baseline with `xrtm demo --provider mock --limit 10 --runs-dir runs`.
 3. Review the latest result with `xrtm runs show latest --runs-dir runs`, `xrtm artifacts inspect --latest --runs-dir runs`, and `xrtm report html --latest --runs-dir runs`.
-4. Once you have multiple runs, use `xrtm runs compare <run-id-a> <run-id-b> --runs-dir runs` or `xrtm runs export latest --runs-dir runs --output export.json`.
+4. Start `xrtm web --runs-dir runs`, open `/workbench`, then clone, safe edit, validate, run, and compare when you want an editable UI loop.
+5. Once you have multiple runs, use `xrtm runs compare <run-id-a> <run-id-b> --runs-dir runs` or `xrtm runs export latest --runs-dir runs --output export.json`.
+
+The workbench safe-edit contract is intentionally narrow: `questions.limit`, the
+report toggle, and supported aggregate weights only. Do not treat it as an
+arbitrary graph, JSON, or code editor.
 
 ## When to leave this page
 

@@ -1,6 +1,6 @@
 ---
 title: Getting started
-description: Install the released package, run the guided first command, inspect artifacts, and open the WebUI or TUI.
+description: Install the released package, run the guided first command, inspect artifacts, and open the WebUI workbench or TUI.
 ---
 
 # Getting Started with XRTM
@@ -8,9 +8,9 @@ description: Install the released package, run the guided first command, inspect
 This is the shortest honest path to first success with XRTM.
 
 You will run the released health-check plus guided first command, inspect the
-generated artifacts, and browse the results. The default path uses the built-in
-deterministic provider-free smoke/baseline mode, so you do **not** need API
-keys or a local model server.
+generated artifacts, and browse the results in the WebUI workbench or TUI. The
+default path uses the built-in deterministic provider-free smoke/baseline mode,
+so you do **not** need API keys or a local model server.
 
 > Release-gated command note: the command blocks in this guide are validated
 > against `xrtm/docs/release-command-contract.json` so the public site cannot
@@ -26,7 +26,7 @@ provider-free smoke/baseline mode, not a third runtime family.
 ```bash
 python3.11 -m venv .venv
 . .venv/bin/activate
-pip install xrtm==0.3.3
+pip install xrtm==0.7.0
 ```
 
 This install brings in the full released forecasting stack, so the first
@@ -74,7 +74,7 @@ watches and thresholds, while some profile-driven runs may carry an idle
 placeholder. Use `xrtm monitor list` status and watch counts to distinguish
 active monitors from ordinary runs.
 
-## 4. Browse the results
+## 4. Browse and safely edit in the Workbench
 
 Launch the local WebUI:
 
@@ -82,7 +82,20 @@ Launch the local WebUI:
 xrtm web --runs-dir runs
 ```
 
-Open `http://127.0.0.1:8765` in your browser.
+Open `http://127.0.0.1:8765/workbench` in your browser. In `xrtm==0.7.0`,
+the workbench is the released local WebUI path for:
+
+1. cloning an existing workflow/run setup into an editable draft
+2. making constrained safe edits
+3. validating the edited draft before execution
+4. running the validated draft
+5. comparing the new run against the baseline evidence
+
+Safe edit is intentionally narrow. It covers `questions.limit`, the report
+toggle, and supported aggregate-weight controls. It is **not** arbitrary graph,
+JSON, or code editing.
+
+Use `http://127.0.0.1:8765` when you only need the broader run-history WebUI.
 
 If you prefer the terminal, launch the TUI instead:
 
@@ -97,7 +110,7 @@ You completed the first published XRTM event-forecasting loop:
 1. **Health check**: verified the installed stack and local readiness
 2. **Forecast run**: ran a provider-free smoke/baseline workflow without external endpoints or CLI contracts
 3. **Scored evidence**: verified the newest run and its outputs on disk
-4. **Review surface**: opened the same run through WebUI or TUI
+4. **Review surface**: opened the same run through WebUI, the `/workbench` safe-edit path, or TUI
 
 That is the core product path for newcomers today.
 
@@ -158,6 +171,11 @@ When you compare two runs, read the output like an evaluation gate:
 - use compare only after the two runs are meant to answer the same question set
 - unchanged provider-free control compares mean the baseline is stable; introduce a real endpoint/model/runtime change before claiming improvement
 - improved scores with similar operational health are promotion candidates; regressions or large runtime jumps should be investigated or rejected
+
+You can also open `/workbench` from the WebUI to clone a baseline, apply the
+same safe-edit limits (`questions.limit`, report toggle, supported aggregate
+weights), validate, run, and compare without claiming arbitrary graph or code
+editing.
 
 ### 4. OpenAI-compatible endpoint advanced workflow (local profile)
 

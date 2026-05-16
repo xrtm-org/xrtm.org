@@ -12,11 +12,11 @@ Teams can use XRTM today through **shared run directories, exports, reports, and
 - standardize on shared profile conventions from the [Operator runbook](./operator-runbook)
 - keep runs in agreed directories and review the same saved artifacts
 - export JSON or CSV for downstream analysis with `xrtm runs export latest --runs-dir runs --output export.json`
-- share HTML reports, WebUI views, and TUI views over the same run evidence
+- share HTML reports, WebUI `/workbench` views, and TUI views over the same run evidence
 
 ## What this page does not claim
 
-The released `xrtm 0.3.3` surface does **not** ship built-in user management, centralized permissions, or a multi-user control plane.
+The released `xrtm 0.7.0` surface does **not** ship built-in user management, centralized permissions, or a multi-user control plane.
 
 ## Suggested order
 

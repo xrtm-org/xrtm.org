@@ -1,6 +1,6 @@
 ---
 title: Next release track
-description: Near-term conveniences that exist in source or planning, but are intentionally kept off the released 0.3.3 surface.
+description: Near-term conveniences that are not yet on the released 0.7.0 surface.
 ---
 
 # Next release track
@@ -15,7 +15,7 @@ and the labeling/graduation rules live in the governance repo's
 [Feature Status and Graduation Policy](https://github.com/xrtm-org/governance/blob/main/policies/feature-status-and-graduation-policy.md).
 :::
 
-- **Released docs** stay pinned to what ships in `xrtm==0.3.3`.
+- **Released docs** stay pinned to what ships in `xrtm==0.7.0`.
 - **This page** tracks near-term conveniences that are real and valuable, but not yet promoted into the public released path.
 - **The roadmap** remains for longer-horizon, future, or experimental work.
 
@@ -23,15 +23,15 @@ For command-level details, see [`xrtm/docs/next-release-feature-track.md`](https
 
 ## Current decisions
 
-| Feature family | Canonical status | Target train | Why it is not on the released surface yet | What happens next |
+| Feature family | Canonical status | Release/train | Current release decision | What happens next |
 | --- | --- | --- | --- | --- |
-| Guided onboarding helpers (`xrtm start`, starter profile scaffolding) | **`shipped`** | `0.3.3` | They are now part of the released guided first-success path. | Keep clean-install proof and the matching onboarding docs update in lockstep. |
-| Latest-run shortcuts (`latest`, `--latest`) | **`shipped`** | `0.3.3` | They are now part of the published operator ergonomics surface. | Keep released-artifact smoke covering the shortcuts. |
-| CSV export on the top-level product surface | **`shipped`** | `0.3.3` | It is now part of the released export surface, with JSON still documented as the full-fidelity bundle. | Keep JSON/CSV documentation aligned with release packaging. |
+| Guided onboarding helpers (`xrtm start`, starter profile scaffolding) | **`shipped`** | Released surface | They are part of the released guided first-success path. | Keep clean-install proof and the matching onboarding docs update in lockstep. |
+| Latest-run shortcuts (`latest`, `--latest`) | **`shipped`** | Released surface | They are part of the published operator ergonomics surface. | Keep released-artifact smoke covering the shortcuts. |
+| CSV export on the top-level product surface | **`shipped`** | Released surface | It is part of the released export surface, with JSON still documented as the full-fidelity bundle. | Keep JSON/CSV documentation aligned with release packaging. |
+| Visual workbench / GUI proof | **`shipped`** | `0.7.0` | The released package now ships the `/workbench` WebUI path, with PyPI proof for install, version, workflow clone/validate/run, and WebUI API access. Safe edits are limited to `questions.limit`, the report toggle, and supported aggregate weights. | Keep the public docs honest: clone, constrained safe edit, validate, run, and compare only; no arbitrary graph, JSON, or code editing claim. |
 | Corpus validation workflows (`validate run`, `list-corpora`) | **`advanced/experimental`** | After corpus policy and released-stack validation mature further | These flows are real, but they depend on corpus tiers, release-gate policies, and more operator/research context than the default shipped path. | Keep them in advanced or release-engineering guidance until the corpus and compatibility story is steadier. |
 | Corpus preparation UX (`validate prepare-corpus`) | **`redesign-required`** | Not on the current release train | The current command mixes cache setup, corpus policy, and preview semantics in a way that is still too internal. | Redesign the user-facing workflow before treating it as a public release promise. |
 | User attribution flags (`--user`) | **`redesign-required`** | Not on the current release train | The implementation exists, but the public product still honestly describes team use as convention-based rather than built-in identity or multi-user workflow management. | Clarify semantics, storage, and privacy expectations first; then decide whether to release it as metadata, workflow labeling, or something else. |
-| Visual workbench / GUI proof | **`redesign-required`** | `0.7` | The released repo can already produce inspectable runs and open the WebUI or TUI, but the overall product still lacks a clearer visual operating surface that new users can understand at a glance. This is a repo-level product gap, not just a website wording issue. | Treat this as major `0.7` product work: define the visual operating surface in the real stack, prove it honestly, and only then promote it into release-pinned public messaging. |
 
 ## How to read this page
 
