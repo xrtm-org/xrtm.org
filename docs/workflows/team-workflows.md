@@ -16,7 +16,7 @@ Teams can use XRTM today through **shared run directories, exports, reports, and
 
 ## What this page does not claim
 
-The released `xrtm 0.7.1` surface does **not** ship built-in user management, centralized permissions, or a multi-user control plane.
+The released `xrtm 0.8.0` surface does **not** ship built-in user management, centralized permissions, or a multi-user control plane.
 
 ## Suggested order
 
