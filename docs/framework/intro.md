@@ -32,7 +32,7 @@ experience:
 
 - run `xrtm start`
 - inspect the newest canonical run artifacts with the released `latest` helpers
-- open the same run in the WebUI shell (Overview, Start, Runs, Workflow detail, Operations, run detail, compare, `/workbench`, and Advanced visibility) or TUI
+- open the same run in the WebUI shell (Hub at `/` and `/hub`, Start, Runs, Workflow detail, Operations, Studio at `/studio`, Playground, Observatory at `/observatory`, run detail, compare, `/workbench` compatibility, and Advanced visibility) or TUI
 - move into repeatable workflows with starter profiles, compare, export, and monitor commands
 
 See [Getting started](../getting-started) for that path.
@@ -41,7 +41,7 @@ See [Getting started](../getting-started) for that path.
 
 | Layer | Package | What it gives you today |
 | :--- | :--- | :--- |
-| Product shell | **`xrtm`** | Provider-free smoke/baseline first success, canonical artifacts, HTML reports, local-first WebUI shell (Overview, Start, Runs, Workflow detail, Operations, run detail, compare, Workbench, and Advanced visibility), SQLite-backed draft state, `/workbench` safe workflow authoring from scratch/template/clone with shared core-field plus node/edge/entry edits, validate/run/compare, TUI, profiles, compare/export, and local monitoring |
+| Product shell | **`xrtm`** | Provider-free smoke/baseline first success, canonical artifacts, HTML reports, local-first WebUI shell (Hub at `/` and `/hub`, Start, Runs, Workflow detail, Operations, Studio, Playground, Observatory, run detail, compare, `/workbench` compatibility, and Advanced visibility), SQLite-backed draft state, Studio safe workflow authoring from scratch/template/clone with shared core-field plus node/edge/entry edits over the existing workflow schema and built-in node catalog, validate/run/compare, graph-linked Playground trace review with honest no-trace fallback, TUI, profiles, compare/export, and local monitoring |
 | Runtime | **`xrtm-forecast`** | Forecasting agents, orchestration, OpenAI-compatible endpoint integrations, and source examples |
 | Evaluation | **`xrtm-eval`** | Brier scoring, calibration-focused evaluation, benchmark scorecards, and verification utilities |
 | Data | **`xrtm-data`** | Schemas, temporal snapshot foundations, and benchmark corpus registry/provenance |
@@ -49,7 +49,7 @@ See [Getting started](../getting-started) for that path.
 
 ## How the pieces fit
 
-- `xrtm` is the newcomer-facing product shell, including the released bounded Playground lane in `0.8.3`.
+- `xrtm` is the newcomer-facing product shell, including the released bounded Hub → Studio → Playground → Observatory lane in `0.8.4`.
 - `xrtm-forecast` handles the runtime and orchestration layer.
 - `xrtm-eval` and `xrtm-data` provide the scoring and snapshot foundations.
 - `xrtm-train` closes the loop for replay, calibration, and evaluation harnesses.

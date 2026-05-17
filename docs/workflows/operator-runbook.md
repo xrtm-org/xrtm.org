@@ -13,7 +13,7 @@ Use this page after [Getting started](../getting-started) when you need a repeat
 - profile execution with `xrtm run profile my-local` or `xrtm run profile local-mock`
 - run inspection with `xrtm runs list --runs-dir runs`, `xrtm runs show latest --runs-dir runs`, `xrtm artifacts inspect --latest --runs-dir runs`, and `xrtm report html --latest --runs-dir runs`
 - local views with `xrtm web --runs-dir runs` and `xrtm tui --runs-dir runs`
-- the released local WebUI shell (`/`, `/start`, `/runs`, `/workflows/<name>`, `/operations`, `/workbench`, `/playground`) for overview, run review, workflow launch, operator controls, guided draft flow, compare, and the bounded exploratory sandbox
+- the released local WebUI shell (`/`, `/hub`, `/start`, `/runs`, `/workflows/<name>`, `/operations`, `/studio`, `/playground`, `/observatory`, `/workbench`) for Hub, run review, workflow launch, operator controls, bounded graph authoring, graph-linked exploratory tracing, run inspection, compare, and compatibility
 - maintenance with `xrtm monitor start --provider mock --limit 2 --runs-dir runs`, `xrtm monitor list --runs-dir runs`, and `xrtm artifacts cleanup --runs-dir runs --keep 50`
 
 ## What this page does not try to do
@@ -26,15 +26,17 @@ draft values plus validation/compare resume state stay in SQLite on your
 machine. The shell chrome keeps those trust cues explicit instead of implying a
 hosted control plane or broader capability set.
 
-Use `/start` for quickstart or named workflow runs, `/operations` for profile,
-monitor, artifact, and cleanup actions, `/workbench` when you specifically need
-the safe workflow-authoring draft flow, and `/playground` for the bounded
-exploratory sandbox: one custom question first, read-only step inspection, and
-explicit save-back on the provider-free release baseline. Workbench authoring
-covers scratch/template/clone creation, shared core workflow fields, and safe
-node/edge/entry edits inside the built-in node catalog. Parallel-group and
-conditional-route editing remain thin/read-only, and the surface does not
-expose arbitrary graph, JSON, implementation, or code editing.
+Use `/` or `/hub` for the Hub, `/start` for quickstart or named workflow runs,
+`/operations` for profile, monitor, artifact, and cleanup actions, `/studio`
+when you specifically need the safe bounded graph-authoring draft flow,
+`/playground` for graph/canvas preview plus ordered node trace with an honest
+no-trace fallback, and `/observatory` for run inspection. `/workbench` remains a
+compatibility route. Studio authoring covers scratch/template/clone creation,
+shared core workflow fields, and safe node/edge/entry edits inside the existing
+workflow schema and built-in node catalog. Parallel-group and conditional-route
+editing remain thin/read-only, and the surface does not expose arbitrary
+code/plugin graph editing, raw JSON/implementation editing, API/webhook
+control-plane actions, or full persistent collaborative canvas layout.
 
 ## Good next links
 
