@@ -74,7 +74,7 @@ export default function Home(): React.JSX.Element {
               path, inspect the saved run, then use the local WebUI shell:
               Hub at <code>/</code> and <code>/hub</code>, Studio at{' '}
               <code>/studio</code>, Playground, Observatory at{' '}
-              <code>/observatory</code>, Operations, run detail, compare, and
+              <code>/observatory</code>, Operations, run detail, compare, and{' '}
               <code>/workbench</code> compatibility.
             </p>
             <div className={styles.actions}>
