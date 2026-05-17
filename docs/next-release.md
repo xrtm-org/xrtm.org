@@ -37,7 +37,7 @@ For command-level details, see [`xrtm/docs/next-release-feature-track.md`](https
 
 | Feature family | Canonical status | Release/train | Current release decision | What happens next |
 | --- | --- | --- | --- | --- |
-| Unified Hub / Studio / Playground / Observatory spine | **`next-release`** | `0.8.x` UI train, practically `0.8.4` | Implemented on the local `xrtm` implementation branch for the pending PR/release train, but not part of the published `xrtm==0.8.3` package or release tag. The pending WebUI train has Hub at `/` and `/hub`, Studio as the primary `/studio` graph IDE, Playground graph/canvas preview plus ordered node trace and honest no-trace fallback, and `/observatory` as the run-inspection alias. `/workbench` remains compatibility. | Keep release-pinned pages on `0.8.3` until package/docs/gates move together. Gate 2 before release must prove first-run Hub, template-to-Playground, bounded Studio validate/save/run, Studio-to-Playground trace, Observatory drill-down, and the provider-free baseline. Do not market a calibration dashboard, API/webhook control plane, full persistent collaborative canvas layout, or real/commercial runtime path without matching validation. |
+| Unified Hub / Studio / Playground / Observatory spine | **`next-release`** | `0.8.x` UI train, practically `0.8.4` | Implemented in unreleased `xrtm` source for the pending PR/release train, but not part of the published `xrtm==0.8.3` package or release tag. The pending WebUI train has Hub at `/` and `/hub`, Studio as the primary `/studio` graph IDE, Playground graph/canvas preview plus ordered node trace and honest no-trace fallback, and `/observatory` as the run-inspection alias. `/workbench` remains compatibility. | Keep release-pinned pages on `0.8.3` until package/docs/gates move together. Gate 2 before release must prove first-run Hub, template-to-Playground, bounded Studio validate/save/run, Studio-to-Playground trace, Observatory drill-down, and the provider-free baseline. Do not market a calibration dashboard, API/webhook control plane, full persistent collaborative canvas layout, or real/commercial runtime path without matching validation. |
 | WebUI shell polish and trust cues | **`shipped`** | `0.8.3` | `0.8.3` only refines the existing local shell: clearer version, local-only, file-backed-history, and SQLite draft-state cues plus the locked muted design language. No new routes, runtimes, or workflow families shipped with this row. | Keep release-pinned docs describing the same released shell/workflow surfaces; continue treating the refresh as polish and trust framing, not a new product capability. |
 | Guided onboarding helpers (`xrtm start`, starter profile scaffolding) | **`shipped`** | Released surface | They are part of the released guided first-success path. | Keep clean-install proof and the matching onboarding docs update in lockstep. |
 | Latest-run shortcuts (`latest`, `--latest`) | **`shipped`** | Released surface | They are part of the published operator ergonomics surface. | Keep released-artifact smoke covering the shortcuts. |
@@ -68,8 +68,7 @@ set intact and only adds stability/polish work around the broader local shell.
 
 ## Next `0.8.x` UI train: pending PR/release, not released
 
-The next local-first WebUI spine is implemented on the local pending
-implementation branch as **Hub → Studio → Playground → Observatory**. It is not
+The next local-first WebUI spine is implemented in unreleased `xrtm` source as **Hub → Studio → Playground → Observatory**. It is not
 in the published `xrtm==0.8.3` package or release tag. Treat it as a bounded
 product-shell update, not a new hosted app or arbitrary workflow editor:
 
