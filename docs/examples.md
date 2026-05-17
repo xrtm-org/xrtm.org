@@ -38,7 +38,8 @@ smoke/baseline lane before any model-backed endpoint profile.
 - local WebUI and TUI backed by the same run artifacts
 - released Start and Workflow detail surfaces for quickstart, named workflow runs, report generation, and JSON/CSV export
 - released Operations surface for profiles, monitor lifecycle, artifact inventory, and cleanup preview/confirm
-- released `/workbench` flow for clone, constrained safe edit, validate, run, and compare
+- released `/workbench` flow for scratch/template/clone plus safe workflow authoring, validate, run, and compare
+- released `/playground` flow for one custom question first, read-only step inspection, and explicit save-back on the provider-free baseline
 - run history, compare, and JSON export commands
 - profile-based repeatable workflows
 - local monitoring lifecycle commands
@@ -71,7 +72,7 @@ Useful example entry points include:
 ## How to read examples honestly
 
 - **Product workflow first**: start with [Getting started](./getting-started).
-- **Workflow docs second**: use the [researcher](./workflows/researcher-model-eval) and [operator](./workflows/operator-runbook) paths for supported journeys, including `/start`, `/operations`, and the `/workbench` safe-edit path when you need clone/validate/run/compare.
+- **Workflow docs second**: use the [researcher](./workflows/researcher-model-eval) and [operator](./workflows/operator-runbook) paths for supported journeys, including `/start`, `/operations`, and the `/workbench` safe workflow-authoring path when you need scratch/template/clone, validate/run, and compare.
 - **Examples third**: reach for package scripts when you want to learn internals, extend the system, or study a narrower capability.
 - **Roadmap separate**: if something is only planned or experimental, it should not be treated as a hero claim.
 

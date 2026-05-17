@@ -13,7 +13,7 @@ Use this page after [Getting started](../getting-started) when you need a repeat
 - profile execution with `xrtm run profile my-local` or `xrtm run profile local-mock`
 - run inspection with `xrtm runs list --runs-dir runs`, `xrtm runs show latest --runs-dir runs`, `xrtm artifacts inspect --latest --runs-dir runs`, and `xrtm report html --latest --runs-dir runs`
 - local views with `xrtm web --runs-dir runs` and `xrtm tui --runs-dir runs`
-- the released WebUI shell (`/`, `/start`, `/runs`, `/workflows/<name>`, `/operations`, `/workbench`) for overview, run review, workflow launch, operator controls, guided draft flow, and compare
+- the released WebUI shell (`/`, `/start`, `/runs`, `/workflows/<name>`, `/operations`, `/workbench`, `/playground`) for overview, run review, workflow launch, operator controls, guided draft flow, compare, and the bounded exploratory sandbox
 - maintenance with `xrtm monitor start --provider mock --limit 2 --runs-dir runs`, `xrtm monitor list --runs-dir runs`, and `xrtm artifacts cleanup --runs-dir runs --keep 50`
 
 ## What this page does not try to do
@@ -26,10 +26,14 @@ draft values plus validation/compare resume state stay in SQLite on your
 machine.
 
 Use `/start` for quickstart or named workflow runs, `/operations` for profile,
-monitor, artifact, and cleanup actions, and `/workbench` when you specifically
-need the safe-edit draft flow. Workbench safe edits are limited to
-`questions.limit`, the report toggle, and supported aggregate weights. They do
-not expose arbitrary graph, JSON, or code editing.
+monitor, artifact, and cleanup actions, `/workbench` when you specifically need
+the safe workflow-authoring draft flow, and `/playground` for the bounded
+exploratory sandbox: one custom question first, read-only step inspection, and
+explicit save-back on the provider-free release baseline. Workbench authoring
+covers scratch/template/clone creation, shared core workflow fields, and safe
+node/edge/entry edits inside the built-in node catalog. Parallel-group and
+conditional-route editing remain thin/read-only, and the surface does not
+expose arbitrary graph, JSON, implementation, or code editing.
 
 ## Good next links
 
