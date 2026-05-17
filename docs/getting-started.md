@@ -30,7 +30,7 @@ provider-free smoke/baseline mode, not a third runtime family.
 ```bash
 python3.11 -m venv .venv
 . .venv/bin/activate
-pip install xrtm==0.8.0
+pip install xrtm==0.8.2
 ```
 
 This install brings in the full released forecasting stack, so the first
@@ -90,7 +90,7 @@ watches and thresholds, while some profile-driven runs may carry an idle
 placeholder. Use `xrtm monitor list` status and watch counts to distinguish
 active monitors from ordinary runs.
 
-## 4. Browse the WebUI shell and safely edit in Workbench
+## 4. Browse the WebUI shell, Workbench, and Playground
 
 Launch the local WebUI:
 
@@ -98,11 +98,12 @@ Launch the local WebUI:
 xrtm web --runs-dir runs
 ```
 
-Open `http://127.0.0.1:8765/` in your browser first. In `xrtm==0.8.0`, the
+Open `http://127.0.0.1:8765/` in your browser first. In `xrtm==0.8.2`, the
 released WebUI is a local React/TypeScript app shell backed by a Python JSON
 API and local SQLite app-state. It gives you Overview, Start, Runs, Workflow
-detail, Operations, run detail, compare, Advanced visibility, and the
-`/workbench` draft flow in one shell.
+detail, Operations, run detail, compare, Advanced visibility, the `/workbench`
+workflow-authoring flow, and the `/playground` exploratory sandbox in one
+shell.
 
 With the default local workspace layout, reusable workflows stay in
 `.xrtm/workflows` while draft values, validation snapshots, compare cache, and
@@ -111,21 +112,39 @@ resume state stay in `.xrtm/webui/app-state.db`.
 Use `http://127.0.0.1:8765/start` for quickstart or named workflow runs,
 `http://127.0.0.1:8765/operations` for profiles, monitor lifecycle, artifact
 inventory, and cleanup preview/confirm, and
-`http://127.0.0.1:8765/workbench` when you want the released edit flow:
+`http://127.0.0.1:8765/workbench` when you want the released authoring flow:
 
-1. cloning an existing workflow/run setup into an editable draft
-2. making constrained safe edits
-3. validating the edited draft before execution
+1. starting from scratch, a released starter template, or a clone
+2. authoring shared core workflow fields plus safe node/edge/entry changes
+3. validating the authored draft before execution
 4. running the validated draft
 5. comparing the new run against the baseline evidence
 
-Safe edit is intentionally narrow. It covers `questions.limit`, the report
-toggle, and supported aggregate-weight controls. It is **not** arbitrary graph,
-JSON, or code editing.
+Safe workflow authoring stays inside the released schema and built-in node
+library. Parallel-group and conditional-route editing remain thin/read-only. It
+is **not** arbitrary graph, JSON, implementation, or code editing.
+
+The same shared authoring layer also powers `xrtm workflow create ...` and
+`xrtm workflow edit ...` for terminal-led workflows.
+
+`xrtm==0.8.2` also releases the bounded Playground lane. Open
+`http://127.0.0.1:8765/playground` from the same local shell when you want one
+custom question first, optional tiny follow-up batches capped at 5, read-only
+ordered step inspection, and explicit save-back to workflow/profile only. Keep
+those runs exploratory and separate from benchmark or release evidence by
+default, and keep the released runtime wording provider-free unless wider
+validation is published separately.
+
+```bash
+xrtm playground --workflow demo-provider-free --question "Will the released 0.8.2 playground stay exploratory?" --workflows-dir .xrtm/workflows --runs-dir runs
+```
+
+That released Playground command uses the provider-free baseline path and the
+same shared sandbox contract as the WebUI route.
 
 Use Overview, Start, Runs, or Operations when you need the released review and
-operator surfaces; switch to `/workbench` only when you want the guided draft
-flow.
+operator surfaces; switch to `/workbench` only when you want the guided
+workflow-authoring flow.
 
 If you prefer the terminal, launch the TUI instead:
 
@@ -140,7 +159,7 @@ You completed the first published XRTM event-forecasting loop:
 1. **Health check**: verified the installed stack and local readiness
 2. **Forecast run**: ran a provider-free smoke/baseline workflow without external endpoints or CLI contracts
 3. **Scored evidence**: verified the newest run and its outputs on disk
-4. **Review surface**: opened the same local app shell through Overview, Start, Runs, Workflow detail, Operations, run detail, compare, the `/workbench` safe-edit path, or TUI
+4. **Review surface**: opened the same local app shell through Overview, Start, Runs, Workflow detail, Operations, run detail, compare, the `/workbench` safe workflow-authoring path, the `/playground` exploratory sandbox, or TUI
 
 That is the core product path for newcomers today.
 
@@ -202,10 +221,9 @@ When you compare two runs, read the output like an evaluation gate:
 - unchanged provider-free control compares mean the baseline is stable; introduce a real endpoint/model/runtime change before claiming improvement
 - improved scores with similar operational health are promotion candidates; regressions or large runtime jumps should be investigated or rejected
 
-You can also open `/workbench` from the WebUI to clone a baseline, apply the
-same safe-edit limits (`questions.limit`, report toggle, supported aggregate
-weights), validate, run, and compare without claiming arbitrary graph or code
-editing.
+You can also open `/workbench` from the WebUI to start from scratch/template/
+clone, author shared core workflow fields plus safe node/edge/entry changes,
+validate, run, and compare without claiming arbitrary graph or code editing.
 
 ### 4. OpenAI-compatible endpoint advanced workflow (local profile)
 

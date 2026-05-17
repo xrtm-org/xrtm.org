@@ -16,7 +16,16 @@ Teams can use XRTM today through **shared run directories, exports, reports, and
 
 ## What this page does not claim
 
-The released `xrtm 0.8.0` surface does **not** ship built-in user management, centralized permissions, or a multi-user control plane.
+The released `xrtm 0.8.2` surface does **not** ship built-in user management, centralized permissions, or a multi-user control plane.
+
+## Released sandbox note
+
+The released `0.8.2` surface now includes a playground/sandbox lane. Treat it
+as **exploratory** only: one custom question first, optional tiny follow-up
+batches of at most 5, read-only step inspection, and explicit save-back to
+workflow/profile. Keep those runs distinct from benchmark or release evidence by
+default, and follow the [Next release track](../next-release) for the current
+public contract.
 
 ## Suggested order
 

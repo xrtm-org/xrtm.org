@@ -13,7 +13,7 @@ const sidebars: SidebarsConfig = {
       type: 'category',
       label: 'More',
       collapsed: true,
-      items: ['workflows/operator-runbook', 'examples', 'workflows/developer-integrator', 'framework/intro', 'standard/intro'],
+      items: ['workflows/operator-runbook', 'examples', 'workflows/developer-integrator', 'framework/intro', 'standard/intro', 'next-release'],
     },
   ],
 };
