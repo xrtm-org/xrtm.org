@@ -1,6 +1,6 @@
 ---
 title: Next release track
-description: Near-term conveniences that are not yet on the released 0.8.3 capability set.
+description: Near-term source work that is not yet on the released 0.8.3 capability set.
 ---
 
 # Next release track
@@ -18,7 +18,7 @@ and cross-repo version ownership lives in the
 :::
 
 - **Released docs** stay pinned to the `xrtm==0.8.3` capability set, because `xrtm` is the product-anchor version for top-level release claims and `0.8.3` stayed a stability/polish release rather than a capability expansion.
-- **This page** tracks near-term conveniences that are real and valuable, but not yet promoted into the public released path.
+- **This page** tracks near-term source work that is real and valuable, but not yet promoted into the public released path.
 - **The roadmap** remains for longer-horizon, future, or experimental work.
 
 For command-level details, see [`xrtm/docs/next-release-feature-track.md`](https://github.com/xrtm-org/xrtm/blob/main/docs/next-release-feature-track.md).
@@ -37,6 +37,7 @@ For command-level details, see [`xrtm/docs/next-release-feature-track.md`](https
 
 | Feature family | Canonical status | Release/train | Current release decision | What happens next |
 | --- | --- | --- | --- | --- |
+| Unified Hub / Studio / Playground / Observatory spine | **`next-release`** | `0.8.x` UI train, practically `0.8.4` | Implemented on the local `xrtm` implementation branch for the pending PR/release train, but not part of the published `xrtm==0.8.3` package or release tag. The pending WebUI train has Hub at `/` and `/hub`, Studio as the primary `/studio` graph IDE, Playground graph/canvas preview plus ordered node trace and honest no-trace fallback, and `/observatory` as the run-inspection alias. `/workbench` remains compatibility. | Keep release-pinned pages on `0.8.3` until package/docs/gates move together. Gate 2 before release must prove first-run Hub, template-to-Playground, bounded Studio validate/save/run, Studio-to-Playground trace, Observatory drill-down, and the provider-free baseline. Do not market a calibration dashboard, API/webhook control plane, full persistent collaborative canvas layout, or real/commercial runtime path without matching validation. |
 | WebUI shell polish and trust cues | **`shipped`** | `0.8.3` | `0.8.3` only refines the existing local shell: clearer version, local-only, file-backed-history, and SQLite draft-state cues plus the locked muted design language. No new routes, runtimes, or workflow families shipped with this row. | Keep release-pinned docs describing the same released shell/workflow surfaces; continue treating the refresh as polish and trust framing, not a new product capability. |
 | Guided onboarding helpers (`xrtm start`, starter profile scaffolding) | **`shipped`** | Released surface | They are part of the released guided first-success path. | Keep clean-install proof and the matching onboarding docs update in lockstep. |
 | Latest-run shortcuts (`latest`, `--latest`) | **`shipped`** | Released surface | They are part of the published operator ergonomics surface. | Keep released-artifact smoke covering the shortcuts. |
@@ -65,9 +66,36 @@ set intact and only adds stability/polish work around the broader local shell.
   coding-agent CLI-backed playground path. Do not imply commercial/cloud support
   before that proof exists.
 
+## Next `0.8.x` UI train: pending PR/release, not released
+
+The next local-first WebUI spine is implemented on the local pending
+implementation branch as **Hub → Studio → Playground → Observatory**. It is not
+in the published `xrtm==0.8.3` package or release tag. Treat it as a bounded
+product-shell update, not a new hosted app or arbitrary workflow editor:
+
+- **Hub:** `/` and `/hub` collect first-run, template, recent-work, readiness,
+  provider-status, and entry links into one local-first home.
+- **Studio:** `/studio` is the primary graph IDE over the existing XRTM workflow
+  schema and built-in node catalog. It supports node dragging, palette
+  click/drag-to-canvas add-node, node/edge/workflow selection, edge
+  create/remove, entry setting, contextual inspection, validation, save, and run
+  through Studio APIs. It is **not** arbitrary code/plugin graph editing.
+- **Workbench compatibility:** `/workbench` remains available for existing links
+  and workflows while product language moves to Studio.
+- **Playground:** `/playground` now presents graph/canvas preview, ordered node
+  trace, graph trace artifact state, executed-node highlighting, and an honest
+  fallback when no graph trace artifact exists.
+- **Observatory:** `/observatory` aliases the run inspector and improves
+  probability/result/score/trace/export/compare review plus an uncertainty empty
+  state. It does not ship a calibration dashboard, API/webhook control plane, or
+  broader runtime/provider claim.
+
+Release-pinned docs should move only after Gate 1 and release Gate 2 evidence
+cover the source paths above in a fresh environment.
+
 ## How to read this page
 
-- **`next-release`** does not mean “already released.” It means the feature is a good next-release candidate once validation and packaging gates pass.
+- **`next-release`** does not mean “already released.” It means the feature is implemented or approved as a next-release candidate once validation and packaging gates pass.
 - **`advanced/experimental`** means useful work that should stay out of the default newcomer or released story for now.
 - **`redesign-required`** means the value is real, but the current implementation should not be treated as the final public contract.
 - Release-train labels coordinate packaging, docs, and validation moves; they do **not** mean every repository publishes the same version number.
