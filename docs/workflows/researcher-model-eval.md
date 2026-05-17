@@ -14,7 +14,7 @@ Use it when you want repeatable local runs, clear scoring evidence, and simple c
 - you can run provider-free passes repeatedly
 - you can inspect the saved artifacts and generated report
 - you can compare or export runs without leaving the local artifact model
-- you can inspect run detail in the WebUI shell, use `/start` or `/workflows/<name>` to launch the next bounded run, and use `/workbench` to start from scratch/template/clone, author safe workflow changes, validate, run, and compare
+- you can inspect run detail in the local WebUI shell, use `/start` or `/workflows/<name>` to launch the next bounded run, and use `/workbench` to start from scratch/template/clone, author safe workflow changes, validate, run, and compare
 
 ## Recommended order
 
@@ -28,6 +28,9 @@ The workbench authoring contract stays inside the released schema and built-in
 node catalog: shared core workflow fields plus safe node/edge/entry edits.
 Parallel-group and conditional-route editing remain thin/read-only. Do not
 treat it as an arbitrary graph, JSON, implementation, or code editor.
+
+Treat the polished shell chrome as a trust aid—visible local/version/state
+cues—not as a new runtime, control-plane, or authoring-capability claim.
 
 ## When to leave this page
 

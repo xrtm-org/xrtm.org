@@ -34,7 +34,7 @@ export default function Home(): React.JSX.Element {
   return (
     <Layout
       title="AI for event forecasting"
-      description="A polished entry point to the released XRTM 0.8.2 guide, local WebUI shell, and bounded playground."
+      description="A polished entry point to the released XRTM 0.8.3 guide, local WebUI shell, and bounded playground."
     >
       <main className={styles.page}>
         <div aria-hidden="true" className={styles.backdrop}>
@@ -59,7 +59,7 @@ export default function Home(): React.JSX.Element {
             initial={{ opacity: 0, y: 20 }}
             transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
           >
-            <p className={styles.eyebrow}>Published 0.8.2 path</p>
+            <p className={styles.eyebrow}>Published 0.8.3 path</p>
             <h1 className={styles.title}>
               Forecasting work, made inspectable.
             </h1>
@@ -69,13 +69,14 @@ export default function Home(): React.JSX.Element {
               migration.
             </p>
             <p className={styles.support}>
-              The published docs stay pinned to <strong>xrtm 0.8.2</strong>:
+              The published docs stay pinned to <strong>xrtm 0.8.3</strong>:
               start with the guide, choose a CLI-led or WebUI-led first-success
               path, inspect the saved run, then use the local WebUI shell
               (Overview, Start, Runs, Workflow detail, Operations, Workbench,
               Playground) for released safe workflow authoring inside the
               product schema/node library, the bounded exploratory sandbox, operator
-              controls, and linked run-detail or compare views.
+              controls, linked run-detail or compare views, and clearer
+              version/local-state trust cues.
             </p>
             <div className={styles.actions}>
               <Link className={`button button--primary button--lg ${styles.primaryButton}`} to="/docs/getting-started">
@@ -95,13 +96,13 @@ export default function Home(): React.JSX.Element {
 
           <motion.aside
             animate={{ opacity: 1, x: 0 }}
-            aria-label="XRTM 0.8.2 released WebUI shell and playground"
+            aria-label="XRTM 0.8.3 released WebUI shell and playground"
             className={styles.workbenchCard}
             initial={{ opacity: 0, x: 24 }}
             transition={{ delay: 0.12, duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
           >
             <div className={styles.previewHeader}>
-              <p className={styles.storyEyebrow}>Published in 0.8.2</p>
+              <p className={styles.storyEyebrow}>Published in 0.8.3</p>
               <span className={styles.previewPill}>local WebUI shell + playground</span>
             </div>
             <div className={styles.canvasPreview}>
@@ -126,7 +127,7 @@ export default function Home(): React.JSX.Element {
               ))}
             </div>
             <div className={styles.safeEditPanel}>
-                <span>Released 0.8.2 scope</span>
+                <span>Released 0.8.3 scope</span>
                 <div className={styles.editRows}>
                   <span>scratch/template/clone</span>
                   <span>playground question-first</span>
@@ -135,13 +136,14 @@ export default function Home(): React.JSX.Element {
               </div>
               <p className={styles.storyFootnote}>
                 The released WebUI is a React/TypeScript app shell backed by the
-                local Python API and SQLite app-state: safe workflow authoring from
-                scratch/template/clone, core-field plus node/edge/entry edits,
-                validate, run, compare, and `/playground` for one custom question
-                first, read-only step inspection, and explicit save-back on the
-                provider-free release baseline. Parallel-group and
-                conditional-route editing remain thin, and this is not arbitrary
-                graph, JSON, or code editing.
+                local Python API and SQLite app-state, with clearer
+                version/local-only/history trust cues: safe workflow authoring
+                from scratch/template/clone, core-field plus node/edge/entry
+                edits, validate, run, compare, and `/playground` for one custom
+                question first, read-only step inspection, and explicit
+                save-back on the provider-free release baseline. Parallel-group
+                and conditional-route editing remain thin, and this is not
+                arbitrary graph, JSON, or code editing.
               </p>
           </motion.aside>
         </section>

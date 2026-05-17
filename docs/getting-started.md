@@ -1,6 +1,6 @@
 ---
 title: Getting started
-description: Install the released package, run the guided first command, inspect artifacts, and open the WebUI shell or TUI.
+description: Install the released package, run the guided first command, inspect artifacts, and open the local WebUI shell or TUI.
 ---
 
 # Getting Started with XRTM
@@ -8,7 +8,8 @@ description: Install the released package, run the guided first command, inspect
 This is the shortest honest path to first success with XRTM.
 
 You will run the released health-check plus guided first-success path, inspect
-the generated artifacts, and browse the results in the WebUI shell or TUI. The
+the generated artifacts, and browse the results in the local WebUI shell or
+TUI. The
 default path uses the built-in deterministic provider-free smoke/baseline mode,
 so you do **not** need API keys or a local model server.
 
@@ -30,7 +31,7 @@ provider-free smoke/baseline mode, not a third runtime family.
 ```bash
 python3.11 -m venv .venv
 . .venv/bin/activate
-pip install xrtm==0.8.2
+pip install xrtm==0.8.3
 ```
 
 This install brings in the full released forecasting stack, so the first
@@ -98,12 +99,13 @@ Launch the local WebUI:
 xrtm web --runs-dir runs
 ```
 
-Open `http://127.0.0.1:8765/` in your browser first. In `xrtm==0.8.2`, the
-released WebUI is a local React/TypeScript app shell backed by a Python JSON
-API and local SQLite app-state. It gives you Overview, Start, Runs, Workflow
-detail, Operations, run detail, compare, Advanced visibility, the `/workbench`
-workflow-authoring flow, and the `/playground` exploratory sandbox in one
-shell.
+Open `http://127.0.0.1:8765/` in your browser first. The released WebUI is a
+local React/TypeScript app shell backed by a Python JSON API and local SQLite
+app-state. The shell keeps its version, local-only scope, file-backed history,
+and SQLite draft-state cues visible up front while still giving you Overview,
+Start, Runs, Workflow detail, Operations, run detail, compare, Advanced
+visibility, the `/workbench` workflow-authoring flow, and the `/playground`
+exploratory sandbox in one local cockpit.
 
 With the default local workspace layout, reusable workflows stay in
 `.xrtm/workflows` while draft values, validation snapshots, compare cache, and
@@ -127,7 +129,7 @@ is **not** arbitrary graph, JSON, implementation, or code editing.
 The same shared authoring layer also powers `xrtm workflow create ...` and
 `xrtm workflow edit ...` for terminal-led workflows.
 
-`xrtm==0.8.2` also releases the bounded Playground lane. Open
+The released package also includes the bounded Playground lane. Open
 `http://127.0.0.1:8765/playground` from the same local shell when you want one
 custom question first, optional tiny follow-up batches capped at 5, read-only
 ordered step inspection, and explicit save-back to workflow/profile only. Keep
@@ -136,7 +138,7 @@ default, and keep the released runtime wording provider-free unless wider
 validation is published separately.
 
 ```bash
-xrtm playground --workflow demo-provider-free --question "Will the released 0.8.2 playground stay exploratory?" --workflows-dir .xrtm/workflows --runs-dir runs
+xrtm playground --workflow demo-provider-free --question "Will the released 0.8.3 playground stay exploratory?" --workflows-dir .xrtm/workflows --runs-dir runs
 ```
 
 That released Playground command uses the provider-free baseline path and the
@@ -159,7 +161,7 @@ You completed the first published XRTM event-forecasting loop:
 1. **Health check**: verified the installed stack and local readiness
 2. **Forecast run**: ran a provider-free smoke/baseline workflow without external endpoints or CLI contracts
 3. **Scored evidence**: verified the newest run and its outputs on disk
-4. **Review surface**: opened the same local app shell through Overview, Start, Runs, Workflow detail, Operations, run detail, compare, the `/workbench` safe workflow-authoring path, the `/playground` exploratory sandbox, or TUI
+4. **Review surface**: opened the same local forecasting cockpit—with visible version/local-state trust cues—through Overview, Start, Runs, Workflow detail, Operations, run detail, compare, the `/workbench` safe workflow-authoring path, the `/playground` exploratory sandbox, or TUI
 
 That is the core product path for newcomers today.
 
