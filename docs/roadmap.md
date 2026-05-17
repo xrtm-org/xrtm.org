@@ -31,13 +31,13 @@ you want near-term unreleased work with explicit graduation status, use
 | **Recursive Consensus** | Supervisor-led disagreement refinement loops. | **DONE** |
 | **Truth Protocol** | Tamper-evident reasoning traces and audit packaging. | **DONE** |
 | **Dossier Generator** | Audit-ready research reporting outputs. | **DONE** |
+| **Local product spine** | Hub at `/` and `/hub`, Studio at `/studio`, graph-linked Playground, Observatory run inspection, and `/workbench` compatibility on the provider-free baseline. | **DONE in 0.8.4** |
 
 ## In progress
 
 | Feature | Description | Status |
 | :--- | :--- | :--- |
 | **Epistemic Security** | Source verification and anti-manipulation work. | In Progress |
-| **Visual Workbench** | A clearer visual operating surface for runs, review, and workflow follow-through so users can understand XRTM from the product itself rather than only from command-first docs. This should grow from the real repo stack, not from mock marketing art. | Planned for 0.7 |
 
 ## Experimental or future
 
@@ -45,7 +45,7 @@ you want near-term unreleased work with explicit graduation status, use
 | :--- | :--- | :--- |
 | **Causal Reasoning** | Formal DAG generation beyond current text-first reasoning traces. | Experimental |
 | **Prompt Compiler** | Automated Brier-driven prompt optimization. | Experimental |
-| **Centaur Workbench** | Human-in-the-loop collaboration layer. | Concept |
+| **Centaur Workbench** | Human-in-the-loop collaboration patterns beyond today's convention-based team workflows; not a claim of a persistent collaborative canvas. | Concept |
 | **ABM Simulation** | Agent-based market dynamics and liquidity analysis. | Experimental |
 
 ## Contribution guidance

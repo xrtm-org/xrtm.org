@@ -12,20 +12,21 @@ Teams can use XRTM today through **shared run directories, exports, reports, and
 - standardize on shared profile conventions from the [Operator runbook](./operator-runbook)
 - keep runs in agreed directories and review the same saved artifacts
 - export JSON or CSV for downstream analysis with `xrtm runs export latest --runs-dir runs --output export.json`
-- share HTML reports, WebUI `/workbench` views, and TUI views over the same run evidence
+- share HTML reports, WebUI Studio/Observatory views, `/workbench` compatibility views, and TUI views over the same run evidence
 
 ## What this page does not claim
 
-The released `xrtm 0.8.3` surface does **not** ship built-in user management, centralized permissions, or a multi-user control plane.
+The released `xrtm 0.8.4` surface does **not** ship built-in user management, centralized permissions, a multi-user control plane, or a full persistent collaborative canvas layout.
 
 ## Released sandbox note
 
-The released `0.8.3` surface includes a playground/sandbox lane. Treat it
-as **exploratory** only: one custom question first, optional tiny follow-up
-batches of at most 5, read-only step inspection, and explicit save-back to
-workflow/profile. Keep those runs distinct from benchmark or release evidence by
-default, and follow the [Next release track](../next-release) for the current
-public contract.
+The released `0.8.4` surface includes the bounded graph-linked
+Playground/sandbox lane. Treat it as **exploratory** only: one custom question
+first, optional tiny follow-up batches of at most 5, graph/canvas preview,
+ordered node trace, an honest fallback when no graph trace artifact exists, and
+explicit save-back to workflow/profile. Keep those runs distinct from benchmark
+or release evidence by default, and keep the runtime story provider-free unless
+separate validation widens it.
 
 ## Suggested order
 

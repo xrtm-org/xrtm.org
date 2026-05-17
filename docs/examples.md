@@ -36,10 +36,12 @@ smoke/baseline lane before any model-backed endpoint profile.
 - canonical run artifacts under `runs/<run-id>/`
 - scored outputs including `eval.json`, `run_summary.json`, and `report.html`
 - local WebUI and TUI backed by the same run artifacts
+- released Hub at `/` and `/hub` for first-run, templates, recent work, readiness, and entry links
 - released Start and Workflow detail surfaces for quickstart, named workflow runs, report generation, and JSON/CSV export
 - released Operations surface for profiles, monitor lifecycle, artifact inventory, and cleanup preview/confirm
-- released `/workbench` flow for scratch/template/clone plus safe workflow authoring, validate, run, and compare
-- released `/playground` flow for one custom question first, read-only step inspection, and explicit save-back on the provider-free baseline
+- released Studio at `/studio` for bounded graph authoring over the existing workflow schema and built-in node catalog; `/workbench` remains compatibility
+- released `/playground` flow for one custom question first, graph/canvas preview, ordered node trace, honest no-trace fallback, and explicit save-back on the provider-free baseline
+- released Observatory at `/observatory` for run inspection
 - run history, compare, and JSON export commands
 - profile-based repeatable workflows
 - local monitoring lifecycle commands
@@ -72,7 +74,7 @@ Useful example entry points include:
 ## How to read examples honestly
 
 - **Product workflow first**: start with [Getting started](./getting-started).
-- **Workflow docs second**: use the [researcher](./workflows/researcher-model-eval) and [operator](./workflows/operator-runbook) paths for supported journeys, including `/start`, `/operations`, and the `/workbench` safe workflow-authoring path when you need scratch/template/clone, validate/run, and compare.
+- **Workflow docs second**: use the [researcher](./workflows/researcher-model-eval) and [operator](./workflows/operator-runbook) paths for supported journeys, including Hub, `/start`, `/operations`, `/studio`, `/playground`, `/observatory`, and `/workbench` compatibility when you need scratch/template/clone, validate/run, trace, inspect, and compare.
 - **Examples third**: reach for package scripts when you want to learn internals, extend the system, or study a narrower capability.
 - **Roadmap separate**: if something is only planned or experimental, it should not be treated as a hero claim.
 

@@ -1,6 +1,6 @@
 ---
 title: Getting started
-description: Install the released package, run the guided first command, inspect artifacts, and open the local WebUI shell or TUI.
+description: Install the released package, run the guided first command, inspect artifacts, and open the local WebUI Hub, Studio, Playground, Observatory, or TUI.
 ---
 
 # Getting Started with XRTM
@@ -8,18 +8,24 @@ description: Install the released package, run the guided first command, inspect
 This is the shortest honest path to first success with XRTM.
 
 You will run the released health-check plus guided first-success path, inspect
-the generated artifacts, and browse the results in the local WebUI shell or
-TUI. The
-default path uses the built-in deterministic provider-free smoke/baseline mode,
-so you do **not** need API keys or a local model server.
+the generated artifacts, and browse the results in the local WebUI Hub, Studio,
+Playground, Observatory, or TUI. The default path uses the built-in
+deterministic provider-free smoke/baseline mode, so you do **not** need API keys
+or a local model server.
 
 > Release-gated command note: the command blocks in this guide are validated
-> against `xrtm/docs/release-command-contract.json` so the public site cannot
+> against `scripts/release-command-contract.json` so the public site cannot
 > drift ahead of the latest published `xrtm` package surface.
 
 Version ownership for that released surface follows the
 [Stack Versioning Policy](https://github.com/xrtm-org/governance/blob/main/policies/stack-versioning-policy.md):
 `xrtm` is the product-anchor version for newcomer and WebUI claims.
+
+The `0.8.4` release promotes the bounded local Hub → Studio → Playground →
+Observatory product spine. It keeps the default release baseline provider-free
+and does not claim a calibration dashboard, API/webhook control plane,
+arbitrary code/plugin graph editor, full persistent collaborative canvas layout,
+or commercial runtime path without separate validation.
 
 XRTM's first-class integration categories are **OpenAI-compatible endpoints**
 and **coding-agent CLI contracts**. Local and commercial deployments are
@@ -31,13 +37,13 @@ provider-free smoke/baseline mode, not a third runtime family.
 ```bash
 python3.11 -m venv .venv
 . .venv/bin/activate
-pip install xrtm==0.8.3
+pip install xrtm==0.8.4
 ```
 
 This install brings in the full released forecasting stack, so the first
 dependency download is heavier than a toy CLI quickstart.
 
-**Supported Python versions:** `>=3.11,<3.13`
+**Supported Python versions:** `>=3.11,<3.14`
 
 ## 2. Choose your first-success interface
 
@@ -91,7 +97,7 @@ watches and thresholds, while some profile-driven runs may carry an idle
 placeholder. Use `xrtm monitor list` status and watch counts to distinguish
 active monitors from ordinary runs.
 
-## 4. Browse the WebUI shell, Workbench, and Playground
+## 4. Browse the WebUI Hub, Studio, Playground, and Observatory
 
 Launch the local WebUI:
 
@@ -102,51 +108,59 @@ xrtm web --runs-dir runs
 Open `http://127.0.0.1:8765/` in your browser first. The released WebUI is a
 local React/TypeScript app shell backed by a Python JSON API and local SQLite
 app-state. The shell keeps its version, local-only scope, file-backed history,
-and SQLite draft-state cues visible up front while still giving you Overview,
-Start, Runs, Workflow detail, Operations, run detail, compare, Advanced
-visibility, the `/workbench` workflow-authoring flow, and the `/playground`
-exploratory sandbox in one local cockpit.
+and SQLite draft-state cues visible up front while still giving you Hub at `/`
+and `/hub`, Start, Runs, Workflow detail, Operations, Studio at `/studio`,
+Playground, Observatory at `/observatory`, run detail, compare, Advanced
+visibility, and `/workbench` compatibility in one local cockpit.
 
 With the default local workspace layout, reusable workflows stay in
 `.xrtm/workflows` while draft values, validation snapshots, compare cache, and
 resume state stay in `.xrtm/webui/app-state.db`.
 
-Use `http://127.0.0.1:8765/start` for quickstart or named workflow runs,
+Use `http://127.0.0.1:8765/` or `http://127.0.0.1:8765/hub` for the Hub,
+`http://127.0.0.1:8765/start` for quickstart or named workflow runs,
 `http://127.0.0.1:8765/operations` for profiles, monitor lifecycle, artifact
 inventory, and cleanup preview/confirm, and
-`http://127.0.0.1:8765/workbench` when you want the released authoring flow:
+`http://127.0.0.1:8765/studio` when you want the released authoring flow:
 
 1. starting from scratch, a released starter template, or a clone
-2. authoring shared core workflow fields plus safe node/edge/entry changes
-3. validating the authored draft before execution
+2. authoring shared workflow fields plus safe graph changes inside the released
+   workflow schema and built-in node catalog
+3. validating and saving the authored draft before execution
 4. running the validated draft
-5. comparing the new run against the baseline evidence
+5. tracing it through Playground and inspecting evidence in Observatory
 
-Safe workflow authoring stays inside the released schema and built-in node
-library. Parallel-group and conditional-route editing remain thin/read-only. It
-is **not** arbitrary graph, JSON, implementation, or code editing.
+Studio is a bounded graph IDE over the existing workflow schema and built-in
+node catalog. It supports local node dragging, palette click/drag-to-canvas
+add-node, node/edge/workflow selection, edge create/remove, entry setting,
+contextual inspection, and validate/save/run through the Studio APIs.
+`/workbench` remains a compatibility route for existing links. Parallel-group
+and conditional-route editing remain thin/read-only. Studio is **not** an
+arbitrary code/plugin graph editor, generic diagramming app, raw JSON editor, or
+hosted collaboration canvas.
 
 The same shared authoring layer also powers `xrtm workflow create ...` and
 `xrtm workflow edit ...` for terminal-led workflows.
 
-The released package also includes the bounded Playground lane. Open
+The released package also includes the bounded graph-linked Playground lane. Open
 `http://127.0.0.1:8765/playground` from the same local shell when you want one
-custom question first, optional tiny follow-up batches capped at 5, read-only
-ordered step inspection, and explicit save-back to workflow/profile only. Keep
-those runs exploratory and separate from benchmark or release evidence by
+custom question first, optional tiny follow-up batches capped at 5, graph/canvas
+preview, ordered node trace, executed-node highlighting, an honest fallback when
+no graph trace artifact exists, and explicit save-back to workflow/profile only.
+Keep those runs exploratory and separate from benchmark or release evidence by
 default, and keep the released runtime wording provider-free unless wider
 validation is published separately.
 
 ```bash
-xrtm playground --workflow demo-provider-free --question "Will the released 0.8.3 playground stay exploratory?" --workflows-dir .xrtm/workflows --runs-dir runs
+xrtm playground --workflow demo-provider-free --question "Will the released 0.8.4 playground stay exploratory?" --workflows-dir .xrtm/workflows --runs-dir runs
 ```
 
 That released Playground command uses the provider-free baseline path and the
 same shared sandbox contract as the WebUI route.
 
-Use Overview, Start, Runs, or Operations when you need the released review and
-operator surfaces; switch to `/workbench` only when you want the guided
-workflow-authoring flow.
+Use Hub, Start, Runs, Operations, or Observatory when you need the released
+review and operator surfaces; switch to `/studio` when you want the guided
+workflow-authoring flow. Existing `/workbench` links remain compatible.
 
 If you prefer the terminal, launch the TUI instead:
 
@@ -161,7 +175,7 @@ You completed the first published XRTM event-forecasting loop:
 1. **Health check**: verified the installed stack and local readiness
 2. **Forecast run**: ran a provider-free smoke/baseline workflow without external endpoints or CLI contracts
 3. **Scored evidence**: verified the newest run and its outputs on disk
-4. **Review surface**: opened the same local forecasting cockpit—with visible version/local-state trust cues—through Overview, Start, Runs, Workflow detail, Operations, run detail, compare, the `/workbench` safe workflow-authoring path, the `/playground` exploratory sandbox, or TUI
+4. **Review surface**: opened the same local forecasting cockpit—with visible version/local-state trust cues—through Hub, Start, Runs, Workflow detail, Operations, Studio, Playground, Observatory, run detail, compare, `/workbench` compatibility, or TUI
 
 That is the core product path for newcomers today.
 
@@ -223,9 +237,11 @@ When you compare two runs, read the output like an evaluation gate:
 - unchanged provider-free control compares mean the baseline is stable; introduce a real endpoint/model/runtime change before claiming improvement
 - improved scores with similar operational health are promotion candidates; regressions or large runtime jumps should be investigated or rejected
 
-You can also open `/workbench` from the WebUI to start from scratch/template/
-clone, author shared core workflow fields plus safe node/edge/entry changes,
-validate, run, and compare without claiming arbitrary graph or code editing.
+You can also open `/studio` from the WebUI to start from scratch/template/clone,
+author shared core workflow fields plus safe node/edge/entry changes, validate,
+run, and compare without claiming arbitrary code/plugin graph editing or a full
+persistent collaborative canvas layout. `/workbench` remains a compatibility
+route for existing links.
 
 ### 4. OpenAI-compatible endpoint advanced workflow (local profile)
 
@@ -307,9 +323,9 @@ Activate the virtual environment first:
 . .venv/bin/activate
 ```
 
-### Installation fails on Python 3.13
+### Installation fails on Python 3.14
 
-This is expected. XRTM currently supports Python `>=3.11,<3.13`.
+This is expected. XRTM currently supports Python `>=3.11,<3.14`.
 
 ### `xrtm start` reports warnings
 
