@@ -49,7 +49,7 @@ See [Getting started](../getting-started) for that path.
 
 ## How the pieces fit
 
-- `xrtm` is the newcomer-facing product shell, including the released bounded Playground lane in `0.8.2`.
+- `xrtm` is the newcomer-facing product shell, including the released bounded Playground lane in `0.8.3`.
 - `xrtm-forecast` handles the runtime and orchestration layer.
 - `xrtm-eval` and `xrtm-data` provide the scoring and snapshot foundations.
 - `xrtm-train` closes the loop for replay, calibration, and evaluation harnesses.

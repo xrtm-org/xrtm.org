@@ -13,7 +13,7 @@ Use this page after [Getting started](../getting-started) when you need a repeat
 - profile execution with `xrtm run profile my-local` or `xrtm run profile local-mock`
 - run inspection with `xrtm runs list --runs-dir runs`, `xrtm runs show latest --runs-dir runs`, `xrtm artifacts inspect --latest --runs-dir runs`, and `xrtm report html --latest --runs-dir runs`
 - local views with `xrtm web --runs-dir runs` and `xrtm tui --runs-dir runs`
-- the released WebUI shell (`/`, `/start`, `/runs`, `/workflows/<name>`, `/operations`, `/workbench`, `/playground`) for overview, run review, workflow launch, operator controls, guided draft flow, compare, and the bounded exploratory sandbox
+- the released local WebUI shell (`/`, `/start`, `/runs`, `/workflows/<name>`, `/operations`, `/workbench`, `/playground`) for overview, run review, workflow launch, operator controls, guided draft flow, compare, and the bounded exploratory sandbox
 - maintenance with `xrtm monitor start --provider mock --limit 2 --runs-dir runs`, `xrtm monitor list --runs-dir runs`, and `xrtm artifacts cleanup --runs-dir runs --keep 50`
 
 ## What this page does not try to do
@@ -23,7 +23,8 @@ This is still a released local-first route, not a separate platform or control p
 The WebUI stays local-only: a React/TypeScript shell talks to the local Python
 API, reusable workflows stay on disk, profiles stay under `.xrtm/profiles`, and
 draft values plus validation/compare resume state stay in SQLite on your
-machine.
+machine. The shell chrome keeps those trust cues explicit instead of implying a
+hosted control plane or broader capability set.
 
 Use `/start` for quickstart or named workflow runs, `/operations` for profile,
 monitor, artifact, and cleanup actions, `/workbench` when you specifically need

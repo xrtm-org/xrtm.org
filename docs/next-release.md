@@ -1,6 +1,6 @@
 ---
 title: Next release track
-description: Near-term conveniences that are not yet on the released 0.8.2 surface.
+description: Near-term conveniences that are not yet on the released 0.8.3 capability set.
 ---
 
 # Next release track
@@ -17,16 +17,27 @@ and cross-repo version ownership lives in the
 [Stack Versioning Policy](https://github.com/xrtm-org/governance/blob/main/policies/stack-versioning-policy.md).
 :::
 
-- **Released docs** stay pinned to what ships in `xrtm==0.8.2`, because `xrtm` is the product-anchor version for top-level release claims.
+- **Released docs** stay pinned to the `xrtm==0.8.3` capability set, because `xrtm` is the product-anchor version for top-level release claims and `0.8.3` stayed a stability/polish release rather than a capability expansion.
 - **This page** tracks near-term conveniences that are real and valuable, but not yet promoted into the public released path.
 - **The roadmap** remains for longer-horizon, future, or experimental work.
 
 For command-level details, see [`xrtm/docs/next-release-feature-track.md`](https://github.com/xrtm-org/xrtm/blob/main/docs/next-release-feature-track.md).
 
+## Released in `0.8.3`
+
+`0.8.3` shipped as a **stability and polish** release.
+
+- It shipped bug fixes and visual/wording polish on already released surfaces.
+- It made the existing local WebUI shell's trust cues clearer: version,
+  local-only scope, file-backed history, and SQLite draft state.
+- It did **not** add new product capability families, widen runtime promises,
+  or turn shell polish into a broader WebUI/control-plane claim.
+
 ## Current decisions
 
 | Feature family | Canonical status | Release/train | Current release decision | What happens next |
 | --- | --- | --- | --- | --- |
+| WebUI shell polish and trust cues | **`shipped`** | `0.8.3` | `0.8.3` only refines the existing local shell: clearer version, local-only, file-backed-history, and SQLite draft-state cues plus the locked muted design language. No new routes, runtimes, or workflow families shipped with this row. | Keep release-pinned docs describing the same released shell/workflow surfaces; continue treating the refresh as polish and trust framing, not a new product capability. |
 | Guided onboarding helpers (`xrtm start`, starter profile scaffolding) | **`shipped`** | Released surface | They are part of the released guided first-success path. | Keep clean-install proof and the matching onboarding docs update in lockstep. |
 | Latest-run shortcuts (`latest`, `--latest`) | **`shipped`** | Released surface | They are part of the published operator ergonomics surface. | Keep released-artifact smoke covering the shortcuts. |
 | CSV export on the top-level product surface | **`shipped`** | Released surface | It is part of the released export surface, with JSON still documented as the full-fidelity bundle. | Keep JSON/CSV documentation aligned with release packaging. |
