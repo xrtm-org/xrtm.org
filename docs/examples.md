@@ -39,8 +39,8 @@ smoke/baseline lane before any model-backed endpoint profile.
 - released Hub at `/` and `/hub` for first-run, templates, recent work, readiness, and entry links
 - released Start and Workflow detail surfaces for quickstart, named workflow runs, report generation, and JSON/CSV export
 - released Operations surface for profiles, monitor lifecycle, artifact inventory, and cleanup preview/confirm
-- released Studio at `/studio` for bounded graph authoring over the existing workflow schema and built-in node catalog; `/workbench` remains compatibility
-- released `/playground` flow for one custom question first, graph/canvas preview, ordered node trace, honest no-trace fallback, and explicit save-back on the provider-free baseline
+- released Studio at `/studio` for bounded forecast-path authoring over the existing workflow schema and built-in node catalog; `/workbench` remains compatibility
+- released `/playground` flow for one custom question first, forecast-path/canvas preview, ordered node trace, honest no-trace fallback, and explicit save-back on the provider-free baseline
 - released Observatory at `/observatory` for run inspection
 - run history, compare, and JSON export commands
 - profile-based repeatable workflows

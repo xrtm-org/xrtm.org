@@ -6,7 +6,7 @@ import styles from './index.module.css';
 
 const canvasNodes = [
   { label: 'Hub', detail: '/ and /hub', x: 8, y: 19 },
-  { label: 'Studio', detail: 'bounded graph IDE', x: 38, y: 10 },
+  { label: 'Studio', detail: 'bounded forecast path IDE', x: 38, y: 10 },
   { label: 'Playground', detail: 'trace preview', x: 66, y: 25 },
   { label: 'Observatory', detail: 'run inspector', x: 34, y: 51 },
   { label: 'Workbench', detail: 'compatibility', x: 72, y: 60 },
@@ -129,19 +129,19 @@ export default function Home(): React.JSX.Element {
               <span>Released 0.8.4 scope</span>
               <div className={styles.editRows}>
                 <span>Hub first-run and templates</span>
-                <span>Studio bounded graph authoring</span>
+                <span>Studio bounded forecast-path authoring</span>
                 <span>Playground trace and Observatory inspection</span>
               </div>
             </div>
             <p className={styles.storyFootnote}>
               The released WebUI is a React/TypeScript app shell backed by the
-              local Python API and SQLite app-state. Studio is a bounded graph
-              IDE over the existing workflow schema and built-in node catalog;
-              Playground adds graph/canvas preview, ordered node trace, and an
+              local Python API and SQLite app-state. Studio is a bounded forecast
+              path IDE over the existing workflow schema and built-in node catalog;
+              Playground adds forecast-path/canvas preview, ordered node trace, and an
               honest no-trace fallback; Observatory is the run inspector.
               The baseline stays provider-free, <code>/workbench</code> remains
               compatibility, and this is not a calibration dashboard,
-              API/webhook control plane, arbitrary code/plugin graph editor,
+              API/webhook control plane, arbitrary code/plugin forecast-path editor,
               or full persistent collaborative canvas.
             </p>
           </motion.aside>

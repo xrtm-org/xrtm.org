@@ -13,7 +13,7 @@ Use this page after [Getting started](../getting-started) when you need a repeat
 - profile execution with `xrtm run profile my-local` or `xrtm run profile local-mock`
 - run inspection with `xrtm runs list --runs-dir runs`, `xrtm runs show latest --runs-dir runs`, `xrtm artifacts inspect --latest --runs-dir runs`, and `xrtm report html --latest --runs-dir runs`
 - local views with `xrtm web --runs-dir runs` and `xrtm tui --runs-dir runs`
-- the released local WebUI shell (`/`, `/hub`, `/start`, `/runs`, `/workflows/<name>`, `/operations`, `/studio`, `/playground`, `/observatory`, `/workbench`) for Hub, run review, workflow launch, operator controls, bounded graph authoring, graph-linked exploratory tracing, run inspection, compare, and compatibility
+- the released local WebUI shell (`/`, `/hub`, `/start`, `/runs`, `/workflows/<name>`, `/operations`, `/studio`, `/playground`, `/observatory`, `/workbench`) for Hub, run review, workflow launch, operator controls, bounded forecast-path authoring, forecast-path-linked exploratory tracing, run inspection, compare, and compatibility
 - maintenance with `xrtm monitor start --provider mock --limit 2 --runs-dir runs`, `xrtm monitor list --runs-dir runs`, and `xrtm artifacts cleanup --runs-dir runs --keep 50`
 
 ## What this page does not try to do
@@ -28,14 +28,14 @@ hosted control plane or broader capability set.
 
 Use `/` or `/hub` for the Hub, `/start` for quickstart or named workflow runs,
 `/operations` for profile, monitor, artifact, and cleanup actions, `/studio`
-when you specifically need the safe bounded graph-authoring draft flow,
-`/playground` for graph/canvas preview plus ordered node trace with an honest
+when you specifically need the safe bounded forecast-path-authoring draft flow,
+`/playground` for forecast-path/canvas preview plus ordered node trace with an honest
 no-trace fallback, and `/observatory` for run inspection. `/workbench` remains a
 compatibility route. Studio authoring covers scratch/template/clone creation,
 shared core workflow fields, and safe node/edge/entry edits inside the existing
 workflow schema and built-in node catalog. Parallel-group and conditional-route
 editing remain thin/read-only, and the surface does not expose arbitrary
-code/plugin graph editing, raw JSON/implementation editing, API/webhook
+code/plugin forecast-path editing, raw JSON/implementation editing, API/webhook
 control-plane actions, or full persistent collaborative canvas layout.
 
 ## Good next links

@@ -20,10 +20,10 @@ The released `xrtm 0.8.4` surface does **not** ship built-in user management, ce
 
 ## Released sandbox note
 
-The released `0.8.4` surface includes the bounded graph-linked
+The released `0.8.4` surface includes the bounded forecast-path-linked
 Playground/sandbox lane. Treat it as **exploratory** only: one custom question
-first, optional tiny follow-up batches of at most 5, graph/canvas preview,
-ordered node trace, an honest fallback when no graph trace artifact exists, and
+first, optional tiny follow-up batches of at most 5, forecast-path/canvas preview,
+ordered node trace, an honest fallback when no execution trace artifact exists, and
 explicit save-back to workflow/profile. Keep those runs distinct from benchmark
 or release evidence by default, and keep the runtime story provider-free unless
 separate validation widens it.
