@@ -107,6 +107,7 @@
 .primaryButton,
 .secondaryButton {
   border-radius: 9999px;
+  color: #ffffff;
   transition:
     transform 180ms ease,
     box-shadow 180ms ease,
@@ -118,15 +119,24 @@
   background: #f97316;
   border-color: #f97316;
   box-shadow: 0 18px 42px rgba(249, 115, 22, 0.24);
+  color: #ffffff;
 }
 
 .primaryButton:hover {
   background: #ea580c;
   border-color: #ea580c;
+  color: #ffffff;
 }
 
 .secondaryButton {
+  background: rgba(20, 184, 166, 0.08);
   border-color: rgba(20, 184, 166, 0.34);
+  color: #0f766e;
+}
+
+.secondaryButton:hover {
+  background: rgba(20, 184, 166, 0.14);
+  border-color: rgba(20, 184, 166, 0.48);
   color: #0f766e;
 }
 
@@ -292,7 +302,7 @@
   gap: 0.25rem;
   padding: 0.78rem 0.85rem;
   position: absolute;
-  width: 12.4rem;
+  width: 13.4rem;
   z-index: 1;
 }
 
@@ -301,27 +311,13 @@
   top: 7%;
 }
 
-.pathNode:nth-of-type(2) {
-  left: 34%;
-  top: 20%;
-}
-
-.pathNode:nth-of-type(3) {
-  left: 10%;
-  top: 47%;
-}
-
-.pathNode:nth-of-type(4) {
-  left: 45%;
-  top: 55%;
-}
-
 .pathNodeActive {
-  left: 48%;
-  top: 80%;
+  left: 57%;
+  top: 74%;
 }
 
 .pathNode span,
+.agentChip span,
 .traceTitle,
 .chartHeader span,
 .personaCard span,
@@ -339,6 +335,32 @@
   line-height: 1.25;
 }
 
+.agentCluster {
+  display: grid;
+  gap: 0.55rem;
+  left: 43%;
+  position: absolute;
+  top: 21%;
+  width: 15.5rem;
+  z-index: 1;
+}
+
+.agentChip {
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  border-radius: 0.9rem;
+  box-shadow: 0 14px 34px rgba(15, 23, 42, 0.07);
+  display: grid;
+  gap: 0.18rem;
+  padding: 0.65rem 0.75rem;
+}
+
+.agentChip strong {
+  color: #0f172a;
+  font-size: 0.82rem;
+  line-height: 1.25;
+}
+
 .pathNodeActive {
   border-color: rgba(37, 99, 235, 0.35);
   box-shadow:
@@ -350,7 +372,7 @@
   background: rgba(15, 23, 42, 0.9);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 1rem;
-  bottom: 5%;
+  bottom: 8%;
   box-shadow: 0 18px 42px rgba(15, 23, 42, 0.14);
   color: #e2e8f0;
   display: grid;
@@ -358,7 +380,7 @@
   left: 6%;
   padding: 0.8rem;
   position: absolute;
-  width: 11.8rem;
+  width: 12rem;
   z-index: 1;
 }
 
@@ -698,6 +720,7 @@
 
 [data-theme='dark'] .eyebrow,
 [data-theme='dark'] .pathNode span,
+[data-theme='dark'] .agentChip span,
 [data-theme='dark'] .chartHeader span,
 [data-theme='dark'] .personaCard span,
 [data-theme='dark'] .audienceCard span,
@@ -708,6 +731,7 @@
 [data-theme='dark'] .title,
 [data-theme='dark'] .proofStrip strong,
 [data-theme='dark'] .pathNode strong,
+[data-theme='dark'] .agentChip strong,
 [data-theme='dark'] .chartHeader strong,
 [data-theme='dark'] .validationGrid strong,
 [data-theme='dark'] .sectionCopy h2,
@@ -726,7 +750,6 @@
   color: #cbd5e1;
 }
 
-[data-theme='dark'] .proofStrip,
 [data-theme='dark'] .productFrame,
 [data-theme='dark'] .calibrationCard,
 [data-theme='dark'] .personaCard,
@@ -742,6 +765,7 @@
 [data-theme='dark'] .workspacePreview,
 [data-theme='dark'] .visualPane,
 [data-theme='dark'] .pathNode,
+[data-theme='dark'] .agentChip,
 [data-theme='dark'] .validationGrid span,
 [data-theme='dark'] .signalRow small {
   background: rgba(15, 23, 42, 0.72);
@@ -754,8 +778,31 @@
   color: #94a3b8;
 }
 
+[data-theme='dark'] .signalRow small {
+  color: #e2e8f0;
+}
+
+[data-theme='dark'] .utilityIcons i {
+  background: rgba(96, 165, 250, 0.12);
+  border-color: rgba(147, 197, 253, 0.24);
+  color: #bfdbfe;
+}
+
+[data-theme='dark'] .primaryButton,
+[data-theme='dark'] .primaryButton:hover {
+  color: #ffffff;
+}
+
 [data-theme='dark'] .secondaryButton {
-  color: #5eead4;
+  background: rgba(20, 184, 166, 0.12);
+  border-color: rgba(94, 234, 212, 0.36);
+  color: #99f6e4;
+}
+
+[data-theme='dark'] .secondaryButton:hover {
+  background: rgba(20, 184, 166, 0.2);
+  border-color: rgba(94, 234, 212, 0.52);
+  color: #ccfbf1;
 }
 
 [data-theme='dark'] .workspacePreview {
@@ -819,24 +866,15 @@
     width: 10.6rem;
   }
 
-  .pathNode:nth-of-type(2) {
+  .agentCluster {
     left: 34%;
-    top: 22%;
-  }
-
-  .pathNode:nth-of-type(3) {
-    left: 8%;
-    top: 46%;
-  }
-
-  .pathNode:nth-of-type(4) {
-    left: 34%;
-    top: 63%;
+    top: 28%;
+    width: 11.2rem;
   }
 
   .pathNodeActive {
-    left: 42%;
-    top: 82%;
+    left: 38%;
+    top: 76%;
   }
 
   .distributionCard {

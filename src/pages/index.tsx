@@ -135,17 +135,19 @@ export default function Home(): React.JSX.Element {
                   <span>Forecast request</span>
                   <strong>Predict US Fed interest-rate change — Q3</strong>
                 </div>
-                <div className={styles.pathNode}>
-                  <span>News signal agent</span>
-                  <strong>Policy headlines + market context</strong>
-                </div>
-                <div className={styles.pathNode}>
-                  <span>Consensus agent</span>
-                  <strong>FOMC guidance + analyst views</strong>
-                </div>
-                <div className={styles.pathNode}>
-                  <span>Sentiment agent</span>
-                  <strong>Expert signals and uncertainty drivers</strong>
+                <div className={styles.agentCluster} aria-label="Collaborating forecast agents">
+                  <div className={styles.agentChip}>
+                    <span>News signal</span>
+                    <strong>Policy + market context</strong>
+                  </div>
+                  <div className={styles.agentChip}>
+                    <span>Consensus</span>
+                    <strong>FOMC + analyst views</strong>
+                  </div>
+                  <div className={styles.agentChip}>
+                    <span>Sentiment</span>
+                    <strong>Uncertainty drivers</strong>
+                  </div>
                 </div>
                 <div className={`${styles.pathNode} ${styles.pathNodeActive}`}>
                   <span>Forecast result</span>
@@ -163,10 +165,9 @@ export default function Home(): React.JSX.Element {
                   <small>Agent agreement: 3 / 4</small>
                 </div>
                 <svg className={styles.pathLines} viewBox="0 0 100 100" role="presentation">
-                  <path d="M24 18 C 34 24, 42 31, 52 38" />
-                  <path d="M23 18 C 34 44, 42 55, 54 63" />
-                  <path d="M54 38 C 62 44, 68 52, 77 63" />
-                  <path d="M55 64 C 64 68, 70 72, 78 79" />
+                  <path d="M28 20 C 38 26, 44 31, 54 36" />
+                  <path d="M63 55 C 70 61, 75 67, 81 75" />
+                  <path d="M42 72 C 54 74, 62 77, 75 81" />
                 </svg>
               </div>
               <div className={styles.tracePane}>
