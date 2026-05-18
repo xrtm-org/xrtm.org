@@ -31,6 +31,23 @@ const audienceCards = [
   },
 ];
 
+const personaCards = [
+  {
+    title: 'Market bettor edge',
+    eyebrow: 'Prediction markets',
+    description:
+      'Frame market-style questions, compare evidence against current assumptions, and inspect the reasoning behind each probability.',
+    signals: ['Odds drift', 'Base rates', 'Resolution criteria'],
+  },
+  {
+    title: 'Business decision edge',
+    eyebrow: 'Strategic decisions',
+    description:
+      'Turn operational uncertainty into scenario ranges, risk indicators, and artifact-backed decisions your team can review.',
+    signals: ['Risk bands', 'Scenario ranges', 'Decision memo'],
+  },
+];
+
 const proofStats = [
   { label: 'Published product', value: 'xrtm 0.8.5' },
   { label: 'Default first run', value: 'Provider-free' },
@@ -45,6 +62,7 @@ export default function Home(): React.JSX.Element {
     >
       <main className={styles.page}>
         <div aria-hidden="true" className={styles.backdrop}>
+          <div className={styles.dataMesh} />
           <motion.div
             animate={{ opacity: 1, scale: 1 }}
             className={styles.orbPrimary}
@@ -69,15 +87,18 @@ export default function Home(): React.JSX.Element {
             <p className={styles.eyebrow}>Published xrtm 0.8.5 workspace</p>
             <h1 className={styles.title}>Stop guessing. Start forecasting.</h1>
             <p className={styles.lead}>
-              Design probabilistic workflows, inspect AI reasoning, and evaluate calibrated decisions for
-              prediction markets, research questions, and business decisions in one local visual workspace.
+              Design, evaluate, and reuse multi-agent probabilistic workflows to seek a calibrated edge in
+              prediction markets, business risk, and strategic decisions.
             </p>
             <div className={styles.actions}>
               <Link className={`button button--primary button--lg ${styles.primaryButton}`} to="/docs/getting-started">
-                Launch local workspace
+                Launch local workspace (free)
               </Link>
-              <Link className={`button button--secondary button--lg ${styles.secondaryButton}`} to="/docs">
-                Read docs
+              <Link
+                className={`button button--secondary button--lg ${styles.secondaryButton}`}
+                to="/docs/workflows/researcher-model-eval"
+              >
+                View demo workflows
               </Link>
             </div>
             <div className={styles.proofStrip} aria-label="Release proof">
@@ -102,43 +123,88 @@ export default function Home(): React.JSX.Element {
               <span />
               <span />
               <strong>Playground · forecast path running</strong>
+              <div className={styles.utilityIcons} aria-hidden="true">
+                <i>Model</i>
+                <i>Path</i>
+                <i>Eval</i>
+              </div>
             </div>
             <div className={styles.workspacePreview}>
               <div className={styles.visualPane}>
                 <div className={styles.pathNode}>
-                  <span>Question</span>
-                  <strong>Will demand outpace supply?</strong>
+                  <span>Forecast request</span>
+                  <strong>Predict US Fed interest-rate change — Q3</strong>
                 </div>
                 <div className={styles.pathNode}>
-                  <span>Agents</span>
-                  <strong>Search · Synthesize · Score</strong>
+                  <span>News signal agent</span>
+                  <strong>Policy headlines + market context</strong>
+                </div>
+                <div className={styles.pathNode}>
+                  <span>Consensus agent</span>
+                  <strong>FOMC guidance + analyst views</strong>
+                </div>
+                <div className={styles.pathNode}>
+                  <span>Sentiment agent</span>
+                  <strong>Expert signals and uncertainty drivers</strong>
                 </div>
                 <div className={`${styles.pathNode} ${styles.pathNodeActive}`}>
                   <span>Forecast result</span>
-                  <strong>64% probability</strong>
+                  <strong>72% likely · YES</strong>
+                </div>
+                <div className={styles.distributionCard}>
+                  <span>Probability distribution</span>
+                  <div className={styles.distributionBars}>
+                    <i style={{ height: '32%' }} />
+                    <i style={{ height: '58%' }} />
+                    <i style={{ height: '86%' }} />
+                    <i style={{ height: '64%' }} />
+                    <i style={{ height: '42%' }} />
+                  </div>
+                  <small>Agent agreement: 3 / 4</small>
                 </div>
                 <svg className={styles.pathLines} viewBox="0 0 100 100" role="presentation">
-                  <path d="M24 24 C 36 28, 44 33, 55 42" />
-                  <path d="M58 47 C 66 55, 70 62, 76 73" />
+                  <path d="M24 18 C 34 24, 42 31, 52 38" />
+                  <path d="M23 18 C 34 44, 42 55, 54 63" />
+                  <path d="M54 38 C 62 44, 68 52, 77 63" />
+                  <path d="M55 64 C 64 68, 70 72, 78 79" />
                 </svg>
               </div>
               <div className={styles.tracePane}>
                 <p className={styles.traceTitle}>Reasoning trace</p>
                 <div className={styles.traceStep}>
                   <span>01</span>
-                  <p>Gathered base rates and current market context.</p>
+                  <p>Parallel agents gathered rates, policy context, and market assumptions.</p>
                 </div>
                 <div className={styles.traceStep}>
                   <span>02</span>
-                  <p>Weighted uncertainty drivers against the resolution criteria.</p>
+                  <p>Consensus check exposed two high-impact uncertainty drivers.</p>
                 </div>
                 <div className={styles.traceStep}>
                   <span>03</span>
-                  <p>Saved forecast result, artifacts, and comparison metadata.</p>
+                  <p>Saved probability range, agreement score, artifacts, and comparison metadata.</p>
                 </div>
               </div>
             </div>
           </motion.aside>
+        </section>
+
+        <section className={styles.personaSection} aria-label="Audience edges">
+          <div className={styles.personaGrid}>
+            {personaCards.map((card) => (
+              <article className={styles.personaCard} key={card.title}>
+                <div>
+                  <span>{card.eyebrow}</span>
+                  <h2>{card.title}</h2>
+                  <p>{card.description}</p>
+                </div>
+                <div className={styles.signalRow} aria-label={`${card.title} signals`}>
+                  {card.signals.map((signal) => (
+                    <small key={signal}>{signal}</small>
+                  ))}
+                </div>
+              </article>
+            ))}
+          </div>
         </section>
 
         <motion.section
@@ -148,17 +214,17 @@ export default function Home(): React.JSX.Element {
           transition={{ delay: 0.18, duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
         >
           <div className={styles.sectionCopy}>
-            <p className={styles.eyebrow}>Trust is measured</p>
+            <p className={styles.eyebrow}>Calibration & validation</p>
             <h2>Calibration evidence, not just confident answers.</h2>
             <p>
-              XRTM keeps Brier scores, run artifacts, and historical comparisons close to the workflow so you can
-              see whether a forecast path is improving instead of trusting a black-box answer.
+              XRTM keeps Brier scoring, run artifacts, and historical comparisons close to the workflow so you can
+              measure forecast quality instead of trusting a black-box answer.
             </p>
           </div>
           <div className={styles.calibrationCard} aria-label="Calibration curve preview">
             <div className={styles.chartHeader}>
               <span>Observatory calibration</span>
-              <strong>Brier trend ↓</strong>
+              <strong>Tracked per run</strong>
             </div>
             <svg className={styles.calibrationChart} viewBox="0 0 420 220" role="presentation">
               <line x1="48" x2="380" y1="176" y2="176" />
@@ -169,6 +235,20 @@ export default function Home(): React.JSX.Element {
               <circle cx="198" cy="116" r="5" />
               <circle cx="374" cy="42" r="5" />
             </svg>
+            <div className={styles.validationGrid}>
+              <span>
+                <strong>Brier score</strong>
+                <small>Tracked, not guessed</small>
+              </span>
+              <span>
+                <strong>Run artifacts</strong>
+                <small>Evidence + trace retained</small>
+              </span>
+              <span>
+                <strong>Release claims</strong>
+                <small>Checked against xrtm 0.8.5</small>
+              </span>
+            </div>
             <p>Compare confidence to outcomes, then refine the forecast path that produced them.</p>
           </div>
         </motion.section>

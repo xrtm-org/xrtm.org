@@ -11,6 +11,16 @@
   position: absolute;
 }
 
+.dataMesh {
+  background:
+    linear-gradient(115deg, transparent 0 18%, rgba(37, 99, 235, 0.08) 18.2% 18.5%, transparent 18.8% 48%, rgba(20, 184, 166, 0.07) 48.2% 48.5%, transparent 48.8%),
+    radial-gradient(circle at 24% 28%, rgba(249, 115, 22, 0.08), transparent 18%),
+    radial-gradient(circle at 78% 18%, rgba(20, 184, 166, 0.1), transparent 18%);
+  inset: 0;
+  opacity: 0.72;
+  position: absolute;
+}
+
 .orbPrimary,
 .orbSecondary {
   border-radius: 9999px;
@@ -37,6 +47,7 @@
 }
 
 .hero,
+.personaSection,
 .trustSection,
 .audienceSection,
 .engineSection {
@@ -69,12 +80,13 @@
 
 .title {
   color: #020617;
-  font-size: clamp(3.55rem, 7vw, 6.6rem);
+  font-size: clamp(3.35rem, 6.7vw, 6.3rem);
   font-weight: 950;
   letter-spacing: -0.075em;
   line-height: 0.92;
   margin: 0;
-  max-width: 10.5ch;
+  max-width: 11ch;
+  text-transform: uppercase;
 }
 
 .lead {
@@ -103,7 +115,19 @@
 }
 
 .primaryButton {
-  box-shadow: 0 18px 42px rgba(37, 99, 235, 0.22);
+  background: #f97316;
+  border-color: #f97316;
+  box-shadow: 0 18px 42px rgba(249, 115, 22, 0.24);
+}
+
+.primaryButton:hover {
+  background: #ea580c;
+  border-color: #ea580c;
+}
+
+.secondaryButton {
+  border-color: rgba(20, 184, 166, 0.34);
+  color: #0f766e;
 }
 
 .primaryButton:hover,
@@ -144,6 +168,7 @@
 
 .productFrame,
 .calibrationCard,
+.personaCard,
 .audienceCard,
 .terminalCard {
   backdrop-filter: blur(20px);
@@ -196,6 +221,25 @@
   text-transform: uppercase;
 }
 
+.utilityIcons {
+  display: flex;
+  gap: 0.35rem;
+  margin-left: auto;
+}
+
+.utilityIcons i {
+  background: rgba(37, 99, 235, 0.08);
+  border: 1px solid rgba(37, 99, 235, 0.16);
+  border-radius: 9999px;
+  color: #1d4ed8;
+  font-size: 0.62rem;
+  font-style: normal;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  padding: 0.25rem 0.45rem;
+  text-transform: uppercase;
+}
+
 .workspacePreview {
   background:
     radial-gradient(circle at 20% 16%, rgba(59, 130, 246, 0.18), transparent 30%),
@@ -204,8 +248,8 @@
   border-radius: 1.55rem;
   display: grid;
   gap: 0.9rem;
-  grid-template-columns: minmax(0, 1.15fr) minmax(13rem, 0.85fr);
-  min-height: 27rem;
+  grid-template-columns: minmax(0, 1.2fr) minmax(13.5rem, 0.8fr);
+  min-height: 29rem;
   overflow: hidden;
   padding: 1rem;
 }
@@ -218,7 +262,7 @@
   background-size: 26px 26px;
   border: 1px solid rgba(148, 163, 184, 0.18);
   border-radius: 1.2rem;
-  min-height: 24rem;
+  min-height: 26rem;
   overflow: hidden;
   position: relative;
 }
@@ -246,30 +290,41 @@
   box-shadow: 0 18px 42px rgba(15, 23, 42, 0.08);
   display: grid;
   gap: 0.25rem;
-  padding: 0.85rem 0.9rem;
+  padding: 0.78rem 0.85rem;
   position: absolute;
-  width: 13rem;
+  width: 12.4rem;
   z-index: 1;
 }
 
 .pathNode:first-of-type {
-  left: 8%;
-  top: 10%;
+  left: 6%;
+  top: 7%;
 }
 
 .pathNode:nth-of-type(2) {
-  left: 35%;
-  top: 38%;
+  left: 34%;
+  top: 20%;
+}
+
+.pathNode:nth-of-type(3) {
+  left: 10%;
+  top: 47%;
+}
+
+.pathNode:nth-of-type(4) {
+  left: 45%;
+  top: 55%;
 }
 
 .pathNodeActive {
-  left: 52%;
-  top: 70%;
+  left: 48%;
+  top: 80%;
 }
 
 .pathNode span,
 .traceTitle,
 .chartHeader span,
+.personaCard span,
 .audienceCard span {
   color: #2563eb;
   font-size: 0.72rem;
@@ -280,7 +335,8 @@
 
 .pathNode strong {
   color: #0f172a;
-  font-size: 0.94rem;
+  font-size: 0.88rem;
+  line-height: 1.25;
 }
 
 .pathNodeActive {
@@ -288,6 +344,49 @@
   box-shadow:
     0 18px 42px rgba(37, 99, 235, 0.12),
     0 0 0 5px rgba(37, 99, 235, 0.08);
+}
+
+.distributionCard {
+  background: rgba(15, 23, 42, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 1rem;
+  bottom: 5%;
+  box-shadow: 0 18px 42px rgba(15, 23, 42, 0.14);
+  color: #e2e8f0;
+  display: grid;
+  gap: 0.45rem;
+  left: 6%;
+  padding: 0.8rem;
+  position: absolute;
+  width: 11.8rem;
+  z-index: 1;
+}
+
+.distributionCard span {
+  color: #bfdbfe;
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.distributionCard small {
+  color: #cbd5e1;
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+.distributionBars {
+  align-items: end;
+  display: flex;
+  gap: 0.32rem;
+  height: 3.8rem;
+}
+
+.distributionBars i {
+  background: linear-gradient(180deg, #38bdf8, #2563eb);
+  border-radius: 9999px 9999px 0.2rem 0.2rem;
+  flex: 1;
 }
 
 .tracePane {
@@ -326,6 +425,74 @@
   margin: 0;
 }
 
+.personaSection {
+  margin-top: 1.5rem;
+}
+
+.personaGrid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.personaCard {
+  border-radius: 1.4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  justify-content: space-between;
+  min-height: 13rem;
+  overflow: hidden;
+  padding: 1.25rem;
+  position: relative;
+}
+
+.personaCard::after {
+  background:
+    radial-gradient(circle at 18% 30%, rgba(249, 115, 22, 0.16), transparent 22%),
+    linear-gradient(135deg, transparent 0 58%, rgba(20, 184, 166, 0.1) 58% 100%);
+  content: '';
+  inset: 0;
+  pointer-events: none;
+  position: absolute;
+}
+
+.personaCard h2 {
+  color: #020617;
+  font-size: 1.6rem;
+  letter-spacing: -0.045em;
+  line-height: 1.05;
+  margin: 0.45rem 0 0;
+  position: relative;
+  z-index: 1;
+}
+
+.personaCard p {
+  color: #475569;
+  line-height: 1.65;
+  margin: 0.75rem 0 0;
+  position: relative;
+  z-index: 1;
+}
+
+.signalRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  position: relative;
+  z-index: 1;
+}
+
+.signalRow small {
+  background: rgba(255, 255, 255, 0.66);
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  border-radius: 9999px;
+  color: #0f172a;
+  font-size: 0.72rem;
+  font-weight: 800;
+  padding: 0.38rem 0.58rem;
+}
+
 .trustSection,
 .engineSection {
   align-items: center;
@@ -347,6 +514,7 @@
 .sectionCopy p:not(.eyebrow),
 .sectionHeading p:not(.eyebrow),
 .calibrationCard p,
+.personaCard p,
 .audienceCard p {
   color: #475569;
   line-height: 1.75;
@@ -401,6 +569,34 @@
   fill: #2563eb;
   stroke: #ffffff;
   stroke-width: 4;
+}
+
+.validationGrid {
+  display: grid;
+  gap: 0.6rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin: 0.8rem 0;
+}
+
+.validationGrid span {
+  background: rgba(37, 99, 235, 0.06);
+  border: 1px solid rgba(37, 99, 235, 0.12);
+  border-radius: 0.9rem;
+  display: grid;
+  gap: 0.2rem;
+  padding: 0.75rem;
+}
+
+.validationGrid strong {
+  color: #0f172a;
+  font-size: 0.82rem;
+}
+
+.validationGrid small {
+  color: #64748b;
+  font-size: 0.72rem;
+  font-weight: 700;
+  line-height: 1.35;
 }
 
 .audienceSection {
@@ -503,6 +699,7 @@
 [data-theme='dark'] .eyebrow,
 [data-theme='dark'] .pathNode span,
 [data-theme='dark'] .chartHeader span,
+[data-theme='dark'] .personaCard span,
 [data-theme='dark'] .audienceCard span,
 [data-theme='dark'] .audienceCard strong {
   color: #93c5fd;
@@ -512,8 +709,10 @@
 [data-theme='dark'] .proofStrip strong,
 [data-theme='dark'] .pathNode strong,
 [data-theme='dark'] .chartHeader strong,
+[data-theme='dark'] .validationGrid strong,
 [data-theme='dark'] .sectionCopy h2,
 [data-theme='dark'] .sectionHeading h2,
+[data-theme='dark'] .personaCard h2,
 [data-theme='dark'] .audienceCard h3 {
   color: #f8fafc;
 }
@@ -522,6 +721,7 @@
 [data-theme='dark'] .sectionCopy p:not(.eyebrow),
 [data-theme='dark'] .sectionHeading p:not(.eyebrow),
 [data-theme='dark'] .calibrationCard p,
+[data-theme='dark'] .personaCard p,
 [data-theme='dark'] .audienceCard p {
   color: #cbd5e1;
 }
@@ -529,6 +729,7 @@
 [data-theme='dark'] .proofStrip,
 [data-theme='dark'] .productFrame,
 [data-theme='dark'] .calibrationCard,
+[data-theme='dark'] .personaCard,
 [data-theme='dark'] .audienceCard {
   background: rgba(2, 6, 23, 0.58);
   border-color: rgba(148, 163, 184, 0.16);
@@ -540,14 +741,21 @@
 [data-theme='dark'] .proofStrip span,
 [data-theme='dark'] .workspacePreview,
 [data-theme='dark'] .visualPane,
-[data-theme='dark'] .pathNode {
+[data-theme='dark'] .pathNode,
+[data-theme='dark'] .validationGrid span,
+[data-theme='dark'] .signalRow small {
   background: rgba(15, 23, 42, 0.72);
   border-color: rgba(148, 163, 184, 0.18);
 }
 
 [data-theme='dark'] .proofStrip small,
+[data-theme='dark'] .validationGrid small,
 [data-theme='dark'] .windowBar strong {
   color: #94a3b8;
+}
+
+[data-theme='dark'] .secondaryButton {
+  color: #5eead4;
 }
 
 [data-theme='dark'] .workspacePreview {
@@ -569,6 +777,7 @@
   }
 
   .hero,
+  .personaGrid,
   .trustSection,
   .engineSection {
     grid-template-columns: 1fr;
@@ -597,7 +806,8 @@
   }
 
   .proofStrip,
-  .workspacePreview {
+  .workspacePreview,
+  .validationGrid {
     grid-template-columns: 1fr;
   }
 
@@ -606,15 +816,33 @@
   }
 
   .pathNode {
-    width: 10.8rem;
+    width: 10.6rem;
   }
 
   .pathNode:nth-of-type(2) {
-    left: 28%;
+    left: 34%;
+    top: 22%;
+  }
+
+  .pathNode:nth-of-type(3) {
+    left: 8%;
+    top: 46%;
+  }
+
+  .pathNode:nth-of-type(4) {
+    left: 34%;
+    top: 63%;
   }
 
   .pathNodeActive {
-    left: 38%;
+    left: 42%;
+    top: 82%;
+  }
+
+  .distributionCard {
+    bottom: 7%;
+    left: 6%;
+    width: 9.8rem;
   }
 }
 
