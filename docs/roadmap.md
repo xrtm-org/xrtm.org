@@ -31,7 +31,7 @@ you want near-term unreleased work with explicit graduation status, use
 | **Recursive Consensus** | Supervisor-led disagreement refinement loops. | **DONE** |
 | **Truth Protocol** | Tamper-evident reasoning traces and audit packaging. | **DONE** |
 | **Dossier Generator** | Audit-ready research reporting outputs. | **DONE** |
-| **Local product spine** | Hub at `/` and `/hub`, Studio at `/studio`, forecast-path-linked Playground, Observatory run inspection, and `/workbench` compatibility on the provider-free baseline. | **DONE in 0.8.4** |
+| **Local product spine** | Hub at `/` and `/hub`, Studio at `/studio`, forecast-path-linked Playground, Observatory run inspection, and `/workbench` compatibility on the provider-free baseline. | **DONE in 0.8.5** |
 
 ## In progress
 

@@ -16,11 +16,11 @@ Teams can use XRTM today through **shared run directories, exports, reports, and
 
 ## What this page does not claim
 
-The released `xrtm 0.8.4` surface does **not** ship built-in user management, centralized permissions, a multi-user control plane, or a full persistent collaborative canvas layout.
+The released `xrtm 0.8.5` surface does **not** ship built-in user management, centralized permissions, a multi-user control plane, or a full persistent collaborative canvas layout.
 
 ## Released sandbox note
 
-The released `0.8.4` surface includes the bounded forecast-path-linked
+The released `0.8.5` surface includes the bounded forecast-path-linked
 Playground/sandbox lane. Treat it as **exploratory** only: one custom question
 first, optional tiny follow-up batches of at most 5, forecast-path/canvas preview,
 ordered node trace, an honest fallback when no execution trace artifact exists, and
