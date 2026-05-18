@@ -14,7 +14,7 @@ Use it when you want repeatable local runs, clear scoring evidence, and simple c
 - you can run provider-free passes repeatedly
 - you can inspect the saved artifacts and generated report
 - you can compare or export runs without leaving the local artifact model
-- you can inspect run detail in the local WebUI shell, use Hub at `/` or `/hub`, `/start`, or `/workflows/<name>` to launch the next bounded run, use `/studio` to start from scratch/template/clone, author safe workflow changes over the released schema/node catalog, validate, run, and compare, use `/playground` for graph/canvas preview plus ordered node trace with honest no-trace fallback, and use `/observatory` for run inspection
+- you can inspect run detail in the local WebUI shell, use Hub at `/` or `/hub`, `/start`, or `/workflows/<name>` to launch the next bounded run, use `/studio` to start from scratch/template/clone, author safe workflow changes over the released schema/node catalog, validate, run, and compare, use `/playground` for forecast-path/canvas preview plus ordered node trace with honest no-trace fallback, and use `/observatory` for run inspection
 
 ## Recommended order
 
@@ -27,7 +27,7 @@ Use it when you want repeatable local runs, clear scoring evidence, and simple c
 The Studio/workbench authoring contract stays inside the released schema and
 built-in node catalog: shared core workflow fields plus safe node/edge/entry
 edits. Parallel-group and conditional-route editing remain thin/read-only. Do
-not treat it as an arbitrary code/plugin graph editor, hosted collaborative
+not treat it as an arbitrary code/plugin forecast-path editor, hosted collaborative
 canvas, raw JSON editor, or implementation editor.
 
 Treat the polished shell chrome as a trust aid—visible local/version/state

@@ -24,8 +24,14 @@ Version ownership for that released surface follows the
 The `0.8.4` release promotes the bounded local Hub → Studio → Playground →
 Observatory product spine. It keeps the default release baseline provider-free
 and does not claim a calibration dashboard, API/webhook control plane,
-arbitrary code/plugin graph editor, full persistent collaborative canvas layout,
+arbitrary code/plugin forecast-path editor, full persistent collaborative canvas layout,
 or commercial runtime path without separate validation.
+
+If you are running **source tip** rather than the published package, see
+[Next release track](./next-release) for the source-visible local Batch Runner,
+Version snapshots, API Control, signed webhook delivery, richer Observatory
+analytics, and the more focused Studio/Playground surfaces that are implemented
+in source but not yet part of the public released claim set.
 
 XRTM's first-class integration categories are **OpenAI-compatible endpoints**
 and **coding-agent CLI contracts**. Local and commercial deployments are
@@ -124,29 +130,29 @@ inventory, and cleanup preview/confirm, and
 `http://127.0.0.1:8765/studio` when you want the released authoring flow:
 
 1. starting from scratch, a released starter template, or a clone
-2. authoring shared workflow fields plus safe graph changes inside the released
+2. authoring shared workflow fields plus safe forecast-path changes inside the released
    workflow schema and built-in node catalog
 3. validating and saving the authored draft before execution
 4. running the validated draft
 5. tracing it through Playground and inspecting evidence in Observatory
 
-Studio is a bounded graph IDE over the existing workflow schema and built-in
+Studio is a bounded forecast path IDE over the existing workflow schema and built-in
 node catalog. It supports local node dragging, palette click/drag-to-canvas
 add-node, node/edge/workflow selection, edge create/remove, entry setting,
 contextual inspection, and validate/save/run through the Studio APIs.
 `/workbench` remains a compatibility route for existing links. Parallel-group
 and conditional-route editing remain thin/read-only. Studio is **not** an
-arbitrary code/plugin graph editor, generic diagramming app, raw JSON editor, or
+arbitrary code/plugin forecast-path editor, generic diagramming app, raw JSON editor, or
 hosted collaboration canvas.
 
 The same shared authoring layer also powers `xrtm workflow create ...` and
 `xrtm workflow edit ...` for terminal-led workflows.
 
-The released package also includes the bounded graph-linked Playground lane. Open
+The released package also includes the bounded forecast-path-linked Playground lane. Open
 `http://127.0.0.1:8765/playground` from the same local shell when you want one
-custom question first, optional tiny follow-up batches capped at 5, graph/canvas
+custom question first, optional tiny follow-up batches capped at 5, forecast-path/canvas
 preview, ordered node trace, executed-node highlighting, an honest fallback when
-no graph trace artifact exists, and explicit save-back to workflow/profile only.
+no execution trace artifact exists, and explicit save-back to workflow/profile only.
 Keep those runs exploratory and separate from benchmark or release evidence by
 default, and keep the released runtime wording provider-free unless wider
 validation is published separately.
@@ -239,7 +245,7 @@ When you compare two runs, read the output like an evaluation gate:
 
 You can also open `/studio` from the WebUI to start from scratch/template/clone,
 author shared core workflow fields plus safe node/edge/entry changes, validate,
-run, and compare without claiming arbitrary code/plugin graph editing or a full
+run, and compare without claiming arbitrary code/plugin forecast-path editing or a full
 persistent collaborative canvas layout. `/workbench` remains a compatibility
 route for existing links.
 
