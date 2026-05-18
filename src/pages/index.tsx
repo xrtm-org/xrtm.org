@@ -135,18 +135,16 @@ export default function Home(): React.JSX.Element {
                   <span>Forecast request</span>
                   <strong>Predict US Fed interest-rate change — Q3</strong>
                 </div>
-                <div className={styles.agentCluster} aria-label="Collaborating forecast agents">
-                  <div className={styles.agentChip}>
-                    <span>News signal</span>
-                    <strong>Policy + market context</strong>
+                <div className={styles.processStages} aria-label="Forecast path process">
+                  <div className={styles.processStage}>
+                    <i aria-hidden="true">01</i>
+                    <span>Data harvesting & synthesis</span>
+                    <strong>Collect signals, evidence, and market context.</strong>
                   </div>
-                  <div className={styles.agentChip}>
-                    <span>Consensus</span>
-                    <strong>FOMC + analyst views</strong>
-                  </div>
-                  <div className={styles.agentChip}>
-                    <span>Sentiment</span>
-                    <strong>Uncertainty drivers</strong>
+                  <div className={styles.processStage}>
+                    <i aria-hidden="true">02</i>
+                    <span>Bayesian consensus & reasoning</span>
+                    <strong>Weigh uncertainty, compare hypotheses, and score confidence.</strong>
                   </div>
                 </div>
                 <div className={`${styles.pathNode} ${styles.pathNodeActive}`}>
@@ -162,27 +160,27 @@ export default function Home(): React.JSX.Element {
                     <i style={{ height: '64%' }} />
                     <i style={{ height: '42%' }} />
                   </div>
-                  <small>Agent agreement: 3 / 4</small>
+                  <small>Consensus strength: 3 / 4 signals</small>
                 </div>
                 <svg className={styles.pathLines} viewBox="0 0 100 100" role="presentation">
-                  <path d="M28 20 C 38 26, 44 31, 54 36" />
-                  <path d="M63 55 C 70 61, 75 67, 81 75" />
-                  <path d="M42 72 C 54 74, 62 77, 75 81" />
+                  <path d="M28 20 C 40 25, 48 30, 58 35" />
+                  <path d="M70 57 C 75 64, 78 70, 82 77" />
+                  <path d="M42 75 C 54 76, 64 78, 76 81" />
                 </svg>
               </div>
               <div className={styles.tracePane}>
                 <p className={styles.traceTitle}>Reasoning trace</p>
                 <div className={styles.traceStep}>
                   <span>01</span>
-                  <p>Parallel agents gathered rates, policy context, and market assumptions.</p>
+                  <p>Harvested rates, policy context, and market assumptions into one evidence set.</p>
                 </div>
                 <div className={styles.traceStep}>
                   <span>02</span>
-                  <p>Consensus check exposed two high-impact uncertainty drivers.</p>
+                  <p>Applied consensus reasoning to expose two high-impact uncertainty drivers.</p>
                 </div>
                 <div className={styles.traceStep}>
                   <span>03</span>
-                  <p>Saved probability range, agreement score, artifacts, and comparison metadata.</p>
+                  <p>Saved probability range, consensus signal, artifacts, and comparison metadata.</p>
                 </div>
               </div>
             </div>
