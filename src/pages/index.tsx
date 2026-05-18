@@ -34,7 +34,7 @@ export default function Home(): React.JSX.Element {
   return (
     <Layout
       title="AI for event forecasting"
-      description="A polished entry point to the released XRTM 0.8.4 guide and local Hub, Studio, Playground, and Observatory shell."
+      description="A polished entry point to the released XRTM 0.8.5 guide and local Hub, Studio, Playground, and Observatory shell."
     >
       <main className={styles.page}>
         <div aria-hidden="true" className={styles.backdrop}>
@@ -59,7 +59,7 @@ export default function Home(): React.JSX.Element {
             initial={{ opacity: 0, y: 20 }}
             transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
           >
-            <p className={styles.eyebrow}>Published 0.8.4 path</p>
+            <p className={styles.eyebrow}>Published 0.8.5 path</p>
             <h1 className={styles.title}>
               Forecasting work, made inspectable.
             </h1>
@@ -69,7 +69,7 @@ export default function Home(): React.JSX.Element {
               migration.
             </p>
             <p className={styles.support}>
-              The published docs stay pinned to <strong>xrtm 0.8.4</strong>:
+              The published docs stay pinned to <strong>xrtm 0.8.5</strong>:
               start with the guide, choose a CLI-led or WebUI-led first-success
               path, inspect the saved run, then use the local WebUI shell:
               Hub at <code>/</code> and <code>/hub</code>, Studio at{' '}
@@ -95,13 +95,13 @@ export default function Home(): React.JSX.Element {
 
           <motion.aside
             animate={{ opacity: 1, x: 0 }}
-            aria-label="XRTM 0.8.4 released Hub, Studio, Playground, and Observatory shell"
+            aria-label="XRTM 0.8.5 released Hub, Studio, Playground, and Observatory shell"
             className={styles.workbenchCard}
             initial={{ opacity: 0, x: 24 }}
             transition={{ delay: 0.12, duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
           >
             <div className={styles.previewHeader}>
-              <p className={styles.storyEyebrow}>Published in 0.8.4</p>
+              <p className={styles.storyEyebrow}>Published in 0.8.5</p>
               <span className={styles.previewPill}>Hub · Studio · Playground · Observatory</span>
             </div>
             <div className={styles.canvasPreview}>
@@ -126,7 +126,7 @@ export default function Home(): React.JSX.Element {
               ))}
             </div>
             <div className={styles.safeEditPanel}>
-              <span>Released 0.8.4 scope</span>
+              <span>Released 0.8.5 scope</span>
               <div className={styles.editRows}>
                 <span>Hub first-run and templates</span>
                 <span>Studio bounded forecast-path authoring</span>
