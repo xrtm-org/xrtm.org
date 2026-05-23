@@ -11,8 +11,8 @@ on the [roadmap](./roadmap).
 
 When examples touch integrations, use the same taxonomy as the rest of XRTM:
 **OpenAI-compatible endpoints** and **coding-agent CLI contracts** are the two
-first-class categories. The built-in mock flow stays the deterministic
-provider-free smoke/baseline lane.
+first-class categories. The built-in deterministic flow stays on the
+deterministic baseline lane.
 
 ## The shipped newcomer workflow
 
@@ -27,12 +27,12 @@ xrtm web --runs-dir runs
 ```
 
 That flow is the released guided first-success proof that XRTM works as a
-local-first forecasting and model-eval workbench today, using the provider-free
-smoke/baseline lane before any model-backed endpoint profile.
+local-first forecasting and model-eval workbench today, using the deterministic
+baseline lane before any model-backed endpoint profile.
 
 ## What the product ships today
 
-- provider-free smoke/baseline first success on the published package surface
+- deterministic baseline first success on the published package surface
 - canonical run artifacts under `runs/<run-id>/`
 - scored outputs including `eval.json`, `run_summary.json`, and `report.html`
 - local WebUI and TUI backed by the same run artifacts
@@ -40,7 +40,7 @@ smoke/baseline lane before any model-backed endpoint profile.
 - released Start and Workflow detail surfaces for quickstart, named workflow runs, report generation, and JSON/CSV export
 - released Operations surface for profiles, monitor lifecycle, artifact inventory, and cleanup preview/confirm
 - released Studio at `/studio` for bounded forecast-path authoring over the existing workflow schema and built-in node catalog; `/workbench` remains compatibility
-- released `/playground` flow for one custom question first, forecast-path/canvas preview, ordered node trace, honest no-trace fallback, and explicit save-back on the provider-free baseline
+- released `/playground` flow for one custom question first, forecast-path/canvas preview, ordered node trace, honest no-trace fallback, and explicit save-back on the deterministic baseline
 - released Observatory at `/observatory` for run inspection
 - run history, compare, and JSON export commands
 - profile-based repeatable workflows

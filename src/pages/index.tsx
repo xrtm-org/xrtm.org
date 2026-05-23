@@ -49,8 +49,8 @@ const personaCards = [
 ];
 
 const proofStats = [
-  { label: 'Published product', value: 'xrtm 0.8.5' },
-  { label: 'Default first run', value: 'Provider-free' },
+  { label: 'Published product', value: 'xrtm 0.8.7' },
+  { label: 'Default first run', value: 'Deterministic baseline' },
   { label: 'Core surfaces', value: 'Studio · Playground · Observatory' },
 ];
 
@@ -84,7 +84,7 @@ export default function Home(): React.JSX.Element {
             initial={{ opacity: 0, y: 20 }}
             transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
           >
-            <p className={styles.eyebrow}>Published xrtm 0.8.5 workspace</p>
+            <p className={styles.eyebrow}>Published xrtm 0.8.7 workspace</p>
             <h1 className={styles.title}>Stop guessing. Start forecasting.</h1>
             <p className={styles.lead}>
               Design, evaluate, and reuse multi-agent probabilistic workflows to seek a calibrated edge in
@@ -245,7 +245,7 @@ export default function Home(): React.JSX.Element {
               </span>
               <span>
                 <strong>Release claims</strong>
-                <small>Checked against xrtm 0.8.5</small>
+                <small>Checked against xrtm 0.8.7</small>
               </span>
             </div>
             <p>Compare confidence to outcomes, then refine the forecast path that produced them.</p>
@@ -274,15 +274,15 @@ export default function Home(): React.JSX.Element {
             <p className={styles.eyebrow}>Local-first engine</p>
             <h2>Beautiful workspace on top, robust Python framework underneath.</h2>
             <p>
-              Developers still get the explicit package stack and CLI surface. The default first-success path is
-              provider-free; OpenAI-compatible endpoints and coding-agent CLI contracts remain the supported runtime
-              categories when you intentionally validate those paths.
+              Developers still get the explicit package stack and CLI surface. The default first-success path is the
+              deterministic baseline; OpenAI-compatible endpoints and coding-agent CLI contracts remain the supported
+              runtime categories when you intentionally validate those paths.
             </p>
           </div>
           <div className={styles.terminalCard}>
             <code>python3.11 -m venv .venv</code>
             <code>. .venv/bin/activate</code>
-            <code>pip install xrtm==0.8.5</code>
+            <code>pip install xrtm==0.8.7</code>
             <code>xrtm start --runs-dir runs</code>
             <code>xrtm web --runs-dir runs</code>
           </div>
