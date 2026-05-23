@@ -1,6 +1,6 @@
 ---
 title: Next release track
-description: Future source work that is not yet on the released 0.8.7 capability set.
+description: Future source work that is not yet on the released 0.8.8 capability set.
 ---
 
 # Next release track
@@ -17,7 +17,7 @@ and cross-repo version ownership lives in the
 [Stack Versioning Policy](https://github.com/xrtm-org/governance/blob/main/policies/stack-versioning-policy.md).
 :::
 
-- **Released docs** now target the `xrtm==0.8.7` capability set for the
+- **Released docs** now target the `xrtm==0.8.8` capability set for the
   release-promotion branch.
 - **This page** tracks future source work that is real and valuable, but not yet
   promoted into the public released path.
@@ -25,9 +25,9 @@ and cross-repo version ownership lives in the
 
 For command-level details, see [`xrtm/docs/next-release-feature-track.md`](https://github.com/xrtm-org/xrtm/blob/main/docs/next-release-feature-track.md).
 
-## Released in `0.8.7`
+## Released in `0.8.8`
 
-`0.8.7` promotes the bounded local Hub → Studio → Playground → Observatory
+`0.8.8` keeps the bounded local Hub → Studio → Playground → Observatory
 product spine on the deterministic baseline.
 
 - **Hub:** `/` and `/hub` collect first-run, template, recent-work, readiness,
@@ -53,7 +53,7 @@ separate validation.
 ## Current source-tip future-release candidates
 
 The current source tip now also includes a more complete local product train
-that is intentionally **not** yet part of the released 0.8.7 claim set:
+that is intentionally **not** yet part of the released 0.8.8 claim set:
 
 - **Studio:** focused three-panel IDE with palette, dominant forecast path canvas,
   contextual inspector, validation, run, and version snapshot controls in one
@@ -78,13 +78,13 @@ future-release lane until package/docs/gates promote them together.
 
 | Feature family | Canonical status | Release/train | Current release decision | What happens next |
 | --- | --- | --- | --- | --- |
-| Unified Hub / Studio / Playground / Observatory spine | **`shipped`** | `0.8.7` | Promoted to the released docs/site surface for the release-promotion branch. The public claim is local-first, deterministic by default, and bounded to the existing workflow schema and built-in node catalog. | Keep Gate 1 checks clean for this branch and require release Gate 2 before publication: first-run Hub, template-to-Playground, bounded Studio validate/save/run, Studio-to-Playground trace, Observatory drill-down, and deterministic baseline. |
-| WebUI shell polish and trust cues | **`shipped`** | carried forward in `0.8.7` | Version, local-only scope, file-backed history, SQLite draft-state cues, and the locked muted design language remain part of the released shell. | Continue treating these as trust framing, not a hosted app or control-plane claim. |
+| Unified Hub / Studio / Playground / Observatory spine | **`shipped`** | `0.8.8` | Promoted to the released docs/site surface for the release-promotion branch. The public claim is local-first, deterministic by default, and bounded to the existing workflow schema and built-in node catalog. | Keep Gate 1 checks clean for this branch and require release Gate 2 before publication: first-run Hub, template-to-Playground, bounded Studio validate/save/run, Studio-to-Playground trace, Observatory drill-down, and deterministic baseline. |
+| WebUI shell polish and trust cues | **`shipped`** | carried forward in `0.8.8` | Version, local-only scope, file-backed history, SQLite draft-state cues, and the locked muted design language remain part of the released shell. | Continue treating these as trust framing, not a hosted app or control-plane claim. |
 | Guided onboarding helpers (`xrtm start`, starter profile scaffolding) | **`shipped`** | Released surface | They are part of the released guided first-success path. | Keep clean-install proof and matching onboarding docs in lockstep. |
 | Latest-run shortcuts (`latest`, `--latest`) | **`shipped`** | Released surface | They are part of the published operator ergonomics surface. | Keep released-artifact smoke covering the shortcuts. |
 | CSV export on the top-level product surface | **`shipped`** | Released surface | It is part of the released export surface, with JSON still documented as the full-fidelity bundle. | Keep JSON/CSV documentation aligned with release packaging. |
-| WebUI/CLI parity shell + workflow authoring | **`shipped`** | `0.8.1` baseline plus `0.8.7` Studio route | The released package ships the local React/TypeScript WebUI shell with Hub, Start, Runs, Workflow detail, Operations, Studio, Playground, Observatory, run detail, compare, Advanced visibility, `/workbench` compatibility, plus the shared workflow-authoring layer for scratch/template/clone drafts, shared core-field edits, safe node/edge/entry changes, and shared validate/explain/run paths. | Keep the public docs honest: safe workflow authoring inside the released schema and built-in node library only; no arbitrary code/plugin forecast-path editing, raw JSON/implementation editing, or collaborative canvas claim. |
-| Interactive sandbox / playground | **`shipped`** | `0.8.2` baseline plus `0.8.7` forecast-path-linked UI | The released package ships the shared playground behind both CLI and WebUI: one custom question first, bounded exploratory reruns, forecast-path/canvas preview, ordered node trace, honest no-trace fallback, and explicit save-back to workflow/profile. | Keep the release wording deterministic until dedicated playground Gate 2 proves any wider runtime promise. Preserve exploratory labeling, keep tiny batches secondary and capped at 5, and do not promote commercial OpenAI-compatible support without matching clean-room proof. |
+| WebUI/CLI parity shell + workflow authoring | **`shipped`** | `0.8.1` baseline plus `0.8.8` Studio route | The released package ships the local React/TypeScript WebUI shell with Hub, Start, Runs, Workflow detail, Operations, Studio, Playground, Observatory, run detail, compare, Advanced visibility, `/workbench` compatibility, plus the shared workflow-authoring layer for scratch/template/clone drafts, shared core-field edits, safe node/edge/entry changes, and shared validate/explain/run paths. | Keep the public docs honest: safe workflow authoring inside the released schema and built-in node library only; no arbitrary code/plugin forecast-path editing, raw JSON/implementation editing, or collaborative canvas claim. |
+| Interactive sandbox / playground | **`shipped`** | `0.8.2` baseline plus `0.8.8` forecast-path-linked UI | The released package ships the shared playground behind both CLI and WebUI: one custom question first, bounded exploratory reruns, forecast-path/canvas preview, ordered node trace, honest no-trace fallback, and explicit save-back to workflow/profile. | Keep the release wording deterministic until dedicated playground Gate 2 proves any wider runtime promise. Preserve exploratory labeling, keep tiny batches secondary and capped at 5, and do not promote commercial OpenAI-compatible support without matching clean-room proof. |
 | Corpus validation workflows (`validate run`, `list-corpora`) | **`advanced/experimental`** | After corpus policy and released-stack validation mature further | These flows are real, but they depend on corpus tiers, release-gate policies, and more operator/research context than the default shipped path. | Keep them in advanced or release-engineering guidance until the corpus and compatibility story is steadier. |
 | Corpus preparation UX (`validate prepare-corpus`) | **`redesign-required`** | Not on the current release train | The current command mixes cache setup, corpus policy, and preview semantics in a way that is still too internal. | Redesign the user-facing workflow before treating it as a public release promise. |
 | User attribution flags (`--user`) | **`redesign-required`** | Not on the current release train | The implementation exists, but the public product still honestly describes team use as convention-based rather than built-in identity or multi-user workflow management. | Clarify semantics, storage, and privacy expectations before deciding whether to release it as metadata, workflow labeling, or team workflow state. |

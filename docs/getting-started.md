@@ -21,7 +21,7 @@ Version ownership for that released surface follows the
 [Stack Versioning Policy](https://github.com/xrtm-org/governance/blob/main/policies/stack-versioning-policy.md):
 `xrtm` is the product-anchor version for newcomer and WebUI claims.
 
-The `0.8.7` release promotes the bounded local Hub → Studio → Playground →
+The `0.8.8` release keeps the bounded local Hub → Studio → Playground →
 Observatory product spine. It keeps the default release baseline deterministic
 and does not claim a calibration dashboard, API/webhook control plane,
 arbitrary code/plugin forecast-path editor, full persistent collaborative canvas layout,
@@ -43,7 +43,7 @@ deterministic baseline mode, not a third runtime family.
 ```bash
 python3.11 -m venv .venv
 . .venv/bin/activate
-pip install xrtm==0.8.7
+pip install xrtm==0.8.8
 ```
 
 This install brings in the full released forecasting stack, so the first
@@ -158,7 +158,7 @@ default, and keep the released runtime wording deterministic unless wider
 validation is published separately.
 
 ```bash
-xrtm playground --workflow demo-deterministic --question "Will the released 0.8.7 playground stay exploratory?" --workflows-dir .xrtm/workflows --runs-dir runs
+xrtm playground --workflow demo-deterministic --question "Will the released 0.8.8 playground stay exploratory?" --workflows-dir .xrtm/workflows --runs-dir runs
 ```
 
 That released Playground command uses the deterministic baseline path and the
