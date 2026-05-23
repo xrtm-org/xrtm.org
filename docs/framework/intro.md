@@ -21,8 +21,8 @@ XRTM uses two first-class integration categories:
 | **OpenAI-compatible endpoints** | Model-backed HTTP endpoints used by runtime workflows | The released advanced profile today is `--provider local-llm`; local and commercial deployments are profiles inside this same category. |
 | **Coding-agent CLI contracts** | CLI-backed coding agents integrated through an explicit command contract | This is the other first-class category in the standard, separate from HTTP endpoint wiring. |
 
-The built-in mock path is **not** a third runtime category. It is a
-provider-free smoke/baseline mode for proving installs, CI-safe validation, and
+The built-in deterministic path is **not** a third runtime category. It is a
+deterministic baseline mode for proving installs, CI-safe validation, and
 stable compare controls.
 
 ## Start with the product shell
@@ -41,7 +41,7 @@ See [Getting started](../getting-started) for that path.
 
 | Layer | Package | What it gives you today |
 | :--- | :--- | :--- |
-| Product shell | **`xrtm`** | Provider-free smoke/baseline first success, canonical artifacts, HTML reports, local-first WebUI shell (Hub at `/` and `/hub`, Start, Runs, Workflow detail, Operations, Studio, Playground, Observatory, run detail, compare, `/workbench` compatibility, and Advanced visibility), SQLite-backed draft state, Studio safe workflow authoring from scratch/template/clone with shared core-field plus node/edge/entry edits over the existing workflow schema and built-in node catalog, validate/run/compare, forecast-path-linked Playground trace review with honest no-trace fallback, TUI, profiles, compare/export, and local monitoring |
+| Product shell | **`xrtm`** | Deterministic baseline first success, canonical artifacts, HTML reports, local-first WebUI shell (Hub at `/` and `/hub`, Start, Runs, Workflow detail, Operations, Studio, Playground, Observatory, run detail, compare, `/workbench` compatibility, and Advanced visibility), SQLite-backed draft state, Studio safe workflow authoring from scratch/template/clone with shared core-field plus node/edge/entry edits over the existing workflow schema and built-in node catalog, validate/run/compare, forecast-path-linked Playground trace review with honest no-trace fallback, TUI, profiles, compare/export, and local monitoring |
 | Runtime | **`xrtm-forecast`** | Forecasting agents, orchestration, OpenAI-compatible endpoint integrations, and source examples |
 | Evaluation | **`xrtm-eval`** | Brier scoring, calibration-focused evaluation, benchmark scorecards, and verification utilities |
 | Data | **`xrtm-data`** | Schemas, temporal snapshot foundations, and benchmark corpus registry/provenance |
@@ -49,7 +49,7 @@ See [Getting started](../getting-started) for that path.
 
 ## How the pieces fit
 
-- `xrtm` is the newcomer-facing product shell, including the released bounded Hub → Studio → Playground → Observatory lane in `0.8.5`.
+- `xrtm` is the newcomer-facing product shell, including the released bounded Hub → Studio → Playground → Observatory lane in `0.8.7`.
 - `xrtm-forecast` handles the runtime and orchestration layer.
 - `xrtm-eval` and `xrtm-data` provide the scoring and snapshot foundations.
 - `xrtm-train` closes the loop for replay, calibration, and evaluation harnesses.

@@ -28,7 +28,7 @@ If you still need the honest released newcomer workflow first, start with
 - [Repository README](https://github.com/xrtm-org/forecast/blob/main/README.md)
 - [Docs index](https://github.com/xrtm-org/forecast/blob/main/docs/index.md)
 - [Architecture overview](https://github.com/xrtm-org/forecast/blob/main/docs/architecture.md)
-- [Provider-free testing guide](https://github.com/xrtm-org/forecast/blob/main/docs/provider-free-testing.md)
+- [Deterministic testing guide](https://github.com/xrtm-org/forecast/blob/main/docs/provider-free-testing.md)
 
 ## Relationship to the released user path
 

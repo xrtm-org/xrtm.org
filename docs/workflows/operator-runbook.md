@@ -9,16 +9,16 @@ Use this page after [Getting started](../getting-started) when you need a repeat
 
 ## What this route covers
 
-- reusable profiles with `xrtm profile starter my-local --runs-dir runs` or `xrtm profile create local-mock --provider mock --limit 2 --runs-dir runs`
-- profile execution with `xrtm run profile my-local` or `xrtm run profile local-mock`
+- reusable profiles with `xrtm profile starter my-local --runs-dir runs` or `xrtm profile create local-deterministic --provider deterministic --limit 2 --runs-dir runs`
+- profile execution with `xrtm run profile my-local` or `xrtm run profile local-deterministic`
 - run inspection with `xrtm runs list --runs-dir runs`, `xrtm runs show latest --runs-dir runs`, `xrtm artifacts inspect --latest --runs-dir runs`, and `xrtm report html --latest --runs-dir runs`
 - local views with `xrtm web --runs-dir runs` and `xrtm tui --runs-dir runs`
 - the released local WebUI shell (`/`, `/hub`, `/start`, `/runs`, `/workflows/<name>`, `/operations`, `/studio`, `/playground`, `/observatory`, `/workbench`) for Hub, run review, workflow launch, operator controls, bounded forecast-path authoring, forecast-path-linked exploratory tracing, run inspection, compare, and compatibility
-- maintenance with `xrtm monitor start --provider mock --limit 2 --runs-dir runs`, `xrtm monitor list --runs-dir runs`, and `xrtm artifacts cleanup --runs-dir runs --keep 50`
+- maintenance with `xrtm monitor start --provider deterministic --limit 2 --runs-dir runs`, `xrtm monitor list --runs-dir runs`, and `xrtm artifacts cleanup --runs-dir runs --keep 50`
 
 ## What this page does not try to do
 
-This is still a released local-first route, not a separate platform or control plane. Start on the provider-free baseline, then add more operational structure only when the basic artifact workflow is already healthy.
+This is still a released local-first route, not a separate platform or control plane. Start on the deterministic baseline, then add more operational structure only when the basic artifact workflow is already healthy.
 
 The WebUI stays local-only: a React/TypeScript shell talks to the local Python
 API, reusable workflows stay on disk, profiles stay under `.xrtm/profiles`, and

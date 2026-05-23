@@ -10,7 +10,7 @@ This is the shortest honest path to first success with XRTM.
 You will run the released health-check plus guided first-success path, inspect
 the generated artifacts, and browse the results in the local WebUI Hub, Studio,
 Playground, Observatory, or TUI. The default path uses the built-in
-deterministic provider-free smoke/baseline mode, so you do **not** need API keys
+deterministic baseline mode, so you do **not** need API keys
 or a local model server.
 
 > Release-gated command note: the command blocks in this guide are validated
@@ -21,8 +21,8 @@ Version ownership for that released surface follows the
 [Stack Versioning Policy](https://github.com/xrtm-org/governance/blob/main/policies/stack-versioning-policy.md):
 `xrtm` is the product-anchor version for newcomer and WebUI claims.
 
-The `0.8.5` release promotes the bounded local Hub → Studio → Playground →
-Observatory product spine. It keeps the default release baseline provider-free
+The `0.8.7` release promotes the bounded local Hub → Studio → Playground →
+Observatory product spine. It keeps the default release baseline deterministic
 and does not claim a calibration dashboard, API/webhook control plane,
 arbitrary code/plugin forecast-path editor, full persistent collaborative canvas layout,
 or commercial runtime path without separate validation.
@@ -35,15 +35,15 @@ in source but not yet part of the public released claim set.
 
 XRTM's first-class integration categories are **OpenAI-compatible endpoints**
 and **coding-agent CLI contracts**. Local and commercial deployments are
-profiles inside those categories. The mock path in this guide is a
-provider-free smoke/baseline mode, not a third runtime family.
+profiles inside those categories. The deterministic path in this guide is a
+deterministic baseline mode, not a third runtime family.
 
 ## 1. Install
 
 ```bash
 python3.11 -m venv .venv
 . .venv/bin/activate
-pip install xrtm==0.8.5
+pip install xrtm==0.8.7
 ```
 
 This install brings in the full released forecasting stack, so the first
@@ -60,7 +60,7 @@ xrtm start
 **CLI-led first success**
 
 `xrtm start` is the released health check plus guided first run. It verifies
-imports, runs the deterministic provider-free smoke/baseline workflow, confirms
+imports, runs the deterministic baseline workflow, confirms
 the key artifacts, and prints exact next commands with the run id and report
 path.
 
@@ -154,14 +154,14 @@ custom question first, optional tiny follow-up batches capped at 5, forecast-pat
 preview, ordered node trace, executed-node highlighting, an honest fallback when
 no execution trace artifact exists, and explicit save-back to workflow/profile only.
 Keep those runs exploratory and separate from benchmark or release evidence by
-default, and keep the released runtime wording provider-free unless wider
+default, and keep the released runtime wording deterministic unless wider
 validation is published separately.
 
 ```bash
-xrtm playground --workflow demo-provider-free --question "Will the released 0.8.5 playground stay exploratory?" --workflows-dir .xrtm/workflows --runs-dir runs
+xrtm playground --workflow demo-deterministic --question "Will the released 0.8.7 playground stay exploratory?" --workflows-dir .xrtm/workflows --runs-dir runs
 ```
 
-That released Playground command uses the provider-free baseline path and the
+That released Playground command uses the deterministic baseline path and the
 same shared sandbox contract as the WebUI route.
 
 Use Hub, Start, Runs, Operations, or Observatory when you need the released
@@ -179,16 +179,16 @@ xrtm tui --runs-dir runs
 You completed the first published XRTM event-forecasting loop:
 
 1. **Health check**: verified the installed stack and local readiness
-2. **Forecast run**: ran a provider-free smoke/baseline workflow without external endpoints or CLI contracts
+2. **Forecast run**: ran a deterministic baseline workflow without external endpoints or CLI contracts
 3. **Scored evidence**: verified the newest run and its outputs on disk
 4. **Review surface**: opened the same local forecasting cockpit—with visible version/local-state trust cues—through Hub, Start, Runs, Workflow detail, Operations, Studio, Playground, Observatory, run detail, compare, `/workbench` compatibility, or TUI
 
 That is the core product path for newcomers today.
 
-It is also intentionally modest: the default provider-free smoke/baseline run proves that
+It is also intentionally modest: the default deterministic baseline run proves that
 XRTM can create scored, inspectable evidence and teach you how to review it.
 It does **not** by itself prove visible forecast-quality improvement over time,
-because the released provider-free smoke/baseline mode is deterministic and
+because the released deterministic baseline mode is deterministic and
 should remain stable.
 
 ## Official proof-point workflows
@@ -196,7 +196,7 @@ should remain stable.
 After the first run, these release-gated workflows expand the same
 event-forecasting loop:
 
-### 1. Provider-free smoke/baseline first success
+### 1. Deterministic baseline first success
 
 ```bash
 xrtm start
@@ -209,7 +209,7 @@ xrtm web --runs-dir runs
 ### 2. Benchmark and performance workflow
 
 ```bash
-xrtm perf run --scenario provider-free-smoke --iterations 3 --limit 1 --runs-dir runs-perf --output performance.json
+xrtm perf run --scenario deterministic-smoke --iterations 3 --limit 1 --runs-dir runs-perf --output performance.json
 xrtm web --runs-dir runs --smoke
 ```
 
@@ -220,15 +220,15 @@ Treat it as the released evaluation baseline:
 
 - `performance.json` captures repeatable runtime evidence
 - the paired `runs-perf/<run-id>/run_summary.json` carries scored run metrics such as Brier and ECE
-- on the provider-free path, repeated runs should stay stable enough to act as a control before you change endpoint/model settings
-- if the compare output is effectively unchanged across repeated provider-free control runs, that is the expected control behavior
+- on the deterministic path, repeated runs should stay stable enough to act as a control before you change endpoint/model settings
+- if the compare output is effectively unchanged across repeated deterministic control runs, that is the expected control behavior
 
 ### 3. Monitoring, history, and export workflow
 
 ```bash
 xrtm profile starter my-local --runs-dir runs
 xrtm run profile my-local
-xrtm monitor start --provider mock --limit 2 --runs-dir runs
+xrtm monitor start --provider deterministic --limit 2 --runs-dir runs
 xrtm runs compare <run-id-a> <run-id-b> --runs-dir runs
 xrtm runs export latest --runs-dir runs --output export.json
 xrtm runs export latest --runs-dir runs --output export.csv --format csv
@@ -240,7 +240,7 @@ When you compare two runs, read the output like an evaluation gate:
 - **warnings / errors:** should stay at zero
 - **duration / tokens:** efficiency cost of a change
 - use compare only after the two runs are meant to answer the same question set
-- unchanged provider-free control compares mean the baseline is stable; introduce a real endpoint/model/runtime change before claiming improvement
+- unchanged deterministic control compares mean the baseline is stable; introduce a real endpoint/model/runtime change before claiming improvement
 - improved scores with similar operational health are promotion candidates; regressions or large runtime jumps should be investigated or rejected
 
 You can also open `/studio` from the WebUI to start from scratch/template/clone,
@@ -258,7 +258,7 @@ xrtm demo --provider local-llm --limit 1 --max-tokens 768 --runs-dir runs-local
 ```
 
 Only switch to the local OpenAI-compatible endpoint profile after the
-provider-free smoke/baseline path above is working.
+deterministic baseline path above is working.
 
 Commands that are still on the next coordinated release train—corpus-validation
 flows and user-attribution flags—stay off this guide until the release
@@ -269,7 +269,7 @@ contract moves forward.
 ### Run a slightly larger local pass
 
 ```bash
-xrtm demo --provider mock --limit 10 --runs-dir runs
+xrtm demo --provider deterministic --limit 10 --runs-dir runs
 ```
 
 ### Create a reusable local profile
@@ -284,22 +284,22 @@ Run these profile commands from a writable workspace. If your current
 directory is read-only, pass `--profiles-dir /writable/path`.
 
 This writes `.xrtm/profiles/my-local.json` and keeps the workflow on the same
-provider-free smoke/baseline path you just proved.
+deterministic baseline path you just proved.
 
 ### Pick the guide that matches your role
 
-- **Researcher / model-eval**: stay on the provider-free smoke/baseline path, then use the [researcher workflow](./workflows/researcher-model-eval) for the honest control → candidate → compare decision loop and the clearly labeled advanced paths.
+- **Researcher / model-eval**: stay on the deterministic baseline path, then use the [researcher workflow](./workflows/researcher-model-eval) for the honest control → candidate → compare decision loop and the clearly labeled advanced paths.
 - **Operator**: continue with the [operator runbook](./workflows/operator-runbook) for monitoring, profiles, performance checks, exports, and troubleshooting.
 - **Team**: read [team workflows](./workflows/team-workflows) for realistic multi-user patterns and current limitations.
 - **Developer / integrator**: use the [developer workflow](./workflows/developer-integrator) and the [packages overview](./framework/intro) to move from product usage into APIs and examples.
 
 ## Advanced and optional: local LLM mode
 
-Only switch to `--provider local-llm` after the provider-free smoke/baseline
+Only switch to `--provider local-llm` after the deterministic baseline
 path above is working.
 
 Use local-LLM mode when you specifically need to evaluate a real local
-OpenAI-compatible endpoint profile rather than the provider-free baseline.
+OpenAI-compatible endpoint profile rather than the deterministic baseline.
 Local and commercial endpoint deployments are profiles in the same runtime
 category; this released guide only validates the local profile.
 
@@ -336,10 +336,10 @@ This is expected. XRTM currently supports Python `>=3.11,<3.14`.
 ### `xrtm start` reports warnings
 
 Check the warning text first. Optional components may be missing even when the
-default provider-free smoke/baseline path is fine.
+default deterministic baseline path is fine.
 
 ### Local-LLM health check fails
 
-Go back to the provider-free smoke/baseline path, confirm the main install
+Go back to the deterministic baseline path, confirm the main install
 works, then use the [operator runbook](./workflows/operator-runbook) to debug
 your local endpoint.
