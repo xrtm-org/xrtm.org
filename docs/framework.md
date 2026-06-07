@@ -49,7 +49,7 @@ from xrtm.forecast.providers.inference.factory import ModelFactory
 
 config = OpenAIConfig(
     model_id="your-model",
-    base_url="https://api.openai.com/v1",
+    base_url="https://your-endpoint",
     api_key="sk-...",
 )
 provider = ModelFactory.get_provider(config)
