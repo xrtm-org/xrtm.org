@@ -24,8 +24,8 @@ Or create a `.env` file:
 
 ```
 OPENAI_API_KEY=sk-...
-OPENAI_BASE_URL=https://api.deepseek.com
-OPENAI_MODEL=deepseek-v4-pro
+OPENAI_BASE_URL=https://your-endpoint
+OPENAI_MODEL=your-model
 ```
 
 ## Run Your First Forecast
@@ -37,7 +37,7 @@ xrtm start
 Uses `OPENAI_API_KEY` from your environment. Override defaults:
 
 ```bash
-xrtm start --model deepseek-v4-pro --base-url https://api.deepseek.com --limit 10
+xrtm start --model your-model --base-url https://your-endpoint --limit 10
 ```
 
 ## What You Get

@@ -48,7 +48,7 @@ from xrtm.forecast.core.config.inference import OpenAIConfig
 from xrtm.forecast.providers.inference.factory import ModelFactory
 
 config = OpenAIConfig(
-    model_id="gpt-4o",
+    model_id="your-model",
     base_url="https://api.openai.com/v1",
     api_key="sk-...",
 )
@@ -59,7 +59,7 @@ forecast = await analyst.run(question)
 
 ### Provider Support
 
-OpenAI-compatible only. Any endpoint that speaks the OpenAI Chat Completions API works: OpenAI, DeepSeek, Anthropic (via proxy), local llama.cpp servers.
+OpenAI-compatible only. Any endpoint that speaks the OpenAI Chat Completions API works: any endpoint that speaks the OpenAI Chat Completions API.
 
 ### Agents
 
