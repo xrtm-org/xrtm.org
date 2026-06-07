@@ -1,19 +1,26 @@
-import type { SidebarsConfig } from '@docusaurus/plugin-content-docs';
+import type {SidebarsConfig} from '@docusaurus/plugin-content-docs';
 
 const sidebars: SidebarsConfig = {
-  docsSidebar: [
-    'index',
+  docs: [
     {
-      type: 'category',
-      label: 'Start',
-      collapsed: false,
-      items: ['getting-started', 'workflows/researcher-model-eval'],
+      type: 'doc',
+      id: 'getting-started',
+      label: 'Getting Started',
     },
     {
-      type: 'category',
-      label: 'More',
-      collapsed: true,
-      items: ['workflows/operator-runbook', 'examples', 'workflows/developer-integrator', 'framework/intro', 'standard/intro', 'next-release'],
+      type: 'doc',
+      id: 'framework',
+      label: 'Framework',
+    },
+    {
+      type: 'doc',
+      id: 'cli',
+      label: 'CLI Reference',
+    },
+    {
+      type: 'doc',
+      id: 'architecture',
+      label: 'Architecture',
     },
   ],
 };
