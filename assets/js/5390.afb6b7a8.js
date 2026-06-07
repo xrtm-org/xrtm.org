@@ -1,0 +1,1 @@
+"use strict";(globalThis.webpackChunktmp_scaffold=globalThis.webpackChunktmp_scaffold||[]).push([[5390],{5390(c,e,a){a.d(e,{createArchitectureServices:()=>s.S});var s=a(5530);a(2519)}}]);
