@@ -6,31 +6,20 @@ sidebar_position: 3
 
 ## `xrtm start`
 
-Run forecasts. Deterministic by default (no API keys). Use `--provider` for real LLMs.
+Run forecasts. Requires `OPENAI_API_KEY` in your environment or `.env` file.
 
 ```bash
-xrtm start                          # deterministic
-xrtm start --limit 10               # 10 questions
-xrtm start --provider openai        # OPENAI_API_KEY from env
-xrtm start --provider openai --model gpt-4o --base-url https://api.openai.com/v1
+xrtm start
+xrtm start --limit 10
+xrtm start --model deepseek-v4-pro --base-url https://api.deepseek.com
 ```
 
 | Flag | Default | Description |
 |------|---------|-------------|
 | `--limit` | 5 | Questions to forecast |
-| `--provider` | deterministic | `openai` or `openai-compatible` |
-| `--model` | auto | Model ID |
-| `--base-url` | auto | API base URL |
+| `--model` | `$OPENAI_MODEL` or `gpt-4o-mini` | Model ID |
+| `--base-url` | `$OPENAI_BASE_URL` or `api.openai.com/v1` | API base URL |
 | `--runs-dir` | `runs/` | Output directory |
-
-## `xrtm demo`
-
-Quick 2-question deterministic demo.
-
-```bash
-xrtm demo
-xrtm demo --limit 5
-```
 
 ## `xrtm doctor`
 
@@ -51,16 +40,6 @@ xrtm runs show --latest              # most recent run
 xrtm runs show 20260607T010836Z-abc  # specific run ID
 ```
 
-## `xrtm providers`
-
-List available providers.
-
-```bash
-xrtm providers
-#   deterministic  — Deterministic baseline (no API key)
-#   openai         — OpenAI-compatible endpoint (any model)
-```
-
 ## Environment Variables
 
 Set these in `.env` or your shell:
@@ -70,5 +49,3 @@ Set these in `.env` or your shell:
 | `OPENAI_API_KEY` | API key for OpenAI-compatible endpoint |
 | `OPENAI_BASE_URL` | Base URL (default: `https://api.openai.com/v1`) |
 | `OPENAI_MODEL` | Model ID (default: `gpt-4o-mini`) |
-| `TAVILY_API_KEY` | Tavily search API key (for web search in framework) |
-| `METACULUS_API_KEY` | Metaculus API key (for question source) |
