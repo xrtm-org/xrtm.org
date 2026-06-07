@@ -18,7 +18,7 @@ XRTM uses two first-class integration categories:
 
 | Category | What it means | How to read it today |
 | :--- | :--- | :--- |
-| **OpenAI-compatible endpoints** | Model-backed HTTP endpoints used by runtime workflows | The released advanced profile today is `--provider local-llm`; local and commercial deployments are profiles inside this same category. |
+| **OpenAI-compatible endpoints** | Model-backed HTTP endpoints used by runtime workflows | The released advanced profile today is ``; local and commercial deployments are profiles inside this same category. |
 | **Coding-agent CLI contracts** | CLI-backed coding agents integrated through an explicit command contract | This is the other first-class category in the standard, separate from HTTP endpoint wiring. |
 
 The built-in deterministic path is **not** a third runtime category. It is a
@@ -49,7 +49,7 @@ See [Getting started](../getting-started) for that path.
 
 ## How the pieces fit
 
-- `xrtm` is the newcomer-facing product shell, including the released bounded Hub → Studio → Playground → Observatory lane in `0.8.8`.
+- `xrtm` is the newcomer-facing product shell, including the released bounded Hub → Studio → Playground → Observatory lane in `0.9.0`.
 - `xrtm-forecast` handles the runtime and orchestration layer.
 - `xrtm-eval` and `xrtm-data` provide the scoring and snapshot foundations.
 - `xrtm-train` closes the loop for replay, calibration, and evaluation harnesses.
