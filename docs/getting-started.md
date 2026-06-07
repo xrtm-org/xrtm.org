@@ -22,11 +22,11 @@ Create a `.env` file in your working directory:
 
 ```
 OPENAI_API_KEY=sk-your-key-here
-OPENAI_BASE_URL=https://api.openai.com/v1
-OPENAI_MODEL=gpt-4o-mini
+OPENAI_BASE_URL=https://your-endpoint
+OPENAI_MODEL=your-model
 ```
 
-The base URL and model default to OpenAI's API — change them for other providers.
+The only required variable is `OPENAI_API_KEY`. Set `OPENAI_BASE_URL` and `OPENAI_MODEL` if your provider needs them.
 
 ## Run a Forecast
 

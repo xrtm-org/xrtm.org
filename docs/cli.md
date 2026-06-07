@@ -18,7 +18,7 @@ xrtm start --model your-model --base-url https://your-endpoint
 |------|---------|-------------|
 | `--limit` | 5 | Questions to forecast |
 | `--model` | `$OPENAI_MODEL` or `your-model` | Model ID |
-| `--base-url` | `$OPENAI_BASE_URL` or `api.openai.com/v1` | API base URL |
+| `--base-url` | `$OPENAI_BASE_URL` or `your-endpoint` | API base URL |
 | `--runs-dir` | `runs/` | Output directory |
 
 ## `xrtm doctor`
@@ -47,5 +47,5 @@ Set these in `.env` or your shell:
 | Variable | Purpose |
 |----------|---------|
 | `OPENAI_API_KEY` | API key for OpenAI-compatible endpoint |
-| `OPENAI_BASE_URL` | Base URL (default: `https://api.openai.com/v1`) |
+| `OPENAI_BASE_URL` | Base URL (default: `https://your-endpoint`) |
 | `OPENAI_MODEL` | Model ID (default: `your-model`) |
