@@ -36,8 +36,8 @@ Shows: Python version, package versions, import health, runs directory status.
 Inspect a run.
 
 ```bash
-xrtm runs show --latest              # most recent run
-xrtm runs show 20260607T010836Z-abc  # specific run ID
+xrtm runs show --latest
+xrtm runs show <run-id>
 ```
 
 ## Environment Variables
