@@ -18,7 +18,7 @@ export default function Home(): React.JSX.Element {
     <Layout title="AI for event forecasting" description="XRTM runs event-forecasting workflows. Deterministic by default, OpenAI-compatible for real LLMs.">
       {/* Hero */}
       <div className={styles.hero}>
-        <p className={styles.eyebrow}>xrtm v0.9.0</p>
+        <p className={styles.eyebrow}>xrtm v0.9</p>
         <h1 className={styles.title}>AI for event forecasting</h1>
         <p className={styles.lead}>
           Run probabilistic forecasts from the command line. Deterministic baseline with zero API keys.
