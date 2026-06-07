@@ -11,13 +11,13 @@ Run forecasts. Requires `OPENAI_API_KEY` in your environment or `.env` file.
 ```bash
 xrtm start
 xrtm start --limit 10
-xrtm start --model deepseek-v4-pro --base-url https://api.deepseek.com
+xrtm start --model your-model --base-url https://your-endpoint
 ```
 
 | Flag | Default | Description |
 |------|---------|-------------|
 | `--limit` | 5 | Questions to forecast |
-| `--model` | `$OPENAI_MODEL` or `gpt-4o-mini` | Model ID |
+| `--model` | `$OPENAI_MODEL` or `your-model` | Model ID |
 | `--base-url` | `$OPENAI_BASE_URL` or `api.openai.com/v1` | API base URL |
 | `--runs-dir` | `runs/` | Output directory |
 
@@ -48,4 +48,4 @@ Set these in `.env` or your shell:
 |----------|---------|
 | `OPENAI_API_KEY` | API key for OpenAI-compatible endpoint |
 | `OPENAI_BASE_URL` | Base URL (default: `https://api.openai.com/v1`) |
-| `OPENAI_MODEL` | Model ID (default: `gpt-4o-mini`) |
+| `OPENAI_MODEL` | Model ID (default: `your-model`) |
