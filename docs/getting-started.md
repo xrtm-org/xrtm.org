@@ -21,7 +21,7 @@ Version ownership for that released surface follows the
 [Stack Versioning Policy](https://github.com/xrtm-org/governance/blob/main/policies/stack-versioning-policy.md):
 `xrtm` is the product-anchor version for newcomer and WebUI claims.
 
-The `0.8.8` release keeps the bounded local Hub → Studio → Playground →
+The `0.9.0` release keeps the bounded local Hub → Studio → Playground →
 Observatory product spine. It keeps the default release baseline deterministic
 and does not claim a calibration dashboard, API/webhook control plane,
 arbitrary code/plugin forecast-path editor, full persistent collaborative canvas layout,
@@ -43,7 +43,7 @@ deterministic baseline mode, not a third runtime family.
 ```bash
 python3.11 -m venv .venv
 . .venv/bin/activate
-pip install xrtm==0.8.8
+pip install xrtm==0.9.0
 ```
 
 This install brings in the full released forecasting stack, so the first
@@ -158,7 +158,7 @@ default, and keep the released runtime wording deterministic unless wider
 validation is published separately.
 
 ```bash
-xrtm playground --workflow demo-deterministic --question "Will the released 0.8.8 playground stay exploratory?" --workflows-dir .xrtm/workflows --runs-dir runs
+xrtm playground --workflow demo-deterministic --question "Will the released 0.9.0 playground stay exploratory?" --workflows-dir .xrtm/workflows --runs-dir runs
 ```
 
 That released Playground command uses the deterministic baseline path and the
@@ -253,8 +253,8 @@ route for existing links.
 
 ```bash
 export XRTM_LOCAL_LLM_BASE_URL=http://localhost:8080/v1
-xrtm local-llm status
-xrtm demo --provider local-llm --limit 1 --max-tokens 768 --runs-dir runs-local
+xrtm openai-compatible status
+xrtm demo  --limit 1 --max-tokens 768 --runs-dir runs-local
 ```
 
 Only switch to the local OpenAI-compatible endpoint profile after the
@@ -295,7 +295,7 @@ deterministic baseline path you just proved.
 
 ## Advanced and optional: local LLM mode
 
-Only switch to `--provider local-llm` after the deterministic baseline
+Only switch to `` after the deterministic baseline
 path above is working.
 
 Use local-LLM mode when you specifically need to evaluate a real local
@@ -313,8 +313,8 @@ Minimal verification flow:
 
 ```bash
 export XRTM_LOCAL_LLM_BASE_URL=http://localhost:8080/v1
-xrtm local-llm status
-xrtm demo --provider local-llm --limit 1 --max-tokens 768 --runs-dir runs-local
+xrtm openai-compatible status
+xrtm demo  --limit 1 --max-tokens 768 --runs-dir runs-local
 ```
 
 For deeper setup and troubleshooting, use the [operator runbook](./workflows/operator-runbook).
