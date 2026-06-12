@@ -59,7 +59,7 @@ forecast = await analyst.run(question)
 
 ### Provider Support
 
-OpenAI-compatible only. Any endpoint that speaks the OpenAI Chat Completions API works: any endpoint that speaks the OpenAI Chat Completions API.
+OpenAI-compatible only. Any endpoint that speaks the OpenAI Chat Completions API works.
 
 ### Agents
 
