@@ -4,7 +4,6 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import { useThemeConfig } from '@docusaurus/theme-common';
 import type { Props } from '@theme/Logo';
-import AnimatedLogo from '@site/src/components/AnimatedLogo';
 
 export default function Logo(props: Props): ReactNode {
     const {
@@ -16,13 +15,8 @@ export default function Logo(props: Props): ReactNode {
 
     const { imageClassName, titleClassName, ...propsRest } = props;
     const logoLink = useBaseUrl(logo?.href || '/');
-
-    // If visible title is shown, fallback alt text should be
-    // an empty string to mark the logo as decorative.
+    const logoSrc = useBaseUrl(logo?.src || 'img/logo.svg');
     const fallbackAlt = navbarTitle ? '' : title;
-
-    // Use logo alt text if provided (including empty string),
-    // and provide a sensible fallback otherwise.
     const alt = logo?.alt ?? fallbackAlt;
 
     return (
@@ -31,16 +25,9 @@ export default function Logo(props: Props): ReactNode {
             {...propsRest}
             {...(logo?.target && { target: logo.target })}
             className="navbar__brand"
-            style={{ display: 'flex', alignItems: 'center', textDecoration: 'none' }}
         >
-            <div className={imageClassName} style={{ display: 'flex', alignItems: 'center' }}>
-                <AnimatedLogo />
-            </div>
-            {navbarTitle != null && (
-                <b className={titleClassName} style={{ marginLeft: '12px', fontSize: '1.2rem', letterSpacing: '-0.02em' }}>
-                    {navbarTitle}
-                </b>
-            )}
+            {logoSrc && <img src={logoSrc} alt={alt} className={imageClassName} height={28} />}
+            {navbarTitle != null && <b className={titleClassName}>{navbarTitle}</b>}
         </Link>
     );
 }
