@@ -6,10 +6,10 @@ import styles from './index.module.css';
 
 const FEATURES = [
   { title: 'One command to forecast', desc: 'xrtm start runs a linear pipeline: questions → forecast → score → report. All in a single command.' },
-  { title: 'OpenAI-compatible', desc: 'DeepSeek, Anthropic, local llama.cpp. One provider, any endpoint that speaks the OpenAI Chat API.' },
+  { title: 'OpenAI-compatible', desc: 'One provider, any endpoint. Works with any service that speaks the OpenAI Chat API.' },
   { title: 'Scored & auditable', desc: 'Brier score, ECE, log score. Full reasoning traces with causal DAGs. 8+ artifacts per run.' },
   { title: 'Framework underneath', desc: 'pip install xrtm-forecast for composable agents, topologies, and providers in Python.' },
-  { title: 'Real question sources', desc: 'Built-in 21-question corpus, Polymarket, Metaculus. Web search via Tavily.' },
+  { title: 'Real question sources', desc: 'Built-in 21-question corpus. Live markets via Polymarket and Metaculus.' },
   { title: 'Lean & open', desc: 'Apache 2.0. 5 packages. Python 3.11+. No GPU. No Docker.' },
 ];
 
