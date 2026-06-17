@@ -5,7 +5,7 @@ import Terminal from '../components/Terminal';
 import styles from './index.module.css';
 
 const FEATURES = [
-  { title: 'Zero-config first run', desc: 'xrtm start with no API keys. Hash-derived probabilities prove the pipeline works before you add cost.' },
+  { title: 'One command to forecast', desc: 'xrtm start runs a linear pipeline: questions → forecast → score → report. All in a single command.' },
   { title: 'OpenAI-compatible', desc: 'DeepSeek, Anthropic, local llama.cpp. One provider, any endpoint that speaks the OpenAI Chat API.' },
   { title: 'Scored & auditable', desc: 'Brier score, ECE, log score. Full reasoning traces with causal DAGs. 8+ artifacts per run.' },
   { title: 'Framework underneath', desc: 'pip install xrtm-forecast for composable agents, topologies, and providers in Python.' },
@@ -42,7 +42,7 @@ export default function Home(): React.JSX.Element {
           <div className={styles.step}>
             <div className={styles.stepNumber}>1</div>
             <div className={styles.stepTitle}>Install</div>
-            <div className={styles.stepDesc}>pip install xrtm. No GPU, no Docker, no API keys needed for the baseline.</div>
+            <div className={styles.stepDesc}>pip install xrtm. No GPU, no Docker. Set your API key in .env and go.</div>
           </div>
           <div className={styles.step}>
             <div className={styles.stepNumber}>2</div>
