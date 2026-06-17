@@ -15,14 +15,14 @@ const FEATURES = [
 
 export default function Home(): React.JSX.Element {
   return (
-    <Layout title="AI for event forecasting" description="XRTM runs event-forecasting workflows. Deterministic by default, OpenAI-compatible for real LLMs.">
+    <Layout title="AI for event forecasting" description="XRTM runs event-forecasting workflows. OpenAI-compatible. Zero setup with your existing API key.">
       {/* Hero */}
       <div className={styles.hero}>
         <p className={styles.eyebrow}>xrtm v0.9</p>
         <h1 className={styles.title}>AI for event forecasting</h1>
         <p className={styles.lead}>
-          Run probabilistic forecasts from the command line. Deterministic baseline with zero API keys.
-          Plug in any OpenAI-compatible endpoint for real LLM forecasts.
+          Run probabilistic forecasts from the command line. Uses your existing API key.
+          Works with any OpenAI-compatible endpoint.
         </p>
         <div className={styles.actions}>
           <Link className="button button--primary button--lg" to="/docs/getting-started">Get Started</Link>
