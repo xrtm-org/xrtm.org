@@ -54,6 +54,9 @@ config = OpenAIConfig(
 )
 provider = ModelFactory.get_provider(config)
 analyst = ForecastingAnalyst(model=provider)
+
+from xrtm.data.corpora import load_real_binary_questions
+question = load_real_binary_questions(limit=1)[0]
 forecast = await analyst.run(question)
 ```
 
