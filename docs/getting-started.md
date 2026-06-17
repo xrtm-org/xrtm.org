@@ -60,15 +60,19 @@ xrtm runs show --latest
 
 ## What Each Run Produces
 
-Every run writes these artifacts to `runs/<run-id>/`:
+Every run writes these files to `runs/<run-id>/`:
 
 | File | Contents |
 |------|----------|
 | `run.json` | Metadata and status |
+| `run_summary.json` | Summary with Brier, ECE, duration |
 | `forecasts.jsonl` | Probabilities and reasoning traces |
-| `eval.json` | Brier score, ECE, log score |
-| `train.json` | Backtest/training summary |
+| `questions.jsonl` | Input questions |
+| `eval.json` | Brier score decomposition, calibration bins |
+| `train.json` | Backtest summary |
 | `report.html` | Human-readable report |
+| `provider.json` | Provider and model metadata |
+| `events.jsonl` | Pipeline event log |
 
 ## Check Your Setup
 
